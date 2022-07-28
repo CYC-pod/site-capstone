@@ -8,7 +8,7 @@ import Navbar from "../Navbar/Navbar";
 import apiClient from "../../../services/apiClient"
 import { useAuthContext } from "../../../AuthContext/auth";
 
-export default function Login() {
+export default function Login({setLoggedIn}) {
   const { user, setUser } = useAuthContext();
   const navigate = useNavigate();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -50,11 +50,12 @@ export default function Login() {
         apiClient.setToken(res?.data?.token);
         console.log(res.data);
         navigate("/activity");
-        <Navbar>
-          <div>
-            <p>logged in</p>
-          </div>
-        </Navbar>;
+        // <Navbar>
+        //   <div>
+        //     <p>logged in</p>
+        //   </div>
+        // </Navbar>;
+        setLoggedIn(true) 
         console.log("logged in");
       } else {
         setErrors((e) => ({

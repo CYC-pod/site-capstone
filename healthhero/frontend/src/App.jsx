@@ -14,8 +14,12 @@ import Slick from "./components/Slick/Slick";
 import SchoolsView from "./components/SchoolsView/SchoolsView";
 import CommForm from  "./components/CommForm/Commform"
 
+
+
 function App() {
   const { user, setUser } = useAuthContext();
+
+
   useEffect(() => {
     const fetchAuthUser = async () => {
       const { data, error } = await apiClient.fetchUserFromToken();
@@ -30,13 +34,15 @@ function App() {
     }
   }, []);
   const logoutuser = async () => {
+
     await apiClient.logoutUser();
-    setUser({});
+    setUser(NULL);
   };
 
   return (
     <>
-      <Navbar logoutuser={logoutuser} />
+      {/* {console.log("value of loggedIn in app jsx" , loggedIn)} */}
+      <Navbar logoutuser={logoutuser}/>
       <Routes>
         <Route
           path="/"

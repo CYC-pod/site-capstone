@@ -63,7 +63,7 @@ class ApiClient {
 
   async logoutUser() {
     this.setToken(null);
-    localStorage.setItem(this.tokenName, "");
+    localStorage.setItem(this.tokenName, ""); 
   }
 
   async signupUser(credentials) {
