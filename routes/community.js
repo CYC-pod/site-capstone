@@ -18,7 +18,7 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
     console.log(res.locals);
     let { id } = res.locals.user;
-
+    console.log("res locals user:" , res.locals.user)
     const community = req.body;
     const communities = await Community.PostCommunity(community, id);
     return res.status(201).json({ community: communities });
