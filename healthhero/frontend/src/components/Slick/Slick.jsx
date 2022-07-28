@@ -39,7 +39,10 @@ export default function Slick() {
       <div>
         <Slider ref={setSliderRef} {...settings}>
           <div id="schoolHome">
-            <img src={`https://media.defense.gov/2020/Apr/28/2002543434/-1/-1/0/200428-N-NO090-1004.PNG`} alt="USC" />
+            <img
+              src={`https://media.defense.gov/2020/Apr/28/2002543434/-1/-1/0/200428-N-NO090-1004.PNG`}
+              alt="USC"
+            />
           </div>
           {/* <div id="schoolHome">
             <img src={Howard} alt="Howard" />

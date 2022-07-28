@@ -12,7 +12,7 @@ import Landing from "./components/Landing/Landing";
 import apiClient from "../services/apiClient";
 import Slick from "./components/Slick/Slick";
 import SchoolsView from "./components/SchoolsView/SchoolsView";
-import CommForm from  "./components/CommForm/Commform"
+import CommForm from "./components/CommForm/Commform";
 
 function App() {
   const { user, setUser } = useAuthContext();
@@ -71,7 +71,7 @@ function App() {
           }
         />
         <Route
-          path="/restaurantForm"
+          path="/restForm"
           element={
             <>
               <Restform />

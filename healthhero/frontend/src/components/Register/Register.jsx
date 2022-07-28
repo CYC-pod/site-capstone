@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import "../Register/Register.css"
-import apiClient from "../../../services/apiClient"
+import "../Register/Register.css";
+import apiClient from "../../../services/apiClient";
 
 export default function Register() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
-    type: "",  
+    type: "",
     email: "",
     username: "",
-    password: ""
+    password: "",
   });
 
   const handleOnInputChange = (event) => {
-    console.log("hello: " , event.target.selected)
+    console.log("hello: ", event.target.selected);
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({
@@ -44,8 +44,11 @@ export default function Register() {
         setErrors((e) => ({ ...e, email: null }));
       }
     }
+    if (event.target.name === "type") {
+      console.log(event.target.value);
+    }
 
-    setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
+    setForm((f) => ({ ...f, [event.target.name]: event.target.value })); // event target is the name of the html that is the target
   };
 
   const handleOnSubmit = async () => {
@@ -61,13 +64,22 @@ export default function Register() {
     }
 
     try {
-      const res = await apiClient.request("auth/register", "post", form)
+      const res = await apiClient.request("auth/register", "post", form);
       if (res?.data?.user) {
+        //a way getting the user from the response if posiible
         // setAppState(res.data);
         setIsLoading(false);
-        console.log("res.data in register.jsx", res.data)
+        console.log("setIsLoading");
+        console.log("res.data in register.jsx", res.data);
         apiClient.setToken(res?.data?.token);
-        navigate("/activity");
+
+        if (res?.data?.user?.type == "student") {
+          console.log("hi");
+          // ? is a way to protect from null value so it doesnt affected other
+          navigate("/communities");
+        } else if (res?.data?.user?.type == "restaurant") {
+          navigate("/restform");
+        }
       } else {
         setErrors((e) => ({
           ...e,
@@ -98,9 +110,15 @@ export default function Register() {
         <br />
 
         <div className="form">
-        <select name="people" id="users" onChange={handleOnInputChange}>
-            <option value={form.type}>  Student </option>
-            <option value={form.type}> Restaurant Owner </option>
+          <select
+            name="type"
+            id="users"
+            value={form.type}
+            onChange={handleOnInputChange}
+          >
+            {/* instead of form type we used teext values so that in the res.data.user.type it can tell where to Navigate user based on type */}
+            <option value="student"> Student </option>
+            <option value="restaurant"> Restaurant Owner </option>
           </select>
           <div className="input-field">
             <label htmlFor="email">Email</label>
