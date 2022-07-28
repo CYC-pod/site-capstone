@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(security.extractUserFromJwt);
 app.use("/auth", authRouter);
 app.use("/restaurant", RestRouter);
-app.use("/communities", CommRouter);
+app.use("/community", CommRouter);
 app.use("/schools", schoolRouter)
 
 app.use((req, res, next) => {

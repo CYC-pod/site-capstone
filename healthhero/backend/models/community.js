@@ -17,7 +17,7 @@ class Community {
       throw new BadRequestError("No community name provided");
     }
 
-    if (community.image_url === 0) {
+    if (community.image === 0) {
       throw new BadRequestError("No community image provdid");
     }
     if (community.description.length === 0) {
@@ -34,7 +34,7 @@ class Community {
             VALUES ($1,$2,$3,$4)
             RETURNING name,image_url, description, user_id;
             `,
-      [community.name, community.image_url, community.description, userId]
+      [community.name, community.image, community.description, userId]
     );
     const results = result.rows[0];
     return results;

@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import "../Register/Register.css";
+import "../Register/Register.css"
+import apiClient from "../../../services/apiClient"
 
 export default function Register() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
+    type: "",  
     email: "",
     username: "",
-    firstName: "",
-    lastName: "",
-    password: "",
-    passwordConfirm: "",
+    password: ""
   });
 
   const handleOnInputChange = (event) => {
+    console.log("hello: " , event.target.selected)
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({
@@ -61,16 +61,12 @@ export default function Register() {
     }
 
     try {
-      const res = await axios.post("http://localhost:3001/auth/register", {
-        type: form.type,  
-        email: form.email,
-        username: form.username,
-        password: form.password
-      });
-
+      const res = await apiClient.request("auth/register", "post", form)
       if (res?.data?.user) {
         // setAppState(res.data);
         setIsLoading(false);
+        console.log("res.data in register.jsx", res.data)
+        apiClient.setToken(res?.data?.token);
         navigate("/activity");
       } else {
         setErrors((e) => ({
@@ -102,9 +98,9 @@ export default function Register() {
         <br />
 
         <div className="form">
-        <select name="people" id="users">
-            <option value={form.type} onChange={handleOnInputChange}> Student </option>
-            <option value={form.type} onChange={handleOnInputChange}> Restaurant Owner </option>
+        <select name="people" id="users" onChange={handleOnInputChange}>
+            <option value={form.type}>  Student </option>
+            <option value={form.type}> Restaurant Owner </option>
           </select>
           <div className="input-field">
             <label htmlFor="email">Email</label>
