@@ -25,18 +25,13 @@ export default function Slick() {
   };
   return (
     <div className="content">
-      <div className="controls">
-        <button onClick={sliderRef?.slickPrev} id="liBrB">
-          <i className="fa-solid fa-chevron-right"></i>
-          {/* doesnt work */}
+      <div className="leftbtton">
+        <button onClick={sliderRef?.slickPrev} className="liBrB butRight">
           {"<"}
         </button>
-        <button onClick={sliderRef?.slickNext} id="liBrB">
-          <i className="fa-solid fa-chevron-right"></i>
-          {">"}
-        </button>
       </div>
-      <div>
+
+      <div className="slider">
         <Slider ref={setSliderRef} {...settings}>
           <div id="schoolHome">
             <img
@@ -69,6 +64,12 @@ export default function Slick() {
             />
           </div>
         </Slider>
+      </div>
+
+      <div className="rightbtton">
+        <button onClick={sliderRef?.slickNext} className="liBrB butLeft">
+          {">"}
+        </button>
       </div>
     </div>
   );

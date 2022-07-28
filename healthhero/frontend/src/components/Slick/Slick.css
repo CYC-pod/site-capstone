@@ -5,11 +5,23 @@
   justify-content: center;
   justify-items: center; */
 }
-
-#liBrB {
+.slider {
+  max-width: 800px;
+}
+.liBrB {
   background-color: #795548;
 }
 
 .content {
   padding: 0;
+  padding-top: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.butRight {
+  margin-right: 20px;
+}
+.butLeft {
+  margin-left: 5px;
 }

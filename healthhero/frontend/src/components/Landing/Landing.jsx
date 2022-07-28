@@ -10,12 +10,6 @@ import { purple } from "@mui/material/colors";
 import { brown } from "@mui/material/colors";
 // import USC from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.webp";
 
-const options = [
-  "University of South California",
-  "Howard",
-  "Washington University in St Louis",
-];
-
 const ColorButton = styled(Button)(({ theme }) => ({
   //   color: theme.palette.getContrastText(purple[500]),
   //   backgroundColor: purple[500],
@@ -29,6 +23,8 @@ const ColorButton = styled(Button)(({ theme }) => ({
     backgroundColor: brown[700],
   },
   alignItems: "center",
+  marginLeft: "810px",
+  marginTop: "100px",
   //doesnt change anything
 }));
 
@@ -48,32 +44,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
 export default function Landing() {
   return (
     <>
-      <label>
-        Select your school:{" "}
-        <Autocomplete
-          sx={{
-            display: "inline-block",
-            "& input": {
-              width: 200,
-              height: 25,
-              bgcolor: "background.paper",
-              color: (theme) =>
-                theme.palette.getContrastText(theme.palette.background.paper),
-            },
-          }}
-          id="custom-input-demo"
-          options={options}
-          renderInput={(params) => (
-            <div ref={params.InputProps.ref}>
-              <input
-                type="text"
-                {...params.inputProps}
-                placeholder="             Search schools..."
-              />
-            </div>
-          )}
-        />
-      </label>
+      <h1>Welcome!</h1>
       <Slick />
 
       {/* 
