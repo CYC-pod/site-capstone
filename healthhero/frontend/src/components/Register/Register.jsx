@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import "../Register/Register.css"
-import apiClient from "../../../services/apiClient"
+import "../Register/Register.css";
+import apiClient from "../../../services/apiClient";
 
 export default function Register() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
-    type: "",  
+    type: "",
     email: "",
     username: "",
-    password: ""
+    password: "",
   });
 
   const handleOnInputChange = (event) => {
-    console.log("hello: " , event.target.selected)
+    console.log("hello: ", event.target.selected);
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({
@@ -61,11 +61,11 @@ export default function Register() {
     }
 
     try {
-      const res = await apiClient.request("auth/register", "post", form)
+      const res = await apiClient.request("auth/register", "post", form);
       if (res?.data?.user) {
         // setAppState(res.data);
         setIsLoading(false);
-        console.log("res.data in register.jsx", res.data)
+        console.log("res.data in register.jsx", res.data);
         apiClient.setToken(res?.data?.token);
         navigate("/activity");
       } else {
@@ -98,8 +98,15 @@ export default function Register() {
         <br />
 
         <div className="form">
-        <select name="people" id="users" onChange={handleOnInputChange}>
-            <option value={form.type}>  Student </option>
+          <label htmlFor="people">Select User Type</label>
+          <select
+            className="selType"
+            name="people"
+            id="users"
+            onChange={handleOnInputChange}
+          >
+            <option value={form.type}> Student </option>
+            {/* can make placeholder (null perhaps? option too) */}
             <option value={form.type}> Restaurant Owner </option>
           </select>
           <div className="input-field">
