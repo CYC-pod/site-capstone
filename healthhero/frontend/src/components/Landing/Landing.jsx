@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { purple } from "@mui/material/colors";
 import { brown } from "@mui/material/colors";
-import USC from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.webp";
+// import USC from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.webp";
 
 const options = [
   "University of South California",

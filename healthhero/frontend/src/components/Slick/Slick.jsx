@@ -4,11 +4,11 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useState } from "react";
 import "../Slick/Slick.css";
-import USC from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.webp";
-import Howard from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/howard.jpeg";
-import WashU from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/washu.png";
-import VT from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/vt.png";
-import USF from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/USF.png";
+// import USC from "../../img/washu.png"
+// import Howard from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/howard.jpeg";
+// import WashU from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/washu.png";
+// import VT from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/vt.png";
+// import USF from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/USF.png";
 export default function Slick() {
   <script
     src="https://kit.fontawesome.com/cf9f7f67f7.js"
@@ -39,9 +39,9 @@ export default function Slick() {
       <div>
         <Slider ref={setSliderRef} {...settings}>
           <div id="schoolHome">
-            <img src={USC} alt="USC" />
+            <img src={`https://media.defense.gov/2020/Apr/28/2002543434/-1/-1/0/200428-N-NO090-1004.PNG`} alt="USC" />
           </div>
-          <div id="schoolHome">
+          {/* <div id="schoolHome">
             <img src={Howard} alt="Howard" />
           </div>
           <div id="schoolHome">
@@ -52,7 +52,7 @@ export default function Slick() {
           </div>
           <div id="schoolHome">
             <img src={USF} alt="USF" />
-          </div>
+          </div> */}
         </Slider>
       </div>
     </div>

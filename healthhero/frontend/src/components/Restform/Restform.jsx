@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 // import axios from "axios";
 import { useAuthContext } from "../../../AuthContext/auth";
 import "./Restform.css";
+import apiClient from "../../../services/apiClient";
 
 export default function Restform() {
   // need to use this when backend is finsihed
@@ -121,10 +122,10 @@ export default function Restform() {
           </div>
 
           <div className="input-field">
-            <label htmlFor="location">Add Your Image </label>
+          <label htmlFor="image">Add An Image </label>
             <input
-              type="img"
-              name="img"
+              type="text"
+              name="image"
               value={form.image}
               onChange={handleOnInputChange}
             />

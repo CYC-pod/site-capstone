@@ -15,7 +15,7 @@ export default function Login() {
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   useEffect(() => {
@@ -84,10 +84,6 @@ export default function Login() {
         <br />
 
         <div className="form">
-          <select name="people" id="users">
-            <option value="student">Student</option>
-            <option value="owner">Restaurant Owner</option>
-          </select>
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <input

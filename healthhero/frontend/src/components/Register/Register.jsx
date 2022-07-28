@@ -62,12 +62,10 @@ export default function Register() {
 
     try {
       const res = await axios.post("http://localhost:3001/auth/register", {
+        type: form.type,  
         email: form.email,
         username: form.username,
-        firstName: form.firstName,
-        lastName: form.lastName,
-        // email: form.email,
-        password: form.password,
+        password: form.password
       });
 
       if (res?.data?.user) {
@@ -104,6 +102,10 @@ export default function Register() {
         <br />
 
         <div className="form">
+        <select name="people" id="users">
+            <option value={form.type} onChange={handleOnInputChange}> Student </option>
+            <option value={form.type} onChange={handleOnInputChange}> Restaurant Owner </option>
+          </select>
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <br />
@@ -131,37 +133,6 @@ export default function Register() {
               {errors.username && (
                 <span className="error">{errors.username}</span>
               )}
-            </div>
-
-            <div className="split-inputs">
-              <div className="input-field">
-                <label htmlFor="name">First Name</label>
-                <br />
-                <input
-                  type="text"
-                  name="firstName"
-                  placeholder="First Name"
-                  value={form.firstName}
-                  onChange={handleOnInputChange}
-                />
-                {errors.firstName && (
-                  <span className="error">{errors.firstName}</span>
-                )}
-              </div>
-              <div className="input-field">
-                <label htmlFor="name">Last Name</label>
-                <br />
-                <input
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  value={form.lastName}
-                  onChange={handleOnInputChange}
-                />
-                {errors.lastName && (
-                  <span className="error">{errors.lastName}</span>
-                )}
-              </div>
             </div>
 
             <div className="input-field">
