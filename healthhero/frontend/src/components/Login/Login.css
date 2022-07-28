@@ -21,6 +21,7 @@
   padding: 24px 36px 0;
   flex-direction: column;
   background-color: #dde7c7;
+  border-radius: 5px;
 }
 
 .Login h2 {
@@ -69,6 +70,7 @@
   border: solid 1px var(--border-color);
   width: 100%;
   background-color: #adc89c;
+  border-radius: 10px;
 
   /* rgb(72, 129, 92); */
   /* color: azure; */

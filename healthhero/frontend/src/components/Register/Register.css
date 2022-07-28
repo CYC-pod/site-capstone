@@ -22,6 +22,10 @@
   width: 35%;
   background-color: #adc89c;
   margin-left: 250px;
+  border-radius: 10px;
+}
+option {
+  color: rgb(247, 245, 240);
 }
 .Register .card {
   outline: 2px #1e6b0b dotted;
@@ -30,6 +34,7 @@
   padding: 24px 36px 0;
   flex-direction: column;
   background-color: #dde7c7;
+  border-radius: 5px;
 }
 
 .Register h2 {
@@ -75,6 +80,7 @@
   border: solid 1px var(--border-color);
   width: 100%;
   background-color: #adc89c;
+  border-radius: 10px;
 
   /* rgb(72, 129, 92); */
   /* color: azure; */
