@@ -26,4 +26,19 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   }
 });
 
+router.put(
+  "/restaurant/:id",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      let { id } = res.locals.user;
+      const restaurant = req.body;
+      const restaurants = await Restaurant.PostRests(restaurant, id);
+      return res.status(201).json({ restaurant: restaurants });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 module.exports = router;
