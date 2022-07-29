@@ -45,6 +45,9 @@ export default function Landing() {
   return (
     <>
       <h1>Welcome!</h1>
+      {/* <div>
+        <img src="background: url(leaves.png);" alt="" />
+      </div> */}
       <Slick />
 
       {/* 
