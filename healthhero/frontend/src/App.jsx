@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import * as React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import { AuthContextProvider, useAuthContext } from "../AuthContext/auth";
@@ -14,14 +14,12 @@ import Slick from "./components/Slick/Slick";
 import SchoolsView from "./components/SchoolsView/SchoolsView";
 import CommForm from "./components/CommForm/Commform";
 
-
-
-
 function App() {
   const { user, setUser } = useAuthContext();
-
-
+  const navigateTo = useNavigate();
+  
   useEffect(() => {
+    console.log("app is rendering")
     const fetchAuthUser = async () => {
       const { data, error } = await apiClient.fetchUserFromToken();
       if (data) setUser(data.user);
@@ -35,7 +33,6 @@ function App() {
     }
   }, []);
   const logoutuser = async () => {
-
     await apiClient.logoutUser();
     setUser(NULL);
   };
@@ -43,8 +40,8 @@ function App() {
   return (
     <>
       {/* {console.log("value of loggedIn in app jsx" , loggedIn)} */}
-      <Navbar logoutuser={logoutuser}/>
-     
+      <Navbar logoutuser={logoutuser} />
+
       <Routes>
         <Route
           path="/"
@@ -88,11 +85,7 @@ function App() {
         />
         <Route
           path="/commForm"
-          element={
-            <>
-              <CommForm />
-            </>
-          }
+          element={<CommForm />}
         />
       </Routes>
     </>

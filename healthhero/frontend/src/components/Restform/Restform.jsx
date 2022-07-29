@@ -17,6 +17,11 @@ export default function Restform() {
     image: "",
     description: "",
   });
+
+//   useEffect(() => {
+//     console.log("user changed in restForm: ", user);
+//  }, [user])
+
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {

@@ -13,6 +13,11 @@ import leafLogo from "../../img/Health Hero-2.png"
 
 export default function Navbar({ logoutuser}) {
   const { user, setUser } = useAuthContext();
+
+  React.useEffect(() => {
+     console.log("user changed: ", user);
+  }, [user])
+
   return (
     <Box sx={{ flexGrow: 0 }}>
       <AppBar position="static" style={{ backgroundColor: '#B1907F' }}>
@@ -35,6 +40,7 @@ export default function Navbar({ logoutuser}) {
             {user ? "" : <a href="/register" id="link"> Sign Up </a>}
           </Button>
           <Button color="inherit" onClick={logoutuser}>
+            {console.log("user in nav bar", user)}
             {user ? <a href="/" id="link"> Logout </a> : <a href="/login" id="link"> Login </a>}
           </Button>
         </Toolbar>

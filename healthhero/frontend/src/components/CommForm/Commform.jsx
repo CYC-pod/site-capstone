@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { useNavigate, Link } from "react-router-dom";
 // import axios from "axios";
 import { useAuthContext } from "../../../AuthContext/auth";
@@ -16,6 +16,21 @@ export default function CommForm() {
     image: "",
     description: "",
   });
+
+
+useEffect(() => {
+    console.log("user changed: ", user);
+ }, [user])
+ 
+  useEffect(() => {
+    // if user is not logged in,
+    // redirect them to the login page 
+    console.log("user in commForm" , user)
+    if (!user) {
+      navigate("/login")
+    }
+  }, [user, navigate])
+
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
@@ -87,8 +102,10 @@ export default function CommForm() {
     }
   };
 
+
   return (
     <div className="Community">
+      
       <div className="card">
         <h2>Add a Community!</h2>
 

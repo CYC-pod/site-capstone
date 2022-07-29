@@ -49,7 +49,7 @@ export default function Login({setLoggedIn}) {
         setIsProcessing(false);
         apiClient.setToken(res?.data?.token);
         console.log(res.data);
-        navigate("/activity");
+        navigate("/communities");
         // <Navbar>
         //   <div>
         //     <p>logged in</p>
