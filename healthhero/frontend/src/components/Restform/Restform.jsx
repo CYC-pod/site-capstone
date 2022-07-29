@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 // import axios from "axios";
 import { useAuthContext } from "../../../AuthContext/auth";
@@ -11,17 +11,25 @@ export default function Restform() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
+
   const [form, setForm] = useState({
     name: "",
     location: "",
     image: "",
     description: "",
   });
+  //  useEffect((){
 
-//   useEffect(() => {
-//     console.log("user changed in restForm: ", user);
-//  }, [user])
+  //   if(user){
+  //     prefillform();
+  //   }
+  // }, []);
 
+  // function prefillform(){
+  //   apiClient.request("restaurant", "GET", null).then()(data)=>
+  //     setForm(data);
+  //   }
+  // } // work in progres for editing restaurant and have all my info still prefill in form for when user wants to update
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
@@ -69,6 +77,7 @@ export default function Restform() {
     try {
       const res = await apiClient.request("restaurant", "post", form);
 
+      setUser(res.data);
       console.log(res);
       if (res?.data?.restaurant) {
         setUser(res.data);
