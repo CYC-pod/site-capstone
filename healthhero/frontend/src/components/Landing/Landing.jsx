@@ -24,8 +24,9 @@ const ColorButton = styled(Button)(({ theme }) => ({
     backgroundColor: brown[700],
   },
   alignItems: "center",
-  marginLeft: "810px",
-  marginTop: "100px",
+
+  // marginLeft: "810px",
+  // marginTop: "100px",
   //doesnt change anything
 }));
 
@@ -44,28 +45,34 @@ const ColorButton = styled(Button)(({ theme }) => ({
 </>;
 export default function Landing() {
   return (
-    <>
-      <div className="landingPage">
-        {/* <div>
+    <div className="landingPage">
+      {/* <div>
         <img src="background: url(leaves.png);" alt="" />
       </div> */}
-        <Hero></Hero>
-        <h1 className="findYourSchool"> Find Your School! </h1>
-        <Slick />
 
-        {/* 
+      <Hero></Hero>
+      <h1 className="findYourSchool"> Find Your School! </h1>
+      {/* <Slick /> */}
+
+      {/* 
       swiper js for carousel? */}
 
-        {/* // src="LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.png" */}
+      {/* // src="LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.png" */}
 
-        <Stack spacing={2} direction="row">
-          <ColorButton variant="contained">
-            <a href="/schools" id="link">
-              See All Schools
-            </a>
-          </ColorButton>
-        </Stack>
-      </div>
-    </>
+      <Stack
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={8}
+        // will work if al stack
+      >
+        <Slick />
+        <ColorButton variant="contained">
+          <a href="/schools" id="link">
+            See All Schools
+          </a>
+        </ColorButton>
+      </Stack>
+    </div>
   );
 }
