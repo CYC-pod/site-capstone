@@ -14,7 +14,7 @@ export default function Navbar({ logoutuser}) {
   const { user, setUser } = useAuthContext();
   return (
     <Box sx={{ flexGrow: 0 }}>
-      <AppBar position="static" style={{ backgroundColor: '#7FA0B1' }}>
+      <AppBar position="static" style={{ backgroundColor: '#B1907F' }}>
         <Toolbar>
           <IconButton
             size="large"
