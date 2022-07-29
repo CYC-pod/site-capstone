@@ -9,6 +9,7 @@ import Stack from "@mui/material/Stack";
 import { purple } from "@mui/material/colors";
 import { brown } from "@mui/material/colors";
 // import USC from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.webp";
+import Hero from "../HeroBar/Hero"
 
 const ColorButton = styled(Button)(({ theme }) => ({
   //   color: theme.palette.getContrastText(purple[500]),
@@ -44,17 +45,19 @@ const ColorButton = styled(Button)(({ theme }) => ({
 export default function Landing() {
   return (
     <>
-      <h1>Welcome!</h1>
+      <div className="landingPage"> 
       {/* <div>
         <img src="background: url(leaves.png);" alt="" />
       </div> */}
+      <Hero></Hero>
+      <h1 className="findYourSchool"> Find Your School! </h1>
       <Slick />
 
       {/* 
       swiper js for carousel? */}
 
       {/* // src="LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.png" */}
-
+      
       <Stack spacing={2} direction="row">
         <ColorButton variant="contained">
           <a href="/schools" id="link">
@@ -62,6 +65,7 @@ export default function Landing() {
           </a>
         </ColorButton>
       </Stack>
+      </div>
     </>
   );
 }

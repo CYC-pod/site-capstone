@@ -16,6 +16,7 @@ import CommForm from "./components/CommForm/Commform";
 
 
 
+
 function App() {
   const { user, setUser } = useAuthContext();
 
@@ -43,6 +44,7 @@ function App() {
     <>
       {/* {console.log("value of loggedIn in app jsx" , loggedIn)} */}
       <Navbar logoutuser={logoutuser}/>
+     
       <Routes>
         <Route
           path="/"

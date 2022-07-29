@@ -1,0 +1,22 @@
+.Hero{
+    padding-top: 50px;
+}
+
+
+.HeroContent{
+    background-color: #B3CF99;
+    max-width: fit-content;
+    padding-left: 75px;
+    padding-right: 75px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 25px;
+    /* #B3CF99; */
+}
+
+.heroDesc{
+    font-size: 25px;
+}

@@ -15,7 +15,7 @@ const options = [
 export default function SchoolsView() {
   return (
     <>
-      <h1>Pick your school</h1>
+      <h1 className="pickSchool">Pick your school</h1>
       <label>Select your school: </label>
       <Autocomplete
         sx={{
