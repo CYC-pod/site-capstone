@@ -11,7 +11,7 @@ class Restaurant {
     );
     return results.rows;
   }
-  
+
   static async PostRests(restaurant, userId) {
     if (restaurant.name.length === 0) {
       throw new BadRequestError("No restaurant name provided");
@@ -48,6 +48,12 @@ class Restaurant {
     );
     const results = result.rows[0];
     return results;
+  }
+
+  static async UpdateRests(restaurant, userId) {
+    req.body = ` UPDATE restaurant
+SET column1 = value1, column2 = value2...., columnN = valueN
+WHERE [condition];`;
   }
 }
 
