@@ -22,6 +22,7 @@ export default function SchoolsView() {
   // var searching = options.filter((element) => {
   //   return element.name.toLowerCase().includes(searchText.toLowerCase());
   // });
+  //build more on school data.
   return (
     <>
       <h1>Pick your school</h1>
