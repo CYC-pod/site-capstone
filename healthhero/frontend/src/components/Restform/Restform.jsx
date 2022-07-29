@@ -92,62 +92,64 @@ export default function Restform() {
     <div className="Restaurant">
       <div className="card">
         <h2>Add Your Restaurant!</h2>
-      </div>
-      {errors.form && <span className="error">{errors.form}</span>}
-      <br />
 
-      <div className="form">
-        <div className="input-field">
-          <label htmlFor="location">Restaurant Name </label>
-          <input
-            type="name"
-            name="name"
-            value={form.name}
-            onChange={handleOnInputChange}
-          />
-          {errors.name && <span className="error">{errors.name}</span>}
-        </div>
-        <div className="split-inputs">
-          <div className="input-field">
-            <label htmlFor="location">Location </label>
-            <input
-              type="location"
-              name="location"
-              value={form.location}
-              onChange={handleOnInputChange}
-            />
-            {errors.location && (
-              <span className="error">{errors.location}</span>
-            )}
-          </div>
+        {errors.form && <span className="error">{errors.form}</span>}
+        <br />
 
+        <div className="form">
           <div className="input-field">
-          <label htmlFor="image">Add An Image </label>
+            <label htmlFor="location">Restaurant Name </label>
             <input
-              type="text"
-              name="image"
-              value={form.image}
+              type="name"
+              name="name"
+              value={form.name}
               onChange={handleOnInputChange}
             />
-            {errors.image && <span className="error">{errors.image}</span>}
+            {errors.name && <span className="error">{errors.name}</span>}
           </div>
-          <div className="input-field">
-            <label htmlFor="description">Description </label>
-            <input
-              type="description"
-              name="description"
-              value={form.description}
-              onChange={handleOnInputChange}
-            />
-            {errors.description && (
-              <span className="error">{errors.description}</span>
-            )}
+          <div className="split-inputs">
+            <div className="input-field">
+              <label htmlFor="location">Location </label>
+              <input
+                type="location"
+                name="location"
+                value={form.location}
+                onChange={handleOnInputChange}
+              />
+              {errors.location && (
+                <span className="error">{errors.location}</span>
+              )}
+            </div>
+
+            <div className="input-field">
+              <label htmlFor="image">Add An Image </label>
+              <input
+                type="text"
+                name="image"
+                value={form.image}
+                onChange={handleOnInputChange}
+              />
+              {errors.image && <span className="error">{errors.image}</span>}
+            </div>
+            <div className="input-field">
+              <label htmlFor="description">Description </label>
+              <input
+                type="description"
+                name="description"
+                value={form.description}
+                onChange={handleOnInputChange}
+              />
+              {errors.description && (
+                <span className="error">{errors.description}</span>
+              )}
+            </div>
           </div>
         </div>
+
+        <button className="btn" disabled={isLoading} onClick={handleOnSubmit}>
+          {isLoading ? "Loading..." : "Submit"}
+        </button>
       </div>
-      <button className="btn" disabled={isLoading} onClick={handleOnSubmit}>
-        {isLoading ? "Loading..." : "Submit"}
-      </button>
     </div>
   );
 }
