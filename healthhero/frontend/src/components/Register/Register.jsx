@@ -44,8 +44,11 @@ export default function Register() {
         setErrors((e) => ({ ...e, email: null }));
       }
     }
+    if (event.target.name === "type") {
+      console.log(event.target.value);
+    }
 
-    setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
+    setForm((f) => ({ ...f, [event.target.name]: event.target.value })); // event target is the name of the html that is the target
   };
 
   const handleOnSubmit = async () => {
@@ -63,11 +66,20 @@ export default function Register() {
     try {
       const res = await apiClient.request("auth/register", "post", form);
       if (res?.data?.user) {
+        //a way getting the user from the response if posiible
         // setAppState(res.data);
         setIsLoading(false);
+        console.log("setIsLoading");
         console.log("res.data in register.jsx", res.data);
         apiClient.setToken(res?.data?.token);
-        navigate("/activity");
+
+        if (res?.data?.user?.type == "student") {
+          console.log("hi");
+          // ? is a way to protect from null value so it doesnt affected other
+          navigate("/communities");
+        } else if (res?.data?.user?.type == "restaurant") {
+          navigate("/restform");
+        }
       } else {
         setErrors((e) => ({
           ...e,
@@ -98,16 +110,16 @@ export default function Register() {
         <br />
 
         <div className="form">
-          <label htmlFor="people">Select User Type</label>
+          <label htmlFor="type">Select User Type</label>
           <select
-            className="selType"
-            name="people"
+            name="type"
             id="users"
+            value={form.type}
             onChange={handleOnInputChange}
           >
-            <option value={form.type}> Student </option>
-            {/* can make placeholder (null perhaps? option too) */}
-            <option value={form.type}> Restaurant Owner </option>
+            {/* instead of form type we used teext values so that in the res.data.user.type it can tell where to Navigate user based on type */}
+            <option value="student"> Student </option>
+            <option value="restaurant"> Restaurant Owner </option>
           </select>
           <div className="input-field">
             <label htmlFor="email">Email</label>
