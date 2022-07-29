@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import "../Navbar/Navbar.css";
 import { AuthContextProvider, useAuthContext } from "../../../AuthContext/auth";
 import App from "../../App";
+import leafLogo from "../../img/Health Hero-2.png"
 
 export default function Navbar({ logoutuser}) {
   const { user, setUser } = useAuthContext();
@@ -28,7 +29,7 @@ export default function Navbar({ logoutuser}) {
           <a href="/communities" id="link"> Communities </a>
           {/* make button/list item */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <a href="/" id="link"> Logo Placeholder </a> 
+          <a href="/" id="link"> <img className="leaflogo" src={leafLogo} alt="leaflogo"/> </a> 
           </Typography>
           <Button color="inherit" onClick={logoutuser}>
             {user ? "" : <a href="/register" id="link"> Sign Up </a>}
