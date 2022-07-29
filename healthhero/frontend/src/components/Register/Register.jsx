@@ -72,7 +72,7 @@ export default function Register() {
         console.log("setIsLoading");
         console.log("res.data in register.jsx", res.data);
         apiClient.setToken(res?.data?.token);
-
+        navigate("/communities");
         if (res?.data?.user?.type == "student") {
           console.log("hi");
           // ? is a way to protect from null value so it doesnt affected other
@@ -141,7 +141,7 @@ export default function Register() {
               <input
                 type="text"
                 name="username"
-                placeholder="your username"
+                placeholder="Your username"
                 value={form.username}
                 onChange={handleOnInputChange}
               />
