@@ -1,6 +1,7 @@
 import * as React from "react";
 import "../SchoolsView/SchoolsView.css";
 import Autocomplete from "@mui/material/Autocomplete";
+import { useState } from "react";
 // import USC from "frontend/src/img/LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.webp";
 // import Howard from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/howard.jpeg";
 // import WashU from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/washu.png";
@@ -13,6 +14,14 @@ const options = [
 ];
 
 export default function SchoolsView() {
+  // const [searchText, setSearchText] = useState("");
+  // const handleOnTextChange = (event) => {
+  //   setSearchText(event.target.value);
+  // };
+  // //console.log(products);
+  // var searching = options.filter((element) => {
+  //   return element.name.toLowerCase().includes(searchText.toLowerCase());
+  // });
   return (
     <>
       <h1>Pick your school</h1>
@@ -36,6 +45,7 @@ export default function SchoolsView() {
               type="text"
               {...params.inputProps}
               placeholder="             Search schools..."
+              // onChange={handleOnTextChange}
             />
           </div>
         )}
