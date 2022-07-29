@@ -6,12 +6,12 @@
   padding: 15px;
 }
 
-.pickSchool{
-  color: #B3CF99
+.pickSchool {
+  color: #b3cf99;
 }
 
-label{
-  color: #B3CF99;
+label {
+  color: #b3cf99;
 }
 
 #custom-input-demo {
@@ -20,6 +20,9 @@ label{
 .viewS input {
   border-radius: 8px;
   /* background-color: #adc89c; */
+}
+.viewS h1 {
+  color: #b3cf99;
 }
 .viewS ::placeholder {
   color: rgb(16, 51, 7);
