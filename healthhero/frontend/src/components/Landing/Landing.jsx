@@ -23,8 +23,8 @@ const ColorButton = styled(Button)(({ theme }) => ({
     backgroundColor: brown[700],
   },
   alignItems: "center",
-  marginLeft: "810px",
-  marginTop: "100px",
+  // marginLeft: "810px",
+  // marginTop: "100px",
   //doesnt change anything
 }));
 
@@ -48,14 +48,20 @@ export default function Landing() {
       {/* <div>
         <img src="background: url(leaves.png);" alt="" />
       </div> */}
-      <Slick />
 
       {/* 
       swiper js for carousel? */}
 
       {/* // src="LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.png" */}
 
-      <Stack spacing={2} direction="row">
+      <Stack
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={12}
+        // will work if al stack
+      >
+        <Slick />
         <ColorButton variant="contained">
           <a href="/schools" id="link">
             See All Schools
