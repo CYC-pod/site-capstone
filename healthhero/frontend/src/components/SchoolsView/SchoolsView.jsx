@@ -14,9 +14,9 @@ const options = [
 
 export default function SchoolsView() {
   return (
-    <>
-      <h1 className="pickSchool">Pick your school</h1>
-      <label>Select your school: </label>
+    <div className="viewS">
+      <h1>Pick your school</h1>
+      <label id="selS">Select your school: </label>
       <Autocomplete
         sx={{
           display: "inline-block",
@@ -81,6 +81,6 @@ export default function SchoolsView() {
         </div>
         <button className="liBrB">Load more schools</button>
       </div>
-    </>
+    </div>
   );
 }
