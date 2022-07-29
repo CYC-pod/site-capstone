@@ -102,6 +102,7 @@ export default function CommForm() {
               type="name"
               name="name"
               value={form.name}
+              placeholder="Enter name here"
               onChange={handleOnInputChange}
             />
             {errors.name && <span className="error">{errors.name}</span>}
@@ -113,6 +114,7 @@ export default function CommForm() {
                 type="text"
                 name="image"
                 value={form.image}
+                placeholder="Type URL"
                 onChange={handleOnInputChange}
               />
               {errors.image && <span className="error">{errors.image}</span>}
@@ -123,6 +125,7 @@ export default function CommForm() {
                 type="description"
                 name="description"
                 value={form.description}
+                placeholder="Add your description"
                 onChange={handleOnInputChange}
               />
               {errors.description && (

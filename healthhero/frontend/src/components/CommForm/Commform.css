@@ -16,7 +16,7 @@
 
 .Community .card {
   outline: 2px #1e6b0b dotted;
-  min-height: 630px;
+  min-height: 615px;
   width: 630px;
   padding: 24px 36px 0;
   flex-direction: column;
@@ -74,4 +74,8 @@
 }
 ::placeholder {
   color: rgb(247, 245, 240);
+}
+
+.Community .input-field {
+  padding: 15px;
 }
