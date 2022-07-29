@@ -5,3 +5,17 @@
 .schoolImgs img {
   padding: 15px;
 }
+
+#custom-input-demo {
+  color: rgb(16, 51, 7);
+}
+.viewS input {
+  border-radius: 8px;
+  /* background-color: #adc89c; */
+}
+.viewS ::placeholder {
+  color: rgb(16, 51, 7);
+}
+#selS {
+  font-size: 22px;
+}

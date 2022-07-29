@@ -112,7 +112,7 @@ export default function Register() {
         <div className="form">
           <label htmlFor="type">Select User Type</label>
           <select
-            className="selType"
+            className="type"
             id="users"
             value={form.type}
             onChange={handleOnInputChange}
