@@ -46,6 +46,7 @@ export default function Register() {
     }
     if (event.target.name === "type") {
       console.log(event.target.value);
+      //issue here
     }
 
     setForm((f) => ({ ...f, [event.target.name]: event.target.value })); // event target is the name of the html that is the target

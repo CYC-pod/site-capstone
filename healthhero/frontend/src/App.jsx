@@ -13,13 +13,20 @@ import apiClient from "../services/apiClient";
 import Slick from "./components/Slick/Slick";
 import SchoolsView from "./components/SchoolsView/SchoolsView";
 import CommForm from "./components/CommForm/Commform";
+import Diet from "./components/Diet/Diet";
+import Prof from "./components/Prof/Prof";
+import SelComm from "./components/SelComm/SelComm";
+import MyComm from "./components/MyComm/MyComm";
+import YourRes from "./components/YourRes/YourRes";
+import ResResults from "./components/ResResults/ResResults";
+import InResults from "./components/ResResults/InResults";
 
 function App() {
   const { user, setUser } = useAuthContext();
   const navigateTo = useNavigate();
-  
+
   useEffect(() => {
-    console.log("app is rendering")
+    console.log("app is rendering");
     const fetchAuthUser = async () => {
       const { data, error } = await apiClient.fetchUserFromToken();
       if (data) setUser(data.user);
@@ -76,6 +83,22 @@ function App() {
           }
         />
         <Route
+          path="/diet"
+          element={
+            <>
+              <Diet />
+            </>
+          }
+        />
+        <Route
+          path="/prof"
+          element={
+            <>
+              <Prof />
+            </>
+          }
+        />
+        <Route
           path="/restForm"
           element={
             <>
@@ -84,8 +107,46 @@ function App() {
           }
         />
         <Route
-          path="/commForm"
-          element={<CommForm />}
+          path="/communities"
+          element={
+            <>
+              <SelComm />
+            </>
+          }
+        />
+        <Route
+          path="/myCommunities"
+          element={
+            <>
+              <MyComm />
+            </>
+          }
+        />
+        <Route path="/commForm" element={<CommForm />} />
+        <Route
+          path="/myRes"
+          element={
+            <>
+              <YourRes />
+            </>
+          }
+        />
+        <Route
+          path="/resResults"
+          element={
+            <>
+              <ResResults />
+            </>
+          }
+        />
+        <Route
+          path="/resResults/specific"
+          // would matter on id / which restaurant
+          element={
+            <>
+              <InResults />
+            </>
+          }
         />
       </Routes>
     </>
