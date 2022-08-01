@@ -1,1 +1,17 @@
+.contentD {
+  /* padding: 0; */
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 700px;
+  padding-bottom: 100px;
+}
 
+.contentD h3 {
+  color: darkgreen;
+}
+
+.sliderD {
+  max-width: 1000px;
+}
