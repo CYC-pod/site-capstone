@@ -8,7 +8,7 @@ class Restrictions{
         const results = await db.query(
             `
             SELECT * 
-            FROM restriction;
+            FROM RESTRICTION;
             `
         ); 
         return results.rows; 
@@ -22,18 +22,14 @@ class Restrictions{
         if (restriction.type.length === 0) {
             throw new BadRequestError("No restriction type provided");
         }
-    
-        if (restriction.image_url === 0) {
-            throw new BadRequestError("No school image provided");
-        }
         
         const result = await db.query(
         `
-        INSERT INTO school(name, image, location)
-        VALUES($1,$2,$3)
-        RETURNING name, image, location;  
+        INSERT INTO restriction(name, type)
+        VALUES($1,$2)
+        RETURNING name, type;  
         `,
-        [school.name, school.image, school.location]);
+        [restriction.name, restriction.type]);
         
         const results = result.rows[0];
         return results;
@@ -46,7 +42,7 @@ module.exports = Restrictions;
 /*
  - query to fetch restriction ID where name = "vegan"
  - query to fetch all restaurant Ids from accomidation where restrictionID = result of first query 
- 
+
 
 
 */

@@ -20,7 +20,8 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
 
     const restaurant = req.body;
     const restaurants = await Restaurant.PostRests(restaurant, id);
-    return res.status(201).json({ restaurant: restaurants });
+    const restrictions = await Restaurant.addAccommodation(restaurant, restaurant.restrictions)
+    return res.status(201).json({ restaurant: restaurants, restrictions: restrictions});
   } catch (err) {
     next(err);
   }
