@@ -76,8 +76,8 @@ export default function Slick() {
             <img src={washu} alt="WashU" />
           </div>
           <div id="schoolHome">
-            {/* <img src={VT} alt="VT" /> */}
-            <img src="/healthhero/frontend/src/img/vtt.png"></img>
+            <img src={VT} alt="VT" />
+            {/* <img src="/healthhero/frontend/src/img/vtt.png"></img> */}
           </div>
           <div id="schoolHome">
             <img src={USF} alt="USF" />

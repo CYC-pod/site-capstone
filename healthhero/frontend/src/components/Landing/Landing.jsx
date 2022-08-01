@@ -73,6 +73,10 @@ export default function Landing() {
           </a>
         </ColorButton>
       </Stack>
+      <button>
+        {" "}
+        <a href="/diet"> for now shortcut to diet</a>
+      </button>
     </div>
   );
 }

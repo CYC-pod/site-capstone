@@ -6,3 +6,26 @@
 .myCom h1 {
   color: darkseagreen;
 }
+
+#roundP {
+  background-color: #dde7c7;
+  color: #0e3804;
+  border-radius: 100%;
+
+  width: 285px;
+  height: 237px;
+}
+#rect {
+  background-color: #196406;
+  color: #adc89c;
+  margin-top: 20px;
+  width: 370px;
+  height: 163px;
+  border-radius: 15px;
+}
+
+.circles {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

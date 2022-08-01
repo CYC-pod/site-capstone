@@ -22,12 +22,28 @@ export default function MyComm() {
       {/* if user exists show user.username if not (ternary) show null
       {user ? message : null} */}
       {/* fancy stuff to make username appear here^ (like props or sum) */}
-      {/* button mui upper right */}
+
+      <h3 id="left">My Dietary Groups</h3>
       <ColorButton variant="contained">
         <a href="/commForm" id="link">
           Create Community
         </a>
       </ColorButton>
+      <div className="circles">
+        <div id="roundP"> Vegan</div>
+        <div id="roundP"> Keto </div>
+        <div id="roundP"> Cheeseterian</div>
+      </div>
+      <h3 id="left">My Communities</h3>
+      <div className="circles">
+        <div id="rect"> USC milk lovers</div>
+
+        <div id="rect"> LA area candy outings</div>
+        <div id="rect"> Reusable foodies</div>
+      </div>
+
+      <button className="liBrB">{"v"}</button>
+      {/* load more */}
     </div>
   );
 }
