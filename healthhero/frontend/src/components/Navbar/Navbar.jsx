@@ -10,13 +10,28 @@ import "../Navbar/Navbar.css";
 import { AuthContextProvider, useAuthContext } from "../../../AuthContext/auth";
 import App from "../../App";
 import leafLogo from "../../img/Health Hero-2.png"
+import apiClient from "../../../services/apiClient";
 
 export default function Navbar({ logoutuser}) {
   const { user, setUser } = useAuthContext();
 
+  const useEffectFunction = async () => {
+      if(!user)
+      {
+        const fetchedUser = await apiClient.fetchUserFromToken()
+        console.log("fetched user: ", fetchedUser);
+        if(fetchedUser.data != null)
+        {
+          setUser(fetchedUser)
+        }
+        console.log("User in navbar: ", user);
+      }  
+  }
+
   React.useEffect(() => {
-     console.log("user changed: ", user);
-  }, [user])
+    useEffectFunction()
+  }, [])
+
 
   return (
     <Box sx={{ flexGrow: 0 }}>

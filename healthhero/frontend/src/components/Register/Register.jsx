@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "../Register/Register.css";
 import apiClient from "../../../services/apiClient";
+import { AuthContextProvider, useAuthContext } from "../../../AuthContext/auth";
 
 export default function Register() {
+  const { user, setUser } = useAuthContext();
+  useEffect(() => {
+    console.log("User in register: ", user);
+ }, [user])
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
-    type: "",
+    type: "student",
     email: "",
     username: "",
     password: "",
@@ -65,38 +71,70 @@ export default function Register() {
 
     try {
       const res = await apiClient.request("auth/register", "post", form);
-      if (res?.data?.user) {
-        //a way getting the user from the response if posiible
-        // setAppState(res.data);
-        setIsLoading(false);
-        console.log("setIsLoading");
-        console.log("res.data in register.jsx", res.data);
-        apiClient.setToken(res?.data?.token);
-        navigate("/communities");
-        if (res?.data?.user?.type == "student") {
-          console.log("hi");
-          // ? is a way to protect from null value so it doesnt affected other
-          navigate("/communities");
-        } else if (res?.data?.user?.type == "restaurant") {
-          navigate("/restform");
+        if (res?.data) {
+          setUser(res.data.user);
+          setIsLoading(false);
+          apiClient.setToken(res?.data?.token);
+
+          console.log(res.data);
+          if (res?.data?.user?.type == "student") {
+              console.log("hi");
+              // ? is a way to protect from null value so it doesnt affected other
+              navigate("/communities");
+          } else if (res?.data?.user?.type == "restaurant") {
+            navigate("/restform");
+          }
+          console.log("logged in");
+        } else {
+          setErrors((e) => ({
+            ...e,
+            form: "Invalid username/password combination",
+          }));
+          setIsLoading(false);
         }
-      } else {
+      } catch (err) {
+        console.log(err);
+        const message = err?.response?.data?.error?.message;
         setErrors((e) => ({
           ...e,
-          form: "Something went wrong with registration",
+          form: message ? String(message) : String(err),
         }));
+      } finally {
         setIsLoading(false);
       }
-    } catch (err) {
-      console.log(err);
-      const message = err?.response?.data?.error?.message;
-      setErrors((e) => ({
-        ...e,
-        form: message ? String(message) : String(err),
-      }));
-      setIsLoading(false);
-    }
-  };
+    };
+  //     if (res?.data?.user) {
+  //       //a way getting the user from the response if posiible
+  //       // setAppState(res.data);
+  //       setIsLoading(false);
+  //       console.log("setIsLoading");
+  //       console.log("res.data in register.jsx", res.data);
+  //       apiClient.setToken(res?.data?.token);
+  //       navigate("/communities");
+  //       if (res?.data?.user?.type == "student") {
+  //         console.log("hi");
+  //         // ? is a way to protect from null value so it doesnt affected other
+  //         navigate("/communities");
+  //       } else if (res?.data?.user?.type == "restaurant") {
+  //         navigate("/restform");
+  //       }
+  //     } else {
+  //       setErrors((e) => ({
+  //         ...e,
+  //         form: "Something went wrong with registration",
+  //       }));
+  //       setIsLoading(false);
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //     const message = err?.response?.data?.error?.message;
+  //     setErrors((e) => ({
+  //       ...e,
+  //       form: message ? String(message) : String(err),
+  //     }));
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return (
     <div className="Register">
@@ -114,7 +152,7 @@ export default function Register() {
           <select
             className="type"
             id="users"
-            value={form.type}
+            defaultValue={form.type}
             onChange={handleOnInputChange}
           >
             {/* instead of form type we used teext values so that in the res.data.user.type it can tell where to Navigate user based on type */}

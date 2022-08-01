@@ -18,23 +18,25 @@ function App() {
   const { user, setUser } = useAuthContext();
   const navigateTo = useNavigate();
   
-  useEffect(() => {
-    console.log("app is rendering")
-    const fetchAuthUser = async () => {
-      const { data, error } = await apiClient.fetchUserFromToken();
-      if (data) setUser(data.user);
-    };
+  // useEffect(() => {
+  //   console.log("app is rendering")
+  //   const fetchAuthUser = async () => {
+  //     const { data, error } = await apiClient.fetchUserFromToken();
+  //     if (data) setUser(data.user);
+  //   };
 
-    const token = localStorage.getItem("token");
-    if (token) {
-      console.log("token: ", token);
-      apiClient.setToken(token);
-      fetchAuthUser();
-    }
-  }, []);
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     console.log("token: ", token);
+  //     apiClient.setToken(token);
+  //     fetchAuthUser();
+  //   }
+  // }, []);
+
+  
   const logoutuser = async () => {
     await apiClient.logoutUser();
-    setUser(NULL);
+    setUser(null);
   };
 
   return (
