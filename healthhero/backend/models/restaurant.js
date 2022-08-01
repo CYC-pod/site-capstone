@@ -50,11 +50,20 @@ class Restaurant {
     return results;
   }
 
-  static async UpdateRests(restaurant, userId) {
-    req.body = ` UPDATE restaurant
-SET column1 = value1, column2 = value2...., columnN = valueN
-WHERE [condition];`;
+    static async UpdateRests(restaurant, userId) {
+      req.body = ` UPDATE restaurant
+      SET column1 = value1, column2 = value2...., columnN = valueN
+      WHERE [condition];`;
+  }
+
+  static async addAccommodation(restaurant, restriction){
+    const result = await db.query(
+      `
+      INSERT INTO Accommodation(restaurant_id, restriction_id)
+      VALUES ($1,$2)
+      RETURNING restaurant_id, restriction_id
+      `, [restaurant.id, restriction.id]
+    )
   }
 }
-
 module.exports = Restaurant;

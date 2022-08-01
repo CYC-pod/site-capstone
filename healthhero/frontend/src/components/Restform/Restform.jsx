@@ -4,6 +4,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../../../AuthContext/auth";
 import "./Restform.css";
 import apiClient from "../../../services/apiClient";
+import Checkbox from '@mui/material/Checkbox';
+import { FormControlLabel, FormGroup } from "@mui/material";
+
 
 export default function Restform() {
   // need to use this when backend is finsihed
@@ -11,19 +14,45 @@ export default function Restform() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [restrictions, setRestrictions] = useState([])
 
   const [form, setForm] = useState({
     name: "",
     location: "",
     image: "",
     description: "",
+    restrictions: []
   });
-  //  useEffect((){
 
-  //   if(user){
-  //     prefillform();
-  //   }
-  // }, []);
+   useEffect(() => {
+    async function getRestrictions() {
+      const res = await apiClient.listRestrictions()
+      setRestrictions(res.data.restrictions)
+      console.log("restrictions list", res.data.restrictions)
+    }
+    getRestrictions();
+  }, []);
+
+  useEffect(() => {
+    console.log("restrictions variable", restrictions)
+  }, [restrictions])
+
+  useEffect(() => {
+    console.log("restrictions array in form", form.restrictions)
+  }, [form.restrictions])
+
+  const handleChange = (event) => {
+    var newValue = event.target.checked
+    console.log("checkbox was changed to: ", newValue)
+    if(newValue){
+      setForm({...form, restrictions: [...form.restrictions, event.target.name]})
+    }
+    else{
+      setForm({...form, restrictions: form.restrictions.filter((element) => element != event.target.name)})
+    }
+  };
+
+
 
   // function prefillform(){
   //   apiClient.request("restaurant", "GET", null).then()(data)=>
@@ -60,6 +89,12 @@ export default function Restform() {
     }
 
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
+
+    const target = event.target;
+    var value = target.value;
+    if(target.checked){
+      form.restrictions  
+    }
   };
 
   const handleOnSubmit = async () => {
@@ -102,6 +137,16 @@ export default function Restform() {
     }
   };
 
+  const label = { inputProps: { 'aria-label': 'Christians checkbox' } };
+
+
+  // dietClickHandler(){
+
+  // }
+
+  // allergyClickHandler(){
+
+  // }
   return (
     <div className="Restaurant">
       <div className="card">
@@ -157,6 +202,12 @@ export default function Restform() {
                 <span className="error">{errors.description}</span>
               )}
             </div>
+                {
+                  restrictions.map(({id, name, type}) => {
+                   return( <FormControlLabel control={<Checkbox checked={form.restrictions[name]} onChange={handleChange} name={name}/>} label={name} />
+                  )})
+                }
+
           </div>
         </div>
 

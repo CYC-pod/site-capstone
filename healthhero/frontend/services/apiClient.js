@@ -76,6 +76,14 @@ class ApiClient {
 
     return res
   }
+
+  async listRestrictions(){
+    const res = await this.request(
+      'restrictions',
+      'GET'
+    )
+    return res
+  }
 }
 
 export default new ApiClient("http://localhost:3001");
