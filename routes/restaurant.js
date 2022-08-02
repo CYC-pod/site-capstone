@@ -18,7 +18,7 @@ router.get("/", security.requireAuthenticatedUser, async (req, res, next) => {
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
     let { id } = res.locals.user;
-
+    console.log("id in restaurant route", id)
     const IncomingRestaurant = req.body;
     const OutgoingRestaurant = await Restaurant.PostRests(IncomingRestaurant, id);
     console.log("restaurant restrictions" , IncomingRestaurant.restrictions)
