@@ -11,6 +11,10 @@ export default function Register() {
     console.log("User in register: ", user);
  }, [user])
 
+ useEffect(() => {
+  console.log("rendering register form");
+}, [])
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -238,5 +242,5 @@ export default function Register() {
   );
 }
 
-//reroute here
-console.log("regsister form");
+
+

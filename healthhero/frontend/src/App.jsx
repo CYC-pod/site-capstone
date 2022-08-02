@@ -33,9 +33,32 @@ function App() {
   //   }
   // }, []);
 
+  const autoLoggIn = async () => {
+      if(!user)
+      {
+        const authMeData = await apiClient.fetchUserFromToken()
+        const fetchedUser = authMeData.data?.user
+        console.log("fetched user: ", fetchedUser);
+        if(fetchedUser)
+        {
+          setUser(fetchedUser)
+        }
+        else
+        {
+          console.log("auth me error: " , authMeData.error)
+        }
+        console.log("User in navbar: ", user);
+      }  
+  }
+
+  React.useEffect(() => {
+    autoLoggIn()
+  }, [])
+
   
   const logoutuser = async () => {
     await apiClient.logoutUser();
+    console.log("LOGOUT PRESSED")
     setUser(null);
   };
 

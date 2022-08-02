@@ -16,6 +16,15 @@ export default function Restform() {
   const [errors, setErrors] = useState({});
   const [restrictions, setRestrictions] = useState([])
 
+  useEffect(() => {
+    // if user is not logged in,
+    // redirect them to the login page 
+    console.log("user in restForm" , user)
+    if (!user) {
+      navigate("/login")
+    }
+  }, [])
+
   const [form, setForm] = useState({
     name: "",
     location: "",
@@ -111,11 +120,9 @@ export default function Restform() {
 
     try {
       const res = await apiClient.request("restaurant", "post", form);
-
-      setUser(res.data);
       console.log(res);
       if (res?.data?.restaurant) {
-        setUser(res.data);
+        //TO DO set restform data somewhere 
         // apiClient.setToken(res.data.token);
         setIsLoading(false);
         navigate("/viewrest");

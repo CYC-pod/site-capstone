@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Link} from "react-router-dom"
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,24 +15,6 @@ import apiClient from "../../../services/apiClient";
 
 export default function Navbar({ logoutuser}) {
   const { user, setUser } = useAuthContext();
-
-  const useEffectFunction = async () => {
-      if(!user)
-      {
-        const fetchedUser = await apiClient.fetchUserFromToken()
-        console.log("fetched user: ", fetchedUser);
-        if(fetchedUser.data != null)
-        {
-          setUser(fetchedUser)
-        }
-        console.log("User in navbar: ", user);
-      }  
-  }
-
-  React.useEffect(() => {
-    useEffectFunction()
-  }, [])
-
 
   return (
     <Box sx={{ flexGrow: 0 }}>
@@ -58,6 +41,7 @@ export default function Navbar({ logoutuser}) {
             {console.log("user in nav bar", user)}
             {user ? <a href="/" id="link"> Logout </a> : <a href="/login" id="link"> Login </a>}
           </Button>
+          <Link to="/restForm"> restForm Link </Link>
         </Toolbar>
       </AppBar>
     </Box>

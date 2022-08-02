@@ -3,6 +3,7 @@ const { BadRequestError } = require("../utils/errors");
 
 class Restaurant {
   static async listRests(userId) {
+    console.log("userId: " , userId)
     const results = await db.query(
       `SELECT *
       FROM restaurant
@@ -36,7 +37,7 @@ class Restaurant {
                description,
            user_id)
             VALUES ($1,$2,$3,$4,$5)
-            RETURNING name,location,image_url, description, user_id;
+            RETURNING id, name,location,image_url, description, user_id;
             `,
       [
         restaurant.name,
@@ -56,14 +57,19 @@ class Restaurant {
       WHERE [condition];`;
   }
 
-  static async addAccommodation(restaurant, restriction){
-    const result = await db.query(
-      `
-      INSERT INTO Accommodation(restaurant_id, restriction_id)
-      VALUES ($1,$2)
-      RETURNING restaurant_id, restriction_id
-      `, [restaurant.id, restriction.id]
-    )
+  static async addAccommodation(restaurant, restrictions){
+    for(let i = 1; i < restrictions.length + 1; i++)
+    {
+      const result = await db.query(
+        `
+        INSERT INTO Accommodation(restaurant_id, restriction_id)
+        VALUES ($1,$2)
+        RETURNING restaurant_id, restriction_id
+        `, [restaurant.id, i]
+      )
+
+    }
+    
   }
 }
 module.exports = Restaurant;
