@@ -12,7 +12,7 @@ class ApiClient {
     localStorage.setItem(this.tokenName, token);
   }
 
-  async request( endpoint, method = `GET`, data = {} ) {
+  async request(endpoint, method = `GET`, data = {}) {
     const url = `${this.remoteHostUrl}/${endpoint}`;
     console.log("url is: ", url);
     const headers = {
@@ -44,37 +44,31 @@ class ApiClient {
   async getNutrition() {
     return await this.request({ endpoint: `nutrition/`, method: `GET` });
   }
-
+  async listcomm(community) {
+    return await this.request({
+      endpoint: `community/`,
+      method: `GET`,
+      data: community,
+    });
+  }
   async createPost(data, point) {
-    return await this.request(
-      point + `/`,
-      `POST`,
-       data,
-    );
+    return await this.request(point + `/`, `POST`, data);
   }
 
   async loginUser(credentials) {
-    return await this.request(
-       `auth/login`,
-       `POST`,
-      credentials,
-    );
+    return await this.request(`auth/login`, `POST`, credentials);
   }
 
   async logoutUser() {
     this.setToken(null);
-    localStorage.setItem(this.tokenName, ""); 
+    localStorage.setItem(this.tokenName, "");
   }
 
   async signupUser(credentials) {
-    const res = await this.request(
-     `auth/register`,
-      `POST`,
-      credentials,
-    );
-    this.setToken(res.data.token)
+    const res = await this.request(`auth/register`, `POST`, credentials);
+    this.setToken(res.data.token);
 
-    return res
+    return res;
   }
 }
 

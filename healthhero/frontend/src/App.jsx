@@ -20,6 +20,8 @@ import MyComm from "./components/MyComm/MyComm";
 import YourRes from "./components/YourRes/YourRes";
 import ResResults from "./components/ResResults/ResResults";
 import InResults from "./components/ResResults/InResults";
+import CommCard from "./components/SelComm/comcard";
+import DetailedComm from "./components/SelComm/DetailedCom";
 
 function App() {
   const { user, setUser } = useAuthContext();
@@ -111,6 +113,7 @@ function App() {
           element={
             <>
               <SelComm />
+              <CommCard />
             </>
           }
         />
@@ -145,6 +148,14 @@ function App() {
           element={
             <>
               <InResults />
+            </>
+          }
+        />
+        <Route
+          path="/commDescript/:commid"
+          element={
+            <>
+              <DetailedComm />
             </>
           }
         />
