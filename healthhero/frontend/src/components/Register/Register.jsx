@@ -113,6 +113,7 @@ export default function Register() {
         <div className="form">
           <label htmlFor="type">Select User Type</label>
           <select
+            name="type"
             className="type"
             id="users"
             value={form.type}
@@ -129,7 +130,7 @@ export default function Register() {
               type="email"
               name="email"
               placeholder="Enter a valid email"
-              value={form.email}
+              value={form?.email || ""}
               onChange={handleOnInputChange}
             />
             {errors.email && <span className="error">{errors.email}</span>}
@@ -143,7 +144,7 @@ export default function Register() {
                 type="text"
                 name="username"
                 placeholder="Your username"
-                value={form.username}
+                value={form?.username || ""}
                 onChange={handleOnInputChange}
               />
               {errors.username && (
@@ -158,7 +159,7 @@ export default function Register() {
                 type="password"
                 name="password"
                 placeholder="Enter a secure password"
-                value={form.password}
+                value={form?.password || ""} //check on form pass,
                 onChange={handleOnInputChange}
               />
               {errors.password && (
@@ -173,7 +174,7 @@ export default function Register() {
                 type="password"
                 name="passwordConfirm"
                 placeholder="Confirm your password"
-                value={form.passwordConfirm}
+                value={form?.passwordConfirm || ""}
                 onChange={handleOnInputChange}
               />
               {errors.passwordConfirm && (

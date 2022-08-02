@@ -5,7 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import "../Slick/Slick.css";
-import { HSSU, USC, HU, washu, VT, USF, UTEP } from "../../constants";
+import { USC, HU, washu, VT, USF, UTEP } from "../../constants";
+import { HSSU } from "../../constants";
+// document.getElementById("hero-img").src = HSSU;
 
 export default function Slick() {
   <script
