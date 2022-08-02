@@ -34,8 +34,8 @@ CREATE TABLE restriction(
 
 CREATE TABLE accommodation(
     id            SERIAL PRIMARY KEY,  
-    restaurant_id INTEGER,  
-    restriction_id INTEGER,
+    restaurant_id INTEGER NOT NULL,  
+    restriction_id INTEGER NOT NULL,
     FOREIGN KEY (restaurant_id) REFERENCES restaurant(id),
     FOREIGN KEY (restriction_id) REFERENCES restriction(id)
 );

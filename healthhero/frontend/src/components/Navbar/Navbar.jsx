@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Link} from "react-router-dom"
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,13 +11,10 @@ import "../Navbar/Navbar.css";
 import { AuthContextProvider, useAuthContext } from "../../../AuthContext/auth";
 import App from "../../App";
 import leafLogo from "../../img/Health Hero-2.png"
+import apiClient from "../../../services/apiClient";
 
 export default function Navbar({ logoutuser}) {
   const { user, setUser } = useAuthContext();
-
-  React.useEffect(() => {
-     console.log("user changed: ", user);
-  }, [user])
 
   return (
     <Box sx={{ flexGrow: 0 }}>
@@ -43,6 +41,7 @@ export default function Navbar({ logoutuser}) {
             {console.log("user in nav bar", user)}
             {user ? <a href="/" id="link"> Logout </a> : <a href="/login" id="link"> Login </a>}
           </Button>
+          <Link to="/restForm"> restForm Link </Link>
         </Toolbar>
       </AppBar>
     </Box>

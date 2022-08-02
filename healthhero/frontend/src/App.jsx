@@ -27,24 +27,44 @@ import CommDetail from "./components/SelComm/CommDetail";
 function App() {
   const { user, setUser } = useAuthContext();
   const navigateTo = useNavigate();
-  const [community, setCommunity] = useState([]);
-  useEffect(() => {
-    console.log("app is rendering");
-    const fetchAuthUser = async () => {
-      const { data, error } = await apiClient.fetchUserFromToken();
-      if (data) setUser(data.user);
-    };
 
-    const token = localStorage.getItem("token");
-    if (token) {
-      console.log("token: ", token);
-      apiClient.setToken(token);
-      fetchAuthUser();
+  // useEffect(() => {
+  //   console.log("app is rendering")
+  //   const fetchAuthUser = async () => {
+  //     const { data, error } = await apiClient.fetchUserFromToken();
+  //     if (data) setUser(data.user);
+  //   };
+
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     console.log("token: ", token);
+  //     apiClient.setToken(token);
+  //     fetchAuthUser();
+  //   }
+  // }, []);
+
+  const autoLoggIn = async () => {
+    if (!user) {
+      const authMeData = await apiClient.fetchUserFromToken();
+      const fetchedUser = authMeData.data?.user;
+      console.log("fetched user: ", fetchedUser);
+      if (fetchedUser) {
+        setUser(fetchedUser);
+      } else {
+        console.log("auth me error: ", authMeData.error);
+      }
+      console.log("User in navbar: ", user);
     }
+  };
+
+  React.useEffect(() => {
+    autoLoggIn();
   }, []);
+
   const logoutuser = async () => {
     await apiClient.logoutUser();
-    setUser(NULL);
+    console.log("LOGOUT PRESSED");
+    setUser(null);
   };
 
   return (

@@ -22,14 +22,14 @@ useEffect(() => {
     console.log("user changed: ", user);
  }, [user])
  
-  useEffect(() => {
-    // if user is not logged in,
-    // redirect them to the login page 
-    console.log("user in commForm" , user)
-    if (!user) {
-      navigate("/login")
-    }
-  }, [user, navigate])
+  // useEffect(() => {
+  //   // if user is not logged in,
+  //   // redirect them to the login page 
+  //   console.log("user in commForm" , user)
+  //   if (!user) {
+  //     navigate("/login")
+  //   }
+  // }, [user, navigate])
 
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
@@ -80,7 +80,7 @@ useEffect(() => {
 
       console.log(res);
       if (res?.data?.community) {
-        setUser(res.data);
+        //To do save community data somewhere 
         // apiClient.setToken(res.data.token);
         setIsLoading(false);
         navigate("/communities");
