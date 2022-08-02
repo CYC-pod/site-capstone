@@ -47,7 +47,7 @@ function App() {
         {
           console.log("auth me error: " , authMeData.error)
         }
-        console.log("User in navbar: ", user);
+        console.log("User in app: ", user);
       }  
   }
 

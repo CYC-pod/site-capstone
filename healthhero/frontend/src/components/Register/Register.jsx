@@ -153,16 +153,20 @@ export default function Register() {
 
         <div className="form">
           <label htmlFor="type">Select User Type</label>
+
           <select
             className="type"
             id="users"
             defaultValue={form.type}
-            onChange={handleOnInputChange}
+            // onChange={handleOnInputChange}
           >
-            {/* instead of form type we used teext values so that in the res.data.user.type it can tell where to Navigate user based on type */}
+            {/* instead of form type we used text values so that in the res.data.user.type it can tell where to Navigate user based on type */}
             <option value="student"> Student </option>
-            <option value="restaurant"> Restaurant Owner </option>
+            <option value="restaurant owner"> Restaurant Owner </option>
           </select>
+    
+   
+
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <br />

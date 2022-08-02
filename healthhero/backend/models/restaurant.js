@@ -42,7 +42,7 @@ class Restaurant {
       [
         restaurant.name,
         restaurant.location,
-        restaurant.image_url,
+        restaurant.image,
         restaurant.description,
         userId,
       ]
@@ -58,14 +58,14 @@ class Restaurant {
   }
 
   static async addAccommodation(restaurant, restrictions){
-    for(let i = 1; i < restrictions.length + 1; i++)
+    for(let i = 0; i < restrictions.length ; i++)
     {
       const result = await db.query(
         `
-        INSERT INTO Accommodation(restaurant_id, restriction_id)
+        INSERT INTO Accommodation(restaurant_id, restriction_name)
         VALUES ($1,$2)
-        RETURNING restaurant_id, restriction_id
-        `, [restaurant.id, i]
+        RETURNING restaurant_id, restriction_name
+        `, [restaurant.id, restrictions[i]]
       )
 
     }

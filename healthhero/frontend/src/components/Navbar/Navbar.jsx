@@ -15,6 +15,15 @@ import apiClient from "../../../services/apiClient";
 
 export default function Navbar({ logoutuser}) {
   const { user, setUser } = useAuthContext();
+  
+  console.log("user in nav bar: ", user)
+
+  var isRest = false
+  if(user?.type == "Restaurant Owner")
+  {
+    console.log("user type in navbar", user.type)
+    isRest = true; 
+  }
 
   return (
     <Box sx={{ flexGrow: 0 }}>
@@ -37,11 +46,11 @@ export default function Navbar({ logoutuser}) {
           <Button color="inherit" onClick={logoutuser}>
             {user ? "" : <a href="/register" id="link"> Sign Up </a>}
           </Button>
+          {isRest ?  <Button><a href="/restForm" id="link"> Restaurant Form </a></Button> : null} 
           <Button color="inherit" onClick={logoutuser}>
             {console.log("user in nav bar", user)}
             {user ? <a href="/" id="link"> Logout </a> : <a href="/login" id="link"> Login </a>}
-          </Button>
-          <Link to="/restForm"> restForm Link </Link>
+          </Button> 
         </Toolbar>
       </AppBar>
     </Box>

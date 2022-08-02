@@ -16,14 +16,14 @@ export default function Restform() {
   const [errors, setErrors] = useState({});
   const [restrictions, setRestrictions] = useState([])
 
-  useEffect(() => {
-    // if user is not logged in,
-    // redirect them to the login page 
-    console.log("user in restForm" , user)
-    if (!user) {
-      navigate("/login")
-    }
-  }, [])
+  // useEffect(() => {
+  //   // if user is not logged in,
+  //   // redirect them to the login page 
+  //   console.log("user in restForm" , user)
+  //   if (!user) {
+  //     navigate("/login")
+  //   }
+  // }, [])
 
   const [form, setForm] = useState({
     name: "",
