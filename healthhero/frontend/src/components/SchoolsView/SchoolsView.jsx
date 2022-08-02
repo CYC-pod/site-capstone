@@ -60,43 +60,66 @@ export default function SchoolsView() {
       />
       <div className="">
         <div className="schoolImgs">
-          <div id="schoolHome">
-            <img src={USC} alt="USC" />
-          </div>
-          <div id="schoolHome">
-            <img src={HU} alt="Howard" />
-          </div>
-          <div id="schoolHome">
-            <img src={washu} alt="WashU" />
-          </div>
-          <div id="schoolHome">
-            <img src={VT} alt="VT" />
-          </div>
-          <div id="schoolHome">
-            <img src={USF} alt="USF" />
-          </div>
-          <div id="schoolHome">
-            <img src={HSSU} alt="HSSU" />
-          </div>
-          <div id="schoolHome">
-            <img src={UTEP} alt="uni of Texas El Paso" />
-          </div>
-
-          <div id="schoolHome">
-            <img src={SLU} alt="Saint Louis Uni" />
-          </div>
-          <div id="schoolHome">
-            <img src={MI} alt="MI " />
-          </div>
-          <div id="schoolHome">
-            <img src={spel} alt="Spelman " />
-          </div>
-          <div id="schoolHome">
-            <img src={Ber} alt="Berkley " />
-          </div>
-          <div id="schoolHome">
-            <img src={Stan} alt="Stanford " />
-          </div>
+          <button>
+            <div id="schoolHome">
+              <img src={USC} alt="USC" />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={HU} alt="Howard" />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={washu} alt="WashU" />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={VT} alt="VT" />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={USF} alt="USF" />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={HSSU} alt="HSSU" />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={UTEP} alt="uni of Texas El Paso" />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={SLU} alt="Saint Louis Uni" />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={MI} alt="MI " />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={spel} alt="Spelman " />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={Ber} alt="Berkley " />
+            </div>
+          </button>
+          <button>
+            <div id="schoolHome">
+              <img src={Stan} alt="Stanford " />
+            </div>
+          </button>
         </div>
         <button className="liBrB">Load more schools</button>
       </div>

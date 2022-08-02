@@ -4,7 +4,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-
+import SearchIcon from "@mui/icons-material/Search";
 import { brown } from "@mui/material/colors";
 import DGroup from "../DGroups/DGroups";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -21,6 +21,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
     backgroundColor: brown[700],
   },
   alignItems: "center",
+  marginTop: "20px",
 }));
 export default function Diet() {
   return (
@@ -49,10 +50,11 @@ export default function Diet() {
               <input
                 type="text"
                 {...params.inputProps}
-                placeholder="                                                                  Search groups"
+                placeholder="                                                                           Search groups"
                 // onChange={handleOnTextChange}
                 //add search icon here
               />
+              <SearchIcon id="search" />
             </div>
           )}
         />
@@ -61,44 +63,44 @@ export default function Diet() {
       <h3 id="left">Allergies</h3>
 
       <div>
-        <FormControlLabel
-          control={<Checkbox />}
-          sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-          label="Label"
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-          label="Peanuts"
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-          label="Pistachios"
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-          label="Shellfish"
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-          label="Dairy"
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-          label="Gluten"
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-          label="Eggs"
-        />
+        <div>
+          <FormControlLabel
+            control={<Checkbox />}
+            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
+            label="Shellfish"
+          />
+          <FormControlLabel
+            control={<Checkbox />}
+            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
+            label="Peanuts"
+          />
+          <FormControlLabel
+            control={<Checkbox />}
+            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
+            label="Pistachios"
+          />
+        </div>
 
-        {/* <Checkbox {...label} sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }} /> */}
+        <div>
+          <FormControlLabel
+            control={<Checkbox />}
+            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
+            label="Dairy"
+          />
+          <FormControlLabel
+            control={<Checkbox />}
+            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
+            label="Gluten"
+          />
+          <FormControlLabel
+            control={<Checkbox />}
+            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
+            label="Eggs"
+          />
+        </div>
+        {/* <Checkbox {...label} sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }} /> */}
       </div>
+      {/* <button> v </button>  not vibing w the button fr*/}
       <ColorButton variant="contained">
         <a href="/communities" id="link">
           Submit Options

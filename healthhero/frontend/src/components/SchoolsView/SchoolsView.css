@@ -2,9 +2,9 @@
   display: flex;
   flex-wrap: wrap;
 }
-.schoolImgs img {
+/* .schoolImgs img {
   padding: 15px;
-}
+} */
 
 .pickSchool {
   color: #b3cf99;
@@ -36,3 +36,8 @@ label {
   border: 2px solid #ffcb05;
   border-radius: 120%;
 } */
+
+.schoolImgs button {
+  background-color: transparent;
+  border-radius: 100%;
+}

@@ -13,6 +13,7 @@ export default function ResCard({ res }) {
       <div className="res-info">
         <div className="info">
           <p className="res-name">{res}</p>
+          <p className="res-loc">{res.location}</p>
           <p className="res-des">{res.description}</p>
         </div>
       </div>

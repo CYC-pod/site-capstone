@@ -34,34 +34,33 @@ export default function DGroups() {
 
       <div className="sliderD">
         <Slider ref={setSliderRef} {...settings}>
-          <div>
+          <div id="sliderD">
             <button>
               <h3>Vegan</h3>
             </button>
           </div>
-          <div>
+          <div id="sliderD">
             <button>
               <h3>Halal</h3>
             </button>
           </div>
-          <div>
+          <div id="sliderD">
             <button>
               <h3>Kosher</h3>
             </button>
           </div>
-          <div>
+          <div id="sliderD">
             <button>
               <h3>Keto</h3>
             </button>
           </div>
-          <div>
+          <div id="sliderD">
             <button>
               <h3>Kids Food</h3>
             </button>
           </div>
-          <div>
+          <div id="sliderD">
             <button>
-              {" "}
               <h3>Pescatarian</h3>
             </button>
           </div>
