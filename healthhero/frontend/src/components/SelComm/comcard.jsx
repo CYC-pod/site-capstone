@@ -1,15 +1,15 @@
 import * as React from "react";
 import apiClient from "../../../services/apiClient";
-import { useEffect } from "react";
+import { Link } from "react";
 import { useAuthContext } from "../../../AuthContext/auth";
 import "./comcard.css";
 
 export default function ComCard() {
   const { comm, setComm } = useAuthContext();
-
+  const { commId } = useAuthContext();
   return (
     <div className="CommCard">
-      <Link to={`/commDescript/${commID}`} className="media">
+      <Link to={"/commDescript/" + commId} className="media">
         <img
           className="commImage"
           src={comm ? comm.image : "undefined community image"}

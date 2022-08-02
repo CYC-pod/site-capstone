@@ -20,13 +20,14 @@ import MyComm from "./components/MyComm/MyComm";
 import YourRes from "./components/YourRes/YourRes";
 import ResResults from "./components/ResResults/ResResults";
 import InResults from "./components/ResResults/InResults";
-import CommCard from "./components/SelComm/comcard";
+import CommCard from "./components/SelComm/Comcard";
 import DetailedComm from "./components/SelComm/DetailedCom";
-
+import ComGrid from "./components/SelComm/ComGrid";
+import CommDetail from "./components/SelComm/CommDetail";
 function App() {
   const { user, setUser } = useAuthContext();
   const navigateTo = useNavigate();
-
+  const [community, setCommunity] = useState([]);
   useEffect(() => {
     console.log("app is rendering");
     const fetchAuthUser = async () => {
@@ -113,6 +114,7 @@ function App() {
           element={
             <>
               <SelComm />
+              <ComGrid />
               <CommCard />
             </>
           }
@@ -155,6 +157,7 @@ function App() {
           path="/commDescript/:commid"
           element={
             <>
+              <CommDetail />
               <DetailedComm />
             </>
           }
