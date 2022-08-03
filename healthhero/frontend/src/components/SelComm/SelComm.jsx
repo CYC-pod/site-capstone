@@ -35,7 +35,9 @@ export default function SelComm() {
       }} //2 brackets for its object.. setting the container
       maxWidth={false}
     >
-      <Box sx={{ background: "red", width: "50%", height: "10vh", m: 3 }}></Box>
+      <Box sx={{ background: "red", width: "50%", height: "10vh", m: 3 }}>
+        <h1> Select A Community</h1>
+      </Box>
       <ComGrid />
       <Box
         sx={{ background: "purple", width: "10%", height: "10vh", m: 3 }}

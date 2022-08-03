@@ -13,8 +13,9 @@ export default function ComGrid() {
   useEffect(() => {
     async function Getcomm() {
       const res = await apiClient.listcomm();
-      setCommunities(res.data.communities);
-      console.log("community list", res.data.communities);
+      console.log(res);
+      setCommunities(res.data.community);
+      console.log("community list", res.data.community);
     }
     Getcomm();
   }, []);
