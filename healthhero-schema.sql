@@ -28,24 +28,24 @@ CREATE TABLE restaurant(
 
 CREATE TABLE restriction(
     id          SERIAL PRIMARY KEY,
-    name        TEXT,
+    name        TEXT UNIQUE,
     type        TEXT
 );
 
 CREATE TABLE accommodation(
     id            SERIAL PRIMARY KEY,  
-    restaurant_id INTEGER,  
-    restriction_id INTEGER,
+    restaurant_id INTEGER NOT NULL,  
+    restriction_name TEXT NOT NULL,
     FOREIGN KEY (restaurant_id) REFERENCES restaurant(id),
-    FOREIGN KEY (restriction_id) REFERENCES restriction(id)
+    FOREIGN KEY (restriction_name) REFERENCES restriction(name)
 );
 
 CREATE TABLE user_restriction(
     id          SERIAL PRIMARY KEY,
     user_id     INTEGER,
-    restriction_id INTEGER,
+    restriction_name TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (restriction_id) REFERENCES restriction(id)
+    FOREIGN KEY (restriction_name) REFERENCES restriction(name)
 );
 
 CREATE TABLE community(
