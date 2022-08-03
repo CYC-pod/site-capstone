@@ -5,9 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-import "../DGroup/DGroup.css";
+import "../DGroups/DGroups.css";
 
-export default function DGroup() {
+export default function DGroups() {
   <script
     src="https://kit.fontawesome.com/cf9f7f67f7.js"
     crossorigin="anonymous"
@@ -21,71 +21,48 @@ export default function DGroup() {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
+    //prob get slider dots out of the way
   };
 
-  function cacheImages(array) {
-    if (!cacheImages.list) {
-      cacheImages.list = [];
-    }
-    var list = cacheImages.list;
-    for (var i = 0; i < array.length; i++) {
-      var img = new Image();
-      img.onload = function () {
-        var index = list.indexOf(this);
-        if (index !== -1) {
-          // remove image from the array once it's loaded
-          // for memory consumption reasons
-          list.splice(index, 1);
-        }
-      };
-      list.push(img);
-      img.src = array[i];
-    }
-  }
-
-  useEffect(() => {
-    cacheImages([HSSU, USC, HU, washu, VT, USF, UTEP]);
-  }, []);
-
   return (
-    <div className="content">
+    <div className="contentD">
       <div className="leftbtton">
         <button onClick={sliderRef?.slickPrev} className="liBrB butRight">
           {"<"}
         </button>
       </div>
 
-      <div className="slider">
+      <div className="sliderD">
         <Slider ref={setSliderRef} {...settings}>
-          <div id="schoolHome">
-            <img
-              src={USC}
-              onLoad={() => {
-                console.log("loaded");
-              }}
-              onError={(e) => {
-                console.log("on error", e);
-              }}
-              alt="USC"
-            />
+          <div id="sliderD">
+            <button>
+              <h3>Vegan</h3>
+            </button>
           </div>
-          <div id="schoolHome">
-            <img src={HU} alt="Howard" />
+          <div id="sliderD">
+            <button>
+              <h3>Halal</h3>
+            </button>
           </div>
-          <div id="schoolHome">
-            <img src={washu} alt="WashU" />
+          <div id="sliderD">
+            <button>
+              <h3>Kosher</h3>
+            </button>
           </div>
-          <div id="schoolHome">
-            <img src={VT} alt="VT" />
+          <div id="sliderD">
+            <button>
+              <h3>Keto</h3>
+            </button>
           </div>
-          <div id="schoolHome">
-            <img src={USF} alt="USF" />
+          <div id="sliderD">
+            <button>
+              <h3>Kids Food</h3>
+            </button>
           </div>
-          <div id="schoolHome">
-            <img src={HSSU} alt="HSSU" />
-          </div>
-          <div id="schoolHome">
-            <img src={UTEP} alt="uni of Texas El Paso" />
+          <div id="sliderD">
+            <button>
+              <h3>Pescatarian</h3>
+            </button>
           </div>
         </Slider>
       </div>

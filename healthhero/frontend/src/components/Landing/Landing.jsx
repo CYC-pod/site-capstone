@@ -1,7 +1,7 @@
 import "../Landing/Landing.css";
 
 import * as React from "react";
-import Autocomplete from "@mui/material/Autocomplete";
+
 import Slick from "../Slick/Slick";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
@@ -73,6 +73,10 @@ export default function Landing() {
           </a>
         </ColorButton>
       </Stack>
+      <button>
+        {" "}
+        <a href="/diet"> for now shortcut to diet</a>
+      </button>
     </div>
   );
 }

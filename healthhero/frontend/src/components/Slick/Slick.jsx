@@ -5,7 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import "../Slick/Slick.css";
-import { HSSU, USC, HU, washu, VT, USF, UTEP } from "../../constants";
+import { USC, HU, washu, VT, USF, UTEP } from "../../constants";
+import { HSSU } from "../../constants";
+// document.getElementById("hero-img").src = HSSU;
 
 export default function Slick() {
   <script
@@ -77,6 +79,7 @@ export default function Slick() {
           </div>
           <div id="schoolHome">
             <img src={VT} alt="VT" />
+            {/* <img src="/healthhero/frontend/src/img/vtt.png"></img> */}
           </div>
           <div id="schoolHome">
             <img src={USF} alt="USF" />
@@ -84,6 +87,7 @@ export default function Slick() {
           <div id="schoolHome">
             <img src={HSSU} alt="HSSU" />
           </div>
+
           <div id="schoolHome">
             <img src={UTEP} alt="uni of Texas El Paso" />
           </div>

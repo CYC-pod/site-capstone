@@ -1,0 +1,35 @@
+#left {
+  float: left;
+  color: #b3cf99;
+}
+
+.diet {
+  color: darkgreen;
+  margin-left: 50px;
+  padding-top: 15px;
+  margin-right: 20px;
+}
+.topD {
+  padding-top: 20px;
+}
+.topD input {
+  border-radius: 8px;
+
+  /* background-color: #adc89c; */
+}
+
+.topD ::placeholder {
+  color: rgb(16, 51, 7);
+}
+
+#search {
+  position: absolute;
+  width: 30px;
+  height: 28px;
+  left: 1740px;
+  top: 100px;
+}
+
+/* .contentD button {
+  background-color: transparent;
+} */

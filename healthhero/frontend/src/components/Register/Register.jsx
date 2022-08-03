@@ -154,16 +154,21 @@ export default function Register() {
 
         <div className="form">
           <label htmlFor="type">Select User Type</label>
+
           <select
+            name="type"
             className="type"
             id="users"
             defaultValue={form.type}
-            onChange={handleOnInputChange}
+            // onChange={handleOnInputChange}
           >
-            {/* instead of form type we used teext values so that in the res.data.user.type it can tell where to Navigate user based on type */}
+            {/* instead of form type we used text values so that in the res.data.user.type it can tell where to Navigate user based on type */}
             <option value="student"> Student </option>
-            <option value="restaurant"> Restaurant Owner </option>
+            <option value="restaurant owner"> Restaurant Owner </option>
           </select>
+    
+   
+
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <br />
@@ -171,7 +176,7 @@ export default function Register() {
               type="email"
               name="email"
               placeholder="Enter a valid email"
-              value={form.email}
+              value={form?.email || ""}
               onChange={handleOnInputChange}
             />
             {errors.email && <span className="error">{errors.email}</span>}
@@ -185,7 +190,7 @@ export default function Register() {
                 type="text"
                 name="username"
                 placeholder="Your username"
-                value={form.username}
+                value={form?.username || ""}
                 onChange={handleOnInputChange}
               />
               {errors.username && (
@@ -200,7 +205,7 @@ export default function Register() {
                 type="password"
                 name="password"
                 placeholder="Enter a secure password"
-                value={form.password}
+                value={form?.password || ""} //check on form pass,
                 onChange={handleOnInputChange}
               />
               {errors.password && (
@@ -215,7 +220,7 @@ export default function Register() {
                 type="password"
                 name="passwordConfirm"
                 placeholder="Confirm your password"
-                value={form.passwordConfirm}
+                value={form?.passwordConfirm || ""}
                 onChange={handleOnInputChange}
               />
               {errors.passwordConfirm && (
