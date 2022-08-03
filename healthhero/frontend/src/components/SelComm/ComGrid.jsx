@@ -1,19 +1,61 @@
 import * as React from "react";
-import { useEffect, Text, StyleSheet, TouchableOpacity } from "react";
+import { useEffect, useState, Text, StyleSheet, TouchableOpacity } from "react";
 import { useAuthContext } from "../../../AuthContext/auth";
-import ComCard from "./Comcard";
+import Comcard from "./Comcard";
+import { Box } from "@mui/system";
 // import { CommForm } from "../CommForm/Commform";
 import "./SelComm.css";
+import apiClient from "../../../services/apiClient";
 
 export default function ComGrid() {
   const { comm, setComm } = useAuthContext();
-  const { community, setCommunity } = useAuthContext();
+  const [communities, setCommunities] = useState([]);
+  useEffect(() => {
+    async function Getcomm() {
+      const res = await apiClient.listcomm();
+      setCommunities(res.data.communities);
+      console.log("community list", res.data.communities);
+    }
+    Getcomm();
+  }, []);
+  return (
+    <Box
+      sx={{
+        background: "white",
+        width: "80%",
 
+        m: 3,
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "flex-start",
+      }}
+    >
+      {communities.map((comm, index) => {
+        return (
+          <Comcard key={index} comm={comm} />
+          // <Box
+          //   key={index}
+          //   sx={{
+          //     background: "yellow",
+          //     width: "1in",
+          //     height: "1in",
+          //     m: 3,
+          //     borderRadius: ".5in",
+          //     color: "black",
+          //   }}
+          // >
+          //   {index + 1}
+          // </Box>
+        );
+      })}
+    </Box>
+  );
   return (
     <div className="grid">
       <h1 className="header">Select A Community</h1>
       {community?.map((comm, index) => (
-        <ComCard key={index} commId={comm.id} />
+        <ComCard key={index} comm={comm} />
       ))}
     </div>
   );

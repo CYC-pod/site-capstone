@@ -20,7 +20,7 @@ import MyComm from "./components/MyComm/MyComm";
 import YourRes from "./components/YourRes/YourRes";
 import ResResults from "./components/ResResults/ResResults";
 import InResults from "./components/ResResults/InResults";
-import CommCard from "./components/SelComm/Comcard";
+import Comcard from "./components/SelComm/Comcard";
 import DetailedComm from "./components/SelComm/DetailedCom";
 import ComGrid from "./components/SelComm/ComGrid";
 import CommDetail from "./components/SelComm/CommDetail";
@@ -132,11 +132,15 @@ function App() {
         <Route
           path="/communities"
           element={
-            <>
-              <SelComm />
-              <ComGrid />
-              <CommCard />
-            </>
+            <SelComm />
+
+            //       {/*header
+            //   grid.. where you press image-> descripting and being able to add the community.(comm detail)
+            // load more buttom gets pushed down}
+            // ideal to only render selcom component
+            //       {/* <SelComm />
+            //       <ComGrid />
+            //       <CommCard /> */}
           }
         />
         <Route

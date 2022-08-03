@@ -1,4 +1,4 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 // import axios from "axios";
 import { useAuthContext } from "../../../AuthContext/auth";
@@ -17,14 +17,13 @@ export default function CommForm() {
     description: "",
   });
 
-
-useEffect(() => {
+  useEffect(() => {
     console.log("user changed: ", user);
- }, [user])
- 
+  }, [user]);
+
   // useEffect(() => {
   //   // if user is not logged in,
-  //   // redirect them to the login page 
+  //   // redirect them to the login page
   //   console.log("user in commForm" , user)
   //   if (!user) {
   //     navigate("/login")
@@ -80,7 +79,8 @@ useEffect(() => {
 
       console.log(res);
       if (res?.data?.community) {
-        //To do save community data somewhere 
+        const { comm, setComm } = useAuthContext();
+        //To do save community data somewhere
         // apiClient.setToken(res.data.token);
         setIsLoading(false);
         navigate("/communities");
@@ -102,10 +102,8 @@ useEffect(() => {
     }
   };
 
-
   return (
     <div className="Community">
-      
       <div className="card">
         <h2>Add a Community!</h2>
 

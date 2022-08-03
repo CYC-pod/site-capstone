@@ -38,17 +38,16 @@ class ApiClient {
   }
 
   async fetchUserFromToken() {
-    return await this.request(  `auth/me`, `GET` );
+    return await this.request(`auth/me`, `GET`);
   }
 
   async getNutrition() {
     return await this.request({ endpoint: `nutrition/`, method: `GET` });
   }
-  async listcomm(community) {
+  async listcomm() {
     return await this.request({
       endpoint: `community/`,
       method: `GET`,
-      data: community,
     });
   }
   async createPost(data, point) {
@@ -71,12 +70,9 @@ class ApiClient {
     return res;
   }
 
-  async listRestrictions(){
-    const res = await this.request(
-      'restrictions',
-      'GET'
-    )
-    return res
+  async listRestrictions() {
+    const res = await this.request("restrictions", "GET");
+    return res;
   }
 }
 
