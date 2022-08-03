@@ -22,4 +22,19 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
     }
   })
 
+router.patch("/userschool", security.requireAuthenticatedUser, async (req, res, next) => {
+  try {
+    console.log("req.body in school route" , req.body)
+    const {schoolId} = req.body;
+    console.log("school id in school route" , schoolId)
+    const response = await School.addSchoolToUser(schoolId, res?.locals?.user?.id);
+    return res.status(201).json({ school: response });
+  } catch (err) {
+    next(err);
+  }
+
+  //check to see if a user already has 
+})
+
+
   module.exports = router

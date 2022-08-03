@@ -38,6 +38,21 @@ class School{
         const results = result.rows[0];
         return results;
     }
+
+    static async addSchoolToUser(schoolId,userId){
+        const result = await db.query(
+            `
+            UPDATE users
+            SET school_id = $1
+            WHERE id = $2 
+            RETURNING id, email, username, school_id, type;
+            `,
+            [schoolId, userId]
+        )
+        const results = result.rows[0];
+        console.log("school model test: " , schoolId, userId, results)
+        return results;
+    }
 }
 
 module.exports = School;
