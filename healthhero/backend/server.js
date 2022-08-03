@@ -8,6 +8,7 @@ const CommRouter = require("./routes/community");
 const { NotFoundError } = require("./utils/errors");
 const security = require("./middleware/security")
 const schoolRouter = require("./routes/schoolR")
+const restrictionsRouter = require ("./routes/restriction")
 
 app.use(cors());
 app.use(morgan("tiny"));
@@ -17,7 +18,8 @@ app.use(security.extractUserFromJwt);
 app.use("/auth", authRouter);
 app.use("/restaurant", RestRouter);
 app.use("/community", CommRouter);
-app.use("/schools", schoolRouter)
+app.use("/schools", schoolRouter);
+app.use("/restrictions", restrictionsRouter);
 
 app.use((req, res, next) => {
   return next(new NotFoundError());
