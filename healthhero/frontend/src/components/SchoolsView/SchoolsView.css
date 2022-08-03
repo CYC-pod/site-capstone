@@ -41,3 +41,8 @@ label {
   background-color: transparent;
   border-radius: 100%;
 }
+
+.schoolButton{
+  background-color: transparent;
+  border: 0px;
+}

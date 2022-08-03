@@ -72,6 +72,17 @@ class ApiClient {
     const res = await this.request("restrictions", "GET");
     return res;
   }
+
+  async listSchools(){
+    const res = await this.request("schools", "GET")
+    return res; 
+  }
+
+  async addSchoolToUser(schoolId){
+    console.log("school id in apiClient" , schoolId)
+    const data = {schoolId}
+    return await this.request( `schools/userschool`, `PATCH`, data);
+  }
 }
 
 export default new ApiClient("http://localhost:3001");

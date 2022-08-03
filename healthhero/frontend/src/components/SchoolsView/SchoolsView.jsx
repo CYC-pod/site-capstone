@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../SchoolsView/SchoolsView.css";
 import Autocomplete from "@mui/material/Autocomplete";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HSSU } from "../../constants";
 import { USC } from "../../constants";
 import { HU } from "../../constants";
@@ -14,13 +14,30 @@ import { MI } from "../../constants";
 import { Ber } from "../../constants";
 import { Stan } from "../../constants";
 import { spel } from "../../constants";
+import apiClient from "../../../services/apiClient";
+
 const options = [
   "University of South California",
   "Howard",
   "Washington University in St Louis",
 ];
 
+const handleOnSchoolClick = async (schoolId) => {
+  try {
+    console.log(schoolId)
+    const res = await apiClient.addSchoolToUser(schoolId);
+  } catch (err) {
+    console.log(err);
+    const message = err?.response?.data?.error?.message;
+    setErrors((e) => ({
+      ...e,
+      form: message ? String(message) : String(err),
+    }));
+  }
+};
+
 export default function SchoolsView() {
+  const [schools, setSchools] = useState([]);
   // const [searchText, setSearchText] = useState("");
   // const handleOnTextChange = (event) => {
   //   setSearchText(event.target.value);
@@ -30,6 +47,16 @@ export default function SchoolsView() {
   //   return element.name.toLowerCase().includes(searchText.toLowerCase());
   // });
   //build more on school data.
+
+  useEffect(() => {
+    async function getSchools() {
+      const res = await apiClient.listSchools();
+      setSchools(res.data.school);
+      console.log("school list", res.data.school);
+    }
+    getSchools();
+  }, []);
+
   return (
     <div className="viewS">
       <h1>Pick your school</h1>
@@ -59,68 +86,19 @@ export default function SchoolsView() {
         )}
       />
       <div className="">
-        <div className="schoolImgs">
-          <button>
-            <div id="schoolHome">
-              <img src={USC} alt="USC" />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={HU} alt="Howard" />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={washu} alt="WashU" />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={VT} alt="VT" />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={USF} alt="USF" />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={HSSU} alt="HSSU" />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={UTEP} alt="uni of Texas El Paso" />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={SLU} alt="Saint Louis Uni" />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={MI} alt="MI " />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={spel} alt="Spelman " />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={Ber} alt="Berkley " />
-            </div>
-          </button>
-          <button>
-            <div id="schoolHome">
-              <img src={Stan} alt="Stanford " />
-            </div>
-          </button>
-        </div>
+        {schools.map((school, i) => {
+          return (
+            <button
+              className="schoolButton"
+              onClick={() => handleOnSchoolClick(school.id)}
+              key={i}
+            >
+              <div id="schoolHome">
+                <img src={school.image} alt={school.name} />
+              </div>
+            </button>
+          );
+        })}
         <button className="liBrB">Load more schools</button>
       </div>
     </div>
