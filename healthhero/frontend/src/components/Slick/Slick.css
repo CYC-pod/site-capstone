@@ -1,4 +1,4 @@
-#schoolHome img {
+.schoolHome img {
   border-radius: 100%;
   height: 250px;
   /* align-items: center;
@@ -6,7 +6,9 @@
   justify-items: center; */
 }
 .slider {
-  max-width: 800px;
+  /* max-width: 800px;
+  min-width: 800px; */
+  width: 800px;
 }
 .liBrB {
   background-color: #b1907f;

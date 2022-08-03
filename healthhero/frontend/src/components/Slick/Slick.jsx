@@ -5,9 +5,10 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import "../Slick/Slick.css";
-import { USC, HU, washu, VT, USF, UTEP } from "../../constants";
-import { HSSU } from "../../constants";
-// document.getElementById("hero-img").src = HSSU;
+import { USC, HU, washu, VT, UTEP, HSSU } from "../../constants";
+// import { HSSU } from "../../constants";
+import USF from "../../img/USF.png";
+// ("hero-img").src = HSSU;
 
 export default function Slick() {
   <script
@@ -21,6 +22,7 @@ export default function Slick() {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
+
     slidesToScroll: 1,
     arrows: false,
   };
@@ -59,7 +61,7 @@ export default function Slick() {
 
       <div className="slider">
         <Slider ref={setSliderRef} {...settings}>
-          <div id="schoolHome">
+          <div className="schoolHome">
             <img
               src={USC}
               onLoad={() => {
@@ -71,24 +73,24 @@ export default function Slick() {
               alt="USC"
             />
           </div>
-          <div id="schoolHome">
+          <div className="schoolHome">
             <img src={HU} alt="Howard" />
           </div>
-          <div id="schoolHome">
+          <div className="schoolHome">
             <img src={washu} alt="WashU" />
           </div>
-          <div id="schoolHome">
+          <div className="schoolHome">
             <img src={VT} alt="VT" />
             {/* <img src="/healthhero/frontend/src/img/vtt.png"></img> */}
           </div>
-          <div id="schoolHome">
+          <div className="schoolHome">
             <img src={USF} alt="USF" />
           </div>
-          <div id="schoolHome">
+          <div className="schoolHome">
             <img src={HSSU} alt="HSSU" />
           </div>
 
-          <div id="schoolHome">
+          <div className="schoolHome">
             <img src={UTEP} alt="uni of Texas El Paso" />
           </div>
         </Slider>

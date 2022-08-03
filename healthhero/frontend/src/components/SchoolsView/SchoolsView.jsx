@@ -24,7 +24,7 @@ const options = [
 
 const handleOnSchoolClick = async (schoolId) => {
   try {
-    console.log(schoolId)
+    console.log(schoolId);
     const res = await apiClient.addSchoolToUser(schoolId);
   } catch (err) {
     console.log(err);
@@ -93,12 +93,76 @@ export default function SchoolsView() {
               onClick={() => handleOnSchoolClick(school.id)}
               key={i}
             >
-              <div id="schoolHome">
+              <div className="schoolHome">
                 <img src={school.image} alt={school.name} />
               </div>
             </button>
           );
         })}
+
+        {/* // <div className="schoolImgs">
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={USC} alt="USC" />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={HU} alt="Howard" />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={washu} alt="WashU" />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={VT} alt="VT" />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={USF} alt="USF" />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={HSSU} alt="HSSU" />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={UTEP} alt="uni of Texas El Paso" />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={SLU} alt="Saint Louis Uni" />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={MI} alt="MI " />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={spel} alt="Spelman " />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={Ber} alt="Berkley " />
+        //     </div>
+        //   </button>
+        //   <button>
+        //     <div className="schoolHome">
+        //       <img src={Stan} alt="Stanford " />
+        //     </div>
+        //   </button>
+        // </div> */}
+
         <button className="liBrB">Load more schools</button>
       </div>
     </div>
