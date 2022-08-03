@@ -160,14 +160,7 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/resResults"
-          element={
-            <>
-              {/* <ResResults /> */}
-            </>
-          }
-        />
+        <Route path="/resResults" element={<>{/* <ResResults /> */}</>} />
         <Route
           path="/resResults/specific"
           // would matter on id / which restaurant
