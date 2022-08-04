@@ -1,0 +1,8 @@
+name,type
+Vegan,diet
+Halal,diet
+Kosher,diet
+Vegetarian,diet 
+Peanuts,allergy
+Shellfish,allergy
+Eggs,allergy

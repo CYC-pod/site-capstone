@@ -15,6 +15,7 @@ export default function Slick() {
     crossorigin="anonymous"
   ></script>;
   const [sliderRef, setSliderRef] = useState(null);
+  const [schools, setSchools] = useState([]);
 
   var settings = {
     dots: true,
@@ -46,8 +47,17 @@ export default function Slick() {
   }
 
   useEffect(() => {
-    cacheImages([HSSU, USC, HU, washu, VT, USF, UTEP]);
+    async function getSchools() {
+      const res = await apiClient.listSchools();
+      setSchools(res.data.school);
+      console.log("school list", res.data.school);
+    }
+    getSchools();
   }, []);
+
+  // useEffect(() => {
+  //   cacheImages([HSSU, USC, HU, washu, VT, USF, UTEP]);
+  // }, []);
 
   return (
     <div className="content">
@@ -59,7 +69,20 @@ export default function Slick() {
 
       <div className="slider">
         <Slider ref={setSliderRef} {...settings}>
-          <div id="schoolHome">
+        {schools.map((school, i) => {
+          return (
+            <div
+              className="schoolButton"
+              onClick={() => handleOnSchoolClick(school.id)}
+              key={i}
+            >
+              <div id="schoolHome">
+                <img src={school.image} alt={school.name} />
+              </div>
+            </div>
+          );
+        })}
+          {/* <div id="schoolHome">
             <img
               src={USC}
               onLoad={() => {
@@ -80,7 +103,7 @@ export default function Slick() {
           <div id="schoolHome">
             <img src={VT} alt="VT" />
             {/* <img src="/healthhero/frontend/src/img/vtt.png"></img> */}
-          </div>
+          {/*</div>
           <div id="schoolHome">
             <img src={USF} alt="USF" />
           </div>
@@ -90,7 +113,7 @@ export default function Slick() {
 
           <div id="schoolHome">
             <img src={UTEP} alt="uni of Texas El Paso" />
-          </div>
+          </div> */}
         </Slider>
       </div>
 
