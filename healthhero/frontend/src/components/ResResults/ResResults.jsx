@@ -1,3 +1,8 @@
+import * as React from "react";
+import ResCard from "./ResCard";
+import ResGrid from "./ResGrid";
+import "../ResResults/ResResults.css";
+
 // import * as React from "react";
 // import ResCard from "./ResCard";
 // import "../ResResults/ResResults.css";

@@ -48,6 +48,10 @@ class ApiClient {
     const rescom = await this.request(`community/`, `GET`);
     return rescom;
   }
+  async listres() {
+    const resres = await this.request(`restaurant/`, `GET`);
+    return resres;
+  }
   async createPost(data, point) {
     return await this.request(point + `/`, `POST`, data);
   }
@@ -73,15 +77,15 @@ class ApiClient {
     return res;
   }
 
-  async listSchools(){
-    const res = await this.request("schools", "GET")
-    return res; 
+  async listSchools() {
+    const res = await this.request("schools", "GET");
+    return res;
   }
 
-  async addSchoolToUser(schoolId){
-    console.log("school id in apiClient" , schoolId)
-    const data = {schoolId}
-    return await this.request( `schools/userschool`, `PATCH`, data);
+  async addSchoolToUser(schoolId) {
+    console.log("school id in apiClient", schoolId);
+    const data = { schoolId };
+    return await this.request(`schools/userschool`, `PATCH`, data);
   }
 }
 
