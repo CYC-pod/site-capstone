@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../SchoolsView/SchoolsView.css";
 import Autocomplete from "@mui/material/Autocomplete";
-import { useState, useEffect } from "react";
+import { useState, Link, useEffect } from "react";
 import { HSSU } from "../../constants";
 import { USC } from "../../constants";
 import { HU } from "../../constants";
@@ -15,6 +15,7 @@ import { Ber } from "../../constants";
 import { Stan } from "../../constants";
 import { spel } from "../../constants";
 import apiClient from "../../../services/apiClient";
+import { Navigate } from "react-router-dom";
 
 const options = [
   "University of South California",
@@ -24,7 +25,7 @@ const options = [
 
 const handleOnSchoolClick = async (schoolId) => {
   try {
-    console.log(schoolId)
+    console.log(schoolId);
     const res = await apiClient.addSchoolToUser(schoolId);
   } catch (err) {
     console.log(err);
@@ -88,15 +89,17 @@ export default function SchoolsView() {
       <div className="">
         {schools.map((school, i) => {
           return (
-            <button
-              className="schoolButton"
-              onClick={() => handleOnSchoolClick(school.id)}
-              key={i}
-            >
-              <div id="schoolHome">
-                <img src={school.image} alt={school.name} />
-              </div>
-            </button>
+            <a href="/diet">
+              <button
+                className="schoolButton"
+                onClick={() => handleOnSchoolClick(school.id)}
+                key={i}
+              >
+                <div id="schoolHome">
+                  <img src={school.image} alt={school.name} />
+                </div>
+              </button>
+            </a>
           );
         })}
         <button className="liBrB">Load more schools</button>
