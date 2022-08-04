@@ -1,8 +1,8 @@
 import "../ResResults/ResCard.css";
 import React from "react";
 
-export default function ResCard({ res }) {
-  const { id, image, name, description } = res;
+export default function ResCard({ rest }) {
+  const { id, image, name, description } = rest;
   return (
     <div className="ResCard">
       <Link to={"/resDescript/" + id} className="media">

@@ -18,7 +18,7 @@ import Prof from "./components/Prof/Prof";
 import SelComm from "./components/SelComm/SelComm";
 import MyComm from "./components/MyComm/MyComm";
 import YourRes from "./components/YourRes/YourRes";
-// import ResResults from "./components/ResResults/ResResults";
+import ResResults from "./components/ResResults/ResResults";
 import InResults from "./components/ResResults/InResults";
 import Comcard from "./components/SelComm/Comcard";
 import DetailedComm from "./components/SelComm/DetailedCom";
@@ -164,7 +164,7 @@ function App() {
           path="/resResults"
           element={
             <>
-              {/* <ResResults /> */}
+              <ResResults />
             </>
           }
         />

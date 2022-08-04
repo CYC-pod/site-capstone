@@ -1,7 +1,49 @@
 import * as React from "react";
+import { Box } from "@mui/material";
+import { Container } from "@mui/system";
 import ResCard from "./ResCard";
+import { useEffect } from "react";
+import { useAuthContext } from "../../../AuthContext/auth";
 import ResGrid from "./ResGrid";
 import "../ResResults/ResResults.css";
+
+export default function SelRes() {
+  const { rest, setRest } = useAuthContext();
+  const { restaurant, setRestaurant } = useAuthContext();
+  useEffect(() => {
+    const fetchRes = async () => {
+      const { data, error } = await apiClient.listres();
+      if (data) setRest(data.restaurant);
+    };
+
+    const token = localStorage.getItem("life-starter-token");
+    if (token) {
+      apiClient.setToken(token);
+      fetchRes();
+    }
+  }, []);
+  return (
+    <Container
+      className="restaurants"
+      sx={{
+        flexGrow: 1,
+        background: "#f4ebd0",
+        alignItems: "center",
+        display: "flex",
+        flexDirection: "column",
+      }} //2 brackets for its object.. setting the container
+      maxWidth={false}
+    >
+      <Box sx={{ background: "inherit", width: "50%", height: "10vh", m: 3 }}>
+        <h1> Your Restaurant Results</h1>
+      </Box>
+      <ResGrid />
+      {/* <Box
+          sx={{ background: "purple", width: "10%", height: "10vh", m: 3 }}
+        ></Box> */}
+    </Container>
+  );
+}
 
 // import * as React from "react";
 // import ResCard from "./ResCard";
