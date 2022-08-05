@@ -48,6 +48,10 @@ class ApiClient {
     const res = await this.request(`community/schoolcommunities`, `GET`);
     return res;
   }
+  async listres() {
+    const resres = await this.request(`restaurant/`, `GET`);
+    return resres;
+  }
   async createPost(data, point) {
     return await this.request(point + `/`, `POST`, data);
   }
@@ -73,30 +77,38 @@ class ApiClient {
     return res;
   }
 
-  async listDiets(){
+  async listDiets() {
     const res = await this.request("restrictions/diets", "GET");
     return res;
   }
 
-  async listAllergies(){
+  async listAllergies() {
     const res = await this.request("restrictions/allergies", "GET");
     return res;
   }
 
-  async listSchools(){
-    const res = await this.request("schools", "GET")
-    return res; 
+  async listSchools() {
+    const res = await this.request("schools", "GET");
+    return res;
+  }
+  // async listSchools() {
+  //   const res = await this.request("schools", "GET");
+  //   return res;
+  // }
+
+  async addSchoolToUser(schoolId) {
+    console.log("school id in apiClient", schoolId);
+    const data = { schoolId };
+    return await this.request(`schools/userschool`, `PATCH`, data);
   }
 
-  async addSchoolToUser(schoolId){
-    console.log("school id in apiClient" , schoolId)
-    const data = {schoolId}
-    return await this.request( `schools/userschool`, `PATCH`, data);
-  }
-
-  async postUserRestrictions(userRestrictions){
-    console.log("user restrictions in apiClient", userRestrictions)
-    const res = await this.request(`restrictions/user`, `POST`, userRestrictions);
+  async postUserRestrictions(userRestrictions) {
+    console.log("user restrictions in apiClient", userRestrictions);
+    const res = await this.request(
+      `restrictions/user`,
+      `POST`,
+      userRestrictions
+    );
     return res;
   }
 }
