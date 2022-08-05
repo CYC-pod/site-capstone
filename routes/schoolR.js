@@ -5,8 +5,9 @@ const router = express.Router();
 
 router.get("/", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
-        const school = await School.listSchools();
-        return res.status(201).json({ school: school});
+        const schools = await School.listSchools();
+        console.log("schools in model" , schools)
+        return res.status(201).json({ schools: schools});
       } catch (err) {
         next(err);
       }
