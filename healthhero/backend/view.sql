@@ -1,4 +1,4 @@
-SELECT * FROM school limit 3;
+SELECT * FROM school limit 5;
 SELECT * FROM restriction limit 3; 
 
 
