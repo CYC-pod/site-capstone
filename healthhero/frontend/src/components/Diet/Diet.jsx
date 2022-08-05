@@ -208,7 +208,7 @@ export default function Diet() {
       </div>
       {/* <button> v </button>  not vibing w the button fr*/}
       <ColorButton variant="contained" onClick={handleOnSubmit}>
-        <a href="/communities" id="link">
+        <a href="/ResResults" id="link">
           Submit Options
         </a>
       </ColorButton>
