@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -17,10 +18,21 @@ export default function Navbar({ logoutuser }) {
   const { user, setUser } = useAuthContext();
 
   var isRest = false;
+  var isStudent = false;
   if (user?.type == "restaurant owner") {
     console.log("user type in navbar", user.type);
-    isRest = true;
+    isRest = true; //yes Restaurant!
+    isStudent = false;
   }
+  else if(user?.type == "student") //user is student 
+  {
+    isRest = false;
+    isStudent = true; //yes Student!
+  }
+
+useEffect(()=>{
+    console.log("student:", isStudent)
+}, [])
 
   return (
     <Box sx={{ flexGrow: 0 }}>
@@ -60,33 +72,14 @@ export default function Navbar({ logoutuser }) {
             {user ? (
               ""
             ) : (
-              <a href="/register" id="link">
-                {" "}
-                Sign Up{" "}
-              </a>
+              <a href="/register" id="link"> Sign Up </a>
             )}
           </Button>
-          {isRest ? (
-            <Button>
-              <a href="/restForm" id="link">
-                {" "}
-                Restaurant Form{" "}
-              </a>
-            </Button>
-          ) : null}
+          {isRest ? (<Button> <a href="/restForm" id="link"> Restaurant Form </a> </Button>) : null}
+          {isStudent ? (<Button> <a href="/resResults" id="link"> View Restaurants </a> </Button>) : null}
           <Button color="inherit" onClick={logoutuser}>
             {console.log("user in nav bar", user)}
-            {user ? (
-              <a href="/" id="link">
-                {" "}
-                Logout{" "}
-              </a>
-            ) : (
-              <a href="/login" id="link">
-                {" "}
-                Login{" "}
-              </a>
-            )}
+            {user ? (<a href="/" id="link"> Logout </a>) : (<a href="/login" id="link"> Login </a>)}
           </Button>
         </Toolbar>
       </AppBar>

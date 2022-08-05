@@ -20,9 +20,9 @@ import MyComm from "./components/MyComm/MyComm";
 import YourRes from "./components/YourRes/YourRes";
 import ResResults from "./components/ResResults/ResResults";
 import InResults from "./components/ResResults/InResults";
-import Comcard from "./components/SelComm/Comcard";
+
 import DetailedComm from "./components/SelComm/DetailedCom";
-import ComGrid from "./components/SelComm/ComGrid";
+// import ComGrid from "./components/SelComm/ComGrid";
 import CommDetail from "./components/SelComm/CommDetail";
 function App() {
   const { user, setUser } = useAuthContext();

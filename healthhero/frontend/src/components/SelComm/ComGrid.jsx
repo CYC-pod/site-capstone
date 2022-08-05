@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect, useState, Text, StyleSheet, TouchableOpacity } from "react";
 import { useAuthContext } from "../../../AuthContext/auth";
-import Comcard from "./Comcard";
+import ComCard from "./ComCard";
 import { Box } from "@mui/system";
 // import { CommForm } from "../CommForm/Commform";
 import "./SelComm.css";
@@ -40,7 +40,7 @@ export default function ComGrid() {
     >
       {communities.map((comm, index) => {
         return (
-          <Comcard key={index} comm={comm} />
+          <ComCard key={index} comm={comm}/>
           // <Box
           //   key={index}
           //   sx={{
@@ -61,7 +61,7 @@ export default function ComGrid() {
   return (
     <div className="grid">
       <h1 className="header">Select A Community</h1>
-      {community?.map((comm, index) => (
+      {community?.map((comm, index) =>  (
         <ComCard key={index} comm={comm} />
       ))}
     </div>

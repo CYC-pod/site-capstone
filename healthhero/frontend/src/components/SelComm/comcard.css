@@ -7,6 +7,10 @@
   /* background-color: black; */
 }
 
+.commDescription{
+  color: black;
+}
+
 .CommCard {
   border: 1px darkgreen dotted;
   margin-right: 100px;
