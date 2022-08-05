@@ -26,37 +26,37 @@ const ColorButton = styled(Button)(({ theme }) => ({
   marginTop: "20px",
 }));
 export default function Diet() {
-  const [diets, setDiets] = useState([])
-  const [allergies, setAllergies] = useState([])
+  const [diets, setDiets] = useState([]);
+  const [allergies, setAllergies] = useState([]);
   const [errors, setErrors] = useState({});
   const [userRestrictions, setUserRestrictions] = useState({
-   restrictions:[]
+    restrictions: [],
   });
 
-
   useEffect(() => {
-    console.log("user Restrictions", userRestrictions)
-  }, [userRestrictions])
+    console.log("user Restrictions", userRestrictions);
+  }, [userRestrictions]);
 
   useEffect(() => {
     async function getDiets() {
-      const res = await apiClient.listDiets()
-      console.log("diets list", res)
-      setDiets(res.data.diets) //this needs to change 
+      const res = await apiClient.listDiets();
+      console.log("diets list", res);
+      setDiets(res.data.diets); //this needs to change
     }
     getDiets();
   }, []);
 
   useEffect(() => {
     async function getAllergies() {
-      const res = await apiClient.listAllergies()
-      setAllergies(res.data.allergies) //this need to change 
-      console.log("allergies list", res.data.allergies)
+      const res = await apiClient.listAllergies();
+      setAllergies(res.data.allergies); //this need to change
+      console.log("allergies list", res.data.allergies);
     }
     getAllergies();
   }, []);
 
-  const handleChange = (event) => { //this function should add to the userRestrictions array
+  const handleChange = (event) => {
+    //this function should add to the userRestrictions array
     var newValue = event.target.checked;
     console.log("checkbox was changed to: ", newValue);
     if (newValue) {
@@ -74,13 +74,19 @@ export default function Diet() {
     }
   };
 
-  const handleOnSubmit = async () => { //on submit add the restrictions to user_restrictions table 
-    console.log("in handle on submit")
+  const handleOnSubmit = async () => {
+    //on submit add the restrictions to user_restrictions table
+    console.log("in handle on submit");
     try {
-      console.log("user Restrictions in handle on submit",userRestrictions.restrictions )
-      const res = await apiClient.postUserRestrictions(userRestrictions.restrictions)
+      console.log(
+        "user Restrictions in handle on submit",
+        userRestrictions.restrictions
+      );
+      const res = await apiClient.postUserRestrictions(
+        userRestrictions.restrictions
+      );
       console.log(res);
-    }catch (err){
+    } catch (err) {
       console.log(err);
       const message = err?.response?.data?.error?.message;
       setErrors((e) => ({
@@ -88,13 +94,12 @@ export default function Diet() {
         form: message ? String(message) : String(err),
       }));
     }
-  }
-  
+  };
 
   return (
     <div className="diet">
       <div className="topD">
-      <br/>
+        <br />
         <h3 id="left">Dietary Groups</h3>
         {/* idk if this needs to b a filter bar like landing but for now  */}
 
@@ -127,41 +132,41 @@ export default function Diet() {
           )}
         />
       </div>
-      
-      <br/>
+
+      <br />
       {diets.map(({ id, name, type }) => {
-              return (
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={userRestrictions.restrictions[name]}
-                      onChange={handleChange}
-                      name={name}
-                    />
-                  }
-                  label={name}
-                />
-              );
-            })}
+        return (
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={userRestrictions.restrictions[name]}
+                onChange={handleChange}
+                name={name}
+              />
+            }
+            label={name}
+          />
+        );
+      })}
 
       {/* <DGroup /> */}
-      <br/>
+      <br />
       <h3 id="left">Allergies</h3>
       <div>
-      {allergies.map(({ id, name, type }) => {
-              return (
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={userRestrictions.restrictions[name]}
-                      onChange={handleChange}
-                      name={name}
-                    />
-                  }
-                  label={name}
+        {allergies.map(({ id, name, type }) => {
+          return (
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={userRestrictions.restrictions[name]}
+                  onChange={handleChange}
+                  name={name}
                 />
-              );
-            })}
+              }
+              label={name}
+            />
+          );
+        })}
 
         {/* <div>
           <FormControlLabel
@@ -203,7 +208,9 @@ export default function Diet() {
       </div>
       {/* <button> v </button>  not vibing w the button fr*/}
       <ColorButton variant="contained" onClick={handleOnSubmit}>
+        <a href="/communities" id="link">
           Submit Options
+        </a>
       </ColorButton>
     </div>
   );
