@@ -1,4 +1,3 @@
-
 CREATE TABLE school(
     id          SERIAL PRIMARY KEY,
     name        TEXT NOT NULL,  
@@ -54,6 +53,8 @@ CREATE TABLE community(
     name        TEXT NOT NULL,
     description TEXT NOT NULL,
     image_url   TEXT NOT NULL,
+    school_id   INTEGER,
+    FOREIGN KEY (school_id) REFERENCES school(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 

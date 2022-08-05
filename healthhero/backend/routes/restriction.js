@@ -11,6 +11,36 @@ router.get("/", async (req, res, next) => {
   }
 })
 
+router.get("/diets", async (req, res, next) => {
+    try{
+        console.log("gets to restrictions/diest endpoint")
+    const diets = await Restriction.listDiets()
+    return res.status(201).json({ diets: diets});
+    } catch (err) {
+    next(err);
+  }
+})
+
+router.get("/allergies", async (req, res, next) => {
+    try{
+    const allergies = await Restriction.listAllergies()
+    return res.status(201).json({ allergies: allergies});
+    } catch (err) {
+    next(err);
+  }
+})
+
+router.post("/user", async (req,res,next) => {
+  try{
+    const userRestrictions = req.body;
+    console.log("user restrictions in restriction model", userRestrictions)
+    const restrictions = await Restriction.postUserRestrictions(userRestrictions, res?.locals?.user?.id) 
+    return res.status(201).json({ restrictions: restrictions});
+  }catch(err){
+    next(err)
+  }
+})
+
 router.post("/", async (req, res, next) => {
     try{
         const restriction = req.body 
@@ -20,5 +50,6 @@ router.post("/", async (req, res, next) => {
         next(err);
     }
 })
+
 
 module.exports = router

@@ -44,9 +44,9 @@ class ApiClient {
   // async getNutrition() {
   //   return await this.request({ endpoint: `nutrition/`, method: `GET` });
   // }
-  async listcomm() {
-    const rescom = await this.request(`community/`, `GET`);
-    return rescom;
+  async listCommBySchool() {
+    const res = await this.request(`community/schoolcommunities`, `GET`);
+    return res;
   }
   async createPost(data, point) {
     return await this.request(point + `/`, `POST`, data);
@@ -73,6 +73,16 @@ class ApiClient {
     return res;
   }
 
+  async listDiets(){
+    const res = await this.request("restrictions/diets", "GET");
+    return res;
+  }
+
+  async listAllergies(){
+    const res = await this.request("restrictions/allergies", "GET");
+    return res;
+  }
+
   async listSchools(){
     const res = await this.request("schools", "GET")
     return res; 
@@ -82,6 +92,12 @@ class ApiClient {
     console.log("school id in apiClient" , schoolId)
     const data = {schoolId}
     return await this.request( `schools/userschool`, `PATCH`, data);
+  }
+
+  async postUserRestrictions(userRestrictions){
+    console.log("user restrictions in apiClient", userRestrictions)
+    const res = await this.request(`restrictions/user`, `POST`, userRestrictions);
+    return res;
   }
 }
 

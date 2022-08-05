@@ -10,15 +10,21 @@ import apiClient from "../../../services/apiClient";
 export default function ComGrid() {
   const { comm, setComm } = useAuthContext();
   const [communities, setCommunities] = useState([]);
+
   useEffect(() => {
-    async function Getcomm() {
-      const res = await apiClient.listcomm();
+    async function getComm() {
+      const res = await apiClient.listCommBySchool();
       console.log(res);
-      setCommunities(res.data.community);
-      console.log("community list", res.data.community);
+      setCommunities(res.data.communities);
+      console.log("community list", res.data.communities);
     }
-    Getcomm();
+    getComm();
   }, []);
+
+  useEffect(() => {
+    console.log("communities by school:" , communities)
+  }, [communities])
+
   return (
     <Box
       sx={{
