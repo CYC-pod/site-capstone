@@ -51,7 +51,7 @@ export default function SchoolsView() {
 
   useEffect(() => {
     async function getSchools() {
-      console.log("christian bryan")
+      console.log("christian bryan");
       const res = await apiClient.listSchools();
       setSchools(res.data.schools);
       console.log("school list", res.data.schools);
@@ -96,7 +96,7 @@ export default function SchoolsView() {
                 onClick={() => handleOnSchoolClick(school.id)}
                 key={i}
               >
-                <div id="schoolHome">
+                <div className="schoolHome">
                   <img src={school.image} alt={school.name} />
                 </div>
               </button>
@@ -166,8 +166,9 @@ export default function SchoolsView() {
         //     </div>
         //   </button>
         // </div> */}
-
-        <button className="liBrB">Load more schools</button>
+        <div>
+          <button className="liBrB">Load more schools</button>
+        </div>
       </div>
     </div>
   );

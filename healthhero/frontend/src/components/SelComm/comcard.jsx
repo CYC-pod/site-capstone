@@ -2,7 +2,7 @@ import * as React from "react";
 import apiClient from "../../../services/apiClient";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../../AuthContext/auth";
-import "./Comcard.css";
+import "../SelComm/comcard.css";
 
 export default function ComCard({ comm }) {
   // const { comm, setComm } = useAuthContext();

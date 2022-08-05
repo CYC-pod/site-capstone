@@ -1,8 +1,17 @@
-.commInfo{
-    color: black;
-    background-color: black;
+.commInfo {
+  color: black;
+  /* background-color: black; */
 }
-.commName{
-    color:black;
-    background-color: black;
+.commName {
+  color: black;
+  /* background-color: black; */
+}
+
+.CommCard {
+  border: 1px darkgreen dotted;
+  margin-right: 100px;
+  padding-bottom: 100px;
+  max-width: 600px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
