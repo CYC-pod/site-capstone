@@ -51,9 +51,10 @@ export default function SchoolsView() {
 
   useEffect(() => {
     async function getSchools() {
+      console.log("christian bryan")
       const res = await apiClient.listSchools();
-      setSchools(res.data.school);
-      console.log("school list", res.data.school);
+      setSchools(res.data.schools);
+      console.log("school list", res.data.schools);
     }
     getSchools();
   }, []);
