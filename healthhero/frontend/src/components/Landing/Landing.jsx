@@ -45,21 +45,21 @@ const ColorButton = styled(Button)(({ theme }) => ({
   />
 </>;
 export default function Landing() {
-  function TestBox() {
-    const styles = {
-      width: "50vw",
-      height: "50vh",
-      backgroundColor: "purple",
-      sm: { backgroundColor: "pink" },
-    };
-    return <Box sx={styles}></Box>;
-  }
+  // function TestBox() {
+  //   const styles = {
+  //     width: "50vw",
+  //     height: "50vh",
+  //     backgroundColor: "purple",
+  //     sm: { backgroundColor: "pink" },
+  //   };
+  //   return <Box sx={styles}></Box>;
+  // }
   return (
     <div className="landingPage">
       {/* <div>
         <img src="background: url(leaves.png);" alt="" />
       </div> */}
-      <TestBox />
+      {/* <TestBox /> */}
       <Hero></Hero>
       <h1 className="findYourSchool"> Find Your School! </h1>
       {/* <Slick /> */}
