@@ -84,8 +84,7 @@ export default function Register() {
         console.log(res.data);
         if (res?.data?.user?.type == "student") {
           console.log("hi");
-          // ? is a way to protect from null value so it doesnt affected other
-          navigate("/communities");
+          navigate("/");
         } else if (res?.data?.user?.type == "restaurant owner") {
           navigate("/restform");
         }
