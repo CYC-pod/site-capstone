@@ -82,7 +82,7 @@ export default function Slick() {
             </div>
           );
         })}
-          {/* <div id="schoolHome">
+          <div id="schoolHome">
             <img
               src={USC}
               onLoad={() => {
@@ -103,7 +103,7 @@ export default function Slick() {
           <div id="schoolHome">
             <img src={VT} alt="VT" />
             {/* <img src="/healthhero/frontend/src/img/vtt.png"></img> */}
-          {/*</div>
+          </div>
           <div id="schoolHome">
             <img src={USF} alt="USF" />
           </div>
@@ -113,7 +113,7 @@ export default function Slick() {
 
           <div id="schoolHome">
             <img src={UTEP} alt="uni of Texas El Paso" />
-          </div> */}
+          </div>
         </Slider>
       </div>
 

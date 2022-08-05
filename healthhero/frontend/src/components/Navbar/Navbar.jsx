@@ -13,13 +13,13 @@ import App from "../../App";
 import leafLogo from "../../img/Health Hero-2.png"
 import apiClient from "../../../services/apiClient";
 
-export default function Navbar({ logoutuser}) {
+export default function Navbar({logoutuser}) {
   const { user, setUser } = useAuthContext();
   
   console.log("user in nav bar: ", user)
 
   var isRest = false
-  if(user?.type == "Restaurant Owner")
+  if(user?.type == "restaurant owner")
   {
     console.log("user type in navbar", user.type)
     isRest = true; 
@@ -38,7 +38,8 @@ export default function Navbar({ logoutuser}) {
           >
             <MenuIcon />
           </IconButton>
-          <a href="/communities" id="link"> Communities </a>
+          <Button> <a href="/communities" id="link"> Communities </a> </Button>
+          <Button> <a href="/diet" id="link"> Diet </a> </Button>
           {/* make button/list item */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <a href="/" id="link"> <img className="leaflogo" src={leafLogo} alt="leaflogo"/> </a> 

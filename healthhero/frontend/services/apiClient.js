@@ -44,9 +44,9 @@ class ApiClient {
   // async getNutrition() {
   //   return await this.request({ endpoint: `nutrition/`, method: `GET` });
   // }
-  async listcomm() {
-    const rescom = await this.request(`community/`, `GET`);
-    return rescom;
+  async listCommBySchool() {
+    const res = await this.request(`community/schoolcommunities`, `GET`);
+    return res;
   }
   async createPost(data, point) {
     return await this.request(point + `/`, `POST`, data);

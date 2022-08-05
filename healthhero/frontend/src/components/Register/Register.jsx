@@ -9,11 +9,11 @@ export default function Register() {
   const { user, setUser } = useAuthContext();
   useEffect(() => {
     console.log("User in register: ", user);
- }, [user])
+  }, [user]);
 
- useEffect(() => {
-  console.log("rendering register form");
-}, [])
+  useEffect(() => {
+    console.log("rendering register form");
+  }, []);
 
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -76,38 +76,38 @@ export default function Register() {
 
     try {
       const res = await apiClient.request("auth/register", "post", form);
-        if (res?.data) {
-          setUser(res.data.user);
-          setIsLoading(false);
-          apiClient.setToken(res?.data?.token);
+      if (res?.data) {
+        setUser(res.data.user);
+        setIsLoading(false);
+        apiClient.setToken(res?.data?.token);
 
-          console.log(res.data);
-          if (res?.data?.user?.type == "student") {
-              console.log("hi");
-              // ? is a way to protect from null value so it doesnt affected other
-              navigate("/communities");
-          } else if (res?.data?.user?.type == "restaurant") {
-            navigate("/restform");
-          }
-          console.log("logged in");
-        } else {
-          setErrors((e) => ({
-            ...e,
-            form: "Invalid username/password combination",
-          }));
-          setIsLoading(false);
+        console.log(res.data);
+        if (res?.data?.user?.type == "student") {
+          console.log("hi");
+          // ? is a way to protect from null value so it doesnt affected other
+          navigate("/communities");
+        } else if (res?.data?.user?.type == "restaurant owner") {
+          navigate("/restform");
         }
-      } catch (err) {
-        console.log(err);
-        const message = err?.response?.data?.error?.message;
+        console.log("logged in");
+      } else {
         setErrors((e) => ({
           ...e,
-          form: message ? String(message) : String(err),
+          form: "Invalid username/password combination",
         }));
-      } finally {
         setIsLoading(false);
       }
-    };
+    } catch (err) {
+      console.log(err);
+      const message = err?.response?.data?.error?.message;
+      setErrors((e) => ({
+        ...e,
+        form: message ? String(message) : String(err),
+      }));
+    } finally {
+      setIsLoading(false);
+    }
+  };
   //     if (res?.data?.user) {
   //       //a way getting the user from the response if posiible
   //       // setAppState(res.data);
@@ -160,14 +160,12 @@ export default function Register() {
             className="type"
             id="users"
             defaultValue={form.type}
-            // onChange={handleOnInputChange}
+            onChange={handleOnInputChange}
           >
             {/* instead of form type we used text values so that in the res.data.user.type it can tell where to Navigate user based on type */}
             <option value="student"> Student </option>
             <option value="restaurant owner"> Restaurant Owner </option>
           </select>
-    
-   
 
           <div className="input-field">
             <label htmlFor="email">Email</label>

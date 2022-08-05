@@ -11,7 +11,18 @@ class Community {
     );
     return results.rows;
   }
-  static async PostCommunity(community, userId) {
+
+  static async listCommunitybySchool(schoolId){
+    const results = await db.query(
+      `SELECT *
+      FROM community 
+      WHERE school_id = $1;`,
+      [schoolId]
+    );
+    return results.rows;
+  }
+
+  static async PostCommunity(community, userId, school_id) {
     console.log(userId);
     if (community.name.length === 0) {
       throw new BadRequestError("No community name provided");
@@ -29,12 +40,13 @@ class Community {
                name,
                image_url,
                description,
-               user_id
+               user_id,
+               school_id
             )
-            VALUES ($1,$2,$3,$4)
-            RETURNING name,image_url, description, user_id;
+            VALUES ($1,$2,$3,$4,$5)
+            RETURNING name,image_url, description, user_id, school_id;
             `,
-      [community.name, community.image, community.description, userId]
+      [community.name, community.image, community.description, userId, school_id]
     );
     const results = result.rows[0];
     return results;
