@@ -1,5 +1,6 @@
 import "../ResResults/ResCard.css";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ResCard({ rest }) {
   const { id, image_url, name, description } = rest;

@@ -69,11 +69,26 @@ class Restrictions{
             `, [userId, restrictions[i]]
           )
         }
+        // added this recently not sure if its needed 
+        const results = result.rows[0];
+        return results;
+    }
+
+    static async listUserRestrictions(userID){
+        const result = await db.query(
+            `
+            SELECT restriction_name
+            FROM user_restriction
+            WHERE user_id = $1
+            `,
+            [userID]
+        )
+        const results = result.rows.map((row) => row.restriction_name)
+        return results;
     }
 }
 
 module.exports = Restrictions;
-
 
 /*
  - query to fetch restriction ID where name = "vegan"

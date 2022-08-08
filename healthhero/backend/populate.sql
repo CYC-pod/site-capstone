@@ -1,3 +1,5 @@
+\c healthhero
+
 drop table if exists school cascade;
 CREATE TABLE school(
     id          SERIAL PRIMARY KEY,

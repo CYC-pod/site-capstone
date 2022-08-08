@@ -21,6 +21,8 @@ export default function SelRes() {
       apiClient.setToken(token);
       fetchRes();
     }
+
+    console.log("hii")
   }, []);
   return (
     <Container
@@ -36,8 +38,10 @@ export default function SelRes() {
     >
       <Box sx={{ background: "inherit", width: "50%", height: "10vh", m: 3 }}>
         <h1> Your Restaurant Results</h1>
+        <ResGrid />
       </Box>
-      <ResGrid />
+    
+      
       {/* <Box
           sx={{ background: "purple", width: "10%", height: "10vh", m: 3 }}
         ></Box> */}

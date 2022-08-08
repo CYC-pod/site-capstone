@@ -49,8 +49,8 @@ class ApiClient {
     return res;
   }
   async listres() {
-    const resres = await this.request(`restaurant/`, `GET`);
-    return resres;
+    const res = await this.request(`restaurant/`, `GET`);
+    return res;
   }
   async createPost(data, point) {
     return await this.request(point + `/`, `POST`, data);
