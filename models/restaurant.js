@@ -7,10 +7,41 @@ class Restaurant {
     const results = await db.query(
       `SELECT *
       FROM restaurant
-      WHERE user_id = $1;`,
-      [userId]
+      `,
     );
     return results.rows;
+  }
+
+  static async listRestsByRestriction(userRestrictions){
+    console.log(userRestrictions)
+    const result = await db.query(
+      `
+      SELECT * 
+      FROM restaurant
+      INNER JOIN accommodation
+      ON restaurant.id = accommodation.restaurant_id
+      WHERE restriction_name = ANY ($1)
+      `,
+      [userRestrictions]
+    )
+    const results = result.rows
+    console.log("results in rest model: " , results)
+    return results
+  }
+
+  static async restaurantByAllRestrictions(userId){
+    const result = await db.query(
+      `
+      SELECT restaurantid FROM (SELECT COUNT (*) AS numMatches, r.id AS restaurantId
+      FROM accommodation as a, restaurant as r, (SELECT restriction_name FROM user_restriction WHERE user_id = $1) AS sur
+      WHERE r.id = a.restaurant_id AND a.restriction_name = sur.restriction_name GROUP BY r.id) AS nrm, (SELECT count (*)
+            FROM user_restriction 
+            WHERE user_id = $1) as sur
+      WHERE nrm.numMatches = count;
+      `,[userId]
+    );
+    const results = result.rows[0];
+    return results;
   }
 
   static async PostRests(restaurant, userId) {
@@ -67,9 +98,8 @@ class Restaurant {
         RETURNING restaurant_id, restriction_name
         `, [restaurant.id, restrictions[i]]
       )
-
     }
-    
   }
 }
+
 module.exports = Restaurant;

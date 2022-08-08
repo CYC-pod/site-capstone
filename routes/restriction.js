@@ -30,6 +30,7 @@ router.get("/allergies", async (req, res, next) => {
   }
 })
 
+
 router.post("/user", async (req,res,next) => {
   try{
     const userRestrictions = req.body;

@@ -3,7 +3,7 @@ const { BadRequestError } = require("../utils/errors");
 
 class Accommodation{
 
-    static async postAccommodation(accommodation){
+    static async postAccommodation(accommodation){ //check accomodation logic 
         const result = await db.query(
             `
             INSERT INTO accommodation(restaurant_id, restriction_id)
