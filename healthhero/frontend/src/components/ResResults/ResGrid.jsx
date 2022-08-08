@@ -11,6 +11,11 @@ export default function ResGrid() {
   //   const { rest, setRes } = useAuthContext();
 
   const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    console.log("hiiii")
+  }, []) 
+
   useEffect(() => {
     async function Getres() {
       const res = await apiClient.listres();
@@ -20,6 +25,11 @@ export default function ResGrid() {
     }
     Getres();
   }, []);
+
+  useEffect(() => {
+    console.log("restaurants array" , restaurants)
+  }, [restaurants]);
+
   return (
     <Box
       sx={{
