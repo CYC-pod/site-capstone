@@ -5,6 +5,21 @@ const { createUserJwt } = require("../utils/tokens");
 const security = require("../middleware/security");
 const router = express.Router();
 
+router.use((req,res,next) => {
+console.log("req query: " , req.query)
+next()
+})
+
+//end point to get restaurant restrictions array for a single restaurant 
+router.get("/restrictionsbyrest", security.requireAuthenticatedUser, async (req, res, next) => { 
+  try {
+    const restrictions = await Restaurant.listRestaurantRestrictions(req.query.restaurantid)
+    console.log(req.query)
+    return res.status(201).json({ restaurantRestrictions: restrictions });
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.get("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
@@ -38,6 +53,8 @@ router.get("/minrestriction", async (req, res, next) => { //change endpoint name
   next(err);
 }
 })
+
+
 
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
