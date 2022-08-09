@@ -22,7 +22,18 @@ router.get("/minrestriction", async (req, res, next) => { //change endpoint name
     const userRestrictions = await Restriction.listUserRestrictions(res?.locals?.user?.id) //array with user restriction names
     console.log("user Restrictions: ", userRestrictions) 
     const restaurants = await Restaurant.listRestsByRestriction(userRestrictions)
-  return res.status(201).json({ restaurants: restaurants});
+    let restautantList = {}
+    for(let restaurant of restaurants){
+      if(!restautantList[restaurant.restaurant_id]){
+        restautantList[restaurant.restaurant_id] = restaurant
+        restautantList[restaurant.restaurant_id].restriction_name = [restautantList[restaurant.restaurant_id].restriction_name]
+      }
+      else{
+        restautantList[restaurant.restaurant_id].restriction_name.push(restaurant.restriction_name)
+      }
+    }
+    restautantList = Object.values(restautantList)
+  return res.status(201).json({ restaurants: restautantList});
   } catch (err) {
   next(err);
 }
