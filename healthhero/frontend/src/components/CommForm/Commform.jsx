@@ -17,9 +17,9 @@ export default function CommForm() {
     description: "",
   });
 
-  useEffect(() => {
-    console.log("user changed: ", user);
-  }, [user]);
+  // useEffect(() => {
+  //   // console.log("user changed: ", user);
+  // }, [user]);
 
   // useEffect(() => {
   //   // if user is not logged in,
@@ -79,7 +79,7 @@ export default function CommForm() {
 
       console.log(res);
       if (res?.data?.community) {
-        const { comm, setComm } = useAuthContext();
+        // const { comm, setComm } = useAuthContext();
         //To do save community data somewhere
         // apiClient.setToken(res.data.token);
         setIsLoading(false);

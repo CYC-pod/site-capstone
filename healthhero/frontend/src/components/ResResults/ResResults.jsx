@@ -8,12 +8,12 @@ import ResGrid from "./ResGrid";
 import "../ResResults/ResResults.css";
 
 export default function SelRes() {
-  const { rest, setRest } = useAuthContext();
+  const { resres, setRes } = useAuthContext();
   const { restaurant, setRestaurant } = useAuthContext();
   useEffect(() => {
     const fetchRes = async () => {
       const { data, error } = await apiClient.listres();
-      if (data) setRest(data.restaurant);
+      if (data) setRes(data.restaurant);
     };
 
     const token = localStorage.getItem("life-starter-token");

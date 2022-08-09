@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useEffect} from "react"
+import { useEffect } from "react";
 import apiClient from "../../../services/apiClient";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../../AuthContext/auth";
@@ -11,11 +11,12 @@ export default function ComCard({ comm }) {
   // console.log(commId)
 
   useEffect(() => {
-   console.log("hiiii")
-   console.log("community image: ", comm.image_url)
+    console.log("hiiii");
+    console.log("community image: ", comm.image_url);
   }, []);
 
   const { id, image_url, name, description } = comm; //containing them to contain these 3 keys
+
   return (
     <div className="CommCard">
       <Link to={"/commDescript/" + id} className="media">
@@ -25,7 +26,9 @@ export default function ComCard({ comm }) {
         <h1 className="commName"> {name} </h1>
       </div>
       <div className="commDescription">
-        <p> {description} </p>
+        {description ? (
+          <p className="product-description">{description}</p>
+        ) : null}
       </div>
     </div>
   );

@@ -48,9 +48,17 @@ class ApiClient {
     const res = await this.request(`community/schoolcommunities`, `GET`);
     return res;
   }
+  // async List
+
   async listres() {
     const resres = await this.request(`restaurant/`, `GET`);
     return resres;
+  }
+
+  async listRestsbyId() {
+    const resId = await this.request(`restaurant/restaurant`, `GET`);
+    console.log("res id returned by api call", resId);
+    return resId;
   }
   async createPost(data, point) {
     return await this.request(point + `/`, `POST`, data);
@@ -100,6 +108,10 @@ class ApiClient {
     console.log("school id in apiClient", schoolId);
     const data = { schoolId };
     return await this.request(`schools/userschool`, `PATCH`, data);
+  }
+
+  async createRestaurant(restaurantForm){
+    return await this.request("restaurat/create", "post", restaurantForm)
   }
 
   async postUserRestrictions(userRestrictions) {
