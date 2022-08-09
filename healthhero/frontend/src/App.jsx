@@ -12,14 +12,15 @@ import Landing from "./components/Landing/Landing";
 import apiClient from "../services/apiClient";
 import Slick from "./components/Slick/Slick";
 import SchoolsView from "./components/SchoolsView/SchoolsView";
-import CommForm from "./components/CommForm/Commform";
+import Commform from "./components/CommForm/Commform";
 import Diet from "./components/Diet/Diet";
 import Prof from "./components/Prof/Prof";
 import SelComm from "./components/SelComm/SelComm";
+import ViewRes from "./components/Restform/viewRest";
 import MyComm from "./components/MyComm/MyComm";
 import YourRes from "./components/YourRes/YourRes";
 import ResResults from "./components/ResResults/ResResults";
-import InResults from "./components/ResResults/InResults";
+// import InResults from "./components/ResResults/InResults";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
 // import ComGrid from "./components/SelComm/ComGrid";
@@ -151,12 +152,19 @@ function App() {
             </>
           }
         />
-        <Route path="/commForm" element={<CommForm />} />
         <Route
-          path="/myRes"
+          path="/commForm"
           element={
             <>
-              <YourRes />
+              <Commform />
+            </>
+          }
+        />
+        <Route
+          path="/viewrest"
+          element={
+            <>
+              <ViewRes />
             </>
           }
         />
@@ -168,7 +176,7 @@ function App() {
             </>
           }
         />
-        <Route
+        {/* <Route
           path="/resResults/specific"
           // would matter on id / which restaurant
           element={
@@ -176,7 +184,7 @@ function App() {
               <InResults />
             </>
           }
-        />
+        /> */}
         <Route
           path="/commDescript/:commid"
           element={

@@ -8,8 +8,6 @@ import "./ResGrid.css";
 import apiClient from "../../../services/apiClient";
 
 export default function ResGrid() {
-  //   const { rest, setRes } = useAuthContext();
-
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
@@ -43,9 +41,9 @@ export default function ResGrid() {
         justifyContent: "flex-start",
       }}
     >
-      {restaurants.map((rest, index) => {
+      {restaurants.map((resres, index) => {
         return (
-          <ResCard key={index} rest={rest} />
+          <ResCard key={index} resres={resres} />
           // <Box
           //   key={index}
           //   sx={{
