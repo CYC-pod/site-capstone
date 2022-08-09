@@ -1,9 +1,10 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-
+import { AuthContextProvider, useAuthContext } from "../../../AuthContext/auth";
 import { brown } from "@mui/material/colors";
 import "../MyComm/MyComm.css";
+import { useState, useEffect } from "react";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif",
@@ -16,21 +17,27 @@ const ColorButton = styled(Button)(({ theme }) => ({
   alignItems: "center",
 }));
 export default function MyComm() {
+  const { user, setUser } = useAuthContext(); //from prof
+  const [userRestrictions, setUserRestrictions] = useState({
+    restrictions: [],
+  });
+  React.useEffect(() => {
+    console.log("user in prof :", user);
+  }, [user]);
+
   return (
     <div className="myCom">
-      <h1>Welcome court!</h1>
-      {/* if user exists show user.username if not (ternary) show null
-      {user ? message : null} */}
-      {/* fancy stuff to make username appear here^ (like props or sum) */}
+      <h1>Welcome {user ? user.username : null}</h1>
 
-      <h3 id="left">My Dietary Groups</h3>
-      <ColorButton variant="contained">
+      <h3 id="left">My Restrictions</h3>
+      {/* <ColorButton variant="contained">
         <a href="/commForm" id="link">
           Create Community
         </a>
-      </ColorButton>
+      </ColorButton> */}
       <div className="circles">
-        <div id="roundP"> Vegan</div>
+        <div id="roundP"> </div>
+        {/* trying to put in {userRestrictions} */}
         <div id="roundP"> Keto </div>
         <div id="roundP"> Cheeseterian</div>
       </div>

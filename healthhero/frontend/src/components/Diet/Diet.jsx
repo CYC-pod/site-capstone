@@ -23,6 +23,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
     backgroundColor: brown[700],
   },
   alignItems: "center",
+  alignContent: "center",
   marginTop: "20px",
 }));
 export default function Diet() {
@@ -207,11 +208,14 @@ export default function Diet() {
         {/* <Checkbox {...label} sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }} /> */}
       </div>
       {/* <button> v </button>  not vibing w the button fr*/}
-      <ColorButton variant="contained" onClick={handleOnSubmit}>
-        <a href="/ResResults" id="link">
-          Submit Options
-        </a>
-      </ColorButton>
+      <div>
+        {/* flex id here^ */}
+        <ColorButton variant="contained" onClick={handleOnSubmit}>
+          <a href="/ResResults" id="link">
+            Submit Options
+          </a>
+        </ColorButton>
+      </div>
     </div>
   );
 }

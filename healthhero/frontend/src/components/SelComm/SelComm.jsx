@@ -12,6 +12,8 @@ import { brown } from "@mui/material/colors";
 // import { CommForm } from "../CommForm/Commform";
 import "./SelComm.css";
 
+//style diff based off breakpoints n media query
+
 export default function SelComm() {
   const { comm, setComm } = useAuthContext();
   const { community, setCommunity } = useAuthContext();
@@ -37,6 +39,18 @@ export default function SelComm() {
     alignItems: "center",
     marginTop: "20px",
   }));
+
+  const ColorButton1 = styled(Button)(({ theme }) => ({
+    fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif",
+    float: "right",
+    color: theme.palette.getContrastText(brown[500]),
+    backgroundColor: brown[500],
+    "&:hover": {
+      backgroundColor: brown[700],
+    },
+    // alignItems: "center",
+    // float: "right",
+  }));
   return (
     <Container
       className="communities"
@@ -49,9 +63,35 @@ export default function SelComm() {
       }} //2 brackets for its object.. setting the container
       maxWidth={false}
     >
-      <Box sx={{ background: "green", width: "50%", height: "10vh", m: 3 }}>
+      <Box
+        sx={{
+          background: "green",
+          width: "50%",
+          height: "10vh",
+          m: 3,
+          borderRadius: "16px",
+          // alignItems: "center",
+          // justifyContent: "center",
+          // justifyItems: "center",
+        }}
+      >
         <h1> Select A Community</h1>
       </Box>
+      {/* <Box
+        sx={{
+          background: "lightgreen",
+          width: "20%",
+          height: "10vh",
+          m: 1,
+          // float: "right",
+          // marginRight: "1000px",
+        }}
+      ></Box> */}
+      <ColorButton1 variant="contained">
+        <a href="/commForm" id="link">
+          Create Community
+        </a>
+      </ColorButton1>
       <ComGrid />
       <Box
         sx={{ background: "darkseagreen", width: "10%", height: "10vh", m: 3 }}
