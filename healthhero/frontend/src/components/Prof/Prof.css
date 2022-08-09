@@ -5,6 +5,7 @@
   background: #0e3804;
   border-radius: 20px;
   justify-content: center;
+  align-items: center;
 }
 #profTitle p {
   text-align: center;
