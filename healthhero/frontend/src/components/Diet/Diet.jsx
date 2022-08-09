@@ -33,7 +33,8 @@ export default function Diet() {
   const [userRestrictions, setUserRestrictions] = useState({
     restrictions: [],
   });
-  const [filBoxValD, setFilBoxValD] = useState(""); //filtering for all restricts (as ofrn)
+  const [filBoxValD, setFilBoxValD] = useState("");
+  const [filBoxValA, setFilBoxValA] = useState(""); //filtering for all restricts (as ofrn)
   //toggle switch for which searching, can include diff options to search too
   //make search so that checkboc can still be there --> include checked
 
@@ -41,9 +42,13 @@ export default function Diet() {
     const { name } = restrictions; //decons
     return name.toLowerCase().includes(filBoxValD.toLowerCase());
   };
-  const handleFilChangeD = (ev, value) => {
-    setFilBoxValD(ev.target.value); //mui is calling
 
+  const handleFilChangeD = (ev, value) => {
+    if (ev.target.checked) {
+      console.log("✅ Checkbox is checked");
+    } else {
+      setFilBoxValD(ev.target.value); //mui is calling
+    }
     console.log(value);
   };
 
@@ -149,7 +154,7 @@ export default function Diet() {
       </div>
 
       <br />
-      {diets.filter(filD).map(({ id, name, type }) => {
+      {diets.map(({ id, name, type, i }) => {
         return (
           <FormControlLabel
             control={
@@ -157,6 +162,7 @@ export default function Diet() {
                 checked={userRestrictions.restrictions[name]}
                 onChange={handleChange}
                 name={name}
+                key={i}
               />
             }
             label={name}
@@ -168,7 +174,7 @@ export default function Diet() {
       <br />
       <h3 id="left">Allergies</h3>
       <div>
-        {allergies.map(({ id, name, type }) => {
+        {allergies.filter(filD).map(({ id, name, type }) => {
           return (
             <FormControlLabel
               control={

@@ -42,6 +42,7 @@ export default function MyComm() {
         </a>
       </ColorButton> */}
       <div className="circles">
+        {/* {userRestrictions.map()} to populate thru it*/}
         <div id="roundP"> </div>
         {/* trying to put in {userRestrictions} */}
         <div id="roundP"> Keto </div>
