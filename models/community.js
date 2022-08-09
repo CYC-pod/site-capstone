@@ -12,7 +12,7 @@ class Community {
     return results.rows;
   }
 
-  static async listCommunitybySchool(schoolId){
+  static async listCommunitybySchool(schoolId) {
     const results = await db.query(
       `SELECT *
       FROM community 
@@ -20,6 +20,14 @@ class Community {
       [schoolId]
     );
     return results.rows;
+  }
+  static async listCommbyId(id) {
+    const results = await db.query(
+      `SELECT *
+      FROM community 
+      WHERE id = $1;`,
+      [id]
+    ); // listing a single comm
   }
 
   static async PostCommunity(community, userId, school_id) {
@@ -46,7 +54,13 @@ class Community {
             VALUES ($1,$2,$3,$4,$5)
             RETURNING name,image_url, description, user_id, school_id;
             `,
-      [community.name, community.image, community.description, userId, school_id]
+      [
+        community.name,
+        community.image,
+        community.description,
+        userId,
+        school_id,
+      ]
     );
     const results = result.rows[0];
     return results;
