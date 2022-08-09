@@ -22,8 +22,8 @@ export default function ComGrid() {
   }, []);
 
   useEffect(() => {
-    console.log("communities by school:" , communities)
-  }, [communities])
+    console.log("communities by school:", communities);
+  }, [communities]);
 
   return (
     <Box
@@ -40,7 +40,7 @@ export default function ComGrid() {
     >
       {communities.map((comm, index) => {
         return (
-          <ComCard key={index} comm={comm}/>
+          <ComCard key={index} comm={comm} description={false} />
           // <Box
           //   key={index}
           //   sx={{
@@ -61,7 +61,7 @@ export default function ComGrid() {
   return (
     <div className="grid">
       <h1 className="header">Select A Community</h1>
-      {community?.map((comm, index) =>  (
+      {community?.map((comm, index) => (
         <ComCard key={index} comm={comm} />
       ))}
     </div>

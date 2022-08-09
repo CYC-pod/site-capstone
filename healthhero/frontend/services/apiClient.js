@@ -48,10 +48,21 @@ class ApiClient {
     const res = await this.request(`community/schoolcommunities`, `GET`);
     return res;
   }
-  async listres() {
+  async listres() { //lists all restaurants probs dont need 
     const res = await this.request(`restaurant/`, `GET`);
     return res;
   }
+
+  async listRestsbyId() {
+    const resId = await this.request(`restaurant/restaurant`, `GET`);
+    console.log("res id returned by api call", resId);
+    return resId;
+  }
+  async listMinRestaurants(){
+    const res = await this.request(`restaurant/minrestriction`, `GET`);
+    return res; 
+  }
+
   async createPost(data, point) {
     return await this.request(point + `/`, `POST`, data);
   }
@@ -72,9 +83,14 @@ class ApiClient {
     return res;
   }
 
-  async listRestrictions() {
+  async listRestrictions() { //lists all restrictions for restaurant form 
     const res = await this.request("restrictions", "GET");
     return res;
+  }
+
+  async listUserRestrictions(){//lists user restrictions 
+    const res = await this.request("restrictions/user", "GET")
+    return res; 
   }
 
   async listDiets() {
@@ -100,6 +116,10 @@ class ApiClient {
     console.log("school id in apiClient", schoolId);
     const data = { schoolId };
     return await this.request(`schools/userschool`, `PATCH`, data);
+  }
+
+  async createRestaurant(restaurantForm){
+    return await this.request("restaurat/create", "post", restaurantForm)
   }
 
   async postUserRestrictions(userRestrictions) {

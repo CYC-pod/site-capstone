@@ -47,24 +47,11 @@ useEffect(()=>{
           >
             <MenuIcon />
           </IconButton>
-          <Button>
-            {" "}
-            <a href="/communities" id="link">
-              {" "}
-              Communities{" "}
-            </a>{" "}
-          </Button>
-          <Button>
-            {" "}
-            <a href="/diet" id="link">
-              {" "}
-              Diet{" "}
-            </a>{" "}
-          </Button>
+          {isStudent ? (<Button> <a href="/communities" id="link"> Communities </a> </Button>) : null}
+          {isStudent ? (<Button> <a href="/diet" id="link"> Diet </a> </Button>) : null}
           {/* make button/list item */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <a href="/" id="link">
-              {" "}
               <img className="leaflogo" src={leafLogo} alt="leaflogo" />{" "}
             </a>
           </Typography>

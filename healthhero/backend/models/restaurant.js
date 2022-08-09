@@ -3,17 +3,17 @@ const { BadRequestError } = require("../utils/errors");
 
 class Restaurant {
   static async listRests(userId) {
-    console.log("userId: " , userId)
+    console.log("userId: ", userId);
     const results = await db.query(
       `SELECT *
       FROM restaurant
-      `,
+      `
     );
     return results.rows;
   }
 
-  static async listRestsByRestriction(userRestrictions){
-    console.log(userRestrictions)
+  static async listRestsByRestriction(userRestrictions) {
+    console.log(userRestrictions);
     const result = await db.query(
       `
       SELECT * 
@@ -23,13 +23,13 @@ class Restaurant {
       WHERE restriction_name = ANY ($1)
       `,
       [userRestrictions]
-    )
-    const results = result.rows
-    console.log("results in rest model: " , results)
-    return results
+    );
+    const results = result.rows;
+    console.log("results in rest model: ", results);
+    return results;
   }
 
-  static async restaurantByAllRestrictions(userId){
+  static async restaurantByAllRestrictions(userId) {
     const result = await db.query(
       `
       SELECT restaurantid FROM (SELECT COUNT (*) AS numMatches, r.id AS restaurantId
@@ -38,10 +38,23 @@ class Restaurant {
             FROM user_restriction 
             WHERE user_id = $1) as sur
       WHERE nrm.numMatches = count;
-      `,[userId]
+      `,
+      [userId]
     );
     const results = result.rows[0];
     return results;
+  }
+
+  static async listRestsbyId(user) {
+    console.log("user: ", user);
+    console.log("email :", user.email);
+    const results = await db.query(
+      `SELECT *
+      FROM restaurant
+      WHERE user_id = (select id from users where email = $1);`,
+      [user.email]
+    );
+    return results.rows;
   }
 
   static async PostRests(restaurant, userId) {
@@ -82,22 +95,44 @@ class Restaurant {
     return results;
   }
 
-    static async UpdateRests(restaurant, userId) {
-      req.body = ` UPDATE restaurant
+  static async UpdateRests(restaurant, userId) {
+    req.body = ` UPDATE restaurant
       SET column1 = value1, column2 = value2...., columnN = valueN
       WHERE [condition];`;
   }
 
-  static async addAccommodation(restaurant, restrictions){
-    for(let i = 0; i < restrictions.length ; i++)
-    {
+  static async createRestaurant(user, restaurantForm) {
+    // id          SERIAL PRIMARY KEY,
+    // user_id     INTEGER,
+    // name        TEXT NOT NULL,
+    // location    INTEGER,
+    // image_url   TEXT,
+    // description TEXT NOT NULL,
+    // FOREIGN KEY
+
+    await db.query(
+      `insert into restaurant (user_id, name, location, image_url, description)
+      values ((select id from users where email = $1), $2, $3, $4, $5)`,
+      [
+        user.email,
+        restaurantForm.name,
+        restaurantForm.location,
+        restaurantForm.image,
+        restaurantForm.description,
+      ]
+    );
+  }
+
+  static async addAccommodation(restaurant, restrictions) {
+    for (let i = 0; i < restrictions.length; i++) {
       const result = await db.query(
         `
         INSERT INTO Accommodation(restaurant_id, restriction_name)
         VALUES ($1,$2)
         RETURNING restaurant_id, restriction_name
-        `, [restaurant.id, restrictions[i]]
-      )
+        `,
+        [restaurant.id, restrictions[i]]
+      );
     }
   }
 }

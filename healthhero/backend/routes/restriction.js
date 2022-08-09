@@ -30,6 +30,14 @@ router.get("/allergies", async (req, res, next) => {
   }
 })
 
+router.get("/user", async (req,res,next) => {
+  try{
+    const userRestrictions = await Restriction.listUserRestrictions(res?.locals?.user?.id)
+    return res.status(201).json({ restrictions: userRestrictions});
+  }catch(err){
+    next(err)
+  }
+})
 
 router.post("/user", async (req,res,next) => {
   try{

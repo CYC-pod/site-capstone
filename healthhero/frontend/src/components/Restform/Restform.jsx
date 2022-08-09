@@ -23,7 +23,6 @@ export default function Restform() {
   //     navigate("/login")
   //   }
   // }, [])
-  
 
   const [form, setForm] = useState({
     name: "",
@@ -42,13 +41,13 @@ export default function Restform() {
     getRestrictions();
   }, []);
 
-  useEffect(() => {
-    console.log("restrictions variable", restrictions);
-  }, [restrictions]);
+  // useEffect(() => {
+  //   console.log("restrictions variable", restrictions);
+  // }, [restrictions]);
 
-  useEffect(() => {
-    console.log("restrictions array in form", form.restrictions);
-  }, [form.restrictions]);
+  // useEffect(() => {
+  //   console.log("restrictions array in form", form.restrictions);
+  // }, [form.restrictions]);
 
   const handleChange = (event) => {
     var newValue = event.target.checked;
@@ -124,9 +123,13 @@ export default function Restform() {
     }
 
     try {
-      const res = await apiClient.request("restaurant", "post", form);
+      const res = await apiClient.request("restaurant/create", "post", form);
+
+      const restaurants = await apiClient.listRestsbyId()
+      console.log("restaurants", restaurants)
+
       console.log(res);
-      if (res?.data?.restaurant) {
+      if (restaurants?.data?.restaurants) {
         //TO DO set restform data somewhere
         // apiClient.setToken(res.data.token);
         setIsLoading(false);
