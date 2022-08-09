@@ -12,8 +12,28 @@ import "../Diet/Diet.css";
 import { useState, useEffect } from "react";
 import apiClient from "../../../services/apiClient";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
+import "../DGroups/DGroups.css";
+
 const dietaryG = ["Vegan", "Keto", "Vegetarian"];
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
+<script
+  src="https://kit.fontawesome.com/cf9f7f67f7.js"
+  crossorigin="anonymous"
+></script>;
+
+var settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  arrows: false,
+  //prob get slider dots out of the way
+};
 
 const ColorButton = styled(Button)(({ theme }) => ({
   fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif",
@@ -27,6 +47,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
   marginTop: "20px",
 }));
 export default function Diet() {
+  const [sliderRef, setSliderRef] = useState(null);
   const [diets, setDiets] = useState([]);
   const [allergies, setAllergies] = useState([]);
   const [errors, setErrors] = useState({});
@@ -154,7 +175,7 @@ export default function Diet() {
       </div>
 
       <br />
-      {diets.map(({ id, name, type, i }) => {
+      {/* {diets.map(({ id, name, type, i }) => {
         return (
           <FormControlLabel
             control={
@@ -168,9 +189,43 @@ export default function Diet() {
             label={name}
           />
         );
-      })}
+      })} */}
 
-      {/* <DGroup /> */}
+      <div className="contentD">
+        <div className="leftbtton">
+          <button onClick={sliderRef?.slickPrev} className="liBrB butRight">
+            {"<"}
+          </button>
+        </div>
+
+        <div className="sliderD">
+          <Slider ref={setSliderRef} {...settings}>
+            {diets.map(({ id, name, type, i }) => {
+              return (
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={userRestrictions.restrictions[name]}
+                      onChange={handleChange}
+                      name={name}
+                      key={i}
+                      sx={{ "& .MuiSvgIcon-root": { fontSize: 60 } }}
+                    />
+                  }
+                  label={name}
+                />
+              );
+            })}
+          </Slider>
+        </div>
+
+        <div className="rightbtton">
+          <button onClick={sliderRef?.slickNext} className="liBrB butLeft">
+            {">"}
+          </button>
+        </div>
+      </div>
+
       <br />
       <h3 id="left">Allergies</h3>
       <div>

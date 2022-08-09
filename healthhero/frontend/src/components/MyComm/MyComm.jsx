@@ -34,6 +34,7 @@ export default function MyComm() {
   return (
     <div className="myCom">
       <h1>Welcome {user ? user.username : null}</h1>
+      {/* to upper */}
 
       <h3 id="left">My Restrictions</h3>
       {/* <ColorButton variant="contained">
@@ -42,7 +43,17 @@ export default function MyComm() {
         </a>
       </ColorButton> */}
       <div className="circles">
-        {/* {userRestrictions.map()} to populate thru it*/}
+        {/* {userRestrictions.map()} */}
+        {userRestrictions.map(({ i, restriction }) => {
+          return (
+            <div>
+              <p> {userRestrictions.restrictions[name]}</p>
+
+              <p> {restriction.type}</p>
+            </div>
+          );
+        })}
+
         <div id="roundP"> </div>
         {/* trying to put in {userRestrictions} */}
         <div id="roundP"> Keto </div>
