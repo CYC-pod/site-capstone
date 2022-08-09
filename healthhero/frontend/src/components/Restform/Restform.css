@@ -73,8 +73,8 @@ option {
   color: #795548;
 }
 
-.Restaurant .input-field input {
-  height: 40px;
+.Restaurant  input  {
+  height: 40px; 
   padding: 8px;
   font-size: 16px;
   border: solid 1px var(--border-color);
@@ -84,6 +84,20 @@ option {
 
   /* rgb(72, 129, 92); */
   /* color: azure; */
+}
+
+.text-field-input {
+  /* height: 40px; */
+  padding: 8px;
+  font-size: 16px;
+  border: solid 1px var(--border-color);
+  /* width: 100%; */
+  background-color: #adc89c;
+  border-radius: 10px;
+
+}
+.text-field{
+  width: 100%;
 }
 ::placeholder {
   color: rgb(247, 245, 240);
