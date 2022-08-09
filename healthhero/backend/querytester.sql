@@ -17,9 +17,13 @@
 --             FROM user_restriction
 --             WHERE user_id = 2) AS sur;
 
-SELECT restaurantid FROM (SELECT COUNT (*) AS numMatches, r.id AS restaurantId
-  FROM accommodation as a, restaurant as r, (SELECT restriction_name FROM user_restriction WHERE user_id = 2) AS sur
-  WHERE r.id = a.restaurant_id AND a.restriction_name = sur.restriction_name GROUP BY r.id) AS nrm, (SELECT count (*)
-            FROM user_restriction 
-            WHERE user_id = 2) as sur
-  WHERE nrm.numMatches = count;
+-- SELECT restaurantid FROM (SELECT COUNT (*) AS numMatches, r.id AS restaurantId
+--   FROM accommodation as a, restaurant as r, (SELECT restriction_name FROM user_restriction WHERE user_id = 2) AS sur
+--   WHERE r.id = a.restaurant_id AND a.restriction_name = sur.restriction_name GROUP BY r.id) AS nrm, (SELECT count (*)
+--             FROM user_restriction 
+--             WHERE user_id = 2) as sur
+--   WHERE nrm.numMatches = count;
+
+SELECT restriction_name
+      FROM accommodation 
+      WHERE restaurant_id = 11;
