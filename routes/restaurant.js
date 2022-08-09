@@ -15,6 +15,18 @@ router.get("/", security.requireAuthenticatedUser, async (req, res, next) => {
   }
 });
 
+router.get("/restaurant", security.requireAuthenticatedUser, async (req, res, next) => {
+  try {
+    // let { id } = res.locals.user;
+    // console.log("res locals: " , res.locals.user)
+    const user = res.locals.user
+    const restaurant = await Restaurant.listRestsbyId(user);
+    return res.status(201).json({ restaurants: restaurant });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
     let { id } = res.locals.user;
@@ -29,6 +41,21 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
     next(err);
   }
 });
+
+router.post("/create", security.requireAuthenticatedUser, async(req, res, next) => {
+  try{
+
+    const restaurantForm = req.body;
+    const user = res.locals.user
+
+    await Restaurant.createRestaurant(user, restaurantForm)
+
+    res.status(201).json({status : "Succcess"})
+
+  }catch(error){
+    next(error)
+  }
+})
 
 router.put(
   "/restaurant/:id",
