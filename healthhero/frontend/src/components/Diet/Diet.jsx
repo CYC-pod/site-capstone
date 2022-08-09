@@ -33,6 +33,19 @@ export default function Diet() {
   const [userRestrictions, setUserRestrictions] = useState({
     restrictions: [],
   });
+  const [filBoxValD, setFilBoxValD] = useState(""); //filtering for all restricts (as ofrn)
+  //toggle switch for which searching, can include diff options to search too
+  //make search so that checkboc can still be there --> include checked
+
+  const filD = (restrictions) => {
+    const { name } = restrictions; //decons
+    return name.toLowerCase().includes(filBoxValD.toLowerCase());
+  };
+  const handleFilChangeD = (ev, value) => {
+    setFilBoxValD(ev.target.value); //mui is calling
+
+    console.log(value);
+  };
 
   useEffect(() => {
     console.log("user Restrictions", userRestrictions);
@@ -105,6 +118,7 @@ export default function Diet() {
         {/* idk if this needs to b a filter bar like landing but for now  */}
 
         <Autocomplete
+          onInputChange={handleFilChangeD}
           sx={{
             display: "inline-block",
             float: "right",
@@ -135,7 +149,7 @@ export default function Diet() {
       </div>
 
       <br />
-      {diets.map(({ id, name, type }) => {
+      {diets.filter(filD).map(({ id, name, type }) => {
         return (
           <FormControlLabel
             control={

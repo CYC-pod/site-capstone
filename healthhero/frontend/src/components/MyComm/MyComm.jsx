@@ -5,6 +5,7 @@ import { AuthContextProvider, useAuthContext } from "../../../AuthContext/auth";
 import { brown } from "@mui/material/colors";
 import "../MyComm/MyComm.css";
 import { useState, useEffect } from "react";
+import apiClient from "../../../services/apiClient";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif",
@@ -18,13 +19,18 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 export default function MyComm() {
   const { user, setUser } = useAuthContext(); //from prof
-  const [userRestrictions, setUserRestrictions] = useState({
-    restrictions: [],
-  });
+  const [userRestrictions, setUserRestrictions] = useState([]);
   React.useEffect(() => {
     console.log("user in prof :", user);
   }, [user]);
-
+  React.useEffect(() => {
+    async function getRestrictions() {
+      const res = await apiClient.listUserRestrictions();
+      setUserRestrictions(res.data.restrictions);
+      console.log("res", res.data.restrictions);
+    }
+    getRestrictions();
+  }, []);
   return (
     <div className="myCom">
       <h1>Welcome {user ? user.username : null}</h1>

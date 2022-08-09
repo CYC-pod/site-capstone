@@ -43,6 +43,7 @@ export default function SchoolsView() {
 
   const handleFilChange = (ev, value) => {
     setFilBoxVal(ev.target.value); //mui is calling
+
     console.log(value);
   };
 
@@ -65,9 +66,10 @@ export default function SchoolsView() {
     }
     getSchools();
   }, []);
+
   const fil = (school) => {
     const { name } = school; //decons
-    return name.includes(filBoxVal);
+    return name.toLowerCase().includes(filBoxVal.toLowerCase());
   };
 
   //applying to every el in arr.
