@@ -78,6 +78,11 @@ class ApiClient {
     return res;
   }
 
+  async listRestaurantRestrictions(restaurantId){
+    const res = await this.request(`restaurant/restrictionsbyrest?restaurantid=${restaurantId}`, "GET")
+    return res;
+  }
+
   async listRestrictions() { //lists all restrictions for restaurant form 
     const res = await this.request("restrictions", "GET");
     return res;
