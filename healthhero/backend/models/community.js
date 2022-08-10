@@ -28,6 +28,7 @@ class Community {
       WHERE id = $1;`,
       [id]
     ); // listing a single comm
+    return results.rows ? results.rows[0]: null ;
   }
 
   static async PostCommunity(community, userId, school_id) {

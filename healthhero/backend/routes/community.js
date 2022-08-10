@@ -32,15 +32,17 @@ router.get(
 );
 
 router.get(
-  "/communityid",
+  "/communityid/:id",
   security.requireAuthenticatedUser,
   async (req, res, next) => {
+    console.log(req.params); //
     try {
       const user = await User.fetchUserByEmail(res.locals.user.email);
-      let commid = res.id;
+      let commid = req.params.id;
       console.log("comm Id in community router", commid);
       const community = await Community.listCommbyId(commid);
-      return res.status(201).json({ community: community });
+      console.log("comm in route", community);
+      return res.status(200).json({ community: community });
     } catch (err) {
       next(err);
     }

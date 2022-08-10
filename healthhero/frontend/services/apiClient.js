@@ -60,8 +60,8 @@ class ApiClient {
     console.log("res id returned by api call", resId);
     return resId;
   }
-  async listCommbyId() {
-    const comId = await this.request(`community/communityid`, `GET`);
+  async listCommbyId(id) {
+    const comId = await this.request(`community/communityid/${id}`, `GET`);
     console.log("comm id returned by api call", comId);
     return comId;
   }

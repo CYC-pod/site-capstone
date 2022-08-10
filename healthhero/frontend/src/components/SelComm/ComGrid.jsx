@@ -28,7 +28,7 @@ export default function ComGrid() {
   return (
     <Box
       sx={{
-        background: "white",
+        // background: "white",
         width: "80%",
 
         m: 3,
@@ -40,7 +40,7 @@ export default function ComGrid() {
     >
       {communities.map((comm, index) => {
         return (
-          <ComCard key={index} comm={comm} description={false} />
+          <ComCard key={index} comm={comm} showdescription={false} />
           // <Box
           //   key={index}
           //   sx={{
