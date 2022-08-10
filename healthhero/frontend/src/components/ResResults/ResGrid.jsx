@@ -202,7 +202,7 @@ export default function ResGrid() {
         .filter((restaurant) => checker(restaurant.restriction_name, selected))
         .map((rest, index) => {
           return (
-            <ResCard key={index} rest={rest} />
+            <ResCard key={index} rest={rest} showdescription={false} />
           );
         })}
 

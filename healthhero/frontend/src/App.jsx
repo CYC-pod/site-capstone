@@ -23,6 +23,7 @@ import ResResults from "./components/ResResults/ResResults";
 // import InResults from "./components/ResResults/InResults";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
+import ResDetail from "./components/ResResults/ResDetail";
 // import ComGrid from "./components/SelComm/ComGrid";
 
 function App() {
@@ -191,8 +192,29 @@ function App() {
             <>
               <DetailedComm />
             </>
+            
           }
         />
+          <Route
+          path="/commDescript/:id"
+          element={
+            <>
+              <DetailedComm />
+            </>
+            
+          }
+        />
+          <Route
+          path="/resDescript/:id"
+          element={
+            <>
+              <ResDetail />
+            </>
+            
+          }
+        />
+         
+         
       </Routes>
     </>
   );
