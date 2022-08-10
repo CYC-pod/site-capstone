@@ -41,19 +41,6 @@ export default function ComGrid() {
       {communities.map((comm, index) => {
         return (
           <ComCard key={index} comm={comm} description={false} />
-          // <Box
-          //   key={index}
-          //   sx={{
-          //     background: "yellow",
-          //     width: "1in",
-          //     height: "1in",
-          //     m: 3,
-          //     borderRadius: ".5in",
-          //     color: "black",
-          //   }}
-          // >
-          //   {index + 1}
-          // </Box>
         );
       })}
     </Box>

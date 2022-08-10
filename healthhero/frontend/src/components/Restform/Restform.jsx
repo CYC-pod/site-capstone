@@ -125,8 +125,7 @@ export default function Restform() {
     }
 
     try {
-      const res = await apiClient.request("restaurant/create", "post", form);
-
+      const res = await apiClient.request("restaurant", "POST", form);
       const restaurants = await apiClient.listRestsbyId();
       console.log("restaurants", restaurants);
 

@@ -83,7 +83,8 @@ class ApiClient {
     return res;
   }
 
-  async listRestaurantRestrictions(restaurantId){
+  async listRestaurantRestrictions(restaurantId){ //lists restaurant restrictions for a single restaurant 
+    console.log("rest id in api client", restaurantId)
     const res = await this.request(`restaurant/restrictionsbyrest?restaurantid=${restaurantId}`, "GET")
     return res;
   }
@@ -123,9 +124,11 @@ class ApiClient {
     return await this.request(`schools/userschool`, `PATCH`, data);
   }
 
-  async createRestaurant(restaurantForm){
-    return await this.request("restaurat/create", "post", restaurantForm)
-  }
+  // async createRestaurant(restaurantForm){
+  //   const res = await this.request("restaurant/create", "POST", restaurantForm)
+  //   console.log("whats returned from restaurant/create: " , res.data)
+  //   return res; 
+  // }
 
   async postUserRestrictions(userRestrictions) {
     console.log("user restrictions in apiClient", userRestrictions);
