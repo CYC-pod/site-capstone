@@ -114,14 +114,7 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/prof"
-          element={
-            <>
-              <Prof />
-            </>
-          }
-        />
+
         <Route
           path="/restForm"
           element={
@@ -145,7 +138,7 @@ function App() {
           }
         />
         <Route
-          path="/myCommunities"
+          path="/prof"
           element={
             <>
               <MyComm />
