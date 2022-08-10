@@ -15,6 +15,16 @@ export default function ComCard({ comm }) {
     console.log("community image: ", comm.image_url);
   }, []);
 
+  useEffect(() =>
+  {
+  
+    console.log("description", description)
+  })
+  useEffect(() =>
+  {
+  
+    console.log("id", id)
+  })
   const { id, image_url, name, description } = comm; //containing them to contain these 3 keys
 
   return (

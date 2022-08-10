@@ -190,7 +190,7 @@ function App() {
           element={
             <>
               <CommDetail />
-              <DetailedComm />
+              {/* <DetailedComm /> */}
             </>
           }
         />
