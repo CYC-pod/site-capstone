@@ -22,6 +22,8 @@ CREATE TABLE restaurant(
     location    INTEGER,
     image_url   TEXT,
     description TEXT NOT NULL,
+    school_id   INTEGER,
+    FOREIGN KEY (school_id) REFERENCES school(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
