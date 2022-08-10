@@ -21,6 +21,7 @@ class Restaurant {
       `, [restaurantId]
     )
     const results = result.rows.map((row) => row.restriction_name)
+    console.log("results in model" , results)
     return results;
   }
 
