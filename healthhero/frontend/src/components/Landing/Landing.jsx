@@ -10,6 +10,7 @@ import { purple } from "@mui/material/colors";
 import { brown } from "@mui/material/colors";
 // import USC from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.webp";
 import Hero from "../HeroBar/Hero";
+import { Container } from "@mui/system";
 
 // const useStyles = makeStyles(
 //   //adding for MUI res
@@ -55,19 +56,27 @@ export default function Landing() {
   //   return <Box sx={styles}></Box>;
   // }
   return (
-    <div className="landingPage">
+    <Container
+      className="landingPage"
+      sx={{
+        flexGrow: 1,
+        background: " #fffaec",
+        alignItems: "stretch",
+        display: "flex",
+        flexDirection: "column",
+      }} //2 brackets for its object.. setting the container
+      maxWidth={false}
+    >
+      {/* //{" "}
+      <div className="landingPage">
+        {" "}
+        commenting out to attemmpt to use container */}
       {/* <div>
         <img src="background: url(leaves.png);" alt="" />
       </div> */}
-      {/* <TestBox /> */}
+
       <Hero></Hero>
       <h1 className="findYourSchool"> Find Your School! </h1>
-      {/* <Slick /> */}
-
-      {/* 
-      swiper js for carousel? */}
-
-      {/* // src="LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.png" */}
 
       <Stack
         direction="column"
@@ -83,6 +92,8 @@ export default function Landing() {
           </a>
         </ColorButton>
       </Stack>
-    </div>
+      {/* //{" "}
+      </div> */}
+    </Container>
   );
 }
