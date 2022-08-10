@@ -88,7 +88,8 @@ class ApiClient {
     return res;
   }
 
-  async listRestaurantRestrictions(restaurantId){
+  async listRestaurantRestrictions(restaurantId){ //lists restaurant restrictions for a single restaurant 
+    console.log("rest id in api client", restaurantId)
     const res = await this.request(`restaurant/restrictionsbyrest?restaurantid=${restaurantId}`, "GET")
     return res;
   }
@@ -103,17 +104,17 @@ class ApiClient {
     return res; 
   }
 
-  async listDiets() {
+  async listDiets() { //lists all diets from restrictions table 
     const res = await this.request("restrictions/diets", "GET");
     return res;
   }
 
-  async listAllergies() {
+  async listAllergies() {  //lists all allergies from restrictions table 
     const res = await this.request("restrictions/allergies", "GET");
     return res;
   }
 
-  async listSchools() {
+  async listSchools() { //lists all schools 
     const res = await this.request("schools", "GET");
     return res;
   }
@@ -122,17 +123,19 @@ class ApiClient {
   //   return res;
   // }
 
-  async addSchoolToUser(schoolId) {
+  async addSchoolToUser(schoolId) { //allows school id to attach to user once they click a school icon
     console.log("school id in apiClient", schoolId);
     const data = { schoolId };
     return await this.request(`schools/userschool`, `PATCH`, data);
   }
 
-  async createRestaurant(restaurantForm) {
-    return await this.request("restaurat/create", "post", restaurantForm);
-  }
+  // async createRestaurant(restaurantForm){
+  //   const res = await this.request("restaurant/create", "POST", restaurantForm)
+  //   console.log("whats returned from restaurant/create: " , res.data)
+  //   return res; 
+  // }
 
-  async postUserRestrictions(userRestrictions) {
+  async postUserRestrictions(userRestrictions) { //adds user's restrictions to table based on checkbox responses 
     console.log("user restrictions in apiClient", userRestrictions);
     const res = await this.request(
       `restrictions/user`,
@@ -141,6 +144,18 @@ class ApiClient {
     );
     return res;
   }
+  
+  async addUserToComm(commId){ //adds user and community to user_community table 
+    const res = await this.request(`community/addusertocomm`, `POST`, commId);
+    return res
+  }
+
+  async listUsersInComm(commId){
+    const res = await this.request(`community/listusersincomm/${commId}`, `GET`);
+  }
+
 }
+
+
 
 export default new ApiClient("http://localhost:3001");

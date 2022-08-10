@@ -6,16 +6,33 @@ const security = require("../middleware/security");
 const router = express.Router();
 
 router.use((req,res,next) => {
-console.log("req query: " , req.query)
+console.log("req query: " , req.query.restaurantid)
 next()
+})
+
+router.post("/create", security.requireAuthenticatedUser, async(req, res, next) => {
+  try{
+
+    const restaurantForm = req.body;
+    const user = res.locals.user
+
+    console.log("rest form restrictions", restaurantForm.restrictions)
+    const restaurant = await Restaurant.createRestaurant(user, restaurantForm)
+
+    res.status(201).json({status : restaurant})
+
+  }catch(error){
+    next(error)
+  }
 })
 
 //end point to get restaurant restrictions array for a single restaurant 
 router.get("/restrictionsbyrest", security.requireAuthenticatedUser, async (req, res, next) => { 
   try {
     const restrictions = await Restaurant.listRestaurantRestrictions(req.query.restaurantid)
-    console.log(req.query)
-    return res.status(201).json({ restaurantRestrictions: restrictions });
+    console.log("req.query.restaurantid: ", req.query.restaurantid)
+    console.log("restrictions in backend: ", restrictions)
+    return res.status(201).json({ restrictions: restrictions });
   } catch (err) {
     next(err);
   }
@@ -92,20 +109,7 @@ router.get("/allrestrictions", security.requireAuthenticatedUser, async (req, re
    }
   })
 
-router.post("/create", security.requireAuthenticatedUser, async(req, res, next) => {
-  try{
 
-    const restaurantForm = req.body;
-    const user = res.locals.user
-
-    await Restaurant.createRestaurant(user, restaurantForm)
-
-    res.status(201).json({status : "Succcess"})
-
-  }catch(error){
-    next(error)
-  }
-})
 
 router.put(
   "/restaurant/:id",
