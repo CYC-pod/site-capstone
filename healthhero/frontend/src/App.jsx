@@ -24,7 +24,7 @@ import ResResults from "./components/ResResults/ResResults";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
 // import ComGrid from "./components/SelComm/ComGrid";
-import CommDetail from "./components/SelComm/CommDetail";
+
 function App() {
   const { user, setUser } = useAuthContext();
   const navigateTo = useNavigate();
@@ -186,10 +186,9 @@ function App() {
           }
         /> */}
         <Route
-          path="/commDescript/:commid"
+          path="/commDescript/:id"
           element={
             <>
-              <CommDetail />
               <DetailedComm />
             </>
           }

@@ -28,6 +28,7 @@ class Community {
       WHERE id = $1;`,
       [id]
     ); // listing a single comm
+    return results.rows ? results.rows[0]: null ;
   }
 
   static async PostCommunity(community, userId, school_id) {
@@ -51,10 +52,11 @@ class Community {
                user_id,
                school_id
             )
-            VALUES ($1,$2,$3,$4,$5)
-            RETURNING name,image_url, description, user_id, school_id;
+            VALUES ($1,$2,$3,$4,$5, $6)
+            RETURNING id, name,image_url, description, user_id, school_id;
             `,
       [
+        community.id,
         community.name,
         community.image,
         community.description,

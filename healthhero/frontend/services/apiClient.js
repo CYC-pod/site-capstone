@@ -63,6 +63,11 @@ class ApiClient {
     return res; 
   }
 
+  async listCommbyId(id) {
+    const comId = await this.request(`community/communityid/${id}`, `GET`);
+    console.log("comm id returned by api call", comId);
+    return comId;
+  }
   async createPost(data, point) {
     return await this.request(point + `/`, `POST`, data);
   }
@@ -123,8 +128,8 @@ class ApiClient {
     return await this.request(`schools/userschool`, `PATCH`, data);
   }
 
-  async createRestaurant(restaurantForm){
-    return await this.request("restaurat/create", "post", restaurantForm)
+  async createRestaurant(restaurantForm) {
+    return await this.request("restaurat/create", "post", restaurantForm);
   }
 
   async postUserRestrictions(userRestrictions) {
