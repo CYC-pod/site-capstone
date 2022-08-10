@@ -65,6 +65,29 @@ class Community {
     const results = result.rows[0];
     return results;
   }
+
+
+  static async addUserToComm(userId, commId){
+    const result = await db.query(
+      `
+      INSERT INTO user_community(user_id, community_id)
+      VALUES ($1,$2)
+      RETURNING user_id, community_id
+      `,
+      [userId, commId]
+    );
+  }
+
+  static async listUsersInComm(commId){
+    const result = await db.query(
+      `SELECT user_id
+      FROM user_community 
+      WHERE community_id = $1;`,
+      [commId]
+    );
+    const results = result.rows.map((row) => row.user_id)
+    return results;
+  }
 }
 
 module.exports = Community;

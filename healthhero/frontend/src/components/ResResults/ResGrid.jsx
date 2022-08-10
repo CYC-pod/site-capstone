@@ -30,11 +30,15 @@ export default function ResGrid() {
   const [restaurants, setRestaurants] = useState([]);
   const [filter, setFilter] = useState("");
   const [userRestrictions, setUserRestrictions] = useState([]);
-  const [selected, setSelected] = useState([]);
+  const [diets, setDiets] = useState([]);
+  const [allergies, setAllergies] = useState([]);
+  const [selectedDiet, setSelectedDiet] = useState([]);
+  const [selectedAllergy, setSelectedAllergy] = useState([]);
+  const [selected, setSelected] = useState([])
 
-  useEffect(() => {
-    console.log("hiiii");
-  }, []);
+  // useEffect(() => {
+  //   console.log("hiiii");
+  // }, []);
 
   useEffect(() => {
     async function getRes() {
@@ -57,22 +61,67 @@ export default function ResGrid() {
   }, []);
 
   useEffect(() => {
-    console.log("filter value is: ", filter);
-  }, [filter]);
+    async function getDiets() {
+      const res = await apiClient.listDiets();
+      console.log("diets list", res.data.diets);
+      setDiets(res.data.diets); //this needs to change
+    }
+    getDiets();
+  }, []);
+
+  useEffect(() => {
+    async function getAllergies() {
+      const res = await apiClient.listAllergies();
+      setAllergies(res.data.allergies); //this need to change
+      console.log("allergies list", res.data.allergies);
+    }
+    getAllergies();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log("allergies from api call: " , allergies)
+  // }, [])
+
+  // useEffect(() => {
+  //   console.log("diets from api call: " , diets)
+  // }, [])
+
+  // useEffect(() => {
+  //   console.log("filter value is: ", filter);
+  // }, [filter]);
 
   useEffect(() => {
     console.log("selected restrictions array", selected);
   }, [selected]);
 
-  const handleChange = (event) => {
+  const handleChange1 = (event) => {
     const {
       target: { value },
     } = event;
-    setSelected(
+    setSelectedDiet(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
   };
+
+  const handleChange2 = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setSelectedAllergy(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
+
+  useEffect(()=>{
+    setSelected([...selectedDiet, ...selectedAllergy])
+  },[selectedDiet, selectedAllergy])
+
+  useEffect(()=>{
+    console.log(selected)
+  },[selected])
+
 
   let checker = (arr, target) => target.every((v) => arr.includes(v));
 
@@ -100,59 +149,63 @@ export default function ResGrid() {
         justifyContent: "flex-start",
       }}
     >
-      <div>
+      <div> *
+        {/* drop down filter for diets  */}
         <FormControl sx={{ m: 1, width: 300 }}>
           <InputLabel id="demo-multiple-checkbox-label">
-            {" "}
-            Dietary Options
+           Form 1
           </InputLabel>
           <Select
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
             multiple
-            value={selected}
-            onChange={handleChange}
+            value={selectedDiet}
+            onChange={handleChange1}
             input={<OutlinedInput label="Tag" />}
-            renderValue={(selected) => selected.join(", ")}
+            renderValue={(selectedDiet) => selectedDiet.join(", ")}
             MenuProps={MenuProps}
           >
-            {userRestrictions.map((restriction) => (
-              <MenuItem key={restriction} value={restriction}>
-                <Checkbox checked={selected.indexOf(restriction) > -1} />
-                <ListItemText primary={restriction} />
+            {diets.map((restriction) => (
+              <MenuItem key={restriction.name} value={restriction.name}>
+                <Checkbox checked={selectedDiet.indexOf(restriction.name) > -1} />
+                <ListItemText primary={restriction.name} />
               </MenuItem>
             ))}
           </Select>
         </FormControl>
-      </div>
+
+        {/* drop down filter for allergies  */}
+        <FormControl sx={{ m: 1, width: 300 }}>
+          <InputLabel id="demo-multiple-checkbox-label">
+              Form 2
+          </InputLabel>
+          <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            multiple
+            value={selectedAllergy}
+            onChange={handleChange2}
+            input={<OutlinedInput label="Tag" />}
+            renderValue={(selectedAllergy) => selectedAllergy.join(", ")}
+            MenuProps={MenuProps}
+          >
+            {allergies.map((restriction) => (
+              <MenuItem key={restriction.name} value={restriction.name}>
+                <Checkbox checked={selectedAllergy.indexOf(restriction.name) > -1} />
+                <ListItemText primary={restriction.name} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+       </div>
       {restaurants
         .filter((restaurant) => checker(restaurant.restriction_name, selected))
         .map((rest, index) => {
           return (
             <ResCard key={index} rest={rest} />
-            // <Box
-            //   key={index}
-            //   sx={{
-            //     background: "yellow",
-            //     width: "1in",
-            //     height: "1in",
-            //     m: 3,
-            //     borderRadius: ".5in",
-            //     color: "black",
-            //   }}
-            // >
-            //   {index + 1}
-            // </Box>
           );
         })}
+
     </Box>
-  );
-  return (
-    <div className="grid">
-      <h1 className="header">Select A Community</h1>
-      {community?.map((comm, index) => (
-        <ComCard key={index} comm={comm} />
-      ))}
-    </div>
   );
 }
