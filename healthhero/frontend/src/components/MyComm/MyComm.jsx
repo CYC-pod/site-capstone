@@ -1,88 +1,3 @@
-// import * as React from "react";
-// import { styled } from "@mui/material/styles";
-// import Button from "@mui/material/Button";
-// import { AuthContextProvider, useAuthContext } from "../../../AuthContext/auth";
-// import { brown } from "@mui/material/colors";
-
-// import { useState, useEffect } from "react";
-// import apiClient from "../../../services/apiClient";
-// import { Container } from "@mui/system";
-
-// // const ColorButton = styled(Button)(({ theme }) => ({
-// //   fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif",
-// //   float: "right",
-// //   color: theme.palette.getContrastText(brown[500]),
-// //   backgroundColor: brown[500],
-// //   "&:hover": {
-// //     backgroundColor: brown[700],
-// //   },
-// //   alignItems: "center",
-// // }));
-// export default function MyComm() {
-//   const { user, setUser } = useAuthContext(); //from prof
-//   const [userRestrictions, setUserRestrictions] = useState([]);
-//   React.useEffect(() => {
-//     console.log("user in prof :", user);
-//   }, [user]);
-//   React.useEffect(() => {
-//     async function getRestrictions() {
-//       const res = await apiClient.listUserRestrictions();
-//       setUserRestrictions(res.data.restrictions);
-//       console.log("res", res.data.restrictions);
-//     }
-//     getRestrictions();
-//   }, []);
-//   return (
-//     <Container
-//       className="myCom"
-//       sx={{
-//         flexGrow: 1,
-//         // alignItems: "stretch",
-//         display: "flex",
-//         flexDirection: "column",
-//       }}
-//       maxWidth={false}
-//     >
-//       {/* <div className="myCom"> */}
-//       <h1>Welcome {user ? user.username : null}</h1>
-//       {/* to upper/title here */}
-//       <h3 id="left">My Info</h3>
-//       <div>
-//         <h3 id="left">My Restrictions</h3>
-//         <div className="circles">
-//           {/* {userRestrictions.map()} */}
-//           {/* {userRestrictions.map(({ i, restriction }) => {
-//           return (
-//             <div>
-//               <p> {userRestrictions.restriction[name]}</p>
-
-//               <p> {restriction.type}</p>
-//             </div>
-//           );
-//         })} */}
-
-//           <div id="roundP"> </div>
-//           {/* trying to put in {userRestrictions} */}
-//           <div id="roundP"> Keto </div>
-//           <div id="roundP"> Cheeseterian</div>
-//         </div>
-//       </div>
-
-//       <h3 id="left">My Communities</h3>
-//       <div className="circles">
-//         <div id="rect"> USC milk lovers</div>
-
-//         <div id="rect"> LA area candy outings</div>
-//         <div id="rect"> Reusable foodies</div>
-//       </div>
-
-//       <button className="liBrB">{"v"}</button>
-//       {/* load more */}
-//       {/* </div> */}
-//     </Container>
-//   );
-// }
-
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -96,20 +11,25 @@ import "../MyComm/MyComm.css";
 import { useState, useEffect } from "react";
 import apiClient from "../../../services/apiClient";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  // change color of grid bground
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
 export default function MyComm() {
   const { user, setUser } = useAuthContext(); //from prof
-  const [userRestrictions, setUserRestrictions] = useState([]);
+  var isRest = false;
+  var isStudent = false;
+
+  if (user?.type == "restaurant owner") {
+    console.log("user type in navbar", user.type);
+    isRest = true; //yes Restaurant!
+    isStudent = false;
+  } else if (user?.type == "student") {
+    //user is student
+    isRest = false;
+    isStudent = true; //yes Student!
+  }
+
+  // const [userRestrictions, setUserRestrictions] = useState([]);
   const [diets, setDie] = useState([]);
   const [allergies, setAlls] = useState([]);
+  const [comms, setcomms] = useState([]);
   // console.log(user.school_id);
   useEffect(() => {
     async function getDiets() {
@@ -127,6 +47,85 @@ export default function MyComm() {
     getAlls();
   }, []);
 
+  const style = {
+    color: "black",
+    backgroundColor: "FFFAEC",
+  };
+  return (
+    <Stack direction="column" sx={{ flexGrow: 1 }}>
+      <Box sx={style}>
+        <h1 className="title"> Welcome {user ? user.username : null} </h1>
+      </Box>
+      <Grid container spacing={2} sx={style}>
+        <Grid item xs={12} lg={8}>
+          <Box
+            sx={{
+              backgroundColor: "beige",
+              // height: "3in",
+              borderRadius: "10px",
+            }}
+          >
+            {isStudent ? (
+              <h3 id="left">My Restrictions</h3>
+            ) : (
+              <h3 id="left">My Restaurants</h3>
+            )}
+            {/* code for title of upper box dep on user^ */}
+            {isStudent ? (
+              <div>
+                <div></div>
+
+                <div className="circles">
+                  {diets.map((diet) => {
+                    return <div className="smoval">{diet.name}</div>;
+                  })}
+                  {allergies.map((allergy) => {
+                    return <div className="smoval2">{allergy.name}</div>;
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div>
+                <p>insert res data here</p>
+              </div>
+            )}
+          </Box>
+          <Box
+            sx={{
+              backgroundColor: "darkseagreen",
+              height: "3in",
+              borderRadius: "10px",
+            }}
+          >
+            {isStudent ? (
+              <>
+                <h3 id="left">My Communities</h3>
+              </>
+            ) : null}
+          </Box>
+        </Grid>
+        <Grid item xs={12} lg={4}>
+          <Box
+            sx={{
+              backgroundColor: "green",
+              borderRadius: "10px",
+              height: "3in",
+            }}
+          >
+            <h3 id="left">My Info</h3>
+            <div className="info">
+              <p> You are a {user ? user.type : null}</p>
+
+              <p>Email : {user ? user.email : null}</p>
+              {isStudent ? <p>school info here too</p> : null}
+
+              {/* <p> School : {user ? credentials.school_id : null}</p> */}
+            </div>
+          </Box>
+        </Grid>
+      </Grid>
+    </Stack>
+  );
   return (
     <Container
       className="myCom"
@@ -144,50 +143,26 @@ export default function MyComm() {
 
       <Grid container spacing={1}>
         {/* sx={{ width: "100vw", height: "100vh" }} */}
-        <Grid container xs={12} sm={7} lg={9}>
+        <Grid container>
+          {/* xs={12} sm={7} lg={9} */}
           <Stack spacing={2} flex="1 1">
             {/* before was 1 1 0 */}
-            <h3 id="left">My Restrictions</h3>
-            <Item>
-              <div></div>
-              {/* need to widen boxes */}
-              <div className="circles">
-                {diets.map((diet) => {
-                  return (
-                    <div className="smoval">
-                      {diet.name}
-                      {/* <p>{diet.type}</p> */}
-                    </div>
-                  );
-                })}
-                {allergies.map((allergy) => {
-                  return <div className="smoval2">{allergy.name}</div>;
-                })}
-              </div>
-            </Item>
-            <h3 id="left">My Communities</h3>
-            <Item>hiiiii</Item>
           </Stack>
         </Grid>
 
-        <Grid
-          container
-          item
-          xs={12}
-          sm={5}
-          lg={3}
-          sx={{ paddingTop: "0", marginTop: "4%" }}
-        >
-          <Item sx={{ padding: "2%", width: "80%", paddingTop: "0" }}>
+        <Grid container item sx={{ paddingTop: "0" }}>
+          {/* xs={12} sm={5} lg={3} */}
+          <div sx={{ padding: "1rem", paddingTop: "0" }}>
             <h3 id="left">My Info</h3>
             <div className="info">
               <p> You are a {user ? user.type : null}</p>
 
               <p>Email : {user ? user.email : null}</p>
-              <p>school info here too</p>
+              {isStudent ? <p>school info here too</p> : null}
+
               {/* <p> School : {user ? credentials.school_id : null}</p> */}
             </div>
-          </Item>
+          </div>
         </Grid>
       </Grid>
     </Container>

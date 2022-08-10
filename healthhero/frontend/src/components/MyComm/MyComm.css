@@ -36,7 +36,9 @@
 
 .title {
   text-transform: capitalize;
+  color: rgb(101, 55, 2);
 }
+
 .smoval {
   background-color: #dde7c7;
   color: #0e3804;
