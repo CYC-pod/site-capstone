@@ -31,15 +31,19 @@ router.get(
   }
 );
 
-router.get("/usercommunities", security.requireAuthenticatedUser, async (req, res, next) => {
-  try {
-    let { id } = res.locals.user;
-    const userCommunities = await Community.listCommsOfUser(id);
-    return res.status(201).json({ userCommunities: userCommunities });
-  } catch (err) {
-    next(err);
+router.get(
+  "/usercommunities",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      let { id } = res.locals.user;
+      const userCommunities = await Community.listCommsOfUser(id);
+      return res.status(201).json({ userCommunities: userCommunities });
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 router.get(
   "/communityid/:id",
@@ -76,12 +80,20 @@ router.get(
   }
 );
 
-router.post("/addusertocomm", security.requireAuthenticatedUser, async (req, res, next) => {
-  try {
-    const commId = res.data.commId; //!is this right probs yes
-    await Community.addUserToComm(res?.locals?.user?.id, commId) 
-    // await Community.addUserToComm(10, 2) hard coded for testing 
-    return res.status(201).json({ community: `User ${res?.locals?.user?.id} added community ${commId}` });
+router.post(
+  "/addusertocomm",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      const commId = res.data.commId; //!is this right probs yes
+      await Community.addUserToComm(res?.locals?.user?.id, commId);
+      // await Community.addUserToComm(10, 2) hard coded for testing
+      return res
+        .status(201)
+        .json({
+          community: `User ${res?.locals?.user?.id} added community ${commId}`,
+        });
+    } catch {}
   }
 );
 

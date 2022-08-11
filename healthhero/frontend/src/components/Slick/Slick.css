@@ -5,6 +5,34 @@
   justify-content: center;
   justify-items: center; */
 }
+/* .schoolHome img:hover {
+  border: 2px red solid;
+} */
+#yas img {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: all 1s ease;
+}
+
+#yas img:hover {
+  filter: grayscale(0%);
+  filter: rgb(160, 159, 159);
+  -webkit-filter: grayscale(0%);
+  filter: none;
+  transition: 0.5s ease;
+}
+
+#okur img {
+  transition: 1s ease;
+}
+
+#okur img:hover {
+  -webkit-transform: rotateZ(-10deg);
+  -ms-transform: rotateZ(-10deg);
+  transform: rotateZ(-10deg);
+  transition: 1s ease;
+}
+
 .slider {
   /* max-width: 800px;
   min-width: 800px; */

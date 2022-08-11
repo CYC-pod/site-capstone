@@ -7,4 +7,4 @@ CREATE DATABASE healthhero;
 
 \i healthhero-schema.sql
 
--- \i populate.sql
+\i populate.sql

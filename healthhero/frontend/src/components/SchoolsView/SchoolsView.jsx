@@ -111,7 +111,7 @@ export default function SchoolsView() {
                 className="schoolButton"
                 onClick={() => handleOnSchoolClick(school.id)}
               >
-                <div className="schoolHome">
+                <div className="schoolHome" id="yas">
                   <img src={school.image} alt={school.name} />
                 </div>
               </button>
