@@ -45,7 +45,7 @@ router.get(
   "/communityid/:id",
   security.requireAuthenticatedUser,
   async (req, res, next) => {
-    console.log(req.params); //
+    console.log("params", req.params); //
     try {
       const user = await User.fetchUserByEmail(res.locals.user.email);
       let commid = req.params.id;
@@ -61,16 +61,20 @@ router.get(
 
 /* put this in comm file apiClient.listUsersInComm(commId)*/
 
-router.get("/listusersincomm/:commId", security.requireAuthenticatedUser, async (req, res, next) => {
-  try {
-    const commId = res.params.commId; //!is this right? Probs yes
-    const usersInComm = await Community.listUsersInComm(commId)
-    console.log("users in community: ", usersInComm)
-    return res.status(201).json({ usersInComm: usersInComm });
-  }catch(err){
-    next(err)
+router.get(
+  "/listusersincomm/:commId",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      const commId = res.params.commId; //!is this right?
+      const usersInComm = await Community.listUsersInComm(commId);
+      console.log("users in community: ", usersInComm);
+      return res.status(201).json({ usersInComm: usersInComm });
+    } catch (err) {
+      next(err);
+    }
   }
-})
+);
 
 router.post("/addusertocomm", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
@@ -79,10 +83,7 @@ router.post("/addusertocomm", security.requireAuthenticatedUser, async (req, res
     // await Community.addUserToComm(10, 2) hard coded for testing 
     return res.status(201).json({ community: `User ${res?.locals?.user?.id} added community ${commId}` });
   }
-  catch(err){
-    next(err);
-  } 
- })
+);
 
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
