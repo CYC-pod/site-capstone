@@ -12,21 +12,22 @@ class Restaurant {
     return results.rows;
   }
 
-  static async listRestaurantRestrictions(restaurantId){
+  static async listRestaurantRestrictions(restaurantId) {
     const result = await db.query(
       `
       SELECT restriction_name
       FROM accommodation 
       WHERE restaurant_id = $1
-      `, [restaurantId]
-    )
-    const results = result.rows.map((row) => row.restriction_name)
-    console.log("results in model" , results)
+      `,
+      [restaurantId]
+    );
+    const results = result.rows.map((row) => row.restriction_name);
+    console.log("results in model", results);
     return results;
   }
 
-  static async listRestsByRestriction(userRestrictions){
-    console.log(userRestrictions)
+  static async listRestsByRestriction(userRestrictions) {
+    console.log(userRestrictions);
     const result = await db.query(
       `
       SELECT * 
@@ -93,10 +94,11 @@ class Restaurant {
                image_url,
                description,
            user_id)
-            VALUES ($1,$2,$3,$4,$5)
+            VALUES ($1,$2,$3,$4,$5,$6)
             RETURNING id, name,location,image_url, description, user_id;
             `,
       [
+        restaurant.id,
         restaurant.name,
         restaurant.location,
         restaurant.image,
@@ -106,6 +108,16 @@ class Restaurant {
     );
     const results = result.rows[0];
     return results;
+  }
+
+  static async listRestbyId(id) {
+    const results = await db.query(
+      `SELECT *
+      FROM restaurant 
+      WHERE id = $1;`,
+      [id]
+    ); // listing a single comm
+    return results.rows ? results.rows[0] : null;
   }
 
   static async UpdateRests(restaurant, userId) {
