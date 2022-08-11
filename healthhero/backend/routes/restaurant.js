@@ -111,10 +111,11 @@ router.get(
   async (req, res, next) => {
     console.log(req.params); //
     try {
-      const user = await User.fetchUserByEmail(res.locals.user.email);
-      let restid = req.params.restaurantid;
+      // let {id} = req.params
+      // const user = await User.fetchUserByEmail(res.locals.user.email);
+      let restid = req.params.id;
       console.log("rest Id in community router", restid);
-      const restaurant = await Community.listRestbyId(restid);
+      const restaurant = await Restaurant.listRestbyId(restid);
       console.log("rest in route", restaurant);
       return res.status(200).json({ restaurant: restaurant });
     } catch (err) {
