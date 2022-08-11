@@ -6,6 +6,7 @@ import "./Restform.css";
 import apiClient from "../../../services/apiClient";
 import Checkbox from "@mui/material/Checkbox";
 import { FormControlLabel, FormGroup } from "@mui/material";
+import TextField from "@mui/material/TextField";
 
 export default function Restform() {
   // need to use this when backend is finsihed
@@ -108,6 +109,7 @@ export default function Restform() {
     if (target.checked) {
       form.restrictions;
     }
+    console.log(target.value);
   };
 
   const handleOnSubmit = async () => {
@@ -123,10 +125,9 @@ export default function Restform() {
     }
 
     try {
-      const res = await apiClient.request("restaurant/create", "post", form);
-
-      const restaurants = await apiClient.listRestsbyId()
-      console.log("restaurants", restaurants)
+      const res = await apiClient.request("restaurant", "POST", form);
+      const restaurants = await apiClient.listRestsbyId();
+      console.log("restaurants", restaurants);
 
       console.log(res);
       if (restaurants?.data?.restaurants) {
@@ -172,7 +173,11 @@ export default function Restform() {
         <div className="form">
           <div className="input-field">
             <label htmlFor="location">Restaurant Name </label>
-            <input
+            <TextField
+              className="text-field"
+              InputProps={{
+                className: "text-field-input",
+              }}
               type="name"
               name="name"
               value={form.name}
@@ -183,7 +188,11 @@ export default function Restform() {
           <div className="split-inputs">
             <div className="input-field">
               <label htmlFor="location">Location </label>
-              <input
+              <TextField
+                className="text-field"
+                InputProps={{
+                  className: "text-field-input",
+                }}
                 type="location"
                 name="location"
                 value={form.location}
@@ -196,7 +205,11 @@ export default function Restform() {
 
             <div className="input-field">
               <label htmlFor="image">Add An Image </label>
-              <input
+              <TextField
+                className="text-field"
+                InputProps={{
+                  className: "text-field-input",
+                }}
                 type="text"
                 name="image"
                 value={form.image}
@@ -206,9 +219,15 @@ export default function Restform() {
             </div>
             <div className="input-field">
               <label htmlFor="description">Description </label>
-              <input
+              <TextField
+                className="text-field"
+                InputProps={{
+                  className: "text-field-input",
+                }}
+                multiline
                 type="description"
                 name="description"
+                placeholder="Store hours, description & etc......."
                 value={form.description}
                 onChange={handleOnInputChange}
               />

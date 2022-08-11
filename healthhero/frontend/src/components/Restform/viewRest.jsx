@@ -2,7 +2,7 @@ import "../Restform/Restform.css";
 import { Box } from "@mui/material";
 import { Container } from "@mui/system";
 import * as React from "react";
-import { useEffect, Text, StyleSheet, TouchableOpacity } from "react";
+import { useEffect, useState, Text, StyleSheet, TouchableOpacity } from "react";
 import { useAuthContext } from "../../../AuthContext/auth";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
@@ -24,6 +24,13 @@ export default function ViewRes() {
       fetchRestId();
     }
   }, []);
+
+  useEffect(() => {
+    console.log("restaurant value in viewRest" , resId)
+  }, []) 
+
+
+
   return (
     <Container
       className="restaurants"

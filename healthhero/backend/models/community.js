@@ -28,6 +28,7 @@ class Community {
       WHERE id = $1;`,
       [id]
     ); // listing a single comm
+    return results.rows ? results.rows[0]: null ;
   }
 
   static async PostCommunity(community, userId, school_id) {
@@ -51,10 +52,11 @@ class Community {
                user_id,
                school_id
             )
-            VALUES ($1,$2,$3,$4,$5)
-            RETURNING name,image_url, description, user_id, school_id;
+            VALUES ($1,$2,$3,$4,$5, $6)
+            RETURNING id, name,image_url, description, user_id, school_id;
             `,
       [
+        community.id,
         community.name,
         community.image,
         community.description,
@@ -63,6 +65,29 @@ class Community {
       ]
     );
     const results = result.rows[0];
+    return results;
+  }
+
+
+  static async addUserToComm(userId, commId){
+    const result = await db.query(
+      `
+      INSERT INTO user_community(user_id, community_id)
+      VALUES ($1,$2)
+      RETURNING user_id, community_id
+      `,
+      [userId, commId]
+    );
+  }
+
+  static async listUsersInComm(commId){
+    const result = await db.query(
+      `SELECT user_id
+      FROM user_community 
+      WHERE community_id = $1;`,
+      [commId]
+    );
+    const results = result.rows.map((row) => row.user_id)
     return results;
   }
 }

@@ -8,6 +8,7 @@ import ComGrid from "./ComGrid";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
 import { brown } from "@mui/material/colors";
 // import { CommForm } from "../CommForm/Commform";
 import "./SelComm.css";
@@ -17,6 +18,11 @@ import "./SelComm.css";
 export default function SelComm() {
   const { comm, setComm } = useAuthContext();
   const { community, setCommunity } = useAuthContext();
+
+  useEffect(() => {
+    console.log("comm obj in selComm: ", comm);
+  }, [comm]);
+
   useEffect(() => {
     const fetchComm = async () => {
       const { data, error } = await apiClient.listcomm();
@@ -63,35 +69,25 @@ export default function SelComm() {
       }} //2 brackets for its object.. setting the container
       maxWidth={false}
     >
-      <Box
-        sx={{
-          background: "green",
-          width: "50%",
-          height: "10vh",
-          m: 3,
-          borderRadius: "16px",
-          // alignItems: "center",
-          // justifyContent: "center",
-          // justifyItems: "center",
-        }}
-      >
-        <h1> Select A Community</h1>
-      </Box>
-      {/* <Box
-        sx={{
-          background: "lightgreen",
-          width: "20%",
-          height: "10vh",
-          m: 1,
-          // float: "right",
-          // marginRight: "1000px",
-        }}
-      ></Box> */}
-      <ColorButton1 variant="contained">
-        <a href="/commForm" id="link">
-          Create Community
-        </a>
-      </ColorButton1>
+      <div className="container">
+        <Box
+          sx={{
+            background: "green",
+            width: "50%",
+            height: "10vh",
+            m: 3,
+            padding: "30px",
+            marginRight: "100px",
+          }}
+        >
+          <h1> Select A Community</h1>
+        </Box>
+        <button className="buttoncomm">
+          <Link className="link" to="/commForm">
+            Create A Community!
+          </Link>
+        </button>
+      </div>
       <ComGrid />
       <Box
         sx={{ background: "darkseagreen", width: "10%", height: "10vh", m: 3 }}

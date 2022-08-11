@@ -32,20 +32,47 @@ router.get(
 );
 
 router.get(
-  "/communityid",
+  "/communityid/:id",
   security.requireAuthenticatedUser,
   async (req, res, next) => {
+    console.log(req.params); //
     try {
       const user = await User.fetchUserByEmail(res.locals.user.email);
-      let commid = res.id;
+      let commid = req.params.id;
       console.log("comm Id in community router", commid);
       const community = await Community.listCommbyId(commid);
-      return res.status(201).json({ community: community });
+      console.log("comm in route", community);
+      return res.status(200).json({ community: community });
     } catch (err) {
       next(err);
     }
   }
 );
+
+/* put this in comm file apiClient.listUsersInComm(commId)*/
+
+router.get("/listusersincomm/:commId", security.requireAuthenticatedUser, async (req, res, next) => {
+  try {
+    const commId = res.params.commId; //!is this right?
+    const usersInComm = await Community.listUsersInComm(commId)
+    console.log("users in community: ", usersInComm)
+    return res.status(201).json({ usersInComm: usersInComm });
+  }catch(err){
+    next(err)
+  }
+})
+
+router.post("/addusertocomm", security.requireAuthenticatedUser, async (req, res, next) => {
+  try {
+    const commId = res.data.commId; //!is this right 
+    await Community.addUserToComm(res?.locals?.user?.id, commId) 
+    // await Community.addUserToComm(10, 2) hard coded for testing 
+    return res.status(201).json({ community: `User ${res?.locals?.user?.id} added community ${commId}` });
+  }
+  catch(err){
+    next(err);
+  } 
+ })
 
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {

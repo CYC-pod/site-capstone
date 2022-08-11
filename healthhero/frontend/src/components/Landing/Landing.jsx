@@ -10,7 +10,10 @@ import { purple } from "@mui/material/colors";
 import { brown } from "@mui/material/colors";
 // import USC from "/Users/cfenderson/Desktop/CPLabs/site-capstone/healthhero/frontend/src/img/LicenseHeader229UofSouthernCal_2SportStyleUSC_132524476454863670.webp";
 import Hero from "../HeroBar/Hero";
+
 import { Container } from "@mui/system";
+
+import { useAuthContext } from "../../../AuthContext/auth";
 
 // const useStyles = makeStyles(
 //   //adding for MUI res
@@ -46,6 +49,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
   />
 </>;
 export default function Landing() {
+  const { user, setUser } = useAuthContext();
   // function TestBox() {
   //   const styles = {
   //     width: "50vw",

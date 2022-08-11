@@ -12,8 +12,21 @@ class Restaurant {
     return results.rows;
   }
 
-  static async listRestsByRestriction(userRestrictions) {
-    console.log(userRestrictions);
+  static async listRestaurantRestrictions(restaurantId){
+    const result = await db.query(
+      `
+      SELECT restriction_name
+      FROM accommodation 
+      WHERE restaurant_id = $1
+      `, [restaurantId]
+    )
+    const results = result.rows.map((row) => row.restriction_name)
+    console.log("results in model" , results)
+    return results;
+  }
+
+  static async listRestsByRestriction(userRestrictions){
+    console.log(userRestrictions)
     const result = await db.query(
       `
       SELECT * 
