@@ -12,7 +12,7 @@ export default function ResDetail() {
   // const { comm, setComm } = useAuthContext();
   // const {id } = useAuthContext();
   // const [comm, setcomm] = useState(null);
-  const [restaruant, setRestaurant] = useState([]);
+  const [restaruant, setRestaurant] = useState();
   const { id } = useParams();
   useEffect(() => {
     console.log("id working", id);
@@ -38,7 +38,8 @@ export default function ResDetail() {
 
   return (
     <div className="Restview">
-      <h1 className="rest-card">Restaurant {restaruant.name} !</h1>
+      <h1 className="rest-card">Restaurant {restaruant?.name} !</h1>
+      {/*// if not null try to get property if null= undefined */}
       {restaruant ? (
         <ResCard rest={restaruant} showdescription={true} id={id} />
       ) : null}
