@@ -129,6 +129,10 @@ class ApiClient {
     return await this.request(`schools/userschool`, `PATCH`, data);
   }
 
+  async getSchoolIdByName(){
+    
+  }
+
   // async createRestaurant(restaurantForm){
   //   const res = await this.request("restaurant/create", "POST", restaurantForm)
   //   console.log("whats returned from restaurant/create: " , res.data)
@@ -150,9 +154,16 @@ class ApiClient {
     return res
   }
 
-  async listUsersInComm(commId){
+  async listUsersInComm(commId){ //list all users that belong to a particular community 
     const res = await this.request(`community/listusersincomm/${commId}`, `GET`);
   }
+
+  async listUserComms(commId){ //lists all communities that a SINGLE user belongs to
+    const res = await this.request(`community/usercommunities`, `GET`);
+    return res;
+  }
+
+
 
 }
 

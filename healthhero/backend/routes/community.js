@@ -31,6 +31,16 @@ router.get(
   }
 );
 
+router.get("/usercommunities", security.requireAuthenticatedUser, async (req, res, next) => {
+  try {
+    let { id } = res.locals.user;
+    const userCommunities = await Community.listCommsOfUser(id);
+    return res.status(201).json({ userCommunities: userCommunities });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get(
   "/communityid/:id",
   security.requireAuthenticatedUser,
@@ -53,7 +63,7 @@ router.get(
 
 router.get("/listusersincomm/:commId", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
-    const commId = res.params.commId; //!is this right?
+    const commId = res.params.commId; //!is this right? Probs yes
     const usersInComm = await Community.listUsersInComm(commId)
     console.log("users in community: ", usersInComm)
     return res.status(201).json({ usersInComm: usersInComm });
@@ -64,7 +74,7 @@ router.get("/listusersincomm/:commId", security.requireAuthenticatedUser, async 
 
 router.post("/addusertocomm", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
-    const commId = res.data.commId; //!is this right 
+    const commId = res.data.commId; //!is this right probs yes
     await Community.addUserToComm(res?.locals?.user?.id, commId) 
     // await Community.addUserToComm(10, 2) hard coded for testing 
     return res.status(201).json({ community: `User ${res?.locals?.user?.id} added community ${commId}` });
