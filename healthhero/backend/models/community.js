@@ -88,6 +88,17 @@ class Community {
     const results = result.rows.map((row) => row.user_id)
     return results;
   }
+
+  static async listCommsOfUser(userId){ //lists all communities a user is apart of 
+    const result = await db.query(
+      `SELECT community_id 
+      FROM user_community 
+      WHERE user_id = $1;`,
+      [userId]
+    );
+    const results = result.rows[0];
+    return results;
+  }
 }
 
 module.exports = Community;
