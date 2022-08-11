@@ -63,6 +63,18 @@ class ApiClient {
     return res; 
   }
 
+  async listCommbyId(id) {
+    const comId = await this.request(`community/communityid/${id}`, `GET`);
+    console.log("comm id returned by api call", comId);
+    return comId;
+  }
+
+  async listRestbyId(id) {
+    const restId = await this.request(`restaurant/restaurantid/${id}`, `GET`);
+    console.log("rest id returned by api call", restId);
+    return restId;
+  }
+
   async createPost(data, point) {
     return await this.request(point + `/`, `POST`, data);
   }

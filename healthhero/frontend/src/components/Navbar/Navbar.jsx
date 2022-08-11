@@ -13,6 +13,8 @@ import { AuthContextProvider, useAuthContext } from "../../../AuthContext/auth";
 import App from "../../App";
 import leafLogo from "../../img/Health Hero-2.png";
 import apiClient from "../../../services/apiClient";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+//put when logged in ^
 
 export default function Navbar({ logoutuser }) {
   const { user, setUser } = useAuthContext();
@@ -23,16 +25,15 @@ export default function Navbar({ logoutuser }) {
     console.log("user type in navbar", user.type);
     isRest = true; //yes Restaurant!
     isStudent = false;
-  }
-  else if(user?.type == "student") //user is student 
-  {
+  } else if (user?.type == "student") {
+    //user is student
     isRest = false;
     isStudent = true; //yes Student!
   }
 
-useEffect(()=>{
-    console.log("student:", isStudent)
-}, [])
+  useEffect(() => {
+    console.log("student:", isStudent);
+  }, []);
 
   return (
     <Box sx={{ flexGrow: 0 }}>
@@ -47,10 +48,30 @@ useEffect(()=>{
           >
             <MenuIcon />
           </IconButton>
-          {isStudent ? (<Button> <a href="/communities" id="link"> Communities </a> </Button>) : null}
-          {isStudent ? (<Button> <a href="/diet" id="link"> Diet </a> </Button>) : null}
+          {isStudent ? (
+            <Button>
+              {" "}
+              <a href="/communities" id="link">
+                {" "}
+                Communities{" "}
+              </a>{" "}
+            </Button>
+          ) : null}
+          {isStudent ? (
+            <Button>
+              {" "}
+              <a href="/diet" id="link">
+                {" "}
+                Diet{" "}
+              </a>{" "}
+            </Button>
+          ) : null}
           {/* make button/list item */}
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, alignItems: "center" }}
+          >
             <a href="/" id="link">
               <img className="leaflogo" src={leafLogo} alt="leaflogo" />{" "}
             </a>
@@ -59,14 +80,56 @@ useEffect(()=>{
             {user ? (
               ""
             ) : (
-              <a href="/register" id="link"> Sign Up </a>
+              <a href="/register" id="link">
+                {" "}
+                Sign Up{" "}
+              </a>
             )}
           </Button>
-          {isRest ? (<Button> <a href="/restForm" id="link"> Restaurant Form </a> </Button>) : null}
-          {isStudent ? (<Button> <a href="/resResults" id="link"> View Restaurants </a> </Button>) : null}
+          {isRest ? (
+            <Button>
+              {" "}
+              <a href="/restForm" id="link">
+                {" "}
+                Restaurant Form{" "}
+              </a>{" "}
+            </Button>
+          ) : null}
+
+          {isStudent ? (
+            <Button>
+              {" "}
+              <a href="/resResults" id="link">
+                {" "}
+                View Restaurants{" "}
+              </a>{" "}
+            </Button>
+          ) : null}
+
+          {/* prof button */}
+          {user ? (
+            <Button color="inherit">
+              <a href="/prof" id="link">
+                <AccountCircleIcon id="expand" />
+              </a>
+            </Button>
+          ) : (
+            ""
+          )}
+
           <Button color="inherit" onClick={logoutuser}>
             {console.log("user in nav bar", user)}
-            {user ? (<a href="/" id="link"> Logout </a>) : (<a href="/login" id="link"> Login </a>)}
+            {user ? (
+              <a href="/" id="link">
+                {" "}
+                Logout{" "}
+              </a>
+            ) : (
+              <a href="/login" id="link">
+                {" "}
+                Login{" "}
+              </a>
+            )}
           </Button>
         </Toolbar>
       </AppBar>

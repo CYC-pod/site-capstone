@@ -17,7 +17,12 @@
 
   /* background-color: #adc89c; */
 }
-
+/* #flex {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+} */
 .topD ::placeholder {
   color: rgb(16, 51, 7);
 }
@@ -27,7 +32,7 @@
   width: 30px;
   height: 28px;
   left: 1740px;
-  top: 100px;
+  /* top: 125px; */
 }
 
 /* .contentD button {

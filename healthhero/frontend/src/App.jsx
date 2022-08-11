@@ -23,8 +23,9 @@ import ResResults from "./components/ResResults/ResResults";
 // import InResults from "./components/ResResults/InResults";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
+import ResDetail from "./components/ResResults/ResDetail";
 // import ComGrid from "./components/SelComm/ComGrid";
-import CommDetail from "./components/SelComm/CommDetail";
+
 function App() {
   const { user, setUser } = useAuthContext();
   const navigateTo = useNavigate();
@@ -114,14 +115,7 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/prof"
-          element={
-            <>
-              <Prof />
-            </>
-          }
-        />
+
         <Route
           path="/restForm"
           element={
@@ -145,7 +139,7 @@ function App() {
           }
         />
         <Route
-          path="/myCommunities"
+          path="/prof"
           element={
             <>
               <MyComm />
@@ -186,14 +180,34 @@ function App() {
           }
         /> */}
         <Route
-          path="/commDescript/:commid"
+          path="/commDescript/:id"
           element={
             <>
-              <CommDetail />
               <DetailedComm />
             </>
+            
           }
         />
+          <Route
+          path="/commDescript/:id"
+          element={
+            <>
+              <DetailedComm />
+            </>
+            
+          }
+        />
+          <Route
+          path="/resDescript/:id"
+          element={
+            <>
+              <ResDetail />
+            </>
+            
+          }
+        />
+         
+         
       </Routes>
     </>
   );
