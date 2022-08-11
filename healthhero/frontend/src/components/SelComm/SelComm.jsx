@@ -97,9 +97,11 @@ export default function SelComm() {
       </div>
       <ComGrid />
       <Box
-        sx={{ background: "darkseagreen", width: "10%", height: "10vh", m: 3 }}
+      // sx={{ background: "darkseagreen", width: "10%", height: "10vh", m: 3 }}
       >
-        <ColorButton variant="contained">Load More Options</ColorButton>
+        <ColorButton variant="contained" sx={{ marginBottom: "2%" }}>
+          Load More Options
+        </ColorButton>
       </Box>
     </Container>
   );

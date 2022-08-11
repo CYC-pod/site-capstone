@@ -120,7 +120,7 @@ export default function MyComm() {
               <p> You are a {user ? user.type : null}</p>
 
               <p>Email : {user ? user.email : null}</p>
-              {isStudent ? <p>school info here too</p> : null}
+              {isStudent ? <p>User's school</p> : null}
 
               {/* <p> School : {user ? credentials.school_id : null}</p> */}
             </div>

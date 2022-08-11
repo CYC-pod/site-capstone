@@ -72,8 +72,7 @@ export default function Slick() {
       <div className="slider">
         <Slider ref={setSliderRef} {...settings}>
           <div className="schoolHome">
-
-        {/* {schools.map((school, i) => {
+            {/* {schools.map((school, i) => {
           return (
             <div
               className="schoolButton"

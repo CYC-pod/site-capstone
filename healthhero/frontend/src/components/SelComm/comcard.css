@@ -1,16 +1,18 @@
-.commInfo {
+/* .commInfo {
   color: black;
   /* background-color: black; */
-}
+/* } */
 .commName {
-  color: black;
+  /* color: black; */
+  color: #0e3804;
   /* display: flex; */
   flex-wrap: wrap;
   /* background-color: black; i want title to wrap*/
 }
 
-.commDescription {
-  color: black;
+.commDescription,
+.commInfo {
+  color: #0e3804;
 }
 
 .CommCard {

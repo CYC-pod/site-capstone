@@ -67,5 +67,7 @@
   text-align: center; doing nothing */
   /* display: flex; */
   margin-top: 10%;
+  padding-top: 10%;
+  /* flex-wrap: wrap; */
   justify-content: center;
 }
