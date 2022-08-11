@@ -83,7 +83,10 @@ router.post("/addusertocomm", security.requireAuthenticatedUser, async (req, res
     // await Community.addUserToComm(10, 2) hard coded for testing 
     return res.status(201).json({ community: `User ${res?.locals?.user?.id} added community ${commId}` });
   }
-);
+  catch(err){
+    next(err)
+  }
+});
 
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
