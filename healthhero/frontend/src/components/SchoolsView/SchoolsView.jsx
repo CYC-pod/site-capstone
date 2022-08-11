@@ -39,6 +39,14 @@ const handleOnSchoolClick = async (schoolId) => {
 
 export default function SchoolsView() {
   const [schools, setSchools] = useState([]);
+  const [filBoxVal, setFilBoxVal] = useState("");
+
+  const handleFilChange = (ev, value) => {
+    setFilBoxVal(ev.target.value); //mui is calling
+
+    console.log(value);
+  };
+
   // const [searchText, setSearchText] = useState("");
   // const handleOnTextChange = (event) => {
   //   setSearchText(event.target.value);
@@ -58,11 +66,18 @@ export default function SchoolsView() {
     getSchools();
   }, []);
 
+  const fil = (school) => {
+    const { name } = school; //decons
+    return name.toLowerCase().includes(filBoxVal.toLowerCase());
+  };
+
+  //applying to every el in arr.
   return (
     <div className="viewS">
       <h1>Pick your school</h1>
       <label id="selS">Select your school: </label>
       <Autocomplete
+        onInputChange={handleFilChange}
         sx={{
           display: "inline-block",
           "& input": {
@@ -87,13 +102,14 @@ export default function SchoolsView() {
         )}
       />
       <div className="">
-        {schools.map((school, i) => {
+        {schools.filter(fil).map((school, i) => {
+          //rendering schools
+
           return (
-            <a href="/diet">
+            <a href="/diet" key={i}>
               <button
                 className="schoolButton"
                 onClick={() => handleOnSchoolClick(school.id)}
-                key={i}
               >
                 <div className="schoolHome">
                   <img src={school.image} alt={school.name} />

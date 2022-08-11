@@ -12,8 +12,28 @@ import "../Diet/Diet.css";
 import { useState, useEffect } from "react";
 import apiClient from "../../../services/apiClient";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
+import "../DGroups/DGroups.css";
+
 const dietaryG = ["Vegan", "Keto", "Vegetarian"];
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
+<script
+  src="https://kit.fontawesome.com/cf9f7f67f7.js"
+  crossorigin="anonymous"
+></script>;
+
+var settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  arrows: false,
+  //prob get slider dots out of the way
+};
 
 const ColorButton = styled(Button)(({ theme }) => ({
   fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif",
@@ -23,15 +43,35 @@ const ColorButton = styled(Button)(({ theme }) => ({
     backgroundColor: brown[700],
   },
   alignItems: "center",
+  alignContent: "center",
   marginTop: "20px",
 }));
 export default function Diet() {
+  const [sliderRef, setSliderRef] = useState(null);
   const [diets, setDiets] = useState([]);
   const [allergies, setAllergies] = useState([]);
   const [errors, setErrors] = useState({});
   const [userRestrictions, setUserRestrictions] = useState({
     restrictions: [],
   });
+  const [filBoxValD, setFilBoxValD] = useState("");
+  const [filBoxValA, setFilBoxValA] = useState(""); //filtering for all restricts (as ofrn)
+  //toggle switch for which searching, can include diff options to search too
+  //make search so that checkboc can still be there --> include checked
+
+  const filD = (restrictions) => {
+    const { name } = restrictions; //decons
+    return name.toLowerCase().includes(filBoxValD.toLowerCase());
+  };
+
+  const handleFilChangeD = (ev, value) => {
+    if (ev.target.checked) {
+      console.log("✅ Checkbox is checked");
+    } else {
+      setFilBoxValD(ev.target.value); //mui is calling
+    }
+    console.log(value);
+  };
 
   useEffect(() => {
     console.log("user Restrictions", userRestrictions);
@@ -104,6 +144,7 @@ export default function Diet() {
         {/* idk if this needs to b a filter bar like landing but for now  */}
 
         <Autocomplete
+          onInputChange={handleFilChangeD}
           sx={{
             display: "inline-block",
             float: "right",
@@ -134,7 +175,7 @@ export default function Diet() {
       </div>
 
       <br />
-      {diets.map(({ id, name, type }) => {
+      {/* {diets.map(({ id, name, type, i }) => {
         return (
           <FormControlLabel
             control={
@@ -142,18 +183,53 @@ export default function Diet() {
                 checked={userRestrictions.restrictions[name]}
                 onChange={handleChange}
                 name={name}
+                key={i}
               />
             }
             label={name}
           />
         );
-      })}
+      })} */}
 
-      {/* <DGroup /> */}
+      <div className="contentD">
+        <div className="leftbtton">
+          <button onClick={sliderRef?.slickPrev} className="liBrB butRight">
+            {"<"}
+          </button>
+        </div>
+
+        <div className="sliderD">
+          <Slider ref={setSliderRef} {...settings}>
+            {diets.map(({ id, name, type, i }) => {
+              return (
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={userRestrictions.restrictions[name]}
+                      onChange={handleChange}
+                      name={name}
+                      key={i}
+                      sx={{ "& .MuiSvgIcon-root": { fontSize: 60 } }}
+                    />
+                  }
+                  label={name}
+                />
+              );
+            })}
+          </Slider>
+        </div>
+
+        <div className="rightbtton">
+          <button onClick={sliderRef?.slickNext} className="liBrB butLeft">
+            {">"}
+          </button>
+        </div>
+      </div>
+
       <br />
       <h3 id="left">Allergies</h3>
       <div>
-        {allergies.map(({ id, name, type }) => {
+        {allergies.filter(filD).map(({ id, name, type }) => {
           return (
             <FormControlLabel
               control={
@@ -207,11 +283,14 @@ export default function Diet() {
         {/* <Checkbox {...label} sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }} /> */}
       </div>
       {/* <button> v </button>  not vibing w the button fr*/}
-      <ColorButton variant="contained" onClick={handleOnSubmit}>
-        <a href="/ResResults" id="link">
-          Submit Options
-        </a>
-      </ColorButton>
+      <div>
+        {/* flex id here^ */}
+        <ColorButton variant="contained" onClick={handleOnSubmit}>
+          <a href="/ResResults" id="link">
+            Submit Options
+          </a>
+        </ColorButton>
+      </div>
     </div>
   );
 }

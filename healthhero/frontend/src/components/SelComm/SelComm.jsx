@@ -13,6 +13,8 @@ import { brown } from "@mui/material/colors";
 // import { CommForm } from "../CommForm/Commform";
 import "./SelComm.css";
 
+//style diff based off breakpoints n media query
+
 export default function SelComm() {
   const { comm, setComm } = useAuthContext();
   const { community, setCommunity } = useAuthContext();
@@ -42,6 +44,18 @@ export default function SelComm() {
     },
     alignItems: "center",
     marginTop: "20px",
+  }));
+
+  const ColorButton1 = styled(Button)(({ theme }) => ({
+    fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif",
+    float: "right",
+    color: theme.palette.getContrastText(brown[500]),
+    backgroundColor: brown[500],
+    "&:hover": {
+      backgroundColor: brown[700],
+    },
+    // alignItems: "center",
+    // float: "right",
   }));
   return (
     <Container

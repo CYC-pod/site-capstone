@@ -4,7 +4,8 @@
 }
 
 .myCom h1 {
-  color: darkseagreen;
+  /* color: darkseagreen; */
+  color: rgb(101, 55, 2);
 }
 
 #roundP {
@@ -14,6 +15,8 @@
 
   width: 285px;
   height: 237px;
+  text-align: center;
+  justify-items: center;
 }
 #rect {
   background-color: #196406;
@@ -26,6 +29,43 @@
 
 .circles {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: center;
   flex-wrap: wrap;
+}
+
+.title {
+  text-transform: capitalize;
+  color: rgb(101, 55, 2);
+}
+
+.smoval {
+  background-color: #dde7c7;
+  color: #0e3804;
+  width: 15%;
+  min-width: min-content;
+  height: 20%;
+  text-align: center;
+  justify-items: center;
+  border-radius: 15px;
+  margin: 2%;
+}
+.smoval2 {
+  background-color: #b4e8a7;
+  color: #0e3804;
+  width: 15%;
+  min-width: min-content;
+  height: 20%;
+  text-align: center;
+  justify-items: center;
+  border-radius: 15px;
+  margin: 2%;
+}
+
+.info {
+  /* justify-items: center;
+  text-align: center; doing nothing */
+  /* display: flex; */
+  margin-top: 10%;
+  justify-content: center;
 }

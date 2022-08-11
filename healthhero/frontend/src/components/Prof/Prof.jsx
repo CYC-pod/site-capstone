@@ -9,8 +9,8 @@ export default function Prof() {
   React.useEffect(() => {
     console.log("user in prof :", user);
     // console.log("user email: ", user.email);
-    email = user.email;
-    username = user.username;
+    // email = user.email;
+    // username = user.username;
   }, [user]);
   // setUser(res.data.user);
   return (
@@ -21,7 +21,8 @@ export default function Prof() {
         </div>
         <div>
           <div id="round">
-            Name: {username} School: Email: {email}
+            Name: {user ? user.username : null} School: Email:
+            {user ? user.email : null}
           </div>
           <div id="round"></div>
         </div>
