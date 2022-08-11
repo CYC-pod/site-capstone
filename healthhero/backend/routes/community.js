@@ -95,10 +95,7 @@ router.post(
       next(err);
     }
   }
-  catch(err){
-    next(err)
-  }
-});
+)
 
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
