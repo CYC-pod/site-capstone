@@ -31,7 +31,7 @@ export default function ComGrid() {
     <Box
       sx={{
         // background: "white",
-        width: "80%",
+        width: "85%",
 
         // m: 3,
         display: "flex",

@@ -10,6 +10,9 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { brown } from "@mui/material/colors";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+
 // import { CommForm } from "../CommForm/Commform";
 import "./SelComm.css";
 
@@ -57,6 +60,7 @@ export default function SelComm() {
     // alignItems: "center",
     // float: "right",
   }));
+
   return (
     <Container
       className="communities"
@@ -100,3 +104,33 @@ export default function SelComm() {
     </Container>
   );
 }
+
+//   const style = {
+//     color: "black",
+//     backgroundColor: "FFFAEC",
+//   };
+//   return (
+//     <Stack
+//       direction="column"
+//       sx={{ flexGrow: 1, marginLeft: "1%", marginRight: "1%" }}
+//     >
+//       <Box sx={style}>
+//         <h1 className="title"> Select Communities </h1>
+//       </Box>
+//       <Grid container spacing={2} sx={style}>
+//         <Grid item xs={12} lg={8}>
+//           <Box
+//             sx={{
+//               background: "green",
+//               alignItems: "center",
+//               display: "flex",
+//               flexDirection: "column",
+//               height: "3in",
+//             }}
+//             maxWidth={false}
+//           ></Box>
+//         </Grid>
+//       </Grid>
+//     </Stack>
+//   );
+// }
