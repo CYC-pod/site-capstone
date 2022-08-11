@@ -38,9 +38,12 @@ export default function DetailedComm() {
 
   return (
     <div className="productview">
-      <h1 className="product-card">Community {community.name} !</h1>
+      <h1 className="product-card">Community: {community.name} !</h1>
+
       {community ? (
-        <ComCard comm={community} showdescription={true} id={id} />
+        <div className="plc">
+          <ComCard comm={community} showdescription={true} id={id} />
+        </div>
       ) : null}
     </div>
   );

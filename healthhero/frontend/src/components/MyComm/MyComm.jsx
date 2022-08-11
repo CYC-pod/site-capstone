@@ -52,7 +52,10 @@ export default function MyComm() {
     backgroundColor: "FFFAEC",
   };
   return (
-    <Stack direction="column" sx={{ flexGrow: 1 }}>
+    <Stack
+      direction="column"
+      sx={{ flexGrow: 1, marginLeft: "1%", marginRight: "1%" }}
+    >
       <Box sx={style}>
         <h1 className="title"> Welcome {user ? user.username : null} </h1>
       </Box>

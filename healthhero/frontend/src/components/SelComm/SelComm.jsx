@@ -76,17 +76,20 @@ export default function SelComm() {
             width: "50%",
             height: "10vh",
             m: 3,
-            padding: "30px",
-            marginRight: "100px",
+            padding: "20px",
+            marginLeft: "200px",
+            // justifyContent: "center",
+            borderRadius: "7px",
           }}
         >
           <h1> Select A Community</h1>
         </Box>
-        <button className="buttoncomm">
+        <ColorButton1 className="buttoncomm">
           <Link className="link" to="/commForm">
             Create A Community!
           </Link>
-        </button>
+        </ColorButton1>
+        {/* breakpoint here to layer it */}
       </div>
       <ComGrid />
       <Box

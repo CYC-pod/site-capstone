@@ -1,0 +1,15 @@
+.product-card {
+  color: seagreen;
+}
+.plc {
+  width: 100%;
+  /* fit content^ */
+  padding: 0;
+  display: flex;
+  /* margin-left: 32%; */
+  justify-content: center;
+  justify-items: center;
+  padding-top: 2%;
+}
+
+/* css for div for now until rerun db w removing css from card for here and changing width on og card */

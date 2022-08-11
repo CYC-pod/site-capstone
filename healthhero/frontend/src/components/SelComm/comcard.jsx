@@ -32,7 +32,9 @@ export default function ComCard({ comm, showdescription }) {
     <div className="CommCard">
       {/* <button onClick={handleOnClick}> */}
       <Link to={"/commDescript/" + id} className="media">
-        <img className="commImage" src={image_url}></img>
+        <div className="picpic">
+          <img className="commImage" src={image_url}></img>
+        </div>
       </Link>
 
       <div className="commInfo">
@@ -41,10 +43,11 @@ export default function ComCard({ comm, showdescription }) {
       </div>
       <div className="commDescription">
         {/* {showdescription ? "with des" : "without descr"}n/*example */}
-         {showdescription ? (
+        {showdescription ? (
           <p className="product-description">{description}</p>
-        ) : null} 
+        ) : null}
       </div>
+      {/* maybe an if student created then attach students username */}
     </div>
   );
 }
