@@ -21,9 +21,6 @@ app.use("/community", CommRouter);
 app.use("/schools", schoolRouter);
 app.use("/restrictions", restrictionsRouter);
 
-app.use((req, res, next) => {
-  return next(new NotFoundError());
-});
 
 app.use((err, req, res, next) => {
   const status = err.status || 500;
@@ -34,12 +31,19 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.get("/", (req, res) => {
+app.route("/").get((req, res) => {
   res.send("Hello World!");
 });
 
-const port = process.env.PORT || 3001;
 
+
+app.use((req, res, next) => {
+  return next(new NotFoundError());
+});
+
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`🚀 Server listening on port ` + port);
 });
+
+
