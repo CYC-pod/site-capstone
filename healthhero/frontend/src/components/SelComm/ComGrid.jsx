@@ -6,6 +6,7 @@ import { Box } from "@mui/system";
 // import { CommForm } from "../CommForm/Commform";
 import "./SelComm.css";
 import apiClient from "../../../services/apiClient";
+import { Grid } from "@mui/material";
 
 export default function ComGrid() {
   const { comm, setComm } = useAuthContext();
@@ -26,12 +27,13 @@ export default function ComGrid() {
   }, [communities]);
 
   return (
+    // <Grid>
     <Box
       sx={{
         // background: "white",
-        width: "80%",
+        width: "85%",
 
-        m: 3,
+        // m: 3,
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
@@ -57,6 +59,7 @@ export default function ComGrid() {
         );
       })}
     </Box>
+    // </Grid>
   );
   return (
     <div className="grid">

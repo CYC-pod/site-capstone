@@ -18,7 +18,7 @@ import Slider from "react-slick";
 
 import "../DGroups/DGroups.css";
 
-const dietaryG = ["Vegan", "Keto", "Vegetarian"];
+const dietaryG = ["Eggs", "Dairy", "Peanuts"];
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 <script
   src="https://kit.fontawesome.com/cf9f7f67f7.js"
@@ -140,38 +140,42 @@ export default function Diet() {
     <div className="diet">
       <div className="topD">
         <br />
-        <h3 id="left">Dietary Groups</h3>
-        {/* idk if this needs to b a filter bar like landing but for now  */}
 
-        <Autocomplete
-          onInputChange={handleFilChangeD}
-          sx={{
-            display: "inline-block",
-            float: "right",
-            "& input": {
-              width: 700,
-              height: 25,
-              bgcolor: "background.paper",
-              color: (theme) =>
-                theme.palette.getContrastText(theme.palette.background.paper),
-              // float: "right",
-            },
-          }}
-          id="custom-input-demo"
-          options={dietaryG}
-          renderInput={(params) => (
-            <div ref={params.InputProps.ref}>
-              <input
-                type="text"
-                {...params.inputProps}
-                placeholder="                                                                           Search groups"
-                // onChange={handleOnTextChange}
-                //add search icon here
-              />
-              <SearchIcon id="search" />
-            </div>
-          )}
-        />
+        <div id="flexri">
+          <Autocomplete
+            onInputChange={handleFilChangeD}
+            sx={{
+              display: "inline-block",
+              float: "right",
+              "& input": {
+                width: 700,
+                height: 25,
+                bgcolor: "background.paper",
+                color: (theme) =>
+                  theme.palette.getContrastText(theme.palette.background.paper),
+                // float: "right",
+                "@media only screen and (max-width: 600px)": {
+                  width: 300,
+                },
+              },
+            }}
+            id="custom-input-demo"
+            options={dietaryG}
+            renderInput={(params) => (
+              <div ref={params.InputProps.ref}>
+                <input
+                  type="text"
+                  {...params.inputProps}
+                  placeholder="                                                                           Search groups"
+                  // onChange={handleOnTextChange}
+                  //add search icon here
+                />
+                <SearchIcon id="search" />
+              </div>
+            )}
+          />
+        </div>
+        <h3 id="left">Dietary Groups</h3>
       </div>
 
       <br />

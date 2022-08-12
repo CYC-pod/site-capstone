@@ -97,6 +97,7 @@ class Community {
       WHERE user_id = $1;`,
       [userId]
     );
+    console.log("result.rows", result.rows);
     const results = result.rows[0];
     return results;
   }

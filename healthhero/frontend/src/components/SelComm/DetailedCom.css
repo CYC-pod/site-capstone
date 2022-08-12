@@ -1,6 +1,21 @@
 .btn {
-    background-color: #795548;
-    color: azure;
-    padding: 10px;
-    margin-right: 30px;
-  }
+  background-color: #795548;
+  color: azure;
+  padding: 10px;
+  margin-right: 30px;
+}
+.product-card {
+  color: seagreen;
+}
+.plc {
+  width: 100%;
+  /* fit content^ */
+  padding: 0;
+  display: flex;
+  /* margin-left: 32%; */
+  justify-content: center;
+  justify-items: center;
+  padding-top: 2%;
+}
+
+/* css for div for now until rerun db w removing css from card for here and changing width on og card */

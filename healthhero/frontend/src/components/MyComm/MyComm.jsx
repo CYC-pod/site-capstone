@@ -29,7 +29,8 @@ export default function MyComm() {
   // const [userRestrictions, setUserRestrictions] = useState([]);
   const [diets, setDie] = useState([]);
   const [allergies, setAlls] = useState([]);
-  const [comms, setcomms] = useState([]);
+  // const [comms, setcomms] = useState([]);
+  const [communities, setCommunities] = useState([]);
   // console.log(user.school_id);
   useEffect(() => {
     async function getDiets() {
@@ -47,12 +48,28 @@ export default function MyComm() {
     getAlls();
   }, []);
 
+  useEffect(() => {
+    async function getUserComms() {
+      const res = await apiClient.listUserComms();
+      setCommunities(res?.data?.userCommunities);
+      console.log("community list", res.data.userCommunities);
+    }
+    getUserComms();
+  }, []);
+
+  useEffect(() => {
+    console.log("community array: ", communities);
+  }, []);
+
   const style = {
     color: "black",
     backgroundColor: "FFFAEC",
   };
   return (
-    <Stack direction="column" sx={{ flexGrow: 1 }}>
+    <Stack
+      direction="column"
+      sx={{ flexGrow: 1, marginLeft: "1%", marginRight: "1%" }}
+    >
       <Box sx={style}>
         <h1 className="title"> Welcome {user ? user.username : null} </h1>
       </Box>
@@ -73,8 +90,6 @@ export default function MyComm() {
             {/* code for title of upper box dep on user^ */}
             {isStudent ? (
               <div>
-                <div></div>
-
                 <div className="circles">
                   {diets.map((diet) => {
                     return <div className="smoval">{diet.name}</div>;
@@ -100,6 +115,11 @@ export default function MyComm() {
             {isStudent ? (
               <>
                 <h3 id="left">My Communities</h3>
+                <div className="circles">
+                  {communities?.map((comm) => {
+                    return <div className="smoval3">{comm.name}</div>;
+                  })}
+                </div>
               </>
             ) : null}
           </Box>
@@ -117,7 +137,7 @@ export default function MyComm() {
               <p> You are a {user ? user.type : null}</p>
 
               <p>Email : {user ? user.email : null}</p>
-              {isStudent ? <p>school info here too</p> : null}
+              {isStudent ? <p>User's school</p> : null}
 
               {/* <p> School : {user ? credentials.school_id : null}</p> */}
             </div>

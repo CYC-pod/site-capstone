@@ -16,6 +16,7 @@ import { Stan } from "../../constants";
 import { spel } from "../../constants";
 import apiClient from "../../../services/apiClient";
 import { Navigate } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
 
 const options = [
   "University of South California",
@@ -75,32 +76,42 @@ export default function SchoolsView() {
   return (
     <div className="viewS">
       <h1>Pick your school</h1>
-      <label id="selS">Select your school: </label>
-      <Autocomplete
-        onInputChange={handleFilChange}
-        sx={{
-          display: "inline-block",
-          "& input": {
-            width: 200,
-            height: 25,
-            bgcolor: "background.paper",
-            color: (theme) =>
-              theme.palette.getContrastText(theme.palette.background.paper),
-          },
-        }}
-        id="custom-input-demo"
-        options={options}
-        renderInput={(params) => (
-          <div ref={params.InputProps.ref}>
-            <input
-              type="text"
-              {...params.inputProps}
-              placeholder="             Search schools..."
-              // onChange={handleOnTextChange}
-            />
-          </div>
-        )}
-      />
+      <div className="marg">
+        <label id="selS">Select your school: </label>
+        <div className="flexy">
+          <Autocomplete
+            onInputChange={handleFilChange}
+            sx={{
+              display: "inline-block",
+              "& input": {
+                width: 250,
+                height: 25,
+                margin: "2%",
+                bgcolor: "#cdd7c3",
+                color: "rgb(16, 51, 7)",
+                borderColor: "rgb(16, 51, 7)",
+
+                // color: (theme) =>
+                //   theme.palette.getContrastText(theme.palette.background.paper),
+              },
+            }}
+            id="custom-input-demo"
+            options={options}
+            renderInput={(params) => (
+              <div ref={params.InputProps.ref}>
+                <input
+                  type="text"
+                  {...params.inputProps}
+                  placeholder="                    Search schools..."
+                  // onChange={handleOnTextChange}
+                />
+              </div>
+            )}
+          />
+
+          <SearchIcon id="searchy"> </SearchIcon>
+        </div>
+      </div>
       <div className="">
         {schools.filter(fil).map((school, i) => {
           //rendering schools
@@ -111,7 +122,7 @@ export default function SchoolsView() {
                 className="schoolButton"
                 onClick={() => handleOnSchoolClick(school.id)}
               >
-                <div className="schoolHome">
+                <div className="schoolHome" id="yas">
                   <img src={school.image} alt={school.name} />
                 </div>
               </button>
@@ -182,7 +193,9 @@ export default function SchoolsView() {
         //   </button>
         // </div> */}
         <div>
-          <button className="liBrB">Load more schools</button>
+          <button className="liBrB" id="ma">
+            Load more schools
+          </button>
         </div>
       </div>
     </div>

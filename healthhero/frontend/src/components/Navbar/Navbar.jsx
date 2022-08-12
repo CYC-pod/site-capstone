@@ -14,6 +14,7 @@ import App from "../../App";
 import leafLogo from "../../img/Health Hero-2.png";
 import apiClient from "../../../services/apiClient";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import "../Slick/Slick.css";
 //put when logged in ^
 
 export default function Navbar({ logoutuser }) {
@@ -66,7 +67,12 @@ export default function Navbar({ logoutuser }) {
             sx={{ flexGrow: 1, alignItems: "center" }}
           >
             <a href="/" id="link">
-              <img className="leaflogo" src={leafLogo} alt="leaflogo" />{" "}
+              <img
+                className="leaflogo"
+                id="okur"
+                src={leafLogo}
+                alt="leaflogo"
+              />{" "}
             </a>
           </Typography>
           <Button color="inherit" onClick={logoutuser}>

@@ -71,9 +71,8 @@ export default function Slick() {
 
       <div className="slider">
         <Slider ref={setSliderRef} {...settings}>
-          <div className="schoolHome">
-
-        {/* {schools.map((school, i) => {
+          <div className="schoolHome" id="okur">
+            {/* {schools.map((school, i) => {
           return (
             <div
               className="schoolButton"
@@ -99,24 +98,24 @@ export default function Slick() {
               alt="USC"
             />
           </div>
-          <div className="schoolHome">
+          <div className="schoolHome" id="okur">
             <img src={HU} alt="Howard" />
           </div>
-          <div className="schoolHome">
+          <div className="schoolHome" id="okur">
             <img src={washu} alt="WashU" />
           </div>
-          <div className="schoolHome">
+          <div className="schoolHome" id="okur">
             <img src={VT} alt="VT" />
             {/* <img src="/healthhero/frontend/src/img/vtt.png"></img> */}
           </div>
-          <div className="schoolHome">
+          <div className="schoolHome" id="okur">
             <img src={USF} alt="USF" />
           </div>
-          <div className="schoolHome">
+          <div className="schoolHome" id="okur">
             <img src={HSSU} alt="HSSU" />
           </div>
 
-          <div className="schoolHome">
+          <div className="schoolHome" id="okur">
             <img src={UTEP} alt="uni of Texas El Paso" />
           </div>
         </Slider>

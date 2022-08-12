@@ -10,6 +10,9 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { brown } from "@mui/material/colors";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+
 // import { CommForm } from "../CommForm/Commform";
 import "./SelComm.css";
 
@@ -57,6 +60,7 @@ export default function SelComm() {
     // alignItems: "center",
     // float: "right",
   }));
+
   return (
     <Container
       className="communities"
@@ -76,24 +80,59 @@ export default function SelComm() {
             width: "50%",
             height: "10vh",
             m: 3,
-            padding: "30px",
-            marginRight: "100px",
+            padding: "20px",
+            marginLeft: "200px",
+            // justifyContent: "center",
+            borderRadius: "7px",
           }}
         >
           <h1> Select A Community</h1>
         </Box>
-        <button className="buttoncomm">
+        <ColorButton1 className="buttoncomm">
           <Link className="link" to="/commForm">
             Create A Community!
           </Link>
-        </button>
+        </ColorButton1>
+        {/* breakpoint here to layer it */}
       </div>
       <ComGrid />
       <Box
-        sx={{ background: "darkseagreen", width: "10%", height: "10vh", m: 3 }}
+      // sx={{ background: "darkseagreen", width: "10%", height: "10vh", m: 3 }}
       >
-        <ColorButton variant="contained">Load More Options</ColorButton>
+        <ColorButton variant="contained" sx={{ marginBottom: "2%" }}>
+          Load More Options
+        </ColorButton>
       </Box>
     </Container>
   );
 }
+
+//   const style = {
+//     color: "black",
+//     backgroundColor: "FFFAEC",
+//   };
+//   return (
+//     <Stack
+//       direction="column"
+//       sx={{ flexGrow: 1, marginLeft: "1%", marginRight: "1%" }}
+//     >
+//       <Box sx={style}>
+//         <h1 className="title"> Select Communities </h1>
+//       </Box>
+//       <Grid container spacing={2} sx={style}>
+//         <Grid item xs={12} lg={8}>
+//           <Box
+//             sx={{
+//               background: "green",
+//               alignItems: "center",
+//               display: "flex",
+//               flexDirection: "column",
+//               height: "3in",
+//             }}
+//             maxWidth={false}
+//           ></Box>
+//         </Grid>
+//       </Grid>
+//     </Stack>
+//   );
+// }

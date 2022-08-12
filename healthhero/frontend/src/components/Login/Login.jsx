@@ -5,27 +5,27 @@ import { Link, useNavigate } from "react-router-dom";
 // import axios from "axios";
 import "../Login/Login.css"; //check if connected
 import Navbar from "../Navbar/Navbar";
-import apiClient from "../../../services/apiClient"
+import apiClient from "../../../services/apiClient";
 import { useAuthContext } from "../../../AuthContext/auth";
 
-export default function Login({setLoggedIn}) {
+export default function Login({ setLoggedIn }) {
   const { user, setUser } = useAuthContext();
   const navigate = useNavigate();
   const [isProcessing, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
-  //?might need this later 
-  // useEffect(() => {
-  //   // if user is already logged in,
-  //   // redirect them to the home page
-  //   if (user?.email) {
-  //     navigate("/");
-  //   }
-  // }, [user, navigate]);
+  //?might need this later
+  useEffect(() => {
+    // if user is already logged in,
+    // redirect them to the home page
+    if (user?.email) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const handleOnInputChange = (ev) => {
     if (ev.target.name === "email") {
@@ -44,18 +44,15 @@ export default function Login({setLoggedIn}) {
     setErrors((e) => ({ ...e, form: null }));
 
     try {
-      const res = await apiClient.loginUser(form)
+      const res = await apiClient.loginUser(form);
       if (res?.data) {
         setUser(res.data.user);
         setIsProcessing(false);
         apiClient.setToken(res?.data?.token);
         console.log(res.data);
-        if(user?.type == "student")
-        {
+        if (user?.type == "student") {
           navigate("/communities");
-        }
-        else if(user?.type == "restaurant owner")
-        {
+        } else if (user?.type == "restaurant owner") {
           navigate("/viewrest");
         }
         // <Navbar>
@@ -63,7 +60,7 @@ export default function Login({setLoggedIn}) {
         //     <p>logged in</p>
         //   </div>
         // </Navbar>;
-        // setLoggedIn(true) 
+        // setLoggedIn(true)
         console.log("logged in");
       } else {
         setErrors((e) => ({
