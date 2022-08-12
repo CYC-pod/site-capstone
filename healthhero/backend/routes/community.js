@@ -36,8 +36,10 @@ router.get(
   security.requireAuthenticatedUser,
   async (req, res, next) => {
     try {
-      let { id } = res.locals.user;
+      let { id } = res?.locals?.user;
       const userCommunities = await Community.listCommsOfUser(id);
+      console.log("userId comms in model", id);
+      console.log("user comms in model", userCommunities);
       return res.status(201).json({ userCommunities: userCommunities });
     } catch (err) {
       next(err);
@@ -88,11 +90,9 @@ router.post(
       const commId = res.data.commId; //!is this right probs yes
       await Community.addUserToComm(res?.locals?.user?.id, commId);
       // await Community.addUserToComm(10, 2) hard coded for testing
-      return res
-        .status(201)
-        .json({
-          community: `User ${res?.locals?.user?.id} added community ${commId}`,
-        });
+      return res.status(201).json({
+        community: `User ${res?.locals?.user?.id} added community ${commId}`,
+      });
     } catch {}
   }
 );

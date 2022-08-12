@@ -51,10 +51,14 @@ export default function MyComm() {
   useEffect(() => {
     async function getUserComms() {
       const res = await apiClient.listUserComms();
-      setCommunities(res.data.userCommunities);
+      setCommunities(res?.data?.userCommunities);
       console.log("community list", res.data.userCommunities);
     }
     getUserComms();
+  }, []);
+
+  useEffect(() => {
+    console.log("community array: ", communities);
   }, []);
 
   const style = {
@@ -112,7 +116,7 @@ export default function MyComm() {
               <>
                 <h3 id="left">My Communities</h3>
                 <div className="circles">
-                  {communities.map((comm) => {
+                  {communities?.map((comm) => {
                     return <div className="smoval3">{comm.name}</div>;
                   })}
                 </div>
