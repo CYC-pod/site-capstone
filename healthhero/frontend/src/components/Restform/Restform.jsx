@@ -3,16 +3,17 @@ import { useNavigate, Link } from "react-router-dom";
 // import axios from "axios";
 import { useAuthContext } from "../../../AuthContext/auth";
 import "./Restform.css";
+
 import apiClient from "../../../services/apiClient";
 import Checkbox from "@mui/material/Checkbox";
 import { FormControlLabel, FormGroup } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
-import Select from '@mui/material/Select';
+import Select from "@mui/material/Select";
 import OutlinedInput from "@mui/material/OutlinedInput";
 
 export default function Restform() {
@@ -35,8 +36,8 @@ export default function Restform() {
   const [errors, setErrors] = useState({});
   const [restrictions, setRestrictions] = useState([]);
   const [schools, setSchools] = useState([]);
-  const [selectedSchool, setSelectedSchool] = useState([])
-  const [schoolId, setSchoolId] = useState([])
+  const [selectedSchool, setSelectedSchool] = useState([]);
+  const [schoolId, setSchoolId] = useState([]);
 
   // useEffect(() => {
   //   // if user is not logged in,
@@ -53,21 +54,21 @@ export default function Restform() {
     image: "",
     description: "",
     school_id: "",
-    restrictions: []
+    restrictions: [],
   });
-  
+
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  const handleChangeDropdown = (event) => { 
+  const handleChangeDropdown = (event) => {
     const {
       target: { value },
     } = event;
-      setSelectedSchool(
-        // On autofill we get a stringified value.
-        typeof value === "string" ? value.split(",") : value
-      );
+    setSelectedSchool(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
   };
 
-  // useEffect(() => { //takes in school name and gets id 
+  // useEffect(() => { //takes in school name and gets id
   //   async function getSchoolIdByName(selectedSchool) {
   //     const res = await apiClient.getSchoolIdByName();
   //     setSchoolId(res.data.schoolId);
@@ -76,6 +77,13 @@ export default function Restform() {
   //   getSchoolIdByName();
   // }, [selectedSchool]);
 
+  const prefilledform = {
+    name: "Testname",
+    location: "100",
+    image: "TestImage",
+    description: "Testdescription",
+    school_id: "2",
+  };
   useEffect(() => {
     async function getRestrictions() {
       const res = await apiClient.listRestrictions();
@@ -84,7 +92,6 @@ export default function Restform() {
     }
     getRestrictions();
   }, []);
-
 
   useEffect(() => {
     async function getSchools() {
@@ -96,8 +103,8 @@ export default function Restform() {
   }, []);
 
   useEffect(() => {
-    console.log("selected school" , selectedSchool)
-  }, [])
+    console.log("selected school", selectedSchool);
+  }, []);
 
   // useEffect(() => {
   //   console.log("restrictions variable", restrictions);
@@ -125,12 +132,23 @@ export default function Restform() {
     }
   };
 
-
-  // function prefillform(){
-  //   apiClient.request("restaurant", "GET", null).then()(data)=>
-  //     setForm(data);
+  // const prefillform(){
+  //  apiClient.request("restaurant", "GET", null).then()(data => setForm(data));
   //   }
-  // } // work in progres for editing restaurant and have all my info still prefill in form for when user wants to update
+  //  } // work in progres for editing restaurant and have all my info still prefill in form for when user wants to update
+
+  // useEffect(() => {
+  //   async function prefillform() {
+  //     const res = await apiClient.request("restaurant", "GET",null)
+  //     // .then()(
+  //     //   (data) => setForm(data)
+  //   //);
+  //     setForm(res.data.restaurant);
+  //     console.log("rest list", res.data.restaurant);
+  //   }
+  //   prefillform();
+  // }, []);
+
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
@@ -210,6 +228,22 @@ export default function Restform() {
       setIsLoading(false);
     }
   };
+
+
+  // useEffect(() => {
+  //      async function prefillform() {
+  //       const res = await apiClient.request("restaurant", "GET",null)
+  //       //.then()(
+  //       //   (data) => setForm(data)
+  //   //   //);
+  //       setForm(res.data.restaurants);
+  //       console.log("rest list", res.data.restaurants);
+  //     }
+  //     prefillform();
+  //   }, []);
+
+
+
 
   const label = { inputProps: { "aria-label": "Christians checkbox" } };
 
@@ -292,30 +326,30 @@ export default function Restform() {
               {errors.description && (
                 <span className="error">{errors.description}</span>
               )}
-            <br/>
-            <br/>
+              <br />
+              <br />
 
-            <FormControl sx={{ m: 1, width: 300 }}>
-              <InputLabel id="demo-multiple-checkbox-label">
-              Select School
-              </InputLabel>
-              <Select
-                labelId="demo-multiple-checkbox-label"
-                id="demo-multiple-checkbox"
-                multiple
-                value={selectedSchool}
-                onChange={handleChangeDropdown}
-                input={<OutlinedInput label="Tag" />}
-                renderValue={(selectedSchool) => selectedSchool.join(", ")}
-                MenuProps={MenuProps}
-              >
-                {schools.map((school) => (
-                  <MenuItem key={school.name} value={school.name}>
-                    <ListItemText primary={school.name} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+              <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel id="demo-multiple-checkbox-label">
+                  Select School
+                </InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  value={selectedSchool}
+                  onChange={handleChangeDropdown}
+                  input={<OutlinedInput label="Tag" />}
+                  renderValue={(selectedSchool) => selectedSchool.join(", ")}
+                  MenuProps={MenuProps}
+                >
+                  {schools.map((school) => (
+                    <MenuItem key={school.name} value={school.name}>
+                      <ListItemText primary={school.name} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </div>
             {restrictions.map(({ id, name, type }) => {
               return (
