@@ -85,8 +85,10 @@ router.post(
   security.requireAuthenticatedUser,
   async (req, res, next) => {
     try {
-      const commId = res.data.commId; //!is this right probs yes
+      // const commId = res.data.commId; //!is this riht probs yes
+      const commId = req.body.commId; 
       await Community.addUserToComm(res?.locals?.user?.id, commId);
+      console.log("commid", commId);
       // await Community.addUserToComm(10, 2) hard coded for testing
       return res.status(201).json({
         community: `User ${res?.locals?.user?.id} added community ${commId}`,
@@ -95,7 +97,7 @@ router.post(
       next(err);
     }
   }
-)
+);
 
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {

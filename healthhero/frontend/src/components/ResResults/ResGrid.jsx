@@ -34,11 +34,7 @@ export default function ResGrid() {
   const [allergies, setAllergies] = useState([]);
   const [selectedDiet, setSelectedDiet] = useState([]);
   const [selectedAllergy, setSelectedAllergy] = useState([]);
-  const [selected, setSelected] = useState([])
-
-  // useEffect(() => {
-  //   console.log("hiiii");
-  // }, []);
+  const [selected, setSelected] = useState([]);
 
   useEffect(() => {
     async function getRes() {
@@ -46,35 +42,27 @@ export default function ResGrid() {
       const res = await apiClient.listMinRestaurants();
       console.log(res);
       setRestaurants(res.data.restaurants);
-      console.log("restaurant list", res.data.restaurants);
+      console.log("restaurant list: ", res.data.restaurants);
     }
-    getRes();
-  }, []);
-
-  useEffect(() => {
     async function getUserRestrictions() {
       const res = await apiClient.listUserRestrictions();
       setUserRestrictions(res.data.restrictions);
       console.log("user restrictions list", res.data.restrictions);
     }
-    getUserRestrictions();
-  }, []);
-
-  useEffect(() => {
     async function getDiets() {
       const res = await apiClient.listDiets();
       console.log("diets list", res.data.diets);
       setDiets(res.data.diets); //this needs to change
     }
-    getDiets();
-  }, []);
-
-  useEffect(() => {
     async function getAllergies() {
       const res = await apiClient.listAllergies();
       setAllergies(res.data.allergies); //this need to change
       console.log("allergies list", res.data.allergies);
     }
+    console.log("res grid rendering");
+    getRes();
+    getUserRestrictions();
+    getDiets();
     getAllergies();
   }, []);
 
@@ -114,14 +102,9 @@ export default function ResGrid() {
     );
   };
 
-  useEffect(()=>{
-    setSelected([...selectedDiet, ...selectedAllergy])
-  },[selectedDiet, selectedAllergy])
-
-  useEffect(()=>{
-    console.log(selected)
-  },[selected])
-
+  useEffect(() => {
+    setSelected([...selectedDiet, ...selectedAllergy]);
+  }, [selectedDiet, selectedAllergy]);
 
   let checker = (arr, target) => target.every((v) => arr.includes(v));
 
@@ -149,12 +132,10 @@ export default function ResGrid() {
         justifyContent: "flex-start",
       }}
     >
-      <div> *
+      <div>
         {/* drop down filter for diets  */}
         <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel id="demo-multiple-checkbox-label">
-           Diets
-          </InputLabel>
+          <InputLabel id="demo-multiple-checkbox-label">Diets</InputLabel>
           <Select
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
@@ -167,18 +148,17 @@ export default function ResGrid() {
           >
             {diets.map((restriction) => (
               <MenuItem key={restriction.name} value={restriction.name}>
-                <Checkbox checked={selectedDiet.indexOf(restriction.name) > -1} />
+                <Checkbox
+                  checked={selectedDiet.indexOf(restriction.name) > -1}
+                />
                 <ListItemText primary={restriction.name} />
               </MenuItem>
             ))}
           </Select>
         </FormControl>
-
         {/* drop down filter for allergies  */}
         <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel id="demo-multiple-checkbox-label">
-              Allergies
-          </InputLabel>
+          <InputLabel id="demo-multiple-checkbox-label">Allergies</InputLabel>
           <Select
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
@@ -191,21 +171,21 @@ export default function ResGrid() {
           >
             {allergies.map((restriction) => (
               <MenuItem key={restriction.name} value={restriction.name}>
-                <Checkbox checked={selectedAllergy.indexOf(restriction.name) > -1} />
+                <Checkbox
+                  checked={selectedAllergy.indexOf(restriction.name) > -1}
+                />
                 <ListItemText primary={restriction.name} />
               </MenuItem>
             ))}
           </Select>
         </FormControl>
-       </div>
+      </div>
       {restaurants
         .filter((restaurant) => checker(restaurant.restriction_name, selected))
         .map((rest, index) => {
-          return (
-            <ResCard key={index} rest={rest} showdescription={false} />
-          );
+          console.log("selected array in map: " , selected)
+          return <ResCard key={index} rest={rest} showdescription={false} />;
         })}
-
     </Box>
   );
 }

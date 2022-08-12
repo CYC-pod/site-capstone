@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 // import axios from "axios";
 import { useAuthContext } from "../../../AuthContext/auth";
 import "./Restform.css";
+
 import apiClient from "../../../services/apiClient";
 import Checkbox from "@mui/material/Checkbox";
 import { FormControlLabel, FormGroup } from "@mui/material";
@@ -89,6 +90,13 @@ export default function Restform() {
     setForm({...form, school_id: schoolId?.id});
   }, [schoolId]);
 
+  const prefilledform = {
+    name: "Testname",
+    location: "100",
+    image: "TestImage",
+    description: "Testdescription",
+    school_id: "2",
+  };
   useEffect(() => {
     async function getRestrictions() {
       const res = await apiClient.listRestrictions();
@@ -137,11 +145,23 @@ export default function Restform() {
     }
   };
 
-  // function prefillform(){
-  //   apiClient.request("restaurant", "GET", null).then()(data)=>
-  //     setForm(data);
+  // const prefillform(){
+  //  apiClient.request("restaurant", "GET", null).then()(data => setForm(data));
   //   }
-  // } // work in progres for editing restaurant and have all my info still prefill in form for when user wants to update
+  //  } // work in progres for editing restaurant and have all my info still prefill in form for when user wants to update
+
+  // useEffect(() => {
+  //   async function prefillform() {
+  //     const res = await apiClient.request("restaurant", "GET",null)
+  //     // .then()(
+  //     //   (data) => setForm(data)
+  //   //);
+  //     setForm(res.data.restaurant);
+  //     console.log("rest list", res.data.restaurant);
+  //   }
+  //   prefillform();
+  // }, []);
+
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
@@ -221,6 +241,22 @@ export default function Restform() {
       setIsLoading(false);
     }
   };
+
+
+  // useEffect(() => {
+  //      async function prefillform() {
+  //       const res = await apiClient.request("restaurant", "GET",null)
+  //       //.then()(
+  //       //   (data) => setForm(data)
+  //   //   //);
+  //       setForm(res.data.restaurants);
+  //       console.log("rest list", res.data.restaurants);
+  //     }
+  //     prefillform();
+  //   }, []);
+
+
+
 
   const label = { inputProps: { "aria-label": "Christians checkbox" } };
 
@@ -305,8 +341,8 @@ export default function Restform() {
               )}
               <br />
               <br />
-              //!!!!!!!!!!!!!!!!
-              <FormControl sx={{ m: 1, width: 300 }}>
+           
+              <FormControl sx={{ m: 1, width: 300 }}> */}
                 <InputLabel id="demo-multiple-checkbox-label">
                   Select School
                 </InputLabel>

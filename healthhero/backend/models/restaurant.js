@@ -30,7 +30,7 @@ class Restaurant {
     console.log(userRestrictions);
     const result = await db.query(
       `
-      SELECT * 
+      SELECT restaurant.* , accommodation.restriction_name
       FROM restaurant
       INNER JOIN accommodation
       ON restaurant.id = accommodation.restaurant_id

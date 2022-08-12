@@ -59,8 +59,9 @@ function App() {
     }
   };
 
-  React.useEffect(() => {
+useEffect(() => {
     autoLoggIn();
+    console.log("rendering in app.jsx")
   }, []);
 
   const logoutuser = async () => {
@@ -165,9 +166,7 @@ function App() {
         <Route
           path="/resResults"
           element={
-            <>
               <ResResults />
-            </>
           }
         />
         {/* <Route

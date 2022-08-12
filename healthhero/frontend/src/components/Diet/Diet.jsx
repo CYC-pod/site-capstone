@@ -286,7 +286,7 @@ export default function Diet() {
       <div>
         {/* flex id here^ */}
         <ColorButton variant="contained" onClick={handleOnSubmit}>
-          <a href="/ResResults" id="link">
+          <a href="/resResults" id="link">
             Submit Options
           </a>
         </ColorButton>

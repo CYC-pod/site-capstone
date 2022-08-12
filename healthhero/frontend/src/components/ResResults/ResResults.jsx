@@ -7,12 +7,23 @@ import { useAuthContext } from "../../../AuthContext/auth";
 import ResGrid from "./ResGrid";
 import "../ResResults/ResResults.css";
 
-export default function SelRes() {
-  const { resres, setRes } = useAuthContext();
-  const { restaurant, setRestaurant } = useAuthContext();
+// export default function Test(){
+//   useEffect(() =>{
+//     console.log("rendering test")
+//   },[])
+
+//   return(
+//     <p>test</p>
+//   )
+// }
+export default function ResResults() {
+  // const { resres, setRes } = useAuthContext();
+  // const { restaurant, setRestaurant } = useAuthContext();
+  
   useEffect(() => {
     const fetchRes = async () => {
       const { data, error } = await apiClient.listres();
+      console.log("data");
       if (data) setRes(data.restaurant);
     };
 
@@ -22,7 +33,7 @@ export default function SelRes() {
       fetchRes();
     }
 
-    console.log("hii")
+    console.log("hii");
   }, []);
   return (
     <Container
@@ -38,10 +49,9 @@ export default function SelRes() {
     >
       <Box sx={{ background: "inherit", width: "50%", height: "10vh", m: 3 }}>
         <h1> Your Restaurant Results</h1>
-        <ResGrid />
+        <ResGrid className="res-grid-comp" />
       </Box>
-    
-      
+
       {/* <Box
           sx={{ background: "purple", width: "10%", height: "10vh", m: 3 }}
         ></Box> */}
@@ -111,5 +121,55 @@ export default function SelRes() {
 //       </div>
 //       {/* call displayResults here? */}
 //     </div>
+//   );
+// 
+ 
+
+ //tried this verison with moe, didnt work shows no restaurant but console logged the data array of restuarants
+//  import * as React from "react";
+// import { Box } from "@mui/material";
+// import { Container } from "@mui/system";
+// import ResCard from "./ResCard";
+// import { useEffect } from "react";
+// import { useAuthContext } from "../../../AuthContext/auth";
+// import ResGrid from "./ResGrid";
+// import "../ResResults/ResResults.css";
+// import apiClient from "../../../services/apiClient";
+// import { useState } from "react";
+
+// export default function SelRes() {
+//   // const { resres, setRes } = useAuthContext();
+//   const [ res, setRes ] = useState({});
+//   useEffect(() => {
+//     const fetchRes = async () => {
+//       const { data, error } = await apiClient.listres();
+//       console.log("rest data", data);
+//       if (data) setRes(data.restaurant);
+//     };
+//     fetchRes();
+
+//     console.log("hii");
+//   }, []);
+//   return (
+//     <Container
+//       className="restaurants"
+//       sx={{
+//         flexGrow: 1,
+//         background: "#f4ebd0",
+//         alignItems: "center",
+//         display: "flex",
+//         flexDirection: "column",
+//       }} //2 brackets for its object.. setting the container
+//       maxWidth={false}
+//     >
+//       <Box sx={{ background: "inherit", width: "50%", height: "10vh", m: 3 }}>
+//         <h1> Your Restaurant Results</h1>
+//         <ResGrid />
+//       </Box>
+
+//       {/* <Box
+//           sx={{ background: "purple", width: "10%", height: "10vh", m: 3 }}
+//         ></Box> */}
+//     </Container>
 //   );
 // }

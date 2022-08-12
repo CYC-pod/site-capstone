@@ -48,7 +48,8 @@ class ApiClient {
     const res = await this.request(`community/schoolcommunities`, `GET`);
     return res;
   }
-  async listres() { //lists all restaurants probs dont need 
+  async listres() {
+    //lists all restaurants probs dont need
     const res = await this.request(`restaurant/`, `GET`);
     return res;
   }
@@ -58,9 +59,9 @@ class ApiClient {
     console.log("res id returned by api call", resId);
     return resId;
   }
-  async listMinRestaurants(){
+  async listMinRestaurants() {
     const res = await this.request(`restaurant/minrestriction`, `GET`);
-    return res; 
+    return res;
   }
 
   async listCommbyId(id) {
@@ -95,33 +96,42 @@ class ApiClient {
     return res;
   }
 
-  async listRestaurantRestrictions(restaurantId){ //lists restaurant restrictions for a single restaurant 
-    console.log("rest id in api client", restaurantId)
-    const res = await this.request(`restaurant/restrictionsbyrest?restaurantid=${restaurantId}`, "GET")
+  async listRestaurantRestrictions(restaurantId) {
+    //lists restaurant restrictions for a single restaurant
+    console.log("rest id in api client", restaurantId);
+    const res = await this.request(
+      `restaurant/restrictionsbyrest?restaurantid=${restaurantId}`,
+      "GET"
+    );
     return res;
   }
 
-  async listRestrictions() { //lists all restrictions for restaurant form 
+  async listRestrictions() {
+    //lists all restrictions for restaurant form
     const res = await this.request("restrictions", "GET");
     return res;
   }
 
-  async listUserRestrictions(){//lists user restrictions 
-    const res = await this.request("restrictions/user", "GET")
-    return res; 
+  async listUserRestrictions() {
+    //lists user restrictions
+    const res = await this.request("restrictions/user", "GET");
+    return res;
   }
 
-  async listDiets() { //lists all diets from restrictions table 
+  async listDiets() {
+    //lists all diets from restrictions table
     const res = await this.request("restrictions/diets", "GET");
     return res;
   }
 
-  async listAllergies() {  //lists all allergies from restrictions table 
+  async listAllergies() {
+    //lists all allergies from restrictions table
     const res = await this.request("restrictions/allergies", "GET");
     return res;
   }
 
-  async listSchools() { //lists all schools 
+  async listSchools() {
+    //lists all schools
     const res = await this.request("schools", "GET");
     return res;
   }
@@ -130,7 +140,8 @@ class ApiClient {
   //   return res;
   // }
 
-  async addSchoolToUser(schoolId) { //allows school id to attach to user once they click a school icon
+  async addSchoolToUser(schoolId) {
+    //allows school id to attach to user once they click a school icon
     console.log("school id in apiClient", schoolId);
     const data = { schoolId };
     return await this.request(`schools/userschool`, `PATCH`, data);
@@ -146,10 +157,11 @@ class ApiClient {
   // async createRestaurant(restaurantForm){
   //   const res = await this.request("restaurant/create", "POST", restaurantForm)
   //   console.log("whats returned from restaurant/create: " , res.data)
-  //   return res; 
+  //   return res;
   // }
 
-  async postUserRestrictions(userRestrictions) { //adds user's restrictions to table based on checkbox responses 
+  async postUserRestrictions(userRestrictions) {
+    //adds user's restrictions to table based on checkbox responses
     console.log("user restrictions in apiClient", userRestrictions);
     const res = await this.request(
       `restrictions/user`,
@@ -158,25 +170,28 @@ class ApiClient {
     );
     return res;
   }
-  
-  async addUserToComm(commId){ //adds user and community to user_community table 
-    const res = await this.request(`community/addusertocomm`, `POST`, commId);
-    return res
-  }
 
-  async listUsersInComm(commId){ //list all users that belong to a particular community 
-    const res = await this.request(`community/listusersincomm/${commId}`, `GET`);
-  }
-
-  async listUserComms(commId){ //lists all communities that a SINGLE user belongs to
-    const res = await this.request(`community/usercommunities`, `GET`);
+  async addUserToComm(commId) {
+    //adds user and community to user_community table
+    const res = await this.request(`community/addusertocomm`, `POST`, {
+      commId: commId,
+    });
     return res;
   }
 
+  async listUsersInComm(commId) {
+    //list all users that belong to a particular community
+    const res = await this.request(
+      `community/listusersincomm/${commId}`,
+      `GET`
+    );
+  }
 
-
+  async listUserComms(commId) {
+    //lists all communities that a SINGLE user belongs to
+    const res = await this.request(`community/usercommunities`, `GET`);
+    return res;
+  }
 }
-
-
 
 export default new ApiClient("http://localhost:3001");
