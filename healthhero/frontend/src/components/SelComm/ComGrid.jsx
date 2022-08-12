@@ -37,7 +37,7 @@ export default function ComGrid() {
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
-        justifyContent: "center",
+        justifyContent: "flex-start",
       }}
     >
       {communities.map((comm, index) => {

@@ -75,32 +75,35 @@ export default function SchoolsView() {
   return (
     <div className="viewS">
       <h1>Pick your school</h1>
-      <label id="selS">Select your school: </label>
-      <Autocomplete
-        onInputChange={handleFilChange}
-        sx={{
-          display: "inline-block",
-          "& input": {
-            width: 200,
-            height: 25,
-            bgcolor: "background.paper",
-            color: (theme) =>
-              theme.palette.getContrastText(theme.palette.background.paper),
-          },
-        }}
-        id="custom-input-demo"
-        options={options}
-        renderInput={(params) => (
-          <div ref={params.InputProps.ref}>
-            <input
-              type="text"
-              {...params.inputProps}
-              placeholder="             Search schools..."
-              // onChange={handleOnTextChange}
-            />
-          </div>
-        )}
-      />
+      <div className="marg">
+        <label id="selS">Select your school: </label>
+        <Autocomplete
+          onInputChange={handleFilChange}
+          sx={{
+            display: "inline-block",
+            "& input": {
+              width: 200,
+              height: 25,
+              margin: "2%",
+              bgcolor: "background.paper",
+              color: (theme) =>
+                theme.palette.getContrastText(theme.palette.background.paper),
+            },
+          }}
+          id="custom-input-demo"
+          options={options}
+          renderInput={(params) => (
+            <div ref={params.InputProps.ref}>
+              <input
+                type="text"
+                {...params.inputProps}
+                placeholder="             Search schools..."
+                // onChange={handleOnTextChange}
+              />
+            </div>
+          )}
+        />
+      </div>
       <div className="">
         {schools.filter(fil).map((school, i) => {
           //rendering schools
@@ -182,7 +185,9 @@ export default function SchoolsView() {
         //   </button>
         // </div> */}
         <div>
-          <button className="liBrB">Load more schools</button>
+          <button className="liBrB" id="ma">
+            Load more schools
+          </button>
         </div>
       </div>
     </div>

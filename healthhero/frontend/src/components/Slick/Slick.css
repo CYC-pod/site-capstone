@@ -9,17 +9,18 @@
   border: 2px red solid;
 } */
 #yas img {
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-  -webkit-transition: all 1s ease;
-}
-
-#yas img:hover {
   filter: grayscale(0%);
   filter: rgb(160, 159, 159);
   -webkit-filter: grayscale(0%);
   filter: none;
   transition: 0.5s ease;
+}
+
+#yas img:hover {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: all 1s ease;
+  transition: 1s;
 }
 
 #okur img {

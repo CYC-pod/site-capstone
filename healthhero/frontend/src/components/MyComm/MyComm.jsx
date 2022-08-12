@@ -29,7 +29,8 @@ export default function MyComm() {
   // const [userRestrictions, setUserRestrictions] = useState([]);
   const [diets, setDie] = useState([]);
   const [allergies, setAlls] = useState([]);
-  const [comms, setcomms] = useState([]);
+  // const [comms, setcomms] = useState([]);
+  const [communities, setCommunities] = useState([]);
   // console.log(user.school_id);
   useEffect(() => {
     async function getDiets() {
@@ -45,6 +46,15 @@ export default function MyComm() {
       setAlls(res.data.allergies);
     }
     getAlls();
+  }, []);
+
+  useEffect(() => {
+    async function getUserComms() {
+      const res = await apiClient.listUserComms();
+      setCommunities(res.data.userCommunities);
+      console.log("community list", res.data.userCommunities);
+    }
+    getUserComms();
   }, []);
 
   const style = {

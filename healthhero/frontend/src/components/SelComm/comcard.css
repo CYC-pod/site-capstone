@@ -22,7 +22,7 @@
   /* width: 600px; */
   /* min-width: 200px;
   max-width: 800px; */
-  width: max-content;
+  /* width: max-content; */
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
@@ -34,7 +34,7 @@
 }
 .commImage {
   border-radius: 8px;
-  width: 80%;
+  /* width: 80%; */
 }
 /* .picpic {
 } */

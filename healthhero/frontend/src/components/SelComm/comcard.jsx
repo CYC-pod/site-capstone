@@ -4,6 +4,7 @@ import apiClient from "../../../services/apiClient";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../../AuthContext/auth";
 import "./ComCard.css";
+import { Container } from "@mui/material";
 
 export default function ComCard({ comm, showdescription }) {
   // const { comm, setComm } = useAuthContext();
@@ -29,14 +30,13 @@ export default function ComCard({ comm, showdescription }) {
   const { id, image_url, name, description } = comm; //containing them to contain these 3 keys
 
   return (
-    <div className="CommCard">
+    <Container className="CommCard" maxWidth={"xs"} sx={{ m: 3 }}>
       {/* <button onClick={handleOnClick}> */}
       <Link to={"/commDescript/" + id} className="media">
         <div className="picpic">
           <img className="commImage" src={image_url}></img>
         </div>
       </Link>
-
       <div className="commInfo">
         <h1 className="commName"> {name} </h1>
         {/* <h1 className="commName"> {id} </h1> */}
@@ -48,7 +48,7 @@ export default function ComCard({ comm, showdescription }) {
         ) : null}
       </div>
       {/* maybe an if student created then attach students username */}
-    </div>
+    </Container>
   );
 }
 // src={comm ? comm.image : "undefined community image"}
