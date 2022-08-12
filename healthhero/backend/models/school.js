@@ -53,6 +53,18 @@ class School{
         console.log("school model test: " , schoolId, userId, results)
         return results;
     }
+
+    static async getSchoolIdByName(schoolName){
+        const result = await db.query(
+            `
+            SELECT id 
+            FROM SCHOOL
+            WHERE name = $1;
+            `, [schoolName]
+        )
+        const results = result.rows[0];
+        return results;
+    }
 }
 
 module.exports = School;

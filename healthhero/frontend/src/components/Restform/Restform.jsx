@@ -7,12 +7,12 @@ import apiClient from "../../../services/apiClient";
 import Checkbox from "@mui/material/Checkbox";
 import { FormControlLabel, FormGroup } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
-import Select from '@mui/material/Select';
+import Select from "@mui/material/Select";
 import OutlinedInput from "@mui/material/OutlinedInput";
 
 export default function Restform() {
@@ -35,8 +35,8 @@ export default function Restform() {
   const [errors, setErrors] = useState({});
   const [restrictions, setRestrictions] = useState([]);
   const [schools, setSchools] = useState([]);
-  const [selectedSchool, setSelectedSchool] = useState([])
-  const [schoolId, setSchoolId] = useState([])
+  const [selectedSchool, setSelectedSchool] = useState([]);
+  const [schoolId, setSchoolId] = useState();
 
   // useEffect(() => {
   //   // if user is not logged in,
@@ -52,39 +52,51 @@ export default function Restform() {
     location: "",
     image: "",
     description: "",
-    school_id: "",
-    restrictions: []
+    school_id: schoolId,
+    restrictions: [],
   });
-  
+
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  const handleChangeDropdown = (event) => { 
+  const handleChangeDropdown = (event) => {
     const {
       target: { value },
     } = event;
-      setSelectedSchool(
-        // On autofill we get a stringified value.
-        typeof value === "string" ? value.split(",") : value
-      );
+    console.log("SCHOOO< HERE: ", selectedSchool);
+    setSelectedSchool(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
   };
 
-  // useEffect(() => { //takes in school name and gets id 
-  //   async function getSchoolIdByName(selectedSchool) {
-  //     const res = await apiClient.getSchoolIdByName();
-  //     setSchoolId(res.data.schoolId);
-  //     console.log("restrictions list", res.data.res.data.schoolId);
-  //   }
-  //   getSchoolIdByName();
-  // }, [selectedSchool]);
+  useEffect(() => {
+    console.log("form changes " , form)
+  },[form])
+
+
+  useEffect(() => {
+    //takes in school name and gets id
+    async function getSchoolIdByName() {
+      console.log("school name in use effect", selectedSchool[0]);
+      const res = await apiClient.getSchoolIdByName(selectedSchool[0]);
+      setSchoolId(res.data.schoolId);
+      console.log("school id in use effect", res.data.schoolId);
+    }
+    getSchoolIdByName();
+  }, [selectedSchool]);
+
+  useEffect(() => {
+    console.log("school id of selected school", schoolId);
+    setForm({...form, school_id: schoolId?.id});
+  }, [schoolId]);
 
   useEffect(() => {
     async function getRestrictions() {
       const res = await apiClient.listRestrictions();
       setRestrictions(res.data.restrictions);
-      console.log("restrictions list", res.data.restrictions);
+      // console.log("restrictions list", res.data.restrictions);
     }
     getRestrictions();
   }, []);
-
 
   useEffect(() => {
     async function getSchools() {
@@ -95,9 +107,9 @@ export default function Restform() {
     getSchools();
   }, []);
 
-  useEffect(() => {
-    console.log("selected school" , selectedSchool)
-  }, [])
+  // useEffect(() => {
+  //   console.log("selected school", selectedSchool);
+  // }, [selectedSchool]);
 
   // useEffect(() => {
   //   console.log("restrictions variable", restrictions);
@@ -124,7 +136,6 @@ export default function Restform() {
       });
     }
   };
-
 
   // function prefillform(){
   //   apiClient.request("restaurant", "GET", null).then()(data)=>
@@ -292,30 +303,30 @@ export default function Restform() {
               {errors.description && (
                 <span className="error">{errors.description}</span>
               )}
-            <br/>
-            <br/>
-
-            <FormControl sx={{ m: 1, width: 300 }}>
-              <InputLabel id="demo-multiple-checkbox-label">
-              Select School
-              </InputLabel>
-              <Select
-                labelId="demo-multiple-checkbox-label"
-                id="demo-multiple-checkbox"
-                multiple
-                value={selectedSchool}
-                onChange={handleChangeDropdown}
-                input={<OutlinedInput label="Tag" />}
-                renderValue={(selectedSchool) => selectedSchool.join(", ")}
-                MenuProps={MenuProps}
-              >
-                {schools.map((school) => (
-                  <MenuItem key={school.name} value={school.name}>
-                    <ListItemText primary={school.name} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+              <br />
+              <br />
+              //!!!!!!!!!!!!!!!!
+              <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel id="demo-multiple-checkbox-label">
+                  Select School
+                </InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  value={selectedSchool}
+                  onChange={handleChangeDropdown}
+                  input={<OutlinedInput label="Tag" />}
+                  renderValue={(selectedSchool) => selectedSchool.join(", ")}
+                  MenuProps={MenuProps}
+                >
+                  {schools.map((school) => (
+                    <MenuItem key={school.name} value={school.name}>
+                      <ListItemText primary={school.name} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </div>
             {restrictions.map(({ id, name, type }) => {
               return (

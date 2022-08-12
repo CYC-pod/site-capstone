@@ -136,8 +136,11 @@ class ApiClient {
     return await this.request(`schools/userschool`, `PATCH`, data);
   }
 
-  async getSchoolIdByName(){
-    
+  
+  async getSchoolIdByName(schoolName){
+    console.log("school name in api client: ", schoolName)
+    const res = await this.request(`schools/schoolidfromname?schoolName=${schoolName}`, `GET`);
+    return res
   }
 
   // async createRestaurant(restaurantForm){

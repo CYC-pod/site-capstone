@@ -74,6 +74,19 @@ class Restrictions{
         return results;
     }
 
+    // static async listUserDiets(userRestrictions){
+    //     const result = await db.query(
+    //         `
+    //         SELECT restriction_name
+    //         FROM restriction
+    //         WHERE type = $1 AND name = $2
+    //         `,
+    //         ['diet', ]
+    //     )
+    //     const results = result.rows.map((row) => row.restriction_name)
+    //     return results;
+    // }
+
     static async listUserRestrictions(userID){
         const result = await db.query(
             `

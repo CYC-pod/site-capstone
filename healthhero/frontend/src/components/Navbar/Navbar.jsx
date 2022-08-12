@@ -57,15 +57,8 @@ export default function Navbar({ logoutuser }) {
               </a>{" "}
             </Button>
           ) : null}
-          {isStudent ? (
-            <Button>
-              {" "}
-              <a href="/diet" id="link">
-                {" "}
-                Diet{" "}
-              </a>{" "}
-            </Button>
-          ) : null}
+          {isStudent ? (<Button><a href="/diet" id="link">Diet</a></Button>) : null}
+          {isRest ? (<Button><a href="/viewrest" id="link">View Your Restaurant</a></Button>) : null}
           {/* make button/list item */}
           <Typography
             variant="h6"

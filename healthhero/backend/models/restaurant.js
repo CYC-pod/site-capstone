@@ -94,11 +94,10 @@ class Restaurant {
                image_url,
                description,
            user_id)
-            VALUES ($1,$2,$3,$4,$5,$6)
+            VALUES ($1,$2,$3,$4,$5)
             RETURNING id, name,location,image_url, description, user_id;
             `,
       [
-        restaurant.id,
         restaurant.name,
         restaurant.location,
         restaurant.image,

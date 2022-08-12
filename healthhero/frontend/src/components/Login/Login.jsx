@@ -18,13 +18,14 @@ export default function Login({setLoggedIn}) {
     password: ""
   });
 
-  useEffect(() => {
-    // if user is already logged in,
-    // redirect them to the home page
-    if (user?.email) {
-      navigate("/");
-    }
-  }, [user, navigate]);
+  //?might need this later 
+  // useEffect(() => {
+  //   // if user is already logged in,
+  //   // redirect them to the home page
+  //   if (user?.email) {
+  //     navigate("/");
+  //   }
+  // }, [user, navigate]);
 
   const handleOnInputChange = (ev) => {
     if (ev.target.name === "email") {
@@ -49,7 +50,14 @@ export default function Login({setLoggedIn}) {
         setIsProcessing(false);
         apiClient.setToken(res?.data?.token);
         console.log(res.data);
-        navigate("/communities");
+        if(user?.type == "student")
+        {
+          navigate("/communities");
+        }
+        else if(user?.type == "restaurant owner")
+        {
+          navigate("/viewrest");
+        }
         // <Navbar>
         //   <div>
         //     <p>logged in</p>

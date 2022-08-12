@@ -52,11 +52,10 @@ class Community {
                user_id,
                school_id
             )
-            VALUES ($1,$2,$3,$4,$5,$6)
+            VALUES ($1,$2,$3,$4,$5)
             RETURNING id, name,image_url, description, user_id, school_id;
             `,
       [
-        community.id,
         community.name,
         community.image,
         community.description,
