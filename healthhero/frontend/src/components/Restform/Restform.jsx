@@ -342,7 +342,7 @@ export default function Restform() {
               <br />
               <br />
            
-              <FormControl sx={{ m: 1, width: 300 }}> */}
+              <FormControl sx={{ m: 1, width: 300 }}> 
                 <InputLabel id="demo-multiple-checkbox-label">
                   Select School
                 </InputLabel>
