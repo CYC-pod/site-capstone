@@ -61,6 +61,17 @@
   border-radius: 15px;
   margin: 2%;
 }
+.smoval2 {
+  background-color: #8fcf7f;
+  color: #0e3804;
+  width: 15%;
+  min-width: min-content;
+  height: 20%;
+  text-align: center;
+  justify-items: center;
+  border-radius: 15px;
+  margin: 2%;
+}
 
 .info {
   /* justify-items: center;

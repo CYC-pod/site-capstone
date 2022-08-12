@@ -86,8 +86,6 @@ export default function MyComm() {
             {/* code for title of upper box dep on user^ */}
             {isStudent ? (
               <div>
-                <div></div>
-
                 <div className="circles">
                   {diets.map((diet) => {
                     return <div className="smoval">{diet.name}</div>;
@@ -113,6 +111,11 @@ export default function MyComm() {
             {isStudent ? (
               <>
                 <h3 id="left">My Communities</h3>
+                <div className="circles">
+                  {communities.map((comm) => {
+                    return <div className="smoval3">{comm.name}</div>;
+                  })}
+                </div>
               </>
             ) : null}
           </Box>

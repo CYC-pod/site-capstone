@@ -140,7 +140,7 @@ export default function Diet() {
     <div className="diet">
       <div className="topD">
         <br />
-        <h3 id="left">Dietary Groups</h3>
+
         <div id="flexri">
           <Autocomplete
             onInputChange={handleFilChangeD}
@@ -154,6 +154,9 @@ export default function Diet() {
                 color: (theme) =>
                   theme.palette.getContrastText(theme.palette.background.paper),
                 // float: "right",
+                "@media only screen and (max-width: 600px)": {
+                  width: 300,
+                },
               },
             }}
             id="custom-input-demo"
@@ -172,6 +175,7 @@ export default function Diet() {
             )}
           />
         </div>
+        <h3 id="left">Dietary Groups</h3>
       </div>
 
       <br />
