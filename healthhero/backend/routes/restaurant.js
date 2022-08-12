@@ -72,23 +72,25 @@ router.get("/minrestriction", async (req, res, next) => {
     );
     let restautantList = {};
     for (let restaurant of restaurants) {
-      if (!restautantList[restaurant.restaurant_id]) {
-        restautantList[restaurant.restaurant_id] = restaurant;
-        restautantList[restaurant.restaurant_id].restriction_name = [
-          restautantList[restaurant.restaurant_id].restriction_name,
+      if (!restautantList[restaurant.id]) {
+        restautantList[restaurant.id] = restaurant;
+        restautantList[restaurant.id].restriction_name = [
+          restautantList[restaurant.id].restriction_name,
         ];
       } else {
-        restautantList[restaurant.restaurant_id].restriction_name.push(
+        restautantList[restaurant.id].restriction_name.push(
           restaurant.restriction_name
         );
       }
     }
+    console.log("restaurant list in router: ", restautantList) //something weird is happeing b/c the changes we made to query some columns may not be available 
     restautantList = Object.values(restautantList);
     return res.status(201).json({ restaurants: restautantList });
   } catch (err) {
     next(err);
   }
 });
+
 router.get(
   "/restaurant",
   security.requireAuthenticatedUser,

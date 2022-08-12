@@ -7,9 +7,19 @@ import { useAuthContext } from "../../../AuthContext/auth";
 import ResGrid from "./ResGrid";
 import "../ResResults/ResResults.css";
 
-export default function SelRes() {
-  const { resres, setRes } = useAuthContext();
-  const { restaurant, setRestaurant } = useAuthContext();
+// export default function Test(){
+//   useEffect(() =>{
+//     console.log("rendering test")
+//   },[])
+
+//   return(
+//     <p>test</p>
+//   )
+// }
+export default function ResResults() {
+  // const { resres, setRes } = useAuthContext();
+  // const { restaurant, setRestaurant } = useAuthContext();
+  
   useEffect(() => {
     const fetchRes = async () => {
       const { data, error } = await apiClient.listres();
@@ -39,7 +49,7 @@ export default function SelRes() {
     >
       <Box sx={{ background: "inherit", width: "50%", height: "10vh", m: 3 }}>
         <h1> Your Restaurant Results</h1>
-        <ResGrid />
+        <ResGrid className="res-grid-comp" />
       </Box>
 
       {/* <Box

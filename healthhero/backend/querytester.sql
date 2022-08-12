@@ -7,11 +7,11 @@
       -- ON restaurant.id = accommodation.restaurant_id;
       -- WHERE restriction_name in ('vegan', 'halal' , 'kosher');
 
--- SELECT * 
---       FROM restaurant
---       INNER JOIN accommodation
---       ON restaurant.id = accommodation.restaurant_id
---       WHERE restriction_name in ('Vegan', 'Halal' , 'Kosher');
+SELECT restaurant.*
+      FROM restaurant
+      INNER JOIN accommodation
+      ON restaurant.id = accommodation.restaurant_id
+      WHERE restriction_name in ('Vegan', 'Halal' , 'Kosher');
 
 -- SELECT COUNT(*) FROM (SELECT restriction_name
 --             FROM user_restriction
@@ -24,6 +24,6 @@
 --             WHERE user_id = 2) as sur
 --   WHERE nrm.numMatches = count;
 
-SELECT restriction_name
-      FROM accommodation 
-      WHERE restaurant_id = 11;
+-- SELECT restriction_name
+--       FROM accommodation 
+--       WHERE restaurant_id = 11;
