@@ -11,6 +11,16 @@ router.get("/", async (req, res, next) => {
   }
 })
 
+router.get("/restrictionsobject", async (req,res,next) => {
+  try{
+    const userRestrictions = await Restriction.listUserRestrictionsObj(res?.locals?.user?.id)
+     console.log("restriction obj: " , userRestrictions)
+    return res.status(201).json({ restrictions: userRestrictions});
+  }catch(err){
+    next(err)
+  }
+})
+
 router.get("/diets", async (req, res, next) => {
     try{
         console.log("gets to restrictions/diest endpoint")

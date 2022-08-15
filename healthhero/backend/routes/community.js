@@ -53,9 +53,9 @@ router.get(
     try {
       const user = await User.fetchUserByEmail(res.locals.user.email);
       let commid = req.params.id;
-      console.log("comm Id in community router", commid);
+      // console.log("comm Id in community router", commid);
       const community = await Community.listCommbyId(commid);
-      console.log("comm in route", community);
+      // console.log("comm in route", community);
       return res.status(200).json({ community: community });
     } catch (err) {
       next(err);
@@ -70,9 +70,10 @@ router.get(
   security.requireAuthenticatedUser,
   async (req, res, next) => {
     try {
-      const commId = res.params.commId; //!is this right?
+      const commId = req.params.commId; //!is this right? 
+      console.log("comm id in community route", commId)
       const usersInComm = await Community.listUsersInComm(commId);
-      console.log("users in community: ", usersInComm);
+      console.log("users in community (router): ", usersInComm);
       return res.status(201).json({ usersInComm: usersInComm });
     } catch (err) {
       next(err);
@@ -85,12 +86,10 @@ router.post(
   security.requireAuthenticatedUser,
   async (req, res, next) => {
     try {
-      const commId = res.data.commId; //!is this right probs yes
+      const commId = req.body.commId; //!is this right probs yes
       await Community.addUserToComm(res?.locals?.user?.id, commId);
       // await Community.addUserToComm(10, 2) hard coded for testing
-      return res.status(201).json({
-        community: `User ${res?.locals?.user?.id} added community ${commId}`,
-      });
+      return res.status(201).json({community: `User ${res?.locals?.user?.id} added community ${commId}`});
     } catch (err) {
       next(err);
     }

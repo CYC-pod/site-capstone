@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import apiClient from "../../../services/apiClient";
 import ComCard from "./ComCard";
 import "./DetailedCom.css";
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
 
 export default function DetailedComm() {
   // var comm = community[commid];
@@ -18,23 +20,38 @@ export default function DetailedComm() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [usersInCom, setUsersInComm] = useState([]);
+
   useEffect(() => {
     console.log("id working", id);
   }, [id]);
 
-  useEffect(() => {
-    console.log("community: ", community);
-  }, [community]);
+  // useEffect(() => {
+  //   console.log("community: ", community);
+  // }, [community]);
 
   useEffect(() => {
     async function getCommid() {
       const res = await apiClient.listCommbyId(id);
       console.log("response", res);
       setCommunity(res.data.community);
-      console.log("community id", res.data.community);
+      // console.log("community id", res.data.community);
     }
     getCommid();
   }, []);
+
+  useEffect(() => {
+    async function listUsersInComm(){
+      const res = await apiClient.listUsersInComm(id)
+      console.log("users in the community: " , res?.data?.usersInComm)
+      setUsersInComm(res?.data?.usersInComm)
+    }
+    listUsersInComm();
+  }, [community])
+
+  useEffect(() => {
+    console.log("users in community yay: ", usersInCom)
+  }, [community])
 
   // useEffect(() => {
   //   async function addcomm() {
@@ -46,17 +63,18 @@ export default function DetailedComm() {
   //   addcomm();
   // }, []);
 
-  useEffect(() => {
-    console.log("communities by school:", community);
-  }, [community]);
+  // useEffect(() => {
+  //   console.log("communities by school:", community);
+  // }, [community]);
 
   const handleOnSubmit = async () => {
     setIsLoading(true);
     // setErrors((e) => ({ ...e, form: null }));
-
+    console.log("id in the detailed comm file: ", id)
     try {
+     
       const res = await apiClient.addUserToComm(id);
-
+      
       console.log(res);
       if (res?.data?.community) {
         // const { comm, setComm } = useAuthContext();
@@ -83,13 +101,17 @@ export default function DetailedComm() {
 
   return (
     <div className="productview">
-      <h1 className="product-card">Community: {community.name} !</h1>
+      <h1 className="product-card"> {community.name} !</h1>
 
       {community ? (
         <div className="plc">
           <ComCard comm={community} showdescription={true} id={id} />
         </div>
       ) : null}
+
+       <AvatarGroup max={1}>
+        {usersInCom?.map((user, idx) => (<Avatar sx={{ bgcolor: '' }}>{user.username[0]}</Avatar>))}
+      </AvatarGroup>
       <div>
         <button className="btn" disabled={isLoading} onClick={handleOnSubmit}>
           {isLoading ? "Loading..." : "Add Community To Profile"}

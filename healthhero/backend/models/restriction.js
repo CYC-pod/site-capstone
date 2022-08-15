@@ -99,6 +99,18 @@ class Restrictions{
         const results = result.rows.map((row) => row.restriction_name)
         return results;
     }
+
+    static async listUserRestrictionsObj(userId){
+        console.log("user id in obj: " , userId)
+        const result = await db.query(
+            `SELECT * 
+            FROM restriction, user_restriction
+            WHERE user_restriction.user_id = $1 AND user_restriction.restriction_name = restriction.name;
+            `, [userId]
+        )
+        const results = result.rows;
+        return results;
+    }
 }
 
 module.exports = Restrictions;

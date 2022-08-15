@@ -24,7 +24,7 @@ export default function ComCard({ comm, showdescription }) {
   }, []);
 
   useEffect(() => {
-    console.log("Comm id in comCard", comm.id);
+    // console.log("Comm id in comCard", comm.id);
   }, []);
 
   const { id, image_url, name, description } = comm; //containing them to contain these 3 keys
