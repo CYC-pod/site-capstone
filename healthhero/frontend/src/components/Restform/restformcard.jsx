@@ -2,6 +2,7 @@ import "../ResResults/ResCard.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import apiClient from "../../../services/apiClient";
+import { Container } from "@mui/system";
 
 export default function ResFormCard({ resId }) {
   const [restaurant, setRestaurant] = useState([]);
@@ -38,6 +39,7 @@ export default function ResFormCard({ resId }) {
   }, [restrictions]);
 
   return (
+    // <Container> </Container>
     <div className="ResCard">
       {/* <Link to={"/resDescript/" + id} className="media"> */}
       <img className="resImage" src={restaurant.image_url}></img>

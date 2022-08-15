@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import { brown } from "@mui/material/colors";
 
 import ResCard from "../ResResults/ResCard";
-import "../YourRes/YourRes.css";
+import "./YourRes.css";
 const ColorButton = styled(Button)(({ theme }) => ({
   fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif",
   color: theme.palette.getContrastText(brown[500]),

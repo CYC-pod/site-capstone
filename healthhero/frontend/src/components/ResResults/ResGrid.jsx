@@ -122,10 +122,10 @@ export default function ResGrid() {
   return (
     <Box
       sx={{
-        background: "#f4ebd0",
-        width: "100%",
+        // background: "white",
+        width: "85%",
 
-        m: 3,
+        // m: 3,
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
@@ -183,7 +183,7 @@ export default function ResGrid() {
       {restaurants
         .filter((restaurant) => checker(restaurant.restriction_name, selected))
         .map((rest, index) => {
-          console.log("selected array in map: " , selected)
+          console.log("selected array in map: ", selected);
           return <ResCard key={index} rest={rest} showdescription={false} />;
         })}
     </Box>

@@ -19,7 +19,7 @@ import "../ResResults/ResResults.css";
 export default function ResResults() {
   // const { resres, setRes } = useAuthContext();
   // const { restaurant, setRestaurant } = useAuthContext();
-  
+
   useEffect(() => {
     const fetchRes = async () => {
       const { data, error } = await apiClient.listres();
@@ -122,10 +122,9 @@ export default function ResResults() {
 //       {/* call displayResults here? */}
 //     </div>
 //   );
-// 
- 
+//
 
- //tried this verison with moe, didnt work shows no restaurant but console logged the data array of restuarants
+//tried this verison with moe, didnt work shows no restaurant but console logged the data array of restuarants
 //  import * as React from "react";
 // import { Box } from "@mui/material";
 // import { Container } from "@mui/system";

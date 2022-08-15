@@ -1,14 +1,16 @@
 import "../ResResults/ResCard.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Container } from "@mui/material";
 
-export default function ResCard({ rest, showdescription}) {
+export default function ResCard({ rest, showdescription }) {
   const { id, image_url, name, location, description, restrictions } = rest;
   return (
-    <div className="ResCard">
+    <Container className="ResCard" maxWidth={"xs"} sx={{ m: 3 }}>
       <Link to={"/resDescript/" + id} className="media">
-        {" "}
-        <img className="resImage" src={image_url}></img>
+        <div className="picpic">
+          <img className="resImage" src={image_url}></img>
+        </div>
       </Link>
       <div className="resinfo">
         <p className="resname">{name}</p>
@@ -20,6 +22,6 @@ export default function ResCard({ rest, showdescription}) {
           ) : null}
         </p>
       </div>
-    </div>
+    </Container>
   );
 }

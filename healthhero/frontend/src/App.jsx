@@ -20,6 +20,7 @@ import ViewRes from "./components/Restform/viewRest";
 import MyComm from "./components/MyComm/MyComm";
 import YourRes from "./components/YourRes/YourRes";
 import ResResults from "./components/ResResults/ResResults";
+// import { Text, View, StyleSheet } from "react-native";
 // import InResults from "./components/ResResults/InResults";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
@@ -59,9 +60,9 @@ function App() {
     }
   };
 
-useEffect(() => {
+  useEffect(() => {
     autoLoggIn();
-    console.log("rendering in app.jsx")
+    console.log("rendering in app.jsx");
   }, []);
 
   const logoutuser = async () => {
@@ -69,147 +70,178 @@ useEffect(() => {
     console.log("LOGOUT PRESSED");
     setUser(null);
   };
+  const style = {
+    backgroundColor: "#F8F8F8",
+    borderTop: "1px solid #E7E7E7",
+    textAlign: "center",
+    padding: "20px",
+    position: "relative",
+    left: "0",
+    bottom: "0",
+    height: "60px",
+    width: "100%",
+  };
 
   return (
     <>
-      {/* {console.log("value of loggedIn in app jsx" , loggedIn)} */}
-      <Navbar logoutuser={logoutuser} />
+      <>
+        {/* {console.log("value of loggedIn in app jsx" , loggedIn)} */}
+        <Navbar logoutuser={logoutuser} />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Landing />
-            </>
-          }
-        />
-        <Route
-          path="/schools"
-          element={
-            <>
-              <SchoolsView />
-            </>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <>
-              <Login />
-            </>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <>
-              <Register />
-            </>
-          }
-        />
-        <Route
-          path="/diet"
-          element={
-            <>
-              <Diet />
-            </>
-          }
-        />
-
-        <Route
-          path="/restForm"
-          element={
-            <>
-              <Restform />
-            </>
-          }
-        />
-        <Route
-          path="/communities"
-          element={
-            <SelComm />
-
-            //       {/*header
-            //   grid.. where you press image-> descripting and being able to add the community.(comm detail)
-            // load more buttom gets pushed down}
-            // ideal to only render selcom component
-            //       {/* <SelComm />
-            //       <ComGrid />
-            //       <CommCard /> */}
-          }
-        />
-        <Route
-          path="/prof"
-          element={
-            <>
-              <MyComm />
-            </>
-          }
-        />
-        <Route
-          path="/commForm"
-          element={
-            <>
-              <Commform />
-            </>
-          }
-        />
-        <Route
-          path="/viewrest"
-          element={
-            <>
-              <ViewRes />
-            </>
-          }
-        />
-        <Route
-          path="/resResults"
-          element={
-              <ResResults />
-          }
-        />
-        {/* <Route
-          path="/resResults/specific"
-          // would matter on id / which restaurant
-          element={
-            <>
-              <InResults />
-            </>
-          }
-        /> */}
-        <Route
-          path="/commDescript/:id"
-          element={
-            <>
-              <DetailedComm />
-            </>
-            
-          }
-        />
+        <Routes>
           <Route
-          path="/commDescript/:id"
-          element={
-            <>
-              <DetailedComm />
-            </>
-            
-          }
-        />
+            path="/"
+            element={
+              <>
+                <Landing />
+              </>
+            }
+          />
           <Route
-          path="/resDescript/:id"
-          element={
-            <>
-              <ResDetail />
-            </>
-            
-          }
-        />
-         
-         
-      </Routes>
+            path="/schools"
+            element={
+              <>
+                <SchoolsView />
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                <Login />
+              </>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <>
+                <Register />
+              </>
+            }
+          />
+          <Route
+            path="/diet"
+            element={
+              <>
+                <Diet />
+              </>
+            }
+          />
+
+          <Route
+            path="/restForm"
+            element={
+              <>
+                <Restform />
+              </>
+            }
+          />
+          <Route
+            path="/communities"
+            element={
+              <SelComm />
+              //       {/*header
+              //   grid.. where you press image-> descripting and being able to add the community.(comm detail)
+              // load more buttom gets pushed down}
+              // ideal to only render selcom component
+              //       {/* <SelComm />
+              //       <ComGrid />
+              //       <CommCard /> */}
+            }
+          />
+          <Route
+            path="/prof"
+            element={
+              <>
+                <MyComm />
+              </>
+            }
+          />
+          <Route
+            path="/commForm"
+            element={
+              <>
+                <Commform />
+              </>
+            }
+          />
+          <Route
+            path="/viewrest"
+            element={
+              <>
+                <ViewRes />
+              </>
+            }
+          />
+          <Route path="/resResults" element={<ResResults />} />
+          {/* <Route
+      path="/resResults/specific"
+      // would matter on id / which restaurant
+      element={
+        <>
+          <InResults />
+        </>
+      }
+    /> */}
+          <Route
+            path="/commDescript/:id"
+            element={
+              <>
+                <DetailedComm />
+              </>
+            }
+          />
+          <Route
+            path="/commDescript/:id"
+            element={
+              <>
+                <DetailedComm />
+              </>
+            }
+          />
+          <Route
+            path="/resDescript/:id"
+            element={
+              <>
+                <ResDetail />
+              </>
+            }
+          />
+        </Routes>
+      </>
+      <div>
+        <div style={style}>
+          <div>
+            <a href="">to ab us pg</a>
+            <div>
+              <a href="">Contact Us</a>
+            </div>
+          </div>
+          hello
+        </div>
+      </div>
+      {/* <View style={styles.container}>
+        <View style={styles.content}> content goes here</View>
+        <View style={styles.footer}>
+          <Text>This footer will be pushed to the bottom</Text>
+        </View>
+      </View> */}
     </>
   );
 }
-
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#ecf0f1",
+//   },
+//   content: {
+//     flex: 1,
+//   },
+//   footer: {
+//     backgroundColor: "blue",
+//     padding: 40,
+//   },
+// });
 export default App;
