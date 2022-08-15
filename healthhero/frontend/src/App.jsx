@@ -23,6 +23,7 @@ import ResResults from "./components/ResResults/ResResults";
 // import { Text, View, StyleSheet } from "react-native";
 import Aboutus from "./components/AboutUs/Aboutus";
 // import InResults from "./components/ResResults/InResults";
+import Footer from "./components/Footer/Footer";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
 import ResDetail from "./components/ResResults/ResDetail";
@@ -80,7 +81,8 @@ function App() {
     left: "0",
     bottom: "0",
     height: "60px",
-    width: "100%",
+
+    // width: "100%",
   };
 
   return (
@@ -211,25 +213,25 @@ function App() {
             }
           />
           <Route
-          path="/aboutus"
-          element={
-            <>
-              <Aboutus />
-            </>
-          }
-        />
+            path="/aboutus"
+            element={
+              <>
+                <Aboutus />
+              </>
+            }
+          />
         </Routes>
       </>
-      <div>
+      {/* <div>
         <div style={style}>
           <div>
-            
-              <a href="">Contact Us</a>
-            </div>
+            <a href="">Contact Us</a>
           </div>
-          hello
         </div>
-     
+        hello
+      </div> */}
+      <Footer></Footer>
+
       {/* <View style={styles.container}>
         <View style={styles.content}> content goes here</View>
         <View style={styles.footer}>

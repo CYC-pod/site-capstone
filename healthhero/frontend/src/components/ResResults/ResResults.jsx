@@ -17,16 +17,6 @@ import Checkbox from "@mui/material/Checkbox";
 import "../ResResults/ResResults.css";
 import apiClient from "../../../services/apiClient";
 
-// export default function Test(){
-//   useEffect(() =>{
-//     console.log("rendering test")
-//   },[])
-
-//   return(
-//     <p>test</p>
-//   )
-// }
-
 // export function ResResults() {
 //   // const { resres, setRes } = useAuthContext();
 //   // const { restaurant, setRestaurant } = useAuthContext();
@@ -167,6 +157,7 @@ export default function Test() {
   const Filter = () => {
     return (
       <>
+        <h1 className="green"> Your Restaurant Results</h1>
         <FormControl sx={{ m: 1, width: 300, alignSelf: "center" }}>
           <InputLabel id="demo-multiple-checkbox-label">Diets</InputLabel>
           <Select
@@ -218,17 +209,19 @@ export default function Test() {
   return (
     <>
       <Filter />
+
       <Container
         className="test"
         sx={{
           flexGrow: 1,
-          backgroundColor: "green",
+
           // height: "3in",
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
           justifyContent: "flex-start",
           alignContent: "flex-start",
+          borderRadius: "10px",
         }} //2 brackets for its object.. setting the container
         maxWidth={false}
       >
