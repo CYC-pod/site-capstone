@@ -5,7 +5,7 @@ import apiClient from "../../../services/apiClient";
 
 export default function ResFormCard({ resId }) {
   const [restaurant, setRestaurant] = useState([]);
-  const [ restrictions, setRestrictions] = useState([])
+  const [restrictions, setRestrictions] = useState([]);
 
   useEffect(() => {
     async function getResId() {
@@ -23,8 +23,7 @@ export default function ResFormCard({ resId }) {
 
   //const { image_url, name, location, description, restrictions } = resId;
 
-
-    useEffect(() => {
+  useEffect(() => {
     async function getRestrictions() {
       console.log("restaurant id in getRest", restaurant.id);
       const res = await apiClient.listRestaurantRestrictions(restaurant.id);
@@ -34,11 +33,9 @@ export default function ResFormCard({ resId }) {
     getRestrictions();
   }, [restaurant]);
 
-
   useEffect(() => {
     console.log("restaurant's restrictions:", restrictions);
   }, [restrictions]);
-
 
   return (
     <div className="ResCard">
@@ -49,10 +46,8 @@ export default function ResFormCard({ resId }) {
         <p className="resname">{restaurant.name}</p>
         <p className="location">{restaurant.location}</p>
         {restrictions.map((restriction) => {
-        return (
-          <div> {restriction} </div>
-        );
-      })}
+          return <div> {restriction} </div>;
+        })}
         <p className="restrict">{restaurant.restrictions} </p>
         <p className="resdes">{restaurant.description}</p>
       </div>
