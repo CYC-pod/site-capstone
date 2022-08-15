@@ -132,8 +132,8 @@ export default function ResGrid() {
         justifyContent: "flex-start",
       }}
     >
-      <div>
-        {/* drop down filter for diets  */}
+      {/* <>
+    
         <FormControl sx={{ m: 1, width: 300 }}>
           <InputLabel id="demo-multiple-checkbox-label">Diets</InputLabel>
           <Select
@@ -156,7 +156,7 @@ export default function ResGrid() {
             ))}
           </Select>
         </FormControl>
-        {/* drop down filter for allergies  */}
+       
         <FormControl sx={{ m: 1, width: 300 }}>
           <InputLabel id="demo-multiple-checkbox-label">Allergies</InputLabel>
           <Select
@@ -179,7 +179,7 @@ export default function ResGrid() {
             ))}
           </Select>
         </FormControl>
-      </div>
+      </> */}
       {restaurants
         .filter((restaurant) => checker(restaurant.restriction_name, selected))
         .map((rest, index) => {

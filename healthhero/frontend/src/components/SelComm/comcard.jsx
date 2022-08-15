@@ -32,10 +32,8 @@ export default function ComCard({ comm, showdescription }) {
   return (
     <Container className="CommCard" maxWidth={"xs"} sx={{ m: 3 }}>
       {/* <button onClick={handleOnClick}> */}
-      <Link to={"/commDescript/" + id} className="media">
-        <div className="picpic">
-          <img className="commImage" src={image_url}></img>
-        </div>
+      <Link to={"/commDescript/" + id}>
+        <img className="commImage" src={image_url}></img>
       </Link>
       <div className="commInfo">
         <h1 className="commName"> {name} </h1>

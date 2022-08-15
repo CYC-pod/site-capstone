@@ -16,7 +16,7 @@ import "../ResResults/ResResults.css";
 //     <p>test</p>
 //   )
 // }
-export default function ResResults() {
+export function ResResults() {
   // const { resres, setRes } = useAuthContext();
   // const { restaurant, setRestaurant } = useAuthContext();
 
@@ -47,14 +47,30 @@ export default function ResResults() {
       }} //2 brackets for its object.. setting the container
       maxWidth={false}
     >
-      <Box sx={{ background: "inherit", width: "50%", height: "10vh", m: 3 }}>
+      {/* <div className="container"> */}
+      <Box sx={{ background: "inherit", width: "50%", m: 3 }}>
         <h1> Your Restaurant Results</h1>
-        <ResGrid className="res-grid-comp" />
       </Box>
-
+      {/* </div> */}
+      <ResGrid />
       {/* <Box
           sx={{ background: "purple", width: "10%", height: "10vh", m: 3 }}
         ></Box> */}
+    </Container>
+  );
+}
+export default function Test() {
+  return (
+    <Container
+      className="test"
+      sx={{
+        flexGrow: 1,
+        backgroundColor: "green",
+        height: "3in",
+      }} //2 brackets for its object.. setting the container
+      maxWidth={false}
+    >
+      <p> hi</p>
     </Container>
   );
 }
