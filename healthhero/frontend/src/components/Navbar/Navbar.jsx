@@ -87,22 +87,25 @@ export default function Navbar({ logoutuser }) {
               />{" "}
             </a>
           </Typography>
-          <Button color="inherit" onClick={logoutuser}>
-            <a href="/aboutus" id="link">
-              {" "}
-              About Us{" "}
-            </a>
-          </Button>
-          <Button color="inherit" onClick={logoutuser}>
-            {user ? (
-              ""
-            ) : (
-              <a href="/register" id="link">
-                {" "}
-                Sign Up{" "}
+
+          {user ? (
+            <Button color="inherit">
+              <a href="/aboutus" id="link">
+                About Us
               </a>
-            )}
-          </Button>
+            </Button>
+          ) : (
+            ""
+          )}
+
+          {user ? null : (
+            <Button color="inherit" onClick={logoutuser}>
+              <a href="/register" id="link">
+                Sign Up
+              </a>
+            </Button>
+          )}
+
           {isRest ? (
             <Button>
               {" "}

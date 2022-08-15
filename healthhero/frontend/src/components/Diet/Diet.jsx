@@ -141,11 +141,11 @@ export default function Diet() {
   return (
     <div className="diet">
       <div className="topD">
-        <br />
+        {/* <br /> */}
         <h3 id="restrictionLabels">Dietary Groups</h3>
       </div>
-
-      <br />
+      {/* 
+      <br /> */}
       {/* {diets.map(({ id, name, type, i }) => {
         return (
           <FormControlLabel
@@ -196,42 +196,48 @@ export default function Diet() {
           </button>
         </div>
       </div>
-      <br />
-      <h3 id="restrictionLabels">Allergies</h3>
+      {/* <br /> */}
+      <div>
+        <h3 id="restrictionLabels">Allergies</h3>
+      </div>
+      {/* allergies */}
       <div id="flexri">
-          <Autocomplete
-            onInputChange={handleFilChangeD}
-            sx={{
-              display: "inline-block",
-              float: "right",
-              "& input": {
-                // float: "right",
-                "@media only screen and (max-width: 600px)": {
-                  width: 300,
-                },
+        <Autocomplete
+          onInputChange={handleFilChangeD}
+          sx={{
+            display: "inline-block",
+            float: "right",
+            "& input": {
+              // float: "right",
+              "@media only screen and (max-width: 600px)": {
+                width: 300,
               },
-            }}
-            id="custom-input-demo"
-            options={dietaryG}
-            renderInput={(params) => (
-              <Box
-                  component="form"
-                  sx={{"& > :not(style)": { m: 1, width: "55ch",},  maxwidth: "100%" }} 
-                  noValidate
-                  autoComplete="off"
-                >
-                  <TextField
-                    id="Filled success"
-                    label="Search for Allergies"
-                    variant="filled"
-                    type="text"
-                    color="success"
-                    {...params.inputProps}
-                  />
-                </Box>
-            )}
-          />
-        </div>
+            },
+          }}
+          id="custom-input-demo"
+          options={dietaryG}
+          renderInput={(params) => (
+            <Box
+              component="form"
+              // sx={{
+              //   "& > :not(style)": { m: 1, width: "55ch" },
+              //   maxwidth: "100%",
+              // }}
+              noValidate
+              autoComplete="off"
+            >
+              <TextField
+                id="Filled success"
+                label="Search for Allergies"
+                variant="filled"
+                type="text"
+                color="success"
+                {...params.inputProps}
+              />
+            </Box>
+          )}
+        />
+      </div>
       <div id="allergyBoxes">
         {allergies.filter(filD).map(({ id, name, type }) => {
           return (
@@ -246,7 +252,7 @@ export default function Diet() {
               label={name}
             />
           );
-        })} 
+        })}
       </div>
       <div>
         {/* flex id here^ */}
