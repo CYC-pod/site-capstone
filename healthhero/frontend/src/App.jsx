@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import * as React from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import { AuthContextProvider, useAuthContext } from "../AuthContext/auth";
@@ -26,9 +26,11 @@ import DetailedComm from "./components/SelComm/DetailedCom";
 import ResDetail from "./components/ResResults/ResDetail";
 // import ComGrid from "./components/SelComm/ComGrid";
 
+
 function App() {
   const { user, setUser } = useAuthContext();
   const navigateTo = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
   // useEffect(() => {
   //   console.log("app is rendering")
@@ -63,6 +65,10 @@ useEffect(() => {
     autoLoggIn();
     console.log("rendering in app.jsx")
   }, []);
+
+  useEffect(() => {
+   user ? setIsLoggedIn(true) : setIsLoggedIn(false)
+  }, [user])
 
   const logoutuser = async () => {
     await apiClient.logoutUser();
@@ -127,17 +133,7 @@ useEffect(() => {
         />
         <Route
           path="/communities"
-          element={
-            <SelComm />
-
-            //       {/*header
-            //   grid.. where you press image-> descripting and being able to add the community.(comm detail)
-            // load more buttom gets pushed down}
-            // ideal to only render selcom component
-            //       {/* <SelComm />
-            //       <ComGrid />
-            //       <CommCard /> */}
-          }
+          element={ <SelComm /> }
         />
         <Route
           path="/prof"

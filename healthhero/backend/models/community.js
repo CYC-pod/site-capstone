@@ -72,29 +72,32 @@ class Community {
       `
       INSERT INTO user_community(user_id, community_id)
       VALUES ($1,$2)
-      RETURNING user_id, community_id
+      RETURNING user_id, community_id;
       `,
       [userId, commId]
     );
+    const results = result.rows[0];
+    return results;
   }
 
   static async listUsersInComm(commId) {
     const result = await db.query(
-      `SELECT user_id
-      FROM user_community 
-      WHERE community_id = $1;`,
+      `
+      SELECT username 
+            FROM users, user_community
+            WHERE user_community.community_id = $1 AND users.id = user_community.user_id;`,
       [commId]
     );
-    const results = result.rows.map((row) => row.user_id);
+    const results = result.rows;
     return results;
   }
 
   static async listCommsOfUser(userId) {
     //lists all communities a user is apart of
     const result = await db.query(
-      `SELECT community_id 
-      FROM user_community 
-      WHERE user_id = $1;`,
+      `SELECT *
+      FROM community, user_community
+      WHERE user_community.user_id = $1 AND user_community.community_id = community.id;`,
       [userId]
     );
     console.log("result.rows", result.rows);

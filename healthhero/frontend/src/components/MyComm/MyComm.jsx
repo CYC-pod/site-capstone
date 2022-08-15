@@ -31,35 +31,39 @@ export default function MyComm() {
   const [allergies, setAlls] = useState([]);
   // const [comms, setcomms] = useState([]);
   const [communities, setCommunities] = useState([]);
+  const [restrictions, setRestrictions] = useState([]);
   // console.log(user.school_id);
   useEffect(() => {
-    async function getDiets() {
-      const res = await apiClient.listDiets();
-      setDie(res.data.diets);
+    async function getRest() {
+      const res = await apiClient.listUserRestrictionsObj();
+      setRestrictions(res.data.restrictions)
     }
-    getDiets();
-  }, []);
-
-  useEffect(() => {
-    async function getAlls() {
-      const res = await apiClient.listAllergies();
-      setAlls(res.data.allergies);
-    }
-    getAlls();
-  }, []);
-
-  useEffect(() => {
+    // async function getAlls() {
+    //   const res = await apiClient.listAllergies();
+    //   setAlls(res.data.allergies);
+    // }
     async function getUserComms() {
       const res = await apiClient.listUserComms();
-      setCommunities(res?.data?.userCommunities);
-      console.log("community list", res.data.userCommunities);
+      setCommunities(res?.data?.userCommunities ? [...communities, res?.data?.userCommunities] : []);
+      console.log("community list: ", res?.data?.userCommunities);
     }
+    // getDiets();
+    // getAlls();
+    getRest(); 
     getUserComms();
   }, []);
 
   useEffect(() => {
+    console.log("new version diets: ",  diets)
+  }, [diets]) 
+
+  useEffect(() => {
+    console.log("new version allergeis: ", allergies)
+  }, [allergies]) 
+ 
+  useEffect(() => {
     console.log("community array: ", communities);
-  }, []);
+  }, [communities]);
 
   const style = {
     color: "black",
@@ -91,10 +95,10 @@ export default function MyComm() {
             {isStudent ? (
               <div>
                 <div className="circles">
-                  {diets.map((diet) => {
+                  {restrictions.filter((restriction) => restriction.type == "diet").map((diet) => {
                     return <div className="smoval">{diet.name}</div>;
                   })}
-                  {allergies.map((allergy) => {
+                  {restrictions.filter((restriction) => restriction.type == "allergy").map((allergy) => {
                     return <div className="smoval2">{allergy.name}</div>;
                   })}
                 </div>

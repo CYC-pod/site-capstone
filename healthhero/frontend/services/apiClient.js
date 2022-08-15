@@ -66,7 +66,7 @@ class ApiClient {
 
   async listCommbyId(id) {
     const comId = await this.request(`community/communityid/${id}`, `GET`);
-    console.log("comm id returned by api call", comId);
+    // console.log("comm id returned by api call", comId);
     return comId;
   }
 
@@ -173,18 +173,25 @@ class ApiClient {
     return res;
   }
 
+  async listUserRestrictionsObj(){
+    const res = await this.request("restrictions/restrictionsobject", "GET")
+    return res; 
+  }
+
   async addUserToComm(commId) {
     //adds user and community to user_community table
-    const res = await this.request(`community/addusertocomm`, `POST`, commId);
+    const res = await this.request(`community/addusertocomm`, `POST`, {commId});
     return res;
   }
 
   async listUsersInComm(commId) {
     //list all users that belong to a particular community
+    console.log("comm id in api client: " , commId)
     const res = await this.request(
       `community/listusersincomm/${commId}`,
       `GET`
     );
+    return res
   }
 
   async listUserComms() {

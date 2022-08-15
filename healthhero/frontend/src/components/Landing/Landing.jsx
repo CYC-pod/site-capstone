@@ -91,9 +91,7 @@ export default function Landing() {
       >
         <Slick />
         <ColorButton variant="contained">
-          <a href="/schools" id="link">
-            See All Schools
-          </a>
+          {user ? <a href="/schools" id="link">See All Schools</a> : <a href="/login" id="link"> Please Login</a> }
         </ColorButton>
       </Stack>
       {/* //{" "}

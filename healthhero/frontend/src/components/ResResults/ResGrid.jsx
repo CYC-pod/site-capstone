@@ -29,7 +29,7 @@ export default function ResGrid() {
 
   const [restaurants, setRestaurants] = useState([]);
   const [filter, setFilter] = useState("");
-  const [userRestrictions, setUserRestrictions] = useState([]);
+  const [restrictions, setRestrictions] = useState([]);
   const [diets, setDiets] = useState([]);
   const [allergies, setAllergies] = useState([]);
   const [selectedDiet, setSelectedDiet] = useState([]);
@@ -45,9 +45,8 @@ export default function ResGrid() {
       console.log("restaurant list: ", res.data.restaurants);
     }
     async function getUserRestrictions() {
-      const res = await apiClient.listUserRestrictions();
-      setUserRestrictions(res.data.restrictions);
-      console.log("user restrictions list", res.data.restrictions);
+      const res = await apiClient.listUserRestrictionsObj();
+      setRestrictions(res.data.restrictions)
     }
     async function getDiets() {
       const res = await apiClient.listDiets();
@@ -146,7 +145,7 @@ export default function ResGrid() {
             renderValue={(selectedDiet) => selectedDiet.join(", ")}
             MenuProps={MenuProps}
           >
-            {diets.map((restriction) => (
+            {restrictions.filter((restriction) => restriction.type == "diet").map((restriction) => (
               <MenuItem key={restriction.name} value={restriction.name}>
                 <Checkbox
                   checked={selectedDiet.indexOf(restriction.name) > -1}
@@ -169,7 +168,7 @@ export default function ResGrid() {
             renderValue={(selectedAllergy) => selectedAllergy.join(", ")}
             MenuProps={MenuProps}
           >
-            {allergies.map((restriction) => (
+            {restrictions.filter((restriction) => restriction.type == "allergy").map((restriction) => (
               <MenuItem key={restriction.name} value={restriction.name}>
                 <Checkbox
                   checked={selectedAllergy.indexOf(restriction.name) > -1}

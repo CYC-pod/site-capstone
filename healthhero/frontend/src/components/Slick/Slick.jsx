@@ -48,14 +48,14 @@ export default function Slick() {
     }
   }
 
-  useEffect(() => {
-    async function getSchools() {
-      const res = await apiClient.listSchools();
-      setSchools(res.data.school);
-      console.log("school list", res.data.school);
-    }
-    getSchools();
-  }, []);
+  // useEffect(() => {
+  //   async function getSchools() {
+  //     const res = await apiClient.listSchools();
+  //     setSchools(res.data.school);
+  //     console.log("school list", res.data.school);
+  //   }
+  //   getSchools();
+  // }, []);
 
   // useEffect(() => {
   //   cacheImages([HSSU, USC, HU, washu, VT, USF, UTEP]);
