@@ -2,21 +2,11 @@ import * as React from "react";
 import "../SchoolsView/SchoolsView.css";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useState, Link, useEffect } from "react";
-import { HSSU } from "../../constants";
-import { USC } from "../../constants";
-import { HU } from "../../constants";
-import { washu } from "../../constants";
-import { VT } from "../../constants";
-import { USF } from "../../constants";
-import { UTEP } from "../../constants";
-import { SLU } from "../../constants";
-import { MI } from "../../constants";
-import { Ber } from "../../constants";
-import { Stan } from "../../constants";
-import { spel } from "../../constants";
 import apiClient from "../../../services/apiClient";
 import { Navigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 const options = [
   "University of South California",
@@ -75,43 +65,40 @@ export default function SchoolsView() {
   //applying to every el in arr.
   return (
     <div className="viewS">
-      <h1>Pick your school</h1>
+      <br/>
+      <h1>Pick Your School</h1>
       <div className="marg">
-        <label id="selS">Select your school: </label>
-        <div className="flexy">
-          <Autocomplete
-            onInputChange={handleFilChange}
-            sx={{
-              display: "inline-block",
-              "& input": {
-                width: 250,
-                height: 25,
-                margin: "2%",
-                bgcolor: "#cdd7c3",
-                color: "rgb(16, 51, 7)",
-                borderColor: "rgb(16, 51, 7)",
-
-                // color: (theme) =>
-                //   theme.palette.getContrastText(theme.palette.background.paper),
-              },
-            }}
-            id="custom-input-demo"
-            options={options}
-            renderInput={(params) => (
-              <div ref={params.InputProps.ref}>
-                <input
-                  type="text"
-                  {...params.inputProps}
-                  placeholder="                    Search schools..."
-                  // onChange={handleOnTextChange}
-                />
-              </div>
-            )}
-          />
-
-          <SearchIcon id="searchy"> </SearchIcon>
-        </div>
+        <span>
+          {/* <label id="selS">Select your school: </label> */}
+          <div className="flexy">
+            <Autocomplete
+              onInputChange={handleFilChange}
+              id="custom-input-demo"
+              options={options}
+              renderInput={(params) => (
+                <Box
+                  component="form"
+                  sx={{"& > :not(style)": { m: 1, width: "50ch",},  maxwidth: "100%" }} 
+                  noValidate
+                  autoComplete="off"
+                >
+                  {/* backgroundColor: 'rgba(179, 207, 153, 1)' */}
+                  <TextField
+                    id="Filled success"
+                    label="Search"
+                    variant="filled"
+                    type="text"
+                    color="success"
+                    
+                    {...params.inputProps}
+                  />
+                </Box>
+              )}
+            />
+          </div>
+        </span>
       </div>
+
       <div className="">
         {schools.filter(fil).map((school, i) => {
           //rendering schools
@@ -129,69 +116,6 @@ export default function SchoolsView() {
             </a>
           );
         })}
-
-        {/* // <div className="schoolImgs">
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={USC} alt="USC" />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={HU} alt="Howard" />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={washu} alt="WashU" />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={VT} alt="VT" />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={USF} alt="USF" />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={HSSU} alt="HSSU" />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={UTEP} alt="uni of Texas El Paso" />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={SLU} alt="Saint Louis Uni" />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={MI} alt="MI " />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={spel} alt="Spelman " />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={Ber} alt="Berkley " />
-        //     </div>
-        //   </button>
-        //   <button>
-        //     <div className="schoolHome">
-        //       <img src={Stan} alt="Stanford " />
-        //     </div>
-        //   </button>
-        // </div> */}
         <div>
           <button className="liBrB" id="ma">
             Load more schools

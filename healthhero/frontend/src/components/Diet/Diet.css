@@ -1,6 +1,8 @@
-#left {
+#restrictionLabels {
   float: left;
+  font-size: 30px;
   color: #b3cf99;
+  padding-left: 30px;
 }
 
 .diet {
@@ -56,6 +58,11 @@
   align-items: center;
   justify-content: right;
 }
+
+#allergyBoxes{
+  padding-top: 40px;
+}
+
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {

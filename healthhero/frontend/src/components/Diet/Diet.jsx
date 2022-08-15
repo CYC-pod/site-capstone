@@ -11,6 +11,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import "../Diet/Diet.css";
 import { useState, useEffect } from "react";
 import apiClient from "../../../services/apiClient";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -140,42 +142,7 @@ export default function Diet() {
     <div className="diet">
       <div className="topD">
         <br />
-
-        <div id="flexri">
-          <Autocomplete
-            onInputChange={handleFilChangeD}
-            sx={{
-              display: "inline-block",
-              float: "right",
-              "& input": {
-                width: 700,
-                height: 25,
-                bgcolor: "background.paper",
-                color: (theme) =>
-                  theme.palette.getContrastText(theme.palette.background.paper),
-                // float: "right",
-                "@media only screen and (max-width: 600px)": {
-                  width: 300,
-                },
-              },
-            }}
-            id="custom-input-demo"
-            options={dietaryG}
-            renderInput={(params) => (
-              <div ref={params.InputProps.ref}>
-                <input
-                  type="text"
-                  {...params.inputProps}
-                  placeholder="                                                                           Search groups"
-                  // onChange={handleOnTextChange}
-                  //add search icon here
-                />
-                <SearchIcon id="search" />
-              </div>
-            )}
-          />
-        </div>
-        <h3 id="left">Dietary Groups</h3>
+        <h3 id="restrictionLabels">Dietary Groups</h3>
       </div>
 
       <br />
@@ -229,10 +196,43 @@ export default function Diet() {
           </button>
         </div>
       </div>
-
       <br />
-      <h3 id="left">Allergies</h3>
-      <div>
+      <h3 id="restrictionLabels">Allergies</h3>
+      <div id="flexri">
+          <Autocomplete
+            onInputChange={handleFilChangeD}
+            sx={{
+              display: "inline-block",
+              float: "right",
+              "& input": {
+                // float: "right",
+                "@media only screen and (max-width: 600px)": {
+                  width: 300,
+                },
+              },
+            }}
+            id="custom-input-demo"
+            options={dietaryG}
+            renderInput={(params) => (
+              <Box
+                  component="form"
+                  sx={{"& > :not(style)": { m: 1, width: "55ch",},  maxwidth: "100%" }} 
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    id="Filled success"
+                    label="Search for Allergies"
+                    variant="filled"
+                    type="text"
+                    color="success"
+                    {...params.inputProps}
+                  />
+                </Box>
+            )}
+          />
+        </div>
+      <div id="allergyBoxes">
         {allergies.filter(filD).map(({ id, name, type }) => {
           return (
             <FormControlLabel
@@ -246,47 +246,8 @@ export default function Diet() {
               label={name}
             />
           );
-        })}
-
-        {/* <div>
-          <FormControlLabel
-            control={<Checkbox />}
-            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
-            label="Shellfish"
-          />
-          <FormControlLabel
-            control={<Checkbox />}
-            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
-            label="Peanuts"
-          />
-          <FormControlLabel
-            control={<Checkbox />}
-            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
-            label="Pistachios"
-          />
-        </div>
-
-        <div>
-          <FormControlLabel
-            control={<Checkbox />}
-            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
-            label="Dairy"
-          />
-          <FormControlLabel
-            control={<Checkbox />}
-            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
-            label="Gluten"
-          />
-          <FormControlLabel
-            control={<Checkbox />}
-            sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
-            label="Eggs"
-          /> 
-        </div>*/}
-
-        {/* <Checkbox {...label} sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }} /> */}
+        })} 
       </div>
-      {/* <button> v </button>  not vibing w the button fr*/}
       <div>
         {/* flex id here^ */}
         <ColorButton variant="contained" onClick={handleOnSubmit}>
