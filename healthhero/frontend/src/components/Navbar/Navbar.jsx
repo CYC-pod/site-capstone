@@ -58,8 +58,20 @@ export default function Navbar({ logoutuser }) {
               </a>{" "}
             </Button>
           ) : null}
-          {isStudent ? (<Button><a href="/diet" id="link">Diet</a></Button>) : null}
-          {isRest ? (<Button><a href="/viewrest" id="link">View Your Restaurant</a></Button>) : null}
+          {isStudent ? (
+            <Button>
+              <a href="/diet" id="link">
+                Diet
+              </a>
+            </Button>
+          ) : null}
+          {isRest ? (
+            <Button>
+              <a href="/viewrest" id="link">
+                View Your Restaurant
+              </a>
+            </Button>
+          ) : null}
           {/* make button/list item */}
           <Typography
             variant="h6"
@@ -75,6 +87,12 @@ export default function Navbar({ logoutuser }) {
               />{" "}
             </a>
           </Typography>
+          <Button color="inherit" onClick={logoutuser}>
+            <a href="/aboutus" id="link">
+              {" "}
+              About Us{" "}
+            </a>
+          </Button>
           <Button color="inherit" onClick={logoutuser}>
             {user ? (
               ""

@@ -21,6 +21,7 @@ import MyComm from "./components/MyComm/MyComm";
 import YourRes from "./components/YourRes/YourRes";
 import ResResults from "./components/ResResults/ResResults";
 // import { Text, View, StyleSheet } from "react-native";
+import Aboutus from "./components/AboutUs/Aboutus";
 // import InResults from "./components/ResResults/InResults";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
@@ -209,19 +210,26 @@ function App() {
               </>
             }
           />
+          <Route
+          path="/aboutus"
+          element={
+            <>
+              <Aboutus />
+            </>
+          }
+        />
         </Routes>
       </>
       <div>
         <div style={style}>
           <div>
-            <a href="">to ab us pg</a>
-            <div>
+            
               <a href="">Contact Us</a>
             </div>
           </div>
           hello
         </div>
-      </div>
+     
       {/* <View style={styles.container}>
         <View style={styles.content}> content goes here</View>
         <View style={styles.footer}>

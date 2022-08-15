@@ -14,7 +14,7 @@ import Hero from "../HeroBar/Hero";
 import { Container } from "@mui/system";
 
 import { useAuthContext } from "../../../AuthContext/auth";
-
+import Aboutus from "../AboutUs/Aboutus";
 // const useStyles = makeStyles(
 //   //adding for MUI res
 //   theme({
@@ -60,6 +60,7 @@ export default function Landing() {
   //   return <Box sx={styles}></Box>;
   // }
   return (
+    <>
     <Container
       className="landingPage"
       sx={{
@@ -99,5 +100,8 @@ export default function Landing() {
       {/* //{" "}
       </div> */}
     </Container>
+   
+   <Aboutus/>
+   </>
   );
 }

@@ -10,7 +10,16 @@ import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 
 export function ResCard({ rest, showdescription }) {
-  const { id, image_url, name, location, description, restrictions } = rest;
+  const {
+    id,
+    image_url,
+    name,
+    location,
+    latitude,
+    longitude,
+    description,
+    restrictions,
+  } = rest;
   return (
     <Container className="ResCard" maxWidth={"xs"} sx={{ m: 3 }}>
       {/* <Link to={"/resDescript/" + id}> */}
@@ -33,7 +42,16 @@ export function ResCard({ rest, showdescription }) {
 }
 
 export default function ResCardYas({ rest, showdescription }) {
-  const { id, image_url, name, location, description, restrictions } = rest;
+  const {
+    id,
+    image_url,
+    name,
+    location,
+    latitude,
+    longitude,
+    description,
+    restrictions,
+  } = rest;
   return (
     <Card sx={{ m: 3, maxWidth: { xs: "90%", lg: "30%" } }}>
       <CardHeader title={name} />
@@ -46,6 +64,11 @@ export default function ResCardYas({ rest, showdescription }) {
       </Link>
       <CardContent>
         <Typography paragraph>
+          <p className="location">{location}</p>
+          <p className="latitude">{latitude}</p>
+          <p className="longitude">{longitude}</p>
+          <p className="restrict">{restrictions}</p>
+
           {showdescription ? (
             <p className="product-description">{description}</p>
           ) : null}
