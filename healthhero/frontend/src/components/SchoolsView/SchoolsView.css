@@ -75,3 +75,13 @@ label {
   align-items: center;
   justify-content: center;
 }
+
+
+.searchbar{
+  justify-content: center;
+  border: solid 1px #e4e4e4;
+  border-radius: 8px 0 0 8px;
+  flex: 1;
+  font-size: 16px;
+  padding: 0 15px;
+}
