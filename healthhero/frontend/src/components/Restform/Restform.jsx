@@ -51,6 +51,8 @@ export default function Restform() {
   const [form, setForm] = useState({
     name: "",
     location: "",
+    latitude: "",
+    longitude: "",
     image: "",
     description: "",
     school_id: schoolId,
@@ -306,6 +308,44 @@ export default function Restform() {
               {errors.location && (
                 <span className="error">{errors.location}</span>
               )}
+            </div>
+            <div className="input-field">
+              <label htmlFor="location">Enter your Latitude </label>
+              <TextField
+                className="text-field"
+                InputProps={{
+                  className: "text-field-input",
+                }}
+                type="latitude"
+                name="latitude"
+                value={form.latitude}
+                onChange={handleOnInputChange}
+              />
+              {errors.location && (
+                <span className="error">{errors.latitude}</span>
+              )}
+            </div>
+            <div className="input-field">
+              <label htmlFor="location">Enter Your Longitude </label>
+              <TextField
+                className="text-field"
+                InputProps={{
+                  className: "text-field-input",
+                }}
+                type="longitude"
+                name="longitude"
+                value={form.longitude}
+                onChange={handleOnInputChange}
+              />
+              {errors.location && (
+                <span className="error">{errors.longitude}</span>
+              )}
+            </div>
+            <div className="linktolatlong">
+            <p>
+             Don't know your coordinates? Find them <a href="https://gps-coordinates.org/coordinate-converter.php" target="_blank">here</a>
+            </p>
+
             </div>
 
             <div className="input-field">

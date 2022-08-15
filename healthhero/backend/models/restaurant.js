@@ -90,16 +90,20 @@ class Restaurant {
       `
             INSERT INTO restaurant(
                name,
-               location,
+               location
+               latitude,
+               longitude,
                image_url,
                description,
            user_id)
-            VALUES ($1,$2,$3,$4,$5)
-            RETURNING id, name,location,image_url, description, user_id;
+            VALUES ($1,$2,$3,$4,$5,$6,$7)
+            RETURNING id, name,location,latitude,longitude,image_url, description, user_id;
             `,
       [
         restaurant.name,
         restaurant.location,
+        restaurant.latitude,
+        restaurant.longitude,
         restaurant.image,
         restaurant.description,
         userId,
@@ -135,12 +139,14 @@ class Restaurant {
     // FOREIGN KEY
 
     await db.query(
-      `insert into restaurant (user_id, name, location, image_url, description)
-      values ((select id from users where email = $1), $2, $3, $4, $5)`,
+      `insert into restaurant (user_id, name, location, latitude, longitude, image_url, description)
+      values ((select id from users where email = $1), $2, $3, $4, $5,$6, $7)`,
       [
         user.email,
         restaurantForm.name,
         restaurantForm.location,
+        restaurantForm.latitude,
+        restaurantForm.longitude,
         restaurantForm.image,
         restaurantForm.description,
       ]

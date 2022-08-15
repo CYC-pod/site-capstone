@@ -20,6 +20,7 @@ import ViewRes from "./components/Restform/viewRest";
 import MyComm from "./components/MyComm/MyComm";
 import YourRes from "./components/YourRes/YourRes";
 import ResResults from "./components/ResResults/ResResults";
+import Aboutus from "./components/AboutUs/Aboutus";
 // import InResults from "./components/ResResults/InResults";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
@@ -59,9 +60,9 @@ function App() {
     }
   };
 
-useEffect(() => {
+  useEffect(() => {
     autoLoggIn();
-    console.log("rendering in app.jsx")
+    console.log("rendering in app.jsx");
   }, []);
 
   const logoutuser = async () => {
@@ -163,12 +164,7 @@ useEffect(() => {
             </>
           }
         />
-        <Route
-          path="/resResults"
-          element={
-              <ResResults />
-          }
-        />
+        <Route path="/resResults" element={<ResResults />} />
         {/* <Route
           path="/resResults/specific"
           // would matter on id / which restaurant
@@ -184,29 +180,32 @@ useEffect(() => {
             <>
               <DetailedComm />
             </>
-            
           }
         />
-          <Route
+        <Route
           path="/commDescript/:id"
           element={
             <>
               <DetailedComm />
             </>
-            
           }
         />
-          <Route
+        <Route
           path="/resDescript/:id"
           element={
             <>
               <ResDetail />
             </>
-            
           }
         />
-         
-         
+        <Route
+          path="/aboutus"
+          element={
+            <>
+              <Aboutus />
+            </>
+          }
+        />
       </Routes>
     </>
   );

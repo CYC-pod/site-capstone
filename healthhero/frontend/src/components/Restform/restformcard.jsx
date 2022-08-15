@@ -41,8 +41,13 @@ export default function ResFormCard({ resId }) {
   }, [restrictions]);
 
   return (
-    <div className="ResCard">
-      <Box sx={{ textAlign: "center", fontCol: "white" }}>
+    <Container className="ResCard" sx={{ display: "flex" }}>
+      <Box
+        sx={{
+          textAlign: "center",
+          fontCol: "white",
+        }}
+      >
         <p className="resname">{restaurant.name}</p>
       </Box>
       {/* <Link to={"/resDescript/" + id} className="media"> */}
@@ -66,11 +71,13 @@ export default function ResFormCard({ resId }) {
             })}
             <p className="restrict">{restaurant.restrictions} </p>
           </Box>
+      
           <Box sx={{ fontSize: "150%", justifyContent: "space-between" }}>
             <p className="resdes">{restaurant.description}</p>
           </Box>
         </Container>
+        {/* <a href="https://gps-coordinates.org/my-location.php?lat=40.7648&lng=-73.9808" target="_blank">(40.7648,-73.9808)</a> */}
       </div>
-    </div>
+    </Container>
   );
 }

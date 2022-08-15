@@ -29,8 +29,24 @@ export default function ViewRes() {
     console.log("restaurant value in viewRest" , resId)
   }, []) 
 
+//   function initialize() {
 
+//     var myLatLng = new google.maps.LatLng(46.2,6.17);
+//     var mapOptions = {
+//         zoom: 4,
+//         center: myLatLng,
+//         mapTypeId: google.maps.MapTypeId.ROADMAP
+//     };
+    
+//     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    
+//     var marker = new google.maps.Marker({
+//         position: myLatLng,
+//         map: map
+//     });
+// }
 
+// initialize();
   return (
     <Container
       className="restaurants"

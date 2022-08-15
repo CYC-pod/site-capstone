@@ -2,8 +2,17 @@ import "../ResResults/ResCard.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function ResCard({ rest, showdescription}) {
-  const { id, image_url, name, location, description, restrictions } = rest;
+export default function ResCard({ rest, showdescription }) {
+  const {
+    id,
+    image_url,
+    name,
+    location,
+    latitude,
+    longitude,
+    description,
+    restrictions,
+  } = rest;
   return (
     <div className="ResCard">
       <Link to={"/resDescript/" + id} className="media">
@@ -13,6 +22,8 @@ export default function ResCard({ rest, showdescription}) {
       <div className="resinfo">
         <p className="resname">{name}</p>
         <p className="location">{location}</p>
+        <p className="latitude">{latitude}</p>
+        <p className="longitude">{longitude}</p>
         <p className="restrict">{restrictions}</p>
         <p className="resdes">
           {showdescription ? (
