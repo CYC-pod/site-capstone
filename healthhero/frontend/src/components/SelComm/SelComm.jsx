@@ -78,7 +78,7 @@ export default function SelComm() {
           sx={{
             background: "rgba(179,207,153)",
             width: "50%",
-            height: "10vh",
+            // height: "10vh",
             m: 3,
             padding: "20px",
             marginLeft: "200px",
