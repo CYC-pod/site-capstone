@@ -32,26 +32,7 @@ export default function Footer() {
   <br></br>
       <Box> <a href="">Contact Us</a> </Box>
       <Box> <a href="/aboutus">About Us</a> </Box>
+      <Box className="madeByCyc"> Made By CYC ☁️ </Box>
       <br></br>
   </Box>);
-  return (
-    <div className="Footer">
-      <div className="content">
-        {/* Top Section */}
-        <div className="top">
-          <div className="links">
-            {/* Standard Links */}
-
-            {Object.keys(links).map((columnTitle) => (
-              <LinkColumn
-                key={columnTitle}
-                title={columnTitle}
-                links={links[columnTitle]}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 }

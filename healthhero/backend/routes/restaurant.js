@@ -67,9 +67,7 @@ router.get("/minrestriction", async (req, res, next) => {
       res?.locals?.user?.id
     ); //array with user restriction names
     console.log("user Restrictions: ", userRestrictions);
-    const restaurants = await Restaurant.listRestsByRestriction(
-      userRestrictions
-    );
+    const restaurants = await Restaurant.listRestsByRestriction(userRestrictions);
     let restautantList = {};
     for (let restaurant of restaurants) {
       if (!restautantList[restaurant.id]) {
