@@ -130,14 +130,7 @@ function App() {
               </>
             }
           />
-          <Route
-            path="/diet"
-            element={
-              <>
-                <Diet />
-              </>
-            }
-          />
+          <Route path="/diet" element={<Diet />} />
 
           <Route
             path="/restForm"
