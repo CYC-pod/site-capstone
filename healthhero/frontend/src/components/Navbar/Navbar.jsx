@@ -71,12 +71,12 @@ export default function Navbar({ logoutuser }) {
           ) : null}
           {/* make button/list item */}
 
-          <Button color="inherit" onClick={logoutuser}>
+          {/* <Button color="inherit" onClick={logoutuser}>
             <a href="/#aboutus" id="link">
               {" "}
               About Us{" "}
             </a>
-          </Button>
+          </Button> */}
 
           <Typography
             variant="h6"
@@ -93,7 +93,7 @@ export default function Navbar({ logoutuser }) {
             </a>
           </Typography>
 
-          {user ? (
+          {/* {user ? (
             <Button color="inherit">
               <a href="/aboutus" id="link">
                 About Us
@@ -101,7 +101,7 @@ export default function Navbar({ logoutuser }) {
             </Button>
           ) : (
             ""
-          )}
+          )} */}
 
           {user ? null : (
             <Button color="inherit" onClick={logoutuser}>

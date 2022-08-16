@@ -5,6 +5,7 @@ import apiClient from "../../../services/apiClient";
 import { Box } from "@mui/system";
 import { Container } from "@mui/system";
 import { colors } from "@mui/material";
+import MapApp from "../Maps/MapApp";
 
 export default function ResFormCard({ resId }) {
   const [restaurant, setRestaurant] = useState([]);
@@ -22,6 +23,8 @@ export default function ResFormCard({ resId }) {
 
   useEffect(() => {
     console.log("restaurant in restFormCard", restaurant);
+    console.log("restaurant lat", restaurant.latitude);
+    console.log("restaurant long", restaurant.longitude);
   }, [restaurant]);
 
   //const { image_url, name, location, description, restrictions } = resId;
@@ -65,6 +68,8 @@ export default function ResFormCard({ resId }) {
         >
           <Box sx={{ fontSize: "150%", justifyContent: "space-between" }}>
             <p className="location">{restaurant.location}</p>
+            <p className="latitude">{restaurant.latitude}</p>
+            <p className="longitude">{restaurant.longitude}</p>
             Restrictions:
             {restrictions.map((restriction) => {
               return <div> {restriction} </div>;
@@ -75,6 +80,11 @@ export default function ResFormCard({ resId }) {
           <Box sx={{ fontSize: "150%", justifyContent: "space-between" }}>
             <p className="resdes">{restaurant.description}</p>
           </Box>
+          <MapApp
+            restaurant={restaurant}
+            latitude={restaurant.latitude}
+            longitude={restaurant.longitude}
+          />
         </Container>
         {/* <a href="https://gps-coordinates.org/my-location.php?lat=40.7648&lng=-73.9808" target="_blank">(40.7648,-73.9808)</a> */}
       </div>
