@@ -53,7 +53,15 @@ export default function ResCardYas({ rest, showdescription }) {
     restrictions,
   } = rest;
   return (
-    <Card sx={{ m: 3, maxWidth: { xs: "90%", lg: "30%" } }}>
+    <Card
+      sx={{
+        m: 3,
+        backgroundColor: "rgba(179,207,153)",
+        color: "darkGreen",
+        maxWidth: { xs: "90%", lg: "30%" },
+        border: "1px darkgreen dotted",
+      }}
+    >
       <CardHeader title={name} />
       <Link to={"/resDescript/" + id}>
         <CardMedia

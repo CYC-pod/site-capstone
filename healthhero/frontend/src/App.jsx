@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import * as React from "react";
-import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom"
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import { AuthContextProvider, useAuthContext } from "../AuthContext/auth";
@@ -24,16 +30,16 @@ import ResResults from "./components/ResResults/ResResults";
 import Aboutus from "./components/AboutUs/Aboutus";
 // import InResults from "./components/ResResults/InResults";
 import Footer from "./components/Footer/Footer";
+import Contact from "./components/Contact/Contact";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
 import ResDetail from "./components/ResResults/ResDetail";
 // import ComGrid from "./components/SelComm/ComGrid";
 
-
 function App() {
   const { user, setUser } = useAuthContext();
   const navigateTo = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // useEffect(() => {
   //   console.log("app is rendering")
@@ -70,8 +76,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-   user ? setIsLoggedIn(true) : setIsLoggedIn(false)
-  }, [user])
+    user ? setIsLoggedIn(true) : setIsLoggedIn(false);
+  }, [user]);
 
   const logoutuser = async () => {
     await apiClient.logoutUser();
@@ -216,6 +222,14 @@ function App() {
             element={
               <>
                 <Aboutus />
+              </>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <>
+                <Contact />
               </>
             }
           />
