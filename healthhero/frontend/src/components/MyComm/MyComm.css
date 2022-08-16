@@ -74,7 +74,17 @@ h3 {
   border-radius: 15px;
   margin: 2%;
 }
-
+.smoval3 {
+  background-color: #0e3804;
+  color: #699b5c;
+  width: 15%;
+  min-width: min-content;
+  height: 20%;
+  text-align: center;
+  justify-items: center;
+  border-radius: 15px;
+  margin: 2%;
+}
 .info {
   /* justify-items: center;
   text-align: center; doing nothing */
@@ -94,6 +104,6 @@ h3 {
   padding-top: 1%;
 }
 
-.product-card{
+.product-card {
   margin-bottom: 0%;
 }
