@@ -6,6 +6,10 @@
   color: darkgreen;
 }
 
+.LinksTag{
+  color: rgb(122, 54, 8)
+}
+
 .Footer .content {
   max-width: var(--content-width);
   width: 100%;
@@ -29,6 +33,7 @@
 .Footer .content .top .links .link-column {
   /* display: flex; */
   flex-direction: column;
+  justify-content: center;
   /* justify-content: flex-start;
   align-items: flex-start; */
 }
@@ -36,7 +41,7 @@
   margin-bottom: 10px;
 }
 .Footer .content .top .links .link-column ul {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   list-style-type: none;
   padding-left: 1%;
@@ -49,7 +54,7 @@
   margin-top: 10px;
 }
 .Footer .content .top .links .link-column ul li svg {
-  width: 20px;
+  /* width: 20px; */
   height: 20px;
   margin-right: 10px;
 }
@@ -71,4 +76,5 @@
 
 a {
   color: rgb(122, 54, 8);
+  width: max-content;
 }

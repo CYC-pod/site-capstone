@@ -47,15 +47,11 @@ export default function Navbar({ logoutuser }) {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+          
           </IconButton>
           {isStudent ? (
             <Button>
-              {" "}
-              <a href="/communities" id="link">
-                {" "}
-                Communities{" "}
-              </a>{" "}
+              <a href="/communities" id="link">Communities </a>
             </Button>
           ) : null}
           {isStudent ? (
@@ -73,6 +69,11 @@ export default function Navbar({ logoutuser }) {
             </Button>
           ) : null}
           {/* make button/list item */}
+
+          <Button color="inherit" onClick={logoutuser}>
+            <a href="/#aboutus" id="link"> About Us </a>
+          </Button>
+
           <Typography
             variant="h6"
             component="div"
@@ -84,15 +85,9 @@ export default function Navbar({ logoutuser }) {
                 id="okur"
                 src={leafLogo}
                 alt="leaflogo"
-              />{" "}
+              />
             </a>
           </Typography>
-          <Button color="inherit" onClick={logoutuser}>
-            <a href="/aboutus" id="link">
-              {" "}
-              About Us{" "}
-            </a>
-          </Button>
           <Button color="inherit" onClick={logoutuser}>
             {user ? (
               ""

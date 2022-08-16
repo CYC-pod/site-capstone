@@ -1,6 +1,8 @@
 import * as React from "react";
 import "../Footer/Footer.css";
-import { Link } from "@mui/material";
+import { Box} from "@mui/material";
+import {Link} from "react-router-dom";
+
 
 const links = {
   //   Categories: ["All Categories", "Clothing", "Food", "Accessories", "Tech"],
@@ -18,32 +20,20 @@ const links = {
 };
 const LinkColumn = ({ title, links }) => {
   return (
-    <div className="link-column">
+    <>
       <h4>{title}</h4>
-      {/* <ul>
-        {links.map((link) => (
-          <li key={link}>
-            <Link title={title} link={link} />
-            {link}
-          </li>
-        ))}
-      </ul> */}
-      <ul>
-        <li>
-          {" "}
-          <a href="">Contact Us</a>
-        </li>
-        <li>
-          {" "}
-          <a href="">About Us</a>
-        </li>
-      </ul>
-      {/* <a href="">Contact Us</a>
-      <a href="">About Us</a> */}
-    </div>
+      <a href="">Contact Us</a>
+      <a href="">About Us</a>
+    </>
   );
 };
 export default function Footer() {
+  return(<Box sx={{backgroundColor: "rgba(223,246,200,1)", flexGrow: "0",}}>
+  <br></br>
+      <Box> <a href="">Contact Us</a> </Box>
+      <Box> <a href="/aboutus">About Us</a> </Box>
+      <br></br>
+  </Box>);
   return (
     <div className="Footer">
       <div className="content">
@@ -59,11 +49,6 @@ export default function Footer() {
                 links={links[columnTitle]}
               />
             ))}
-            {/* App Links */}
-            {/* <div className="link-column">
-              <h4>Our App</h4>
-            </div> */}
-            {/* End of Links */}
           </div>
         </div>
       </div>
