@@ -18,12 +18,18 @@ export default function Aboutus() {
         <Avatar alt="Courtney Fenderson" src="/static/images/avatar/3.jpg" />
       </Stack> */}
       <div className="aboutUsPhotos">
-        <img src={Christian} alt="Christian photo" className="christianPhoto"></img>
-        <h1 className="ourNames"> Christian Bryan </h1>
-        <img src={Yasmin}  alt="Yasmin photo" className="yasminPhoto"></img>
-        <h1 className="ourNames"> Yasmin Senior </h1>
-        <img src={Courtney}  alt="Courtney photo" className="courtneyPhoto"></img>
-        <h1 className="ourNames"> Courtney Fenderson </h1>
+        <div className="imageCard">
+          <img src={Christian} alt="Christian photo" className="christianPhoto"></img>
+          <h1 className="ourNames"> Christian Bryan </h1>
+        </div>
+        <div className="imageCard">
+          <img src={Yasmin}  alt="Yasmin photo" className="yasminPhoto"></img>
+          <h1 className="ourNames"> Yasmin Senior </h1>
+        </div>
+        <div className="imageCard">
+          <img src={Courtney}  alt="Courtney photo" className="courtneyPhoto"></img>
+          <h1 className="ourNames"> Courtney Fenderson </h1>
+        </div>
       </div>
       <h1 className="aboutUsLabel"> About Us </h1>
       <p className="aboutUsParagraph"> Hello and welcome to our Salesforce x Codepath Capstone Project! 

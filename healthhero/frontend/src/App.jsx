@@ -50,6 +50,8 @@ function App() {
   //   }
   // }, []);
 
+
+
   const autoLoggIn = async () => {
     if (!user) {
       const authMeData = await apiClient.fetchUserFromToken();
@@ -67,6 +69,10 @@ function App() {
   useEffect(() => {
     autoLoggIn();
     console.log("rendering in app.jsx");
+    const token = localStorage.getItem("token");
+    if(!token){
+      navigateTo("/login")
+    }
   }, []);
 
   useEffect(() => {

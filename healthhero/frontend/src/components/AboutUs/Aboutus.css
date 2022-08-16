@@ -1,6 +1,9 @@
 .aboutUsPhotos{
     flex-direction: row;
-    display: inline;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    margin-top: 2%;
 }
 
 /* .circular {
@@ -29,7 +32,6 @@
     height: 250px;
     width: 250px;
     border-radius: 100%;
-    margin-top: 6%;
     padding: 10px;
 }
 
