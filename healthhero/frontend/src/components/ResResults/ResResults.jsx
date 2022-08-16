@@ -225,18 +225,17 @@ export default function Test() {
         }} //2 brackets for its object.. setting the container
         maxWidth={false}
       >
-        {[...Array(15)].map((e) =>
-          restaurants
-            .filter((restaurant) =>
-              checker(restaurant.restriction_name, selected)
-            )
-            .map((rest, index) => {
-              console.log("selected array in map: ", selected);
-              return (
-                <ResCard key={index} rest={rest} showdescription={false} />
-              );
-            })
-        )}
+        {/* {[...Array(15)].map((e) => */}
+        {/* {map((e) => */}
+        {restaurants
+          .filter((restaurant) =>
+            checker(restaurant.restriction_name, selected)
+          )
+          .map((rest, index) => {
+            console.log("selected array in map: ", selected);
+            return <ResCard key={index} rest={rest} showdescription={false} />;
+          })}
+        {/* )} */}
       </Container>
     </>
   );

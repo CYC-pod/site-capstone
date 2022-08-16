@@ -2,7 +2,7 @@
   float: left;
   font-size: 30px;
   color: #b3cf99;
-  /* padding-left: 30px; */
+  padding-right: 30px;
 }
 
 .diet {
@@ -61,7 +61,8 @@
 }
 
 #allergyBoxes {
-  /* padding-top: 40px; */
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

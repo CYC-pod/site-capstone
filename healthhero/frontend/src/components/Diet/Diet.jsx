@@ -206,6 +206,7 @@ export default function Diet() {
           onInputChange={handleFilChangeD}
           sx={{
             display: "inline-block",
+            paddingLeft: "20%",
             float: "right",
             "& input": {
               // float: "right",
