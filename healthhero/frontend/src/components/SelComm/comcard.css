@@ -18,4 +18,15 @@
   width: 600px;
   padding-left: 10px;
   padding-right: 10px;
+  border-radius: 10px;
+  background-color: #d6e4d2;
+  color: #0e3804;
+  /* background-color: rgb(173, 237, 207); */
+  /* background-color: rgb(224, 157, 103); */
+}
+.commImage {
+  border-radius: 8px;
+  /* width: 80%; */
+  max-width: 90%;
+  float: center;
 }

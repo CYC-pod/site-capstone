@@ -23,8 +23,8 @@ export default function ResFormCard({ resId }) {
 
   useEffect(() => {
     console.log("restaurant in restFormCard", restaurant);
-    console.log("restaurant lat", restaurant.latitude)
-    console.log("restaurant long", restaurant.longitude)
+    console.log("restaurant lat", restaurant.latitude);
+    console.log("restaurant long", restaurant.longitude);
   }, [restaurant]);
 
   //const { image_url, name, location, description, restrictions } = resId;
@@ -80,7 +80,11 @@ export default function ResFormCard({ resId }) {
           <Box sx={{ fontSize: "150%", justifyContent: "space-between" }}>
             <p className="resdes">{restaurant.description}</p>
           </Box>
-          <MapApp restaurant={restaurant} />
+          <MapApp
+            restaurant={restaurant}
+            latitude={restaurant.latitude}
+            longitude={restaurant.longitude}
+          />
         </Container>
         {/* <a href="https://gps-coordinates.org/my-location.php?lat=40.7648&lng=-73.9808" target="_blank">(40.7648,-73.9808)</a> */}
       </div>

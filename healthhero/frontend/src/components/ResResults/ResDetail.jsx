@@ -42,9 +42,11 @@ export default function ResDetail() {
       <h1 className="rest-card">Restaurant {restaurant?.name} !</h1>
       {/*// if not null try to get property if null= undefined */}
       {restaurant ? (
-        <ResCard rest={restaurant} showdescription={true} id={id} />
+        <>
+          <ResCard rest={restaurant} showdescription={true} id={id} />
+          <MapApp restaurant={restaurant} />
+        </>
       ) : null}
-      <MapApp restaurant={restaurant} />
     </div>
   );
 }
