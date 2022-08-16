@@ -11,6 +11,7 @@ import "../MyComm/MyComm.css";
 import { useState, useEffect } from "react";
 import apiClient from "../../../services/apiClient";
 import students from "../../img/students.png"
+import chefs from "../../img/chefs.png"
 
 export default function MyComm() {
   const { user, setUser } = useAuthContext(); //from prof
@@ -163,7 +164,7 @@ export default function MyComm() {
               ></img>
             ) : (
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRRaRyk90kcUMsEtMWfDgNMfVKfE1eBNv8FQ&usqp=CAU"
+                src={chefs}
                 className="padT"
               ></img>
             )}
