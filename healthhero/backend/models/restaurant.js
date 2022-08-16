@@ -90,7 +90,7 @@ class Restaurant {
       `
             INSERT INTO restaurant(
                name,
-               location
+               location,
                latitude,
                longitude,
                image_url,

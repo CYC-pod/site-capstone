@@ -10,6 +10,11 @@ router.use((req, res, next) => {
   next();
 });
 
+router.use((req, res, next) => {
+  console.log("req query: ", req.body);
+  next();
+});
+
 router.post(
   "/create",
   security.requireAuthenticatedUser,
@@ -81,7 +86,7 @@ router.get("/minrestriction", async (req, res, next) => {
         );
       }
     }
-    console.log("restaurant list in router: ", restautantList) //something weird is happeing b/c the changes we made to query some columns may not be available 
+    console.log("restaurant list in router: ", restautantList); //something weird is happeing b/c the changes we made to query some columns may not be available
     restautantList = Object.values(restautantList);
     return res.status(201).json({ restaurants: restautantList });
   } catch (err) {
@@ -139,6 +144,7 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
       OutgoingRestaurant,
       IncomingRestaurant.restrictions
     );
+    console.log("restaurant posted in router: ", restaurant);
     return res.status(201).json({ restaurant: OutgoingRestaurant });
   } catch (err) {
     next(err);

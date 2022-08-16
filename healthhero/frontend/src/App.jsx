@@ -34,6 +34,7 @@ import Contact from "./components/Contact/Contact";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
 import ResDetail from "./components/ResResults/ResDetail";
+import MapApp from "./components/Maps/MapApp";
 // import ComGrid from "./components/SelComm/ComGrid";
 
 function App() {
