@@ -67,6 +67,7 @@ export default function ViewRes() {
       {/* <Box
               sx={{ background: "purple", width: "10%", height: "10vh", m: 3 }}
             ></Box> */}
+     
     </Container>
   );
 }

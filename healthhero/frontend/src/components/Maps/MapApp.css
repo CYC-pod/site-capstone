@@ -1,4 +1,11 @@
-.App {
+.leaflet-container {
+  height: 18em;
+  width: 32em;
+  border: 0.5rem solid chartreuse;
+  z-index: 1;
+}
+
+/* .App {
     text-align: center;
   }
   
@@ -36,4 +43,4 @@
       transform: rotate(360deg);
     }
   }
-  
+   */

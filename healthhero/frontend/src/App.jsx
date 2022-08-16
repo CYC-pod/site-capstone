@@ -207,14 +207,14 @@ function App() {
             </>
           }
         />
-        <Route
+        {/* <Route
           path="/map"
           element={
             <>
               <MapApp />
             </>
           }
-        />
+        /> */}
       </Routes>
     </>
   );

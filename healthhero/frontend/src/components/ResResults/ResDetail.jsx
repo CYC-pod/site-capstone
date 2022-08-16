@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import apiClient from "../../../services/apiClient";
 import ResCard from "./ResCard";
 import "./ResDetail.css";
+import MapApp from "../Maps/MapApp";
 
 export default function ResDetail() {
   // var comm = community[commid];
@@ -32,8 +33,6 @@ export default function ResDetail() {
     getRestid();
   }, []);
 
-  
-
   useEffect(() => {
     console.log("restaurant by id:", restaurant);
   }, [restaurant]);
@@ -45,6 +44,7 @@ export default function ResDetail() {
       {restaurant ? (
         <ResCard rest={restaurant} showdescription={true} id={id} />
       ) : null}
+      <MapApp restaurant={restaurant} />
     </div>
   );
 }
