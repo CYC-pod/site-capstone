@@ -9,6 +9,8 @@ import ComCard from "./ComCard";
 import "./DetailedCom.css";
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 export default function DetailedComm() {
   // var comm = community[commid];
@@ -102,20 +104,40 @@ export default function DetailedComm() {
   return (
     <div className="productview">
       <h1 className="product-card"> {community.name} !</h1>
-
       {community ? (
         <div className="plc">
           <ComCard comm={community} showdescription={true} id={id} />
         </div>
       ) : null}
 
-       <AvatarGroup max={1}>
-        {usersInCom?.map((user, idx) => (<Avatar sx={{ bgcolor: '' }}>{user.username[0]}</Avatar>))}
-      </AvatarGroup>
+      <Box className="avatarGroup" sx={{
+        justifyContent: "center",
+        alignContent: "center",
+        bgcolor: "red"
+
+      }}>
+        <AvatarGroup max={4}>
+          {usersInCom?.map((user, idx) => (<Avatar sx={{ bgcolor: '' }}>{user.username[0].toUpperCase()}</Avatar>))}
+        </AvatarGroup>
+      </Box>
       <div>
-        <button className="btn" disabled={isLoading} onClick={handleOnSubmit}>
-          {isLoading ? "Loading..." : "Add Community To Profile"}
-        </button>
+      <Button
+          className="addCommButton"
+          variant="outlined"
+          sx={{
+            color: "white",
+            borderColor: "rgba(121,85,72,1)",
+            "&.MuiButtonBase-root:hover": {
+              bgcolor: "transparent",
+              borderColor: "white",
+            },
+          }}
+          onClick={handleOnSubmit}
+        >   
+            <h3 className="addCommLabel"> Add Community To Profile </h3>
+        </Button>
+        <br/>
+        <br/>
       </div>
     </div>
   );

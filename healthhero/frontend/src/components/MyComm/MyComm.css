@@ -3,6 +3,7 @@
   margin-right: 20px;
 }
 
+
 .myCom h1 {
   /* color: darkseagreen; */
   color: rgb(101, 55, 2);
@@ -88,4 +89,8 @@ h3 {
 .padT {
   margin-top: 6%;
   border-radius: 6px;
+}
+
+.product-card{
+  margin-bottom: 0%;
 }

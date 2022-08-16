@@ -13,12 +13,10 @@ import { brown } from "@mui/material/colors";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 
-
 // import { CommForm } from "../CommForm/Commform";
 import "./SelComm.css";
 
 //style diff based off breakpoints n media query
-
 
 export default function SelComm() {
   const { comm, setComm } = useAuthContext();
@@ -65,46 +63,59 @@ export default function SelComm() {
 
   return (
     <Container
-    className="communities"
-    sx={{
-      flexGrow: 1,
-      background: "cream",
-      alignItems: "center",
-      display: "flex",
-      flexDirection: "column",
-    }} //2 brackets for its object.. setting the container
-    maxWidth={false}
-  >
-    <div className="container">
-      <Box
-        sx={{
-          background: "green",
-          width: "50%",
-          height: "10vh",
-          m: 3,
-          padding: "20px",
-          marginLeft: "200px",
-          // justifyContent: "center",
-          borderRadius: "7px",
-        }}
-      >
-        <h1> Select A Community</h1>
-      </Box>
-      <ColorButton1 className="buttoncomm">
-        <Link className="link" to="/commForm">
-          Create A Community!
-        </Link>
-      </ColorButton1>
-      {/* breakpoint here to layer it */}
-    </div>
-    <ComGrid />
-    <Box
-    // sx={{ background: "darkseagreen", width: "10%", height: "10vh", m: 3 }}
+      className="communities"
+      sx={{
+        flexGrow: 1,
+        background: "cream",
+        alignItems: "center",
+        display: "flex",
+        flexDirection: "column",
+      }} //2 brackets for its object.. setting the container
+      maxWidth={false}
     >
-      <ColorButton variant="contained" sx={{ marginBottom: "2%" }}>
-        Load More Options
-      </ColorButton>
-    </Box>
-  </Container>
+      <div className="container">
+        <Box
+          sx={{
+            background: "rgba(179,207,153)",
+            width: "50%",
+            height: "10vh",
+            m: 3,
+            padding: "20px",
+            marginLeft: "200px",
+            // justifyContent: "center",
+            borderRadius: "7px",
+          }}
+        >
+          <h1> Select a Community</h1>
+        </Box>
+        <Button
+          className="addCommButton"
+          variant="outlined"
+          sx={{
+            color: "white",
+            borderColor: "rgba(121,85,72,1)",
+            "&.MuiButtonBase-root:hover": {
+              bgcolor: "transparent",
+              borderColor: "white",
+            },
+          }}
+        >
+          <Link className="link" to="/commForm">
+            Create A Community!
+          </Link>
+        </Button>
+        {/* breakpoint here to layer it */}
+      </div>
+      <ComGrid />
+      <Box
+      // sx={{ background: "darkseagreen", width: "10%", height: "10vh", m: 3 }}
+      >
+        <ColorButton variant="contained" sx={{ marginBottom: "2%" }}>
+          Load More Options
+        </ColorButton>
+        <br />
+        <br />
+      </Box>
+    </Container>
   );
 }

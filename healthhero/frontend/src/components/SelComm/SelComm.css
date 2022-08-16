@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.buttoncomm{
+  background-color: #8fcf7f;
+  color: #0e3804;
+}
 /* .buttoncomm {
   background-color: #795548;
   color: azure;
@@ -14,7 +18,8 @@
   margin-right: 30px;
   float: right;
 } */
+
 a.link {
   text-decoration: none;
-  color: white;
+  color: rgba(121,85,72,1);
 }

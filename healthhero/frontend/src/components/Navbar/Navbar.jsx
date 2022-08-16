@@ -15,6 +15,7 @@ import leafLogo from "../../img/Health Hero-2.png";
 import apiClient from "../../../services/apiClient";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "../Slick/Slick.css";
+import Avatar from '@mui/material/Avatar';
 //put when logged in ^
 
 export default function Navbar({ logoutuser }) {
@@ -120,11 +121,12 @@ export default function Navbar({ logoutuser }) {
 
           {/* prof button */}
           {user ? (
-            <Button color="inherit">
-              <a href="/prof" id="link">
-                <AccountCircleIcon id="expand" />
+
+    
+              <a href="/prof" id="link">  
+              <Avatar sx={{ bgcolor: '' }}>{user.username[0].toUpperCase()}</Avatar>
               </a>
-            </Button>
+ 
           ) : (
             ""
           )}
