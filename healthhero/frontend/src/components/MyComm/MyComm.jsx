@@ -10,8 +10,8 @@ import { Container } from "@mui/system";
 import "../MyComm/MyComm.css";
 import { useState, useEffect } from "react";
 import apiClient from "../../../services/apiClient";
-import students from "../../img/students.png"
-import chefs from "../../img/chefs.png"
+import students from "../../img/students.png";
+import chefs from "../../img/chefs.png";
 
 export default function MyComm() {
   const { user, setUser } = useAuthContext(); //from prof
@@ -38,7 +38,7 @@ export default function MyComm() {
   useEffect(() => {
     async function getRest() {
       const res = await apiClient.listUserRestrictionsObj();
-      setRestrictions(res.data.restrictions)
+      setRestrictions(res.data.restrictions);
     }
     // async function getAlls() {
     //   const res = await apiClient.listAllergies();
@@ -46,23 +46,27 @@ export default function MyComm() {
     // }
     async function getUserComms() {
       const res = await apiClient.listUserComms();
-      setCommunities(res?.data?.userCommunities ? [...communities, res?.data?.userCommunities] : []);
+      setCommunities(
+        res?.data?.userCommunities
+          ? [...communities, res?.data?.userCommunities]
+          : []
+      );
       console.log("community list: ", res?.data?.userCommunities);
     }
     // getDiets();
     // getAlls();
-    getRest(); 
+    getRest();
     getUserComms();
   }, []);
 
   useEffect(() => {
-    console.log("new version diets: ",  diets)
-  }, [diets]) 
+    console.log("new version diets: ", diets);
+  }, [diets]);
 
   useEffect(() => {
-    console.log("new version allergeis: ", allergies)
-  }, [allergies]) 
- 
+    console.log("new version allergeis: ", allergies);
+  }, [allergies]);
+
   useEffect(() => {
     console.log("community array: ", communities);
   }, [communities]);
@@ -97,12 +101,16 @@ export default function MyComm() {
             {isStudent ? (
               <div>
                 <div className="circles">
-                  {restrictions.filter((restriction) => restriction.type == "diet").map((diet) => {
-                    return <div className="smoval">{diet.name}</div>;
-                  })}
-                  {restrictions.filter((restriction) => restriction.type == "allergy").map((allergy) => {
-                    return <div className="smoval2">{allergy.name}</div>;
-                  })}
+                  {restrictions
+                    .filter((restriction) => restriction.type == "diet")
+                    .map((diet) => {
+                      return <div className="smoval">{diet.name}</div>;
+                    })}
+                  {restrictions
+                    .filter((restriction) => restriction.type == "allergy")
+                    .map((allergy) => {
+                      return <div className="smoval2">{allergy.name}</div>;
+                    })}
                 </div>
               </div>
             ) : (
@@ -144,7 +152,7 @@ export default function MyComm() {
               <p> You are a {user ? user.type : null}</p>
 
               <p>Email : {user ? user.email : null}</p>
-              {isStudent ? <p>User's school</p> : null}
+              {/* {isStudent ? <p>User's school</p> : null} */}
 
               {/* <p> School : {user ? credentials.school_id : null}</p> */}
             </div>
@@ -158,15 +166,9 @@ export default function MyComm() {
             }}
           >
             {isStudent ? (
-              <img
-                src={students}
-                className="padT"
-              ></img>
+              <img src={students} className="padT"></img>
             ) : (
-              <img
-                src={chefs}
-                className="padT"
-              ></img>
+              <img src={chefs} className="padT"></img>
             )}
           </Box>
         </Grid>
