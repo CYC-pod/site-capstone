@@ -59,7 +59,7 @@ export default function ResFormCard({ resId }) {
       <div className="resinfo">
         <Container
           sx={{
-            background: "#B1907F",
+            // background: "#B1907F",
             justifyContent: "space-between",
             Height: "500%",
             Width: "20",
