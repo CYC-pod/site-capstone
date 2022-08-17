@@ -7,8 +7,9 @@
   flex-grow: 0;
 }
 
-.LinksTag{
-  color: rgb(122, 54, 8)
+.LinksTag {
+  color: rgb(122, 54, 8);
+  /* rgb(122, 54, 8) */
 }
 
 .Footer .content {
@@ -78,8 +79,4 @@
 a {
   color: rgb(122, 54, 8);
   width: max-content;
-}
-
-.madeByCyc{
-  color:rgb(122, 54, 8); 
 }

@@ -28,7 +28,8 @@ const LinkColumn = ({ title, links }) => {
 };
 export default function Footer() {
   return (
-    <Box sx={{ backgroundColor: "rgba(223,246,200,1)", flexGrow: "0" }}>
+    <Box sx={{ backgroundColor: "#976f60", flexGrow: "0" }}>
+      {/* "rgba(223,246,200,1)" */}
       <br></br>
       <Box>
         {" "}
