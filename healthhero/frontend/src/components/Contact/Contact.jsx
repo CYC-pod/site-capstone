@@ -6,8 +6,8 @@ export default function Contact() {
       <h2> Thanks for stopping by!</h2>
       <p>
         {" "}
-        Please contact us at cfenderson@salesforce.com , ysenior@salesforce.com,
-        and christian.byran@salesforce.com{" "}
+        Please contact us at c.fenderson@wustl.edu, yasmin.senior@bison.howard.edu,
+        and cdbryan@usc.edu{" "}
       </p>
     </div>
   );

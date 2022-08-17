@@ -39,7 +39,7 @@ export default function ResDetail() {
 
   return (
     <div className="Restview">
-      <h1 className="rest-card">Restaurant {restaurant?.name} !</h1>
+      <h1 className="header">Restaurant {restaurant?.name} !</h1>
       {/*// if not null try to get property if null= undefined */}
       {restaurant ? (
         <>
