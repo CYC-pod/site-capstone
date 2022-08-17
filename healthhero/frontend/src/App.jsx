@@ -73,13 +73,13 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   autoLoggIn();
-  //   const token = localStorage.getItem("token");
-  //   if(!token){
-  //     navigateTo("/login")
-  //   }
-  // }, []);
+  useEffect(() => {
+    autoLoggIn();
+    // const token = localStorage.getItem("token");
+    // if(!token){
+    //   navigateTo("/login")
+    // }
+  }, []);
 
   useEffect(() => {
     user ? setIsLoggedIn(true) : setIsLoggedIn(false);
