@@ -38,7 +38,7 @@ function MapApp(props) {
               position={[props.restaurant.latitude, props.restaurant.longitude]}
             >
               <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
+                Your Restuarant is Located Here! <br />
               </Popup>
             </Marker>
           </MapContainer>

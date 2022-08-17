@@ -1,4 +1,4 @@
-import "../Restform/Restform.css";
+import "./viewRest.css";
 import { Box } from "@mui/material";
 import { Container } from "@mui/system";
 import * as React from "react";
@@ -60,14 +60,22 @@ export default function ViewRes() {
       }} //2 brackets for its object.. setting the container
       maxWidth={false}
     >
-      <Box sx={{ background: "inherit", width: "50%", height: "10vh", m: 3 }}>
-        <h1> View Restaurant</h1>
+      <Box
+        sx={{
+          background: "inherit",
+          width: "50%",
+          height: "10vh",
+          m: 3,
+          color: "#B1907F",
+          fontSize: "170%",
+        }}
+      >
+        <h1 className="view"> View Your Restaurant</h1>
       </Box>
       <ResFormCard />
       {/* <Box
               sx={{ background: "purple", width: "10%", height: "10vh", m: 3 }}
             ></Box> */}
-     
     </Container>
   );
 }

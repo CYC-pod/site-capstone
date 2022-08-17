@@ -21,7 +21,7 @@ export function ResCard({ rest, showdescription }) {
     restrictions,
   } = rest;
   return (
-    <Container className="ResCard" maxWidth={"xs"} sx={{ m: 3 }}>
+    <Container className="ResCard" sx={{ m: 3, Width: "40%" }}>
       {/* <Link to={"/resDescript/" + id}> */}
       <Box sx={{ backgroundColor: "purple" }}>
         <img src={image_url}></img>

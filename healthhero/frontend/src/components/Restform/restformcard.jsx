@@ -44,50 +44,69 @@ export default function ResFormCard({ resId }) {
   }, [restrictions]);
 
   return (
-    <Container className="ResCard" sx={{ display: "flex" }}>
-      <Box
-        sx={{
-          textAlign: "center",
-          fontCol: "white",
-        }}
+    <div>
+      <p className="resname">{restaurant.name}</p>
+      <Container
+        className="RestCard"
+        sx={{ background: "#B1907F", display: "flex" }}
       >
-        <p className="resname">{restaurant.name}</p>
-      </Box>
-      {/* <Link to={"/resDescript/" + id} className="media"> */}
-      <img className="resImage" src={restaurant.image_url}></img>
-      {/* </Link> */}
-      <div className="resinfo">
-        <Container
+        <Box
           sx={{
-            // background: "#B1907F",
-            justifyContent: "space-between",
-            Height: "500%",
-            Width: "20",
-            float: "left",
+            textAlign: "center",
+            fontCol: "white",
           }}
-        >
-          <Box sx={{ fontSize: "150%", justifyContent: "space-between" }}>
-            <p className="location">{restaurant.location}</p>
-            <p className="latitude">{restaurant.latitude}</p>
-            <p className="longitude">{restaurant.longitude}</p>
-            Restrictions:
-            {restrictions.map((restriction) => {
-              return <div> {restriction} </div>;
-            })}
-            <p className="restrict">{restaurant.restrictions} </p>
-          </Box>
+        ></Box>
+        {/* <Link to={"/resDescript/" + id} className="media"> */}
+        <img className="resImage" src={restaurant.image_url}></img>
+        {/* </Link> */}
+        <div className="resinfo">
+          <Container
+            sx={{
+              background: "#B1907F",
+              justifyContent: "space-between",
+              Height: "500%",
+              Width: "20",
+              float: "left",
+            }}
+          >
+            <Box sx={{ fontSize: "150%", justifyContent: "space-between" }}>
+              <p className="location">
+                {" "}
+                Address: <br></br>
+                {restaurant.location}
+              </p>
+              <p className="latitude">
+                {" "}
+                Latitude: <br></br> {restaurant.latitude}
+              </p>
+              <p className="longitude">
+                {" "}
+                Longitude: <br></br> {restaurant.longitude}
+              </p>
+              Restrictions: <br></br>
+              {restrictions.map((restriction) => {
+                return <div> {restriction} </div>;
+              })}
+              <p className="restrict">{restaurant.restrictions} </p>
+            </Box>
 
-          <Box sx={{ fontSize: "150%", justifyContent: "space-between" }}>
-            <p className="resdes">{restaurant.description}</p>
-          </Box>
-          <MapApp
+            <Box sx={{ fontSize: "150%", justifyContent: "space-between" }}>
+              <p className="resdes">{restaurant.description}</p>
+            </Box>
+          </Container>
+          {/* <MapApp
             restaurant={restaurant}
             latitude={restaurant.latitude}
             longitude={restaurant.longitude}
-          />
-        </Container>
-        {/* <a href="https://gps-coordinates.org/my-location.php?lat=40.7648&lng=-73.9808" target="_blank">(40.7648,-73.9808)</a> */}
-      </div>
-    </Container>
+          /> */}
+          {/* <a href="https://gps-coordinates.org/my-location.php?lat=40.7648&lng=-73.9808" target="_blank">(40.7648,-73.9808)</a> */}
+        </div>
+      </Container>
+      <MapApp
+        restaurant={restaurant}
+        latitude={restaurant.latitude}
+        longitude={restaurant.longitude}
+      />
+    </div>
   );
 }
