@@ -68,6 +68,8 @@ export default function ResCardYas({ rest, showdescription }) {
           component="img"
           // height="194"
           image={image_url}
+          sx={{ height: "250px" }}
+          // , objectFit: "cover"
         />
       </Link>
       <CardContent>
