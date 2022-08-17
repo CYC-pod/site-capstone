@@ -1,6 +1,6 @@
 .leaflet-container {
-  height: 18em;
-  width: 32em;
+  height: 50em;
+  width: 100em;
   border: 0.5rem solid chartreuse;
   z-index: 1;
 }
