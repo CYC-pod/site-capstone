@@ -174,6 +174,7 @@ export default function Diet() {
             {diets.map(({ id, name, type, i }) => {
               return (
                 <FormControlLabel
+                  sx={{minWidth: "max-content", display: "flex", flexDirection: "column"}}
                   control={
                     <Checkbox
                       checked={userRestrictions.restrictions[name]}
@@ -197,9 +198,8 @@ export default function Diet() {
         </div>
       </div>
       {/* <br /> */}
-      <div>
+      <div style={{display: "flex",  flexWrap: "wrap",  alignContent: "flex-end", justifyContent : "space-between"}}>
         <h3 id="restrictionLabels">Allergies</h3>
-      </div>
       {/* allergies */}
       <div id="flexri">
         <Autocomplete
@@ -239,6 +239,7 @@ export default function Diet() {
           )}
         />
       </div>
+      </div>
       <div id="allergyBoxes">
         {allergies.filter(filD).map(({ id, name, type }) => {
           return (
@@ -257,11 +258,12 @@ export default function Diet() {
       </div>
       <div>
         {/* flex id here^ */}
-        <ColorButton variant="contained" onClick={handleOnSubmit}>
+        <ColorButton variant="contained" onClick={handleOnSubmit} sx={{mb : 2}}> 
           <a href="/resResults" id="link">
             Submit Options
           </a>
         </ColorButton>
+    
       </div>
     </div>
   );
