@@ -1,4 +1,4 @@
-import "../Restform/Restform.css";
+import "./viewRest.css";
 import { Box } from "@mui/material";
 import { Container } from "@mui/system";
 import * as React from "react";
@@ -8,6 +8,7 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import ResFormCard from "./restformcard";
 import apiClient from "../../../services/apiClient";
+import MapApp from "../Maps/MapApp";
 
 export default function ViewRes() {
   const { resId, setResId } = useAuthContext();
@@ -26,27 +27,27 @@ export default function ViewRes() {
   }, []);
 
   useEffect(() => {
-    console.log("restaurant value in viewRest" , resId)
-  }, []) 
+    console.log("restaurant value in viewRest", resId);
+  }, []);
 
-//   function initialize() {
+  //   function initialize() {
 
-//     var myLatLng = new google.maps.LatLng(46.2,6.17);
-//     var mapOptions = {
-//         zoom: 4,
-//         center: myLatLng,
-//         mapTypeId: google.maps.MapTypeId.ROADMAP
-//     };
-    
-//     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-    
-//     var marker = new google.maps.Marker({
-//         position: myLatLng,
-//         map: map
-//     });
-// }
+  //     var myLatLng = new google.maps.LatLng(46.2,6.17);
+  //     var mapOptions = {
+  //         zoom: 4,
+  //         center: myLatLng,
+  //         mapTypeId: google.maps.MapTypeId.ROADMAP
+  //     };
 
-// initialize();
+  //     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+  //     var marker = new google.maps.Marker({
+  //         position: myLatLng,
+  //         map: map
+  //     });
+  // }
+
+  // initialize();
   return (
     <Container
       className="restaurants"
@@ -59,8 +60,17 @@ export default function ViewRes() {
       }} //2 brackets for its object.. setting the container
       maxWidth={false}
     >
-      <Box sx={{ background: "inherit", width: "50%", height: "10vh", m: 3 }}>
-        <h1> View Restaurant</h1>
+      <Box
+        sx={{
+          background: "inherit",
+          width: "50%",
+          height: "10vh",
+          m: 3,
+          color: "#B1907F",
+          fontSize: "170%",
+        }}
+      >
+        <h1 className="view"> View Your Restaurant</h1>
       </Box>
       <ResFormCard />
       {/* <Box

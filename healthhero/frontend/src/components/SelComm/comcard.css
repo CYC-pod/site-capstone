@@ -1,6 +1,7 @@
 .commName {
   /* color: black; */
   color: #0e3804;
+  line-height: 100%;
 }
 
 .commDescription,
@@ -28,4 +29,6 @@
 .commImage {
   border-radius: 8px;
   /* width: 80%; */
+  max-width: 90%;
+  float: center;
 }

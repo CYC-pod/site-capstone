@@ -42,6 +42,7 @@ option {
   flex-direction: column;
   background-color: #dde7c7;
   border-radius: 5px;
+  margin: 2em;
   /* height: max-content; */
 }
 

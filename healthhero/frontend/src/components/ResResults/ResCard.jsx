@@ -21,7 +21,7 @@ export function ResCard({ rest, showdescription }) {
     restrictions,
   } = rest;
   return (
-    <Container className="ResCard" maxWidth={"xs"} sx={{ m: 3 }}>
+    <Container className="ResCard" sx={{ m: 3, Width: "40%" }}>
       {/* <Link to={"/resDescript/" + id}> */}
       <Box sx={{ backgroundColor: "purple" }}>
         <img src={image_url}></img>
@@ -53,13 +53,23 @@ export default function ResCardYas({ rest, showdescription }) {
     restrictions,
   } = rest;
   return (
-    <Card sx={{ m: 3, maxWidth: { xs: "90%", lg: "30%" } }}>
+    <Card
+      sx={{
+        m: 3,
+        backgroundColor: "rgba(179,207,153)",
+        color: "darkGreen",
+        maxWidth: { xs: "90%", lg: "30%" },
+        border: "1px darkgreen dotted",
+      }}
+    >
       <CardHeader title={name} />
       <Link to={"/resDescript/" + id}>
         <CardMedia
           component="img"
           // height="194"
           image={image_url}
+          sx={{ height: "250px" }}
+          // , objectFit: "cover"
         />
       </Link>
       <CardContent>

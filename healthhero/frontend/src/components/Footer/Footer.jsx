@@ -1,8 +1,7 @@
 import * as React from "react";
 import "../Footer/Footer.css";
-import { Box} from "@mui/material";
-import {Link} from "react-router-dom";
-
+import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const links = {
   //   Categories: ["All Categories", "Clothing", "Food", "Accessories", "Tech"],
@@ -28,30 +27,21 @@ const LinkColumn = ({ title, links }) => {
   );
 };
 export default function Footer() {
-  return(<Box sx={{backgroundColor: "rgba(223,246,200,1)", flexGrow: "0",}}>
-  <br></br>
-      <Box> <a href="">Contact Us</a> </Box>
-      <Box> <a href="/aboutus">About Us</a> </Box>
-      <br></br>
-  </Box>);
   return (
-    <div className="Footer">
-      <div className="content">
-        {/* Top Section */}
-        <div className="top">
-          <div className="links">
-            {/* Standard Links */}
-
-            {Object.keys(links).map((columnTitle) => (
-              <LinkColumn
-                key={columnTitle}
-                title={columnTitle}
-                links={links[columnTitle]}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box sx={{ backgroundColor: "#976f60", flexGrow: "0" }}>
+      {/* display: "flex" */}
+      {/* "rgba(223,246,200,1)" */}
+      <br></br>
+      <Box>
+        {" "}
+        <a href="/contact">Contact Us</a>{" "}
+      </Box>
+      <Box>
+        {" "}
+        <a href="/aboutus">About Us</a>{" "}
+      </Box>
+      <Box className="madeByCyc"> Made By CYC ☁️ </Box>
+      <br></br>
+    </Box>
   );
 }

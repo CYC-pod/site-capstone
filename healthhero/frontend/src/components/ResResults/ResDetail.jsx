@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import apiClient from "../../../services/apiClient";
 import ResCard from "./ResCard";
 import "./ResDetail.css";
+import MapApp from "../Maps/MapApp";
 
 export default function ResDetail() {
   // var comm = community[commid];
@@ -32,8 +33,6 @@ export default function ResDetail() {
     getRestid();
   }, []);
 
-  
-
   useEffect(() => {
     console.log("restaurant by id:", restaurant);
   }, [restaurant]);
@@ -43,7 +42,10 @@ export default function ResDetail() {
       <h1 className="rest-card">Restaurant {restaurant?.name} !</h1>
       {/*// if not null try to get property if null= undefined */}
       {restaurant ? (
-        <ResCard rest={restaurant} showdescription={true} id={id} />
+        <>
+          <ResCard rest={restaurant} showdescription={true} id={id} />
+          <MapApp restaurant={restaurant} />
+        </>
       ) : null}
     </div>
   );

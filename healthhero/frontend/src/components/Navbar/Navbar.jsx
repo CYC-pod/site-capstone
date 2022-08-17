@@ -15,7 +15,7 @@ import leafLogo from "../../img/Health Hero-2.png";
 import apiClient from "../../../services/apiClient";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "../Slick/Slick.css";
-import Avatar from '@mui/material/Avatar';
+import Avatar from "@mui/material/Avatar";
 //put when logged in ^
 
 export default function Navbar({ logoutuser }) {
@@ -47,12 +47,12 @@ export default function Navbar({ logoutuser }) {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-          >
-          
-          </IconButton>
+          ></IconButton>
           {isStudent ? (
             <Button>
-              <a href="/communities" id="link">Communities </a>
+              <a href="/communities" id="link">
+                Communities{" "}
+              </a>
             </Button>
           ) : null}
           {isStudent ? (
@@ -71,9 +71,12 @@ export default function Navbar({ logoutuser }) {
           ) : null}
           {/* make button/list item */}
 
-          <Button color="inherit" onClick={logoutuser}>
-            <a href="/#aboutus" id="link"> About Us </a>
-          </Button>
+          {/* <Button color="inherit" onClick={logoutuser}>
+            <a href="/#aboutus" id="link">
+              {" "}
+              About Us{" "}
+            </a>
+          </Button> */}
 
           <Typography
             variant="h6"
@@ -89,16 +92,25 @@ export default function Navbar({ logoutuser }) {
               />
             </a>
           </Typography>
-          <Button color="inherit" onClick={logoutuser}>
-            {user ? (
-              ""
-            ) : (
-              <a href="/register" id="link">
-                {" "}
-                Sign Up{" "}
+
+          {/* {user ? (
+            <Button color="inherit">
+              <a href="/aboutus" id="link">
+                About Us
               </a>
-            )}
-          </Button>
+            </Button>
+          ) : (
+            ""
+          )} */}
+
+          {user ? null : (
+            <Button color="inherit" onClick={logoutuser}>
+              <a href="/register" id="link">
+                Sign Up
+              </a>
+            </Button>
+          )}
+
           {isRest ? (
             <Button>
               {" "}
@@ -121,12 +133,11 @@ export default function Navbar({ logoutuser }) {
 
           {/* prof button */}
           {user ? (
-
-    
-              <a href="/prof" id="link">  
-              <Avatar sx={{ bgcolor: '' }}>{user.username[0].toUpperCase()}</Avatar>
-              </a>
- 
+            <a href="/prof" id="link">
+              <Avatar sx={{ bgcolor: "" }}>
+                {user.username[0].toUpperCase()}
+              </Avatar>
+            </a>
           ) : (
             ""
           )}

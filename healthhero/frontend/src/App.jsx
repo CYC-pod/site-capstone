@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import * as React from "react";
-import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom"
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import { AuthContextProvider, useAuthContext } from "../AuthContext/auth";
@@ -24,16 +30,17 @@ import ResResults from "./components/ResResults/ResResults";
 import Aboutus from "./components/AboutUs/Aboutus";
 // import InResults from "./components/ResResults/InResults";
 import Footer from "./components/Footer/Footer";
+import Contact from "./components/Contact/Contact";
 
 import DetailedComm from "./components/SelComm/DetailedCom";
 import ResDetail from "./components/ResResults/ResDetail";
+import MapApp from "./components/Maps/MapApp";
 // import ComGrid from "./components/SelComm/ComGrid";
-
 
 function App() {
   const { user, setUser } = useAuthContext();
   const navigateTo = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // useEffect(() => {
   //   console.log("app is rendering")
@@ -49,6 +56,8 @@ function App() {
   //     fetchAuthUser();
   //   }
   // }, []);
+
+
 
   const autoLoggIn = async () => {
     if (!user) {
@@ -66,12 +75,15 @@ function App() {
 
   useEffect(() => {
     autoLoggIn();
-    console.log("rendering in app.jsx");
+    // const token = localStorage.getItem("token");
+    // if(!token){
+    //   navigateTo("/login")
+    // }
   }, []);
 
   useEffect(() => {
-   user ? setIsLoggedIn(true) : setIsLoggedIn(false)
-  }, [user])
+    user ? setIsLoggedIn(true) : setIsLoggedIn(false);
+  }, [user]);
 
   const logoutuser = async () => {
     await apiClient.logoutUser();
@@ -130,14 +142,7 @@ function App() {
               </>
             }
           />
-          <Route
-            path="/diet"
-            element={
-              <>
-                <Diet />
-              </>
-            }
-          />
+          <Route path="/diet" element={<Diet />} />
 
           <Route
             path="/restForm"
@@ -164,7 +169,7 @@ function App() {
             path="/prof"
             element={
               <>
-                <MyComm />
+               {user ? <MyComm/> : <Login/>}
               </>
             }
           />
@@ -172,7 +177,7 @@ function App() {
             path="/commForm"
             element={
               <>
-                <Commform />
+                {user ? <Commform /> :  <Login/>}
               </>
             }
           />
@@ -180,11 +185,11 @@ function App() {
             path="/viewrest"
             element={
               <>
-                <ViewRes />
+                {user ?  <ViewRes/> : <Login/>} 
               </>
             }
           />
-          <Route path="/resResults" element={<ResResults />} />
+          <Route path="/resResults" element={user ? <ResResults /> : <Login/>} />
           {/* <Route
       path="/resResults/specific"
       // would matter on id / which restaurant
@@ -223,6 +228,14 @@ function App() {
             element={
               <>
                 <Aboutus />
+              </>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <>
+                <Contact />
               </>
             }
           />

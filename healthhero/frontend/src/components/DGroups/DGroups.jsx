@@ -34,7 +34,7 @@ export default function DGroups() {
 
       <div className="sliderD">
         <Slider ref={setSliderRef} {...settings}>
-          <div id="sliderD">
+          {/* <div id="sliderD">
             <button>
               <h3>Vegan</h3>
             </button>
@@ -63,7 +63,7 @@ export default function DGroups() {
             <button>
               <h3>Pescatarian</h3>
             </button>
-          </div>
+          </div> */}
         </Slider>
       </div>
 

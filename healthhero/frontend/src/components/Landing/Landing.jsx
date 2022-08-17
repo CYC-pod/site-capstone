@@ -61,45 +61,52 @@ export default function Landing() {
   // }
   return (
     <>
-    <Container
-      className="landingPage"
-      sx={{
-        flexGrow: 1,
-        background: " #fffaec",
-        alignItems: "stretch",
-        display: "flex",
-        flexDirection: "column",
-      }} //2 brackets for its object.. setting the container
-      maxWidth={false}
-    >
-      {/* //{" "}
+      <Container
+        className="landingPage"
+        sx={{
+          flexGrow: 1,
+          background: " #fffaec",
+          alignItems: "stretch",
+          display: "flex",
+          flexDirection: "column",
+        }} //2 brackets for its object.. setting the container
+        maxWidth={false}
+      >
+        {/* //{" "}
       <div className="landingPage">
         {" "}
         commenting out to attemmpt to use container */}
-      {/* <div>
+        {/* <div>
         <img src="background: url(leaves.png);" alt="" />
       </div> */}
 
-      <Hero></Hero>
-      <h1 className="findYourSchool"> Find Your School! </h1>
+        <Hero></Hero>
+        <h1 className="findYourSchool"> Find Your School! </h1>
 
-      <Stack
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        spacing={8}
-        // will work if al stack
-      >
-        <Slick />
-        <ColorButton variant="contained">
-          {user ? <a href="/schools" id="link">See All Schools</a> : <a href="/login" id="link"> Please Login</a> }
-        </ColorButton>
-      </Stack>
-      {/* //{" "}
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={8}
+          // will work if al stack
+        >
+          <Slick />
+          <ColorButton variant="contained">
+            {user ? (
+              <a href="/schools" id="link">
+                See All Schools
+              </a>
+            ) : (
+              <a href="/login" id="link">
+                {" "}
+                Please Login
+              </a>
+            )}
+          </ColorButton>
+        </Stack>
+        {/* //{" "}
       </div> */}
-    </Container>
-   
-   <Aboutus/>
-   </>
+      </Container>
+    </>
   );
 }
