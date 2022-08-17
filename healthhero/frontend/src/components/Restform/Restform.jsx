@@ -72,9 +72,8 @@ export default function Restform() {
   };
 
   useEffect(() => {
-    console.log("form changes " , form)
-  },[form])
-
+    console.log("form changes ", form);
+  }, [form]);
 
   useEffect(() => {
     //takes in school name and gets id
@@ -89,7 +88,7 @@ export default function Restform() {
 
   useEffect(() => {
     console.log("school id of selected school", schoolId);
-    setForm({...form, school_id: schoolId?.id});
+    setForm({ ...form, school_id: schoolId?.id });
   }, [schoolId]);
 
   const prefilledform = {
@@ -244,7 +243,6 @@ export default function Restform() {
     }
   };
 
-
   // useEffect(() => {
   //      async function prefillform() {
   //       const res = await apiClient.request("restaurant", "GET",null)
@@ -256,9 +254,6 @@ export default function Restform() {
   //     }
   //     prefillform();
   //   }, []);
-
-
-
 
   const label = { inputProps: { "aria-label": "Christians checkbox" } };
 
@@ -275,7 +270,6 @@ export default function Restform() {
         <h2>Add Your Restaurant!</h2>
 
         {errors.form && <span className="error">{errors.form}</span>}
-        <br />
 
         <div className="form">
           <div className="input-field">
@@ -342,10 +336,15 @@ export default function Restform() {
               )}
             </div>
             <div className="linktolatlong">
-            <p>
-             Don't know your coordinates? Find them <a href="https://gps-coordinates.org/coordinate-converter.php" target="_blank">here</a>
-            </p>
-
+              <p>
+                Don't know your coordinates? Find them{" "}
+                <a
+                  href="https://gps-coordinates.org/coordinate-converter.php"
+                  target="_blank"
+                >
+                  here
+                </a>
+              </p>
             </div>
 
             <div className="input-field">
@@ -379,10 +378,8 @@ export default function Restform() {
               {errors.description && (
                 <span className="error">{errors.description}</span>
               )}
-              <br />
-              <br />
-           
-              <FormControl sx={{ m: 1, width: 300 }}> 
+
+              <FormControl sx={{ m: 1, width: 300 }}>
                 <InputLabel id="demo-multiple-checkbox-label">
                   Select School
                 </InputLabel>

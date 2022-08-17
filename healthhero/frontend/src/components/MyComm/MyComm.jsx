@@ -114,9 +114,7 @@ export default function MyComm() {
                 </div>
               </div>
             ) : (
-              <div>
-                <p>insert res data here</p>
-              </div>
+              <div>{/* <p>insert res data here</p> */}</div>
             )}
           </Box>
           <Box

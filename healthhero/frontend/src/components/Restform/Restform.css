@@ -1,9 +1,9 @@
 .Restaurant {
   display: flex;
   align-items: center;
-  min-height: 100vh;
-  height: 100%;
-  max-height: 100vh;
+  /* min-height: 100vh; */
+  /* height: 100%; */
+  /* max-height: 100vh; */
   width: 100%;
   max-width: 100vw;
   justify-content: center;
@@ -29,12 +29,16 @@ option {
 
 .Restaurant .card {
   outline: 2px #1e6b0b dotted;
-  min-height: 630px;
+  min-height: 600px;
   width: 630px;
-  padding: 24px 36px 0;
+  padding: 24px 36px;
   flex-direction: column;
   background-color: #dde7c7;
   border-radius: 5px;
+  /* margin-top: 110px;
+  margin-bottom: 100px; */
+  margin: 50px 10px;
+  /* margin: 50px; */
 }
 
 .Restaurant h2 {
@@ -73,8 +77,8 @@ option {
   color: #795548;
 }
 
-.Restaurant  input  {
-  height: 40px; 
+.Restaurant input {
+  height: 40px;
   padding: 8px;
   font-size: 16px;
   border: solid 1px var(--border-color);
@@ -94,9 +98,8 @@ option {
   /* width: 100%; */
   background-color: #adc89c;
   border-radius: 10px;
-
 }
-.text-field{
+.text-field {
   width: 100%;
 }
 ::placeholder {
