@@ -106,8 +106,8 @@ export default function Test() {
       console.log("allergies list", res.data.allergies);
     }
     const token = localStorage.getItem("token");
-    if(!token){
-      navigateTo("/login")
+    if (!token) {
+      navigateTo("/login");
     }
     console.log("res grid rendering");
     getRes();
@@ -174,14 +174,16 @@ export default function Test() {
             renderValue={(selectedDiet) => selectedDiet.join(", ")}
             MenuProps={MenuProps}
           >
-            {userRestrictions.filter((restriction) => restriction.type == "diet").map((restriction) => (
-              <MenuItem key={restriction.name} value={restriction.name}>
-                <Checkbox
-                  checked={selectedDiet.indexOf(restriction.name) > -1}
-                />
-                <ListItemText primary={restriction.name} />
-              </MenuItem>
-            ))}
+            {userRestrictions
+              .filter((restriction) => restriction.type == "diet")
+              .map((restriction) => (
+                <MenuItem key={restriction.name} value={restriction.name}>
+                  <Checkbox
+                    checked={selectedDiet.indexOf(restriction.name) > -1}
+                  />
+                  <ListItemText primary={restriction.name} />
+                </MenuItem>
+              ))}
           </Select>
         </FormControl>
 
@@ -197,14 +199,16 @@ export default function Test() {
             renderValue={(selectedAllergy) => selectedAllergy.join(", ")}
             MenuProps={MenuProps}
           >
-            {userRestrictions.filter((restriction) => restriction.type == "allergy").map((restriction) => (
-              <MenuItem key={restriction.name} value={restriction.name}>
-                <Checkbox
-                  checked={selectedAllergy.indexOf(restriction.name) > -1}
-                />
-                <ListItemText primary={restriction.name} />
-              </MenuItem>
-            ))}
+            {userRestrictions
+              .filter((restriction) => restriction.type == "allergy")
+              .map((restriction) => (
+                <MenuItem key={restriction.name} value={restriction.name}>
+                  <Checkbox
+                    checked={selectedAllergy.indexOf(restriction.name) > -1}
+                  />
+                  <ListItemText primary={restriction.name} />
+                </MenuItem>
+              ))}
           </Select>
         </FormControl>
       </>
@@ -229,21 +233,15 @@ export default function Test() {
         }} //2 brackets for its object.. setting the container
         maxWidth={false}
       >
-        {[...Array(15)].map((e) =>
-          restaurants
-            .filter((restaurant) =>
-              checker(restaurant.restriction_name, selected)
-            )
-            .map((rest, index) => {
-              console.log("selected array in map: ", selected);
-              return (
-                <ResCard key={index} rest={rest} showdescription={false} />
-              );
-            })
-        )}
+        {restaurants
+          .filter((restaurant) =>
+            checker(restaurant.restriction_name, selected)
+          )
+          .map((rest, index) => {
+            console.log("selected array in map: ", selected);
+            return <ResCard key={index} rest={rest} showdescription={false} />;
+          })}
       </Container>
     </>
   );
 }
-
-
