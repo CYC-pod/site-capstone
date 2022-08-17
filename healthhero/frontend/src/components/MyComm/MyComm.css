@@ -84,6 +84,7 @@ h3 {
   justify-items: center;
   border-radius: 15px;
   margin: 2%;
+  padding: 5px;
 }
 .info {
   /* justify-items: center;
@@ -93,6 +94,7 @@ h3 {
   /* padding-top: 10%; */
   /* flex-wrap: wrap; */
   justify-content: center;
+  color: white; 
 }
 
 .padT {

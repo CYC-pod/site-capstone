@@ -11,6 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import Tooltip from "@material-ui/core/Tooltip";
 
 export default function DetailedComm() {
   // var comm = community[commid];
@@ -116,11 +117,13 @@ export default function DetailedComm() {
           alignContent: "center",
         }}
       >
-        <AvatarGroup max={4} sx={{ justifyContent: "center" }}>
+        <AvatarGroup max={10} sx={{ justifyContent: "center" }}>
           {usersInCom?.map((user, idx) => (
-            <Avatar sx={{ bgcolor: "", justifyContent: "center" }}>
-              {user.username[0].toUpperCase()}
-            </Avatar>
+            <Tooltip title={user.username}>
+              <Avatar sx={{ bgcolor: "", justifyContent: "center" }}>
+                {user.username[0].toUpperCase()}
+              </Avatar>
+            </Tooltip>
           ))}
         </AvatarGroup>
       </Box>
