@@ -122,7 +122,7 @@ function App() {
             path="/schools"
             element={
               <>
-                <SchoolsView />
+                {user ? <SchoolsView />: <Login/>}
               </>
             }
           />
@@ -148,21 +148,16 @@ function App() {
             path="/restForm"
             element={
               <>
-                <Restform />
+                {user ? <Restform /> : <Login/>}
               </>
             }
           />
           <Route
             path="/communities"
             element={
-              <SelComm />
-              //       {/*header
-              //   grid.. where you press image-> descripting and being able to add the community.(comm detail)
-              // load more buttom gets pushed down}
-              // ideal to only render selcom component
-              //       {/* <SelComm />
-              //       <ComGrid />
-              //       <CommCard /> */}
+              <>
+              {user ? <SelComm/> : <Login/>}
+              </>
             }
           />
           <Route
@@ -190,20 +185,11 @@ function App() {
             }
           />
           <Route path="/resResults" element={user ? <ResResults /> : <Login/>} />
-          {/* <Route
-      path="/resResults/specific"
-      // would matter on id / which restaurant
-      element={
-        <>
-          <InResults />
-        </>
-      }
-    /> */}
           <Route
             path="/commDescript/:id"
             element={
               <>
-                <DetailedComm />
+                {user ? <DetailedComm /> : <Login/>}
               </>
             }
           />
@@ -211,7 +197,7 @@ function App() {
             path="/commDescript/:id"
             element={
               <>
-                <DetailedComm />
+                {user ? <DetailedComm /> : <Login/>}
               </>
             }
           />
@@ -219,7 +205,7 @@ function App() {
             path="/resDescript/:id"
             element={
               <>
-                <ResDetail />
+                {user ? <ResDetail /> : <Login/>}
               </>
             }
           />
@@ -241,22 +227,7 @@ function App() {
           />
         </Routes>
       </>
-      {/* <div>
-        <div style={style}>
-          <div>
-            <a href="">Contact Us</a>
-          </div>
-        </div>
-        hello
-      </div> */}
       <Footer></Footer>
-
-      {/* <View style={styles.container}>
-        <View style={styles.content}> content goes here</View>
-        <View style={styles.footer}>
-          <Text>This footer will be pushed to the bottom</Text>
-        </View>
-      </View> */}
     </>
   );
 }

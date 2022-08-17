@@ -75,8 +75,8 @@ export default function ResCardYas({ rest, showdescription }) {
       <CardContent>
         <Typography paragraph>
           <p className="location">{location}</p>
-          <p className="latitude">{latitude}</p>
-          <p className="longitude">{longitude}</p>
+          {/* <p className="latitude">{latitude}</p>
+          <p className="longitude">{longitude}</p> */}
           <p className="restrict">{restrictions}</p>
 
           {showdescription ? (

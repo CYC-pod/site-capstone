@@ -2,14 +2,11 @@ import "../ResResults/ResCard.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import apiClient from "../../../services/apiClient";
-<<<<<<< HEAD
-=======
 import { Box } from "@mui/system";
 import { Container } from "@mui/system";
 import { colors } from "@mui/material";
 import MapApp from "../Maps/MapApp";
 
->>>>>>> main
 export default function ResFormCard({ resId }) {
   const [restaurant, setRestaurant] = useState([]);
   const [ restrictions, setRestrictions] = useState([])
@@ -42,23 +39,6 @@ export default function ResFormCard({ resId }) {
   }, [restrictions]);
   
   return (
-<<<<<<< HEAD
-    <div className="ResCard">
-      {/* <Link to={"/resDescript/" + id} className="media"> */}
-      <img className="resImage" src={restaurant.image_url}></img>
-      {/* </Link> */}
-      <div className="resinfo">
-        <p className="resname">{restaurant.name}</p>
-        <p className="location">{restaurant.location}</p>
-        {restrictions.map((restriction) => {
-        return (
-          <div> {restriction} </div>
-        );
-      })}
-        <p className="restrict">{restaurant.restrictions} </p>
-        <p className="resdes">{restaurant.description}</p>
-      </div>
-=======
     <div>
       <p className="resname">{restaurant.name}</p>
       <Container
@@ -122,7 +102,6 @@ export default function ResFormCard({ resId }) {
         latitude={restaurant.latitude}
         longitude={restaurant.longitude}
       />
->>>>>>> main
     </div>
   );
 }
