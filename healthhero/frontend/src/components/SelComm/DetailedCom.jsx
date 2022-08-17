@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 import apiClient from "../../../services/apiClient";
 import ComCard from "./ComCard";
 import "./DetailedCom.css";
-import Avatar from '@mui/material/Avatar';
-import AvatarGroup from '@mui/material/AvatarGroup';
+import Avatar from "@mui/material/Avatar";
+import AvatarGroup from "@mui/material/AvatarGroup";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
@@ -43,17 +43,17 @@ export default function DetailedComm() {
   }, []);
 
   useEffect(() => {
-    async function listUsersInComm(){
-      const res = await apiClient.listUsersInComm(id)
-      console.log("users in the community: " , res?.data?.usersInComm)
-      setUsersInComm(res?.data?.usersInComm)
+    async function listUsersInComm() {
+      const res = await apiClient.listUsersInComm(id);
+      console.log("users in the community: ", res?.data?.usersInComm);
+      setUsersInComm(res?.data?.usersInComm);
     }
     listUsersInComm();
-  }, [community])
+  }, [community]);
 
   useEffect(() => {
-    console.log("users in community yay: ", usersInCom)
-  }, [community])
+    console.log("users in community yay: ", usersInCom);
+  }, [community]);
 
   // useEffect(() => {
   //   async function addcomm() {
@@ -72,34 +72,33 @@ export default function DetailedComm() {
   const handleOnSubmit = async () => {
     setIsLoading(true);
     // setErrors((e) => ({ ...e, form: null }));
-    console.log("id in the detailed comm file: ", id)
+    console.log("id in the detailed comm file: ", id);
     try {
-     
       const res = await apiClient.addUserToComm(id);
-      
+
       console.log(res);
       if (res?.data?.community) {
         // const { comm, setComm } = useAuthContext();
         //To do save community data somewhere
         // apiClient.setToken(res.data.token);
         setIsLoading(false);
-        navigate("/prof"); }
+        navigate("/prof");
+      }
       // } else {
       //   setErrors((e) => ({
       //     ...e,
       //     form: "Something went wrong with adding your community",
       //   }));
       //   setIsLoading(false);
-      }
-    catch (err) {
+    } catch (err) {
       console.log(err);
       // const message = err?.response?.data?.error?.message;
       // setErrors((e) => ({
       //   ...e,
       //   form: message ? String(message) : String(err),
-      };
-      setIsLoading(false);
-    };
+    }
+    setIsLoading(false);
+  };
 
   return (
     <div className="productview">
@@ -110,18 +109,23 @@ export default function DetailedComm() {
         </div>
       ) : null}
 
-      <Box className="avatarGroup" sx={{
-        justifyContent: "center",
-        alignContent: "center",
-        bgcolor: "red"
-
-      }}>
-        <AvatarGroup max={4}>
-          {usersInCom?.map((user, idx) => (<Avatar sx={{ bgcolor: '' }}>{user.username[0].toUpperCase()}</Avatar>))}
+      <Box
+        className="avatarGroup"
+        sx={{
+          justifyContent: "center",
+          alignContent: "center",
+        }}
+      >
+        <AvatarGroup max={4} sx={{ justifyContent: "center" }}>
+          {usersInCom?.map((user, idx) => (
+            <Avatar sx={{ bgcolor: "", justifyContent: "center" }}>
+              {user.username[0].toUpperCase()}
+            </Avatar>
+          ))}
         </AvatarGroup>
       </Box>
       <div>
-      <Button
+        <Button
           className="addCommButton"
           variant="outlined"
           sx={{
@@ -133,11 +137,11 @@ export default function DetailedComm() {
             },
           }}
           onClick={handleOnSubmit}
-        >   
-            <h3 className="addCommLabel"> Add Community To Profile </h3>
+        >
+          <h3 className="addCommLabel"> Add Community To Profile </h3>
         </Button>
-        <br/>
-        <br/>
+        <br />
+        <br />
       </div>
     </div>
   );

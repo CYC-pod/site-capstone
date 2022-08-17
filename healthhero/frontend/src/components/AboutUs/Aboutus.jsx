@@ -1,7 +1,7 @@
 import "./Aboutus.css";
 import groupPhoto from "../../img/groupPhoto.jpeg"
 import Christian from "../../img/Christian.png"
-import Courtney from "../../img/Courtney.jpg"
+import Courtney from "../../img/Courtney.jpeg"
 import Yasmin from "../../img/Yasmin.jpeg"
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';

@@ -18,16 +18,18 @@
   padding-top: 2%;
 }
 
-.test{
-  color: red;
+.test {
+  /* color: red; */
 }
 
-.addCommLabel{
-  color: rgba(121,85,72,1);
+.addCommLabel {
+  color: rgba(121, 85, 72, 1);
   font-size: 12px;
 }
 
-.avatarGroup{
-  margin-left: 20%;
+.avatarGroup {
+  /* margin-left: 20%; */
+  margin-bottom: 1%;
+  justify-content: center;
 }
 /* css for div for now until rerun db w removing css from card for here and changing width on og card */
