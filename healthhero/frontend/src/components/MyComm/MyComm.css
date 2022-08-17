@@ -100,7 +100,8 @@ h3 {
 .padT {
   margin-top: 6%;
   border-radius: 6px;
-  /* width: 30%; */
+  margin-right: 8%;
+  width: 55vh;
 }
 #left {
   padding-top: 1%;
