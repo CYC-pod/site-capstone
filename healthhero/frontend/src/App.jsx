@@ -73,14 +73,13 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    autoLoggIn();
-    console.log("rendering in app.jsx");
-    const token = localStorage.getItem("token");
-    if(!token){
-      navigateTo("/login")
-    }
-  }, []);
+  // useEffect(() => {
+  //   autoLoggIn();
+  //   const token = localStorage.getItem("token");
+  //   if(!token){
+  //     navigateTo("/login")
+  //   }
+  // }, []);
 
   useEffect(() => {
     user ? setIsLoggedIn(true) : setIsLoggedIn(false);
@@ -170,7 +169,7 @@ function App() {
             path="/prof"
             element={
               <>
-                <MyComm />
+               {user ? <MyComm/> : <Login/>}
               </>
             }
           />
@@ -178,7 +177,7 @@ function App() {
             path="/commForm"
             element={
               <>
-                <Commform />
+                {user ? <Commform /> :  <Login/>}
               </>
             }
           />
@@ -186,11 +185,11 @@ function App() {
             path="/viewrest"
             element={
               <>
-                <ViewRes />
+                {user ?  <ViewRes/> : <Login/>} 
               </>
             }
           />
-          <Route path="/resResults" element={<ResResults />} />
+          <Route path="/resResults" element={user ? <ResResults /> : <Login/>} />
           {/* <Route
       path="/resResults/specific"
       // would matter on id / which restaurant

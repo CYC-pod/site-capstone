@@ -91,7 +91,7 @@ export default function Test() {
       console.log("restaurant list: ", res.data.restaurants);
     }
     async function getUserRestrictions() {
-      const res = await apiClient.listUserRestrictions();
+      const res = await apiClient.listUserRestrictionsObj();
       setUserRestrictions(res.data.restrictions);
       console.log("user restrictions list", res.data.restrictions);
     }
@@ -104,6 +104,10 @@ export default function Test() {
       const res = await apiClient.listAllergies();
       setAllergies(res.data.allergies); //this need to change
       console.log("allergies list", res.data.allergies);
+    }
+    const token = localStorage.getItem("token");
+    if(!token){
+      navigateTo("/login")
     }
     console.log("res grid rendering");
     getRes();
@@ -170,7 +174,7 @@ export default function Test() {
             renderValue={(selectedDiet) => selectedDiet.join(", ")}
             MenuProps={MenuProps}
           >
-            {diets.map((restriction) => (
+            {userRestrictions.filter((restriction) => restriction.type == "diet").map((restriction) => (
               <MenuItem key={restriction.name} value={restriction.name}>
                 <Checkbox
                   checked={selectedDiet.indexOf(restriction.name) > -1}
@@ -193,7 +197,7 @@ export default function Test() {
             renderValue={(selectedAllergy) => selectedAllergy.join(", ")}
             MenuProps={MenuProps}
           >
-            {allergies.map((restriction) => (
+            {userRestrictions.filter((restriction) => restriction.type == "allergy").map((restriction) => (
               <MenuItem key={restriction.name} value={restriction.name}>
                 <Checkbox
                   checked={selectedAllergy.indexOf(restriction.name) > -1}
@@ -225,132 +229,19 @@ export default function Test() {
         }} //2 brackets for its object.. setting the container
         maxWidth={false}
       >
-        {/* {[...Array(15)].map((e) => */}
-        {/* {map((e) => */}
-        {restaurants
-          .filter((restaurant) =>
-            checker(restaurant.restriction_name, selected)
-          )
-          .map((rest, index) => {
-            console.log("selected array in map: ", selected);
-            return <ResCard key={index} rest={rest} showdescription={false} />;
-          })}
-        {/* )} */}
+        {[...Array(15)].map((e) =>
+          restaurants
+            .filter((restaurant) =>
+              checker(restaurant.restriction_name, selected)
+            )
+            .map((rest, index) => {
+              console.log("selected array in map: ", selected);
+              return (
+                <ResCard key={index} rest={rest} showdescription={false} />
+              );
+            })
+        )}
       </Container>
     </>
   );
 }
-
-// import * as React from "react";
-// import ResCard from "./ResCard";
-// import "../ResResults/ResResults.css";
-
-// import SearchBar from "material-ui-search-bar";
-// // import styled from "styled-components";
-// import { styled } from "@mui/material/styles";
-
-// export const StyledSearchBar = styled(SearchBar)`
-//   margin: 0 auto;
-//   max-width: 800px;
-//   margin-top: 100px;
-// `;
-
-// // function displayResults(data) {
-// //   const resStr = data.results
-// //     .map(
-// //       (item) => `
-
-// // <div id = "res-card">
-// //     // <img class = "res-pic" src= from input />
-
-// //     // <h3 class = "res-title">${res.title} </h3>
-// //     <p> res description/>
-
-// //     </div>
-// //     </div>
-// // `
-// //     )
-// //     .join("");
-// //   dataSec.innerHTML = dataSec.innerHTML + resStr; //rename datasec to be overall container somewhere
-// // }
-// export default function ResResults({ resresults = [] }) {
-//   //figure out props here
-//   return (
-//     <div className="resR">
-//       <div>
-//         {/* <SearchBar
-//           onChange={() => console.log("onChange")}
-//           onRequestSearch={() => console.log("onRequestSearch")}
-//           style={{
-//             margin: "0 auto",
-
-//             maxWidth: 800,
-//           }}
-//         /> */}
-//         <StyledSearchBar />
-//       </div>
-
-//       <p>dietary groups, allergies, more - filter bar</p>
-//       <div className="grid">
-//         {resresults?.map((res) => (
-//           <ResCard key={res.id} restaurant={res} des={res.description} /> //prob need diets too
-//         ))}
-//         {!resresults?.length ? (
-//           <div className="card">
-//             <p>No restaurants available</p>
-//           </div>
-//         ) : null}
-//       </div>
-//       {/* call displayResults here? */}
-//     </div>
-//   );
-//
-
-//tried this verison with moe, didnt work shows no restaurant but console logged the data array of restuarants
-//  import * as React from "react";
-// import { Box } from "@mui/material";
-// import { Container } from "@mui/system";
-// import ResCard from "./ResCard";
-// import { useEffect } from "react";
-// import { useAuthContext } from "../../../AuthContext/auth";
-// import ResGrid from "./ResGrid";
-// import "../ResResults/ResResults.css";
-// import apiClient from "../../../services/apiClient";
-// import { useState } from "react";
-
-// export default function SelRes() {
-//   // const { resres, setRes } = useAuthContext();
-//   const [ res, setRes ] = useState({});
-//   useEffect(() => {
-//     const fetchRes = async () => {
-//       const { data, error } = await apiClient.listres();
-//       console.log("rest data", data);
-//       if (data) setRes(data.restaurant);
-//     };
-//     fetchRes();
-
-//     console.log("hii");
-//   }, []);
-//   return (
-//     <Container
-//       className="restaurants"
-//       sx={{
-//         flexGrow: 1,
-//         background: "#f4ebd0",
-//         alignItems: "center",
-//         display: "flex",
-//         flexDirection: "column",
-//       }} //2 brackets for its object.. setting the container
-//       maxWidth={false}
-//     >
-//       <Box sx={{ background: "inherit", width: "50%", height: "10vh", m: 3 }}>
-//         <h1> Your Restaurant Results</h1>
-//         <ResGrid />
-//       </Box>
-
-//       {/* <Box
-//           sx={{ background: "purple", width: "10%", height: "10vh", m: 3 }}
-//         ></Box> */}
-//     </Container>
-//   );
-// }
