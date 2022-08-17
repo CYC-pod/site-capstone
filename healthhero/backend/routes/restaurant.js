@@ -40,7 +40,7 @@ router.get(
       const restrictions = await Restaurant.listRestaurantRestrictions(
         req.query.restaurantid
       );
-      console.log("req.query.restaurantid: ", req.query.id);
+      console.log("req.query.restaurantid: ", req.query.restaurantid);
       console.log("restrictions in backend: ", restrictions);
       return res.status(201).json({ restrictions: restrictions });
     } catch (err) {

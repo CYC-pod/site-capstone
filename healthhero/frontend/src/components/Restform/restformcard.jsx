@@ -1,15 +1,10 @@
-import "./restformcard.css";
+import "../ResResults/ResCard.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import apiClient from "../../../services/apiClient";
-import { Box } from "@mui/system";
-import { Container } from "@mui/system";
-import { colors } from "@mui/material";
-
 export default function ResFormCard({ resId }) {
   const [restaurant, setRestaurant] = useState([]);
-  const [restrictions, setRestrictions] = useState([]);
-
+  const [ restrictions, setRestrictions] = useState([])
   useEffect(() => {
     async function getResId() {
       const res = await apiClient.listRestsbyId();
@@ -19,14 +14,11 @@ export default function ResFormCard({ resId }) {
     }
     getResId();
   }, []);
-
   useEffect(() => {
     console.log("restaurant in restFormCard", restaurant);
   }, [restaurant]);
-
   //const { image_url, name, location, description, restrictions } = resId;
-
-  useEffect(() => {
+    useEffect(() => {
     async function getRestrictions() {
       console.log("restaurant id in getRest", restaurant.id);
       const res = await apiClient.listRestaurantRestrictions(restaurant.id);
@@ -35,49 +27,26 @@ export default function ResFormCard({ resId }) {
     }
     getRestrictions();
   }, [restaurant]);
-
   useEffect(() => {
     console.log("restaurant's restrictions:", restrictions);
   }, [restrictions]);
-
+  
   return (
-    <Container className="ResCard" sx={{ display: "flex" }}>
-      <Box
-        sx={{
-          textAlign: "center",
-          fontCol: "white",
-        }}
-      >
-        <p className="resname">{restaurant.name}</p>
-      </Box>
+    <div className="ResCard">
       {/* <Link to={"/resDescript/" + id} className="media"> */}
       <img className="resImage" src={restaurant.image_url}></img>
       {/* </Link> */}
       <div className="resinfo">
-        <Container
-          sx={{
-            background: "#B1907F",
-            justifyContent: "space-between",
-            Height: "500%",
-            Width: "20",
-            float: "left",
-          }}
-        >
-          <Box sx={{ fontSize: "150%", justifyContent: "space-between" }}>
-            <p className="location">{restaurant.location}</p>
-            Restrictions:
-            {restrictions.map((restriction) => {
-              return <div> {restriction} </div>;
-            })}
-            <p className="restrict">{restaurant.restrictions} </p>
-          </Box>
-
-          <Box sx={{ fontSize: "150%", justifyContent: "space-between" }}>
-            <p className="resdes">{restaurant.description}</p>
-          </Box>
-        </Container>
-        {/* <a href="https://gps-coordinates.org/my-location.php?lat=40.7648&lng=-73.9808" target="_blank">(40.7648,-73.9808)</a> */}
+        <p className="resname">{restaurant.name}</p>
+        <p className="location">{restaurant.location}</p>
+        {restrictions.map((restriction) => {
+        return (
+          <div> {restriction} </div>
+        );
+      })}
+        <p className="restrict">{restaurant.restrictions} </p>
+        <p className="resdes">{restaurant.description}</p>
       </div>
-    </Container>
+    </div>
   );
 }
