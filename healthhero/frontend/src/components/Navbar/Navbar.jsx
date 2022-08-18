@@ -16,6 +16,8 @@ import apiClient from "../../../services/apiClient";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "../Slick/Slick.css";
 import Avatar from "@mui/material/Avatar";
+import Tooltip from '@mui/material/Tooltip';
+
 //put when logged in ^
 
 export default function Navbar({ logoutuser }) {
@@ -134,9 +136,11 @@ export default function Navbar({ logoutuser }) {
           {/* prof button */}
           {user ? (
             <a href="/prof" id="link">
-              <Avatar sx={{ bgcolor: "" }}>
-                {user.username[0].toUpperCase()}
-              </Avatar>
+              <Tooltip title="Your Profile">
+                <Avatar sx={{ bgcolor: "" }}>
+                  {user.username[0].toUpperCase()}
+                </Avatar>
+              </Tooltip>
             </a>
           ) : (
             ""
