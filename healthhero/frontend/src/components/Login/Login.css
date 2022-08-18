@@ -14,6 +14,10 @@
   /* rgb(243, 228, 191); */
 }
 
+.formTitles{
+ color: rgb(68, 68, 68);
+}
+
 .Login .card {
   outline: 2px #1e6b0b dotted;
   min-height: 590px;

@@ -273,7 +273,7 @@ export default function Restform() {
 
         <div className="form">
           <div className="input-field">
-            <label htmlFor="location">Restaurant Name </label>
+            <label className="formTitles" htmlFor="location">Restaurant Name </label>
             <TextField
               className="text-field"
               InputProps={{
@@ -288,7 +288,7 @@ export default function Restform() {
           </div>
           <div className="split-inputs">
             <div className="input-field">
-              <label htmlFor="location">Location </label>
+              <label className="formTitles" htmlFor="location">Location </label>
               <TextField
                 className="text-field"
                 InputProps={{
@@ -304,7 +304,7 @@ export default function Restform() {
               )}
             </div>
             <div className="input-field">
-              <label htmlFor="location">Enter your Latitude </label>
+              <label className="formTitles" htmlFor="location">Enter your Latitude </label>
               <TextField
                 className="text-field"
                 InputProps={{
@@ -320,7 +320,7 @@ export default function Restform() {
               )}
             </div>
             <div className="input-field">
-              <label htmlFor="location">Enter Your Longitude </label>
+              <label className="formTitles" htmlFor="location">Enter Your Longitude </label>
               <TextField
                 className="text-field"
                 InputProps={{
@@ -348,7 +348,7 @@ export default function Restform() {
             </div>
 
             <div className="input-field">
-              <label htmlFor="image">Add An Image </label>
+              <label className="formTitles" htmlFor="image">Add An Image </label>
               <TextField
                 className="text-field"
                 InputProps={{
@@ -362,7 +362,7 @@ export default function Restform() {
               {errors.image && <span className="error">{errors.image}</span>}
             </div>
             <div className="input-field">
-              <label htmlFor="description">Description </label>
+              <label className="formTitles" htmlFor="description">Description </label>
               <TextField
                 className="text-field"
                 InputProps={{
@@ -411,6 +411,7 @@ export default function Restform() {
                       name={name}
                     />
                   }
+                  style={{color : "grey"}}
                   label={name}
                 />
               );

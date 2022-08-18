@@ -65,7 +65,7 @@ export default function Navbar({ logoutuser }) {
           {isRest ? (
             <Button>
               <a href="/viewrest" id="link">
-                View Your Restaurant
+                Your Restaurant
               </a>
             </Button>
           ) : null}

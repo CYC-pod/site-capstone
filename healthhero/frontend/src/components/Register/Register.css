@@ -46,6 +46,10 @@ option {
   /* height: max-content; */
 }
 
+.formTitles{
+  color: rgb(68, 68, 68);
+}
+
 .Register h2 {
   color: #1e6b0b;
   font-weight: 450;

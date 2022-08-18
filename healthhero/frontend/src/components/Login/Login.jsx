@@ -91,7 +91,7 @@ export default function Login({ setLoggedIn }) {
 
         <div className="form">
           <div className="input-field">
-            <label htmlFor="email">Email</label>
+            <label className="formTitles" htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -103,7 +103,7 @@ export default function Login({ setLoggedIn }) {
           </div>
 
           <div className="input-field">
-            <label htmlFor="password">Password</label>
+            <label className="formTitles" htmlFor="password">Password</label>
             <input
               type="password"
               name="password"

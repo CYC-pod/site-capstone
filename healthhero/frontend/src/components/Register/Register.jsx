@@ -152,7 +152,7 @@ export default function Register() {
         <br />
 
         <div className="form">
-          <label htmlFor="type">Select User Type</label>
+          <label className="formTitles" htmlFor="type">Select User Type</label>
 
           <select
             name="type"
@@ -167,7 +167,7 @@ export default function Register() {
           </select>
 
           <div className="input-field">
-            <label htmlFor="email">Email</label>
+            <label className="formTitles" htmlFor="email">Email</label>
             <br />
             <input
               type="email"
@@ -181,7 +181,7 @@ export default function Register() {
 
           <div className="split-inputs">
             <div className="input-field">
-              <label htmlFor="username">Username</label>
+              <label className="formTitles" htmlFor="username">Username</label>
               <br />
               <input
                 type="text"
@@ -196,7 +196,7 @@ export default function Register() {
             </div>
 
             <div className="input-field">
-              <label htmlFor="password">Password</label>
+              <label className="formTitles" htmlFor="password">Password</label>
               <br />
               <input
                 type="password"
@@ -211,7 +211,7 @@ export default function Register() {
             </div>
 
             <div className="input-field">
-              <label htmlFor="passwordConfirm">Confirm Password</label>
+              <label className="formTitles" htmlFor="passwordConfirm">Confirm Password</label>
               <br />
               <input
                 type="password"
